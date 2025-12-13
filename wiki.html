@@ -28,6 +28,11 @@
         body { font-family: 'Inter', sans-serif; background-color: #0f0f13; color: #ffffff; cursor: default; }
         h1, h2, h3 { font-family: 'Rajdhani', sans-serif; }
         #cursor-glow { width: 600px; height: 600px; background: radial-gradient(circle, rgba(150, 83, 250, 0.15) 0%, rgba(0, 0, 0, 0) 70%); position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); pointer-events: none; z-index: 9999; mix-blend-mode: screen; }
+        
+        /* Modal Scrollbar */
+        .modal-content::-webkit-scrollbar { width: 8px; }
+        .modal-content::-webkit-scrollbar-track { background: #121212; }
+        .modal-content::-webkit-scrollbar-thumb { background: #9653fa; border-radius: 4px; }
     </style>
 </head>
 <body class="antialiased">
@@ -46,75 +51,140 @@
     <div class="container mx-auto px-4 py-32">
         <div class="text-center mb-12">
             <h1 class="text-5xl font-bold mb-4">BİLGİ <span class="text-mc-main">BANKASI</span></h1>
-            <p class="text-gray-400">Sunucu hakkında merak ettiğiniz her şey.</p>
+            <p class="text-gray-400">Detaylı bilgi için kartların üzerine tıklayın.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            <!-- Wiki Card 1 -->
-            <div class="bg-mc-card p-6 rounded-xl border border-white/10 hover:border-mc-main/50 transition cursor-pointer group">
+            
+            <!-- KART 1: Temel Komutlar -->
+            <div onclick="openWikiModal('commands')" class="bg-mc-card p-6 rounded-xl border border-white/10 hover:border-mc-main/50 transition cursor-pointer group hover:-translate-y-2 duration-300">
                 <div class="w-12 h-12 bg-blue-500/10 text-blue-500 rounded-lg flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
                     <i class="fa-solid fa-keyboard"></i>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-2">Temel Komutlar</h3>
+                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-mc-main transition">Temel Komutlar</h3>
                 <p class="text-gray-400 text-sm">/spawn, /tpa, /sethome gibi başlangıç komutlarının listesi.</p>
             </div>
 
-            <!-- Wiki Card 2 -->
-            <div class="bg-mc-card p-6 rounded-xl border border-white/10 hover:border-mc-main/50 transition cursor-pointer group">
+            <!-- KART 2: Claim Sistemi -->
+            <div onclick="openWikiModal('claim')" class="bg-mc-card p-6 rounded-xl border border-white/10 hover:border-mc-main/50 transition cursor-pointer group hover:-translate-y-2 duration-300">
                 <div class="w-12 h-12 bg-green-500/10 text-green-500 rounded-lg flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
                     <i class="fa-solid fa-cubes-stacked"></i>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-2">Claim Sistemi</h3>
+                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-mc-main transition">Claim Sistemi</h3>
                 <p class="text-gray-400 text-sm">Alanınızı nasıl korursunuz? Altın kürek kullanımı ve detaylar.</p>
             </div>
 
-            <!-- Wiki Card 3 -->
-            <div class="bg-mc-card p-6 rounded-xl border border-white/10 hover:border-mc-main/50 transition cursor-pointer group">
+            <!-- KART 3: Ekonomi -->
+            <div onclick="openWikiModal('economy')" class="bg-mc-card p-6 rounded-xl border border-white/10 hover:border-mc-main/50 transition cursor-pointer group hover:-translate-y-2 duration-300">
                 <div class="w-12 h-12 bg-yellow-500/10 text-yellow-500 rounded-lg flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
                     <i class="fa-solid fa-coins"></i>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-2">Ekonomi & Para</h3>
+                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-mc-main transition">Ekonomi & Para</h3>
                 <p class="text-gray-400 text-sm">Nasıl para kazanılır? Meslekler, market ve ihale sistemi.</p>
             </div>
             
-             <!-- Wiki Card 4 -->
-             <div class="bg-mc-card p-6 rounded-xl border border-white/10 hover:border-mc-main/50 transition cursor-pointer group">
+            <!-- KART 4: Zindanlar -->
+             <div onclick="openWikiModal('dungeons')" class="bg-mc-card p-6 rounded-xl border border-white/10 hover:border-mc-main/50 transition cursor-pointer group hover:-translate-y-2 duration-300">
                 <div class="w-12 h-12 bg-red-500/10 text-red-500 rounded-lg flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
                     <i class="fa-solid fa-dungeon"></i>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-2">Zindanlar & Bosslar</h3>
+                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-mc-main transition">Zindanlar & Bosslar</h3>
                 <p class="text-gray-400 text-sm">Özel bossların yerleri, çıkma süreleri ve düşen eşyalar.</p>
             </div>
 
-             <!-- Wiki Card 5 -->
-             <div class="bg-mc-card p-6 rounded-xl border border-white/10 hover:border-mc-main/50 transition cursor-pointer group">
+            <!-- KART 5: Rütbeler -->
+             <div onclick="openWikiModal('ranks')" class="bg-mc-card p-6 rounded-xl border border-white/10 hover:border-mc-main/50 transition cursor-pointer group hover:-translate-y-2 duration-300">
                 <div class="w-12 h-12 bg-purple-500/10 text-purple-500 rounded-lg flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
                     <i class="fa-solid fa-gem"></i>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-2">Rütbeler & Yetkiler</h3>
+                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-mc-main transition">Rütbeler & Yetkiler</h3>
                 <p class="text-gray-400 text-sm">Oyuncu rütbeleri, VIP özellikleri ve yetkili alım şartları.</p>
             </div>
 
-             <!-- Wiki Card 6 -->
-             <div class="bg-mc-card p-6 rounded-xl border border-white/10 hover:border-mc-main/50 transition cursor-pointer group">
+            <!-- KART 6: SSS -->
+             <div onclick="openWikiModal('faq')" class="bg-mc-card p-6 rounded-xl border border-white/10 hover:border-mc-main/50 transition cursor-pointer group hover:-translate-y-2 duration-300">
                 <div class="w-12 h-12 bg-orange-500/10 text-orange-500 rounded-lg flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
                     <i class="fa-solid fa-triangle-exclamation"></i>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-2">Sıkça Sorulan Sorular</h3>
+                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-mc-main transition">Sıkça Sorulan Sorular</h3>
                 <p class="text-gray-400 text-sm">Lag sorunu, bağlantı hataları ve genel sorunların çözümleri.</p>
             </div>
         </div>
     </div>
 
-    <script>
-        const glow = document.getElementById('cursor-glow');
-        let isMouseMoving = false; let glowTimeout;
-        document.addEventListener('mousemove', (e) => {
-            glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px';
-            if (!isMouseMoving) { glow.style.opacity = '1'; isMouseMoving = true; }
-            clearTimeout(glowTimeout);
-            glowTimeout = setTimeout(() => { glow.style.opacity = '0.4'; isMouseMoving = false; }, 500);
-        });
-    </script>
+    <!-- WIKI MODAL (Gizli) -->
+    <div id="wiki-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 hidden backdrop-blur-sm opacity-0 transition-opacity duration-300">
+        <div class="bg-mc-card border border-white/10 rounded-xl w-full max-w-2xl mx-4 shadow-[0_0_50px_rgba(150,83,250,0.2)] transform scale-95 transition-transform duration-300" id="wiki-modal-content">
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center p-6 border-b border-white/10">
+                <h2 id="modal-title" class="text-2xl font-bold font-rajdhani text-white flex items-center gap-3">
+                    <!-- JS ile dolacak -->
+                </h2>
+                <button onclick="closeWikiModal()" class="text-gray-400 hover:text-white hover:rotate-90 transition duration-300 text-2xl">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            
+            <!-- Modal Body -->
+            <div id="modal-body" class="p-6 text-gray-300 leading-relaxed max-h-[60vh] overflow-y-auto modal-content">
+                <!-- JS ile dolacak -->
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-4 border-t border-white/10 bg-black/20 text-right rounded-b-xl">
+                <button onclick="closeWikiModal()" class="px-6 py-2 bg-white/5 hover:bg-mc-main text-white rounded font-bold transition">Kapat</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER UPDATE -->
+    <footer class="bg-black border-t border-white/10 pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <a href="index.html" class="text-2xl font-bold font-rajdhani flex items-center gap-2 mb-4">
+                        <span class="text-white">ARCADE <span class="text-mc-main">CRAFT</span></span>
+                    </a>
+                    <p class="text-gray-500 text-sm leading-relaxed max-w-md">
+                        ArcaDe Craft, oyuncularına en iyi Minecraft deneyimini sunmak için tasarlanmıştır. Pay to win değil, Play to win mantığıyla hareket ediyoruz.
+                    </p>
+                    <div class="flex gap-4 mt-6">
+                        <a href="https://discord.gg/ECFf9GWwjq" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#5865F2] hover:text-white transition hover:shadow-[0_0_15px_rgba(88,101,242,0.5)]"><i class="fa-brands fa-discord"></i></a>
+                        <a href="https://www.youtube.com/@robmite" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#FF0000] hover:text-white transition hover:shadow-[0_0_15px_rgba(255,0,0,0.5)]"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://x.com/RobMite" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#1DA1F2] hover:text-white transition hover:shadow-[0_0_15px_rgba(29,161,242,0.5)]"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/robmite/" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-pink-600 hover:text-white transition hover:shadow-[0_0_15px_rgba(219,39,119,0.5)]"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-6 font-rajdhani uppercase tracking-wider">Hızlı Linkler</h4>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><a href="terms.html" class="hover:text-mc-main transition">Kullanıcı Sözleşmesi</a></li>
+                        <li><a href="privacy.html" class="hover:text-mc-main transition">Gizlilik Politikası</a></li>
+                        <li><a href="rules.html" class="hover:text-mc-main transition">Kurallar</a></li>
+                        <li><a href="application.html" class="hover:text-mc-main transition">Yetkili Başvurusu</a></li>
+                        <li><a href="appeal.html" class="hover:text-red-500 transition text-red-400/80"><i class="fa-solid fa-gavel mr-1"></i> Ceza İtirazı</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-6 font-rajdhani uppercase tracking-wider">İletişim</h4>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-envelope text-mc-main"></i> destek@robsarcade.online</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-ticket text-mc-main"></i> Discord Ticket</li>
+                        <li class="flex items-center gap-2 mt-2"><a href="wiki.html" class="text-gray-400 hover:text-white flex items-center gap-2"><i class="fa-solid fa-book text-mc-main"></i> Wiki & Yardım</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
+                <p>&copy; 2025 ArcaDe Craft Sunucusu. Tüm hakları saklıdır. Mojang AB ile bir bağlantısı yoktur.</p>
+                <p>Designed with <i class="fa-solid fa-heart text-red-900"></i> by arcooty</p>
+            </div>
+        </div>
+    </footer>
+
+<script src="form-logic.js"></script>
+<script src="ui.js"></script>
 </body>
 </html>

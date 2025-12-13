@@ -38,7 +38,6 @@
 <body class="antialiased">
     <div id="cursor-glow"></div>
 
-    <!-- NAVBAR (Same as Index) -->
     <nav class="fixed w-full z-40 bg-black/80 backdrop-blur-md border-b border-white/10" id="navbar">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <a href="index.html" class="text-3xl font-bold font-rajdhani tracking-wider flex items-center gap-2">
@@ -59,7 +58,6 @@
         </div>
     </nav>
 
-    <!-- HEADER -->
     <header class="pt-32 pb-16 bg-gradient-to-b from-[#1a1a20] to-[#0f0f13] relative overflow-hidden">
         <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1599582531061-f09b244791b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10"></div>
         <div class="container mx-auto px-4 relative z-10 text-center">
@@ -69,14 +67,11 @@
         </div>
     </header>
 
-    <!-- NEWS CONTENT -->
     <section class="py-12 bg-mc-dark min-h-screen">
         <div class="container mx-auto px-4">
             <div class="flex flex-col lg:flex-row gap-12">
-                <!-- Main News Feed -->
                 <div class="lg:w-2/3 space-y-8">
                     
-                    <!-- Article 1 -->
                     <article class="bg-mc-card border border-white/5 rounded-xl overflow-hidden hover:border-mc-main/30 transition group">
                         <div class="h-64 bg-cover bg-center relative" style="background-image: url('https://images.unsplash.com/photo-1587573089734-09cb69c0f2b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
                             <div class="absolute top-4 left-4 bg-mc-main text-white text-xs font-bold px-3 py-1 rounded">GÜNCELLEME</div>
@@ -95,7 +90,6 @@
                         </div>
                     </article>
 
-                    <!-- Article 2 -->
                     <article class="bg-mc-card border border-white/5 rounded-xl overflow-hidden hover:border-red-500/30 transition group">
                         <div class="h-64 bg-cover bg-center relative" style="background-image: url('https://images.unsplash.com/photo-1622329215092-28c037307524?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
                             <div class="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded">BAKIM</div>
@@ -115,9 +109,7 @@
 
                 </div>
 
-                <!-- Sidebar -->
                 <div class="lg:w-1/3 space-y-8">
-                    <!-- Search Widget -->
                     <div class="bg-mc-card p-6 rounded-xl border border-white/5">
                         <h3 class="text-xl font-bold font-rajdhani text-white mb-4 border-l-4 border-mc-main pl-3">ARAMA</h3>
                         <div class="relative">
@@ -126,7 +118,6 @@
                         </div>
                     </div>
 
-                    <!-- Categories Widget -->
                     <div class="bg-mc-card p-6 rounded-xl border border-white/5">
                         <h3 class="text-xl font-bold font-rajdhani text-white mb-4 border-l-4 border-mc-main pl-3">KATEGORİLER</h3>
                         <ul class="space-y-2">
@@ -137,7 +128,6 @@
                         </ul>
                     </div>
 
-                    <!-- Discord Widget (Static) -->
                     <div class="bg-[#5865F2] p-6 rounded-xl text-center">
                         <i class="fa-brands fa-discord text-5xl text-white mb-4"></i>
                         <h3 class="text-xl font-bold text-white mb-2">Discord'a Katıl!</h3>
@@ -149,23 +139,54 @@
         </div>
     </section>
 
-    <!-- FOOTER (Same as Index) -->
+    <!-- FOOTER UPDATE -->
     <footer class="bg-black border-t border-white/10 pt-16 pb-8">
-        <div class="container mx-auto px-4 text-center">
-            <p class="text-gray-500 text-sm">&copy; 2025 ArcaDe Craft.</p>
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <a href="index.html" class="text-2xl font-bold font-rajdhani flex items-center gap-2 mb-4">
+                        <span class="text-white">ARCADE <span class="text-mc-main">CRAFT</span></span>
+                    </a>
+                    <p class="text-gray-500 text-sm leading-relaxed max-w-md">
+                        ArcaDe Craft, oyuncularına en iyi Minecraft deneyimini sunmak için tasarlanmıştır. Pay to win değil, Play to win mantığıyla hareket ediyoruz.
+                    </p>
+                    <div class="flex gap-4 mt-6">
+                        <a href="https://discord.gg/ECFf9GWwjq" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#5865F2] hover:text-white transition hover:shadow-[0_0_15px_rgba(88,101,242,0.5)]"><i class="fa-brands fa-discord"></i></a>
+                        <a href="https://www.youtube.com/@robmite" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#FF0000] hover:text-white transition hover:shadow-[0_0_15px_rgba(255,0,0,0.5)]"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://x.com/RobMite" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#1DA1F2] hover:text-white transition hover:shadow-[0_0_15px_rgba(29,161,242,0.5)]"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/robmite/" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-pink-600 hover:text-white transition hover:shadow-[0_0_15px_rgba(219,39,119,0.5)]"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-6 font-rajdhani uppercase tracking-wider">Hızlı Linkler</h4>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><a href="terms.html" class="hover:text-mc-main transition">Kullanıcı Sözleşmesi</a></li>
+                        <li><a href="privacy.html" class="hover:text-mc-main transition">Gizlilik Politikası</a></li>
+                        <li><a href="rules.html" class="hover:text-mc-main transition">Kurallar</a></li>
+                        <li><a href="application.html" class="hover:text-mc-main transition">Yetkili Başvurusu</a></li>
+                        <li><a href="appeal.html" class="hover:text-red-500 transition text-red-400/80"><i class="fa-solid fa-gavel mr-1"></i> Ceza İtirazı</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-6 font-rajdhani uppercase tracking-wider">İletişim</h4>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-envelope text-mc-main"></i> destek@robsarcade.online</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-ticket text-mc-main"></i> Discord Ticket</li>
+                        <li class="flex items-center gap-2 mt-2"><a href="wiki.html" class="text-gray-400 hover:text-white flex items-center gap-2"><i class="fa-solid fa-book text-mc-main"></i> Wiki & Yardım</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
+                <p>&copy; 2025 ArcaDe Craft Sunucusu. Tüm hakları saklıdır. Mojang AB ile bir bağlantısı yoktur.</p>
+                <p>Designed with <i class="fa-solid fa-heart text-red-900"></i> by arcooty</p>
+            </div>
         </div>
     </footer>
 
-    <script>
-        // Mouse Glow
-        const glow = document.getElementById('cursor-glow');
-        let isMouseMoving = false; let glowTimeout;
-        document.addEventListener('mousemove', (e) => {
-            glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px';
-            if (!isMouseMoving) { glow.style.opacity = '1'; isMouseMoving = true; }
-            clearTimeout(glowTimeout);
-            glowTimeout = setTimeout(() => { glow.style.opacity = '0.4'; isMouseMoving = false; }, 500);
-        });
-    </script>
+<script src="form-logic.js"></script> <!-- Sadece form olan sayfalarda zorunlu ama hepsinde dursa zarar gelmez -->
+<script src="ui.js"></script>
 </body>
 </html>
