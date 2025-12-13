@@ -157,6 +157,24 @@
             box-shadow: 0 0 10px rgba(150, 83, 250, 0.4);
         }
 
+        /* Animasyonlar */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); } /* Referans koddaki animasyon değeri */
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* YENİ EKLENEN: Glass Panel Efekti (Referans siteden alındı) */
+        .glass-panel {
+            background: rgba(24, 24, 27, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
     </style>
 </head>
 <body class="antialiased">
@@ -165,7 +183,7 @@
     <div id="cursor-glow"></div>
 
     <!-- Scroll Progress Indicator (Yatay Hap Bar) -->
-    <div class="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 bg-black/80 backdrop-blur-xl border border-mc-main/30 rounded-full px-8 py-4 flex items-center gap-1 shadow-[0_0_30px_rgba(150,83,250,0.25)] ring-1 ring-white/10">
+    <div class="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 bg-black/80 backdrop-blur-xl border border-mc-main/30 rounded-full px-8 py-4 flex items-center gap-1 shadow-[0_0_30px_rgba(150,83,250,0.25)] ring-1 ring-white/10 hidden md:flex">
         <a href="#hero" class="scroll-dot active" data-target="hero" data-label="Başlangıç"></a>
         <div class="scroll-line" id="line-1"></div>
         <a href="#features" class="scroll-dot" data-target="features" data-label="Modlar"></a>
@@ -216,53 +234,96 @@
     </nav>
 
     <!-- HERO SECTION -->
-    <section id="hero" class="relative h-screen flex items-center justify-center hero-bg px-4 scroll-mt-20">
-        <div class="text-center z-10 max-w-4xl">
-            <div class="mb-4 inline-block px-4 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur text-sm font-semibold text-mc-main shadow-[0_0_15px_rgba(150,83,250,0.3)]">
-                🚀 Sezon 5 Aktif! Yeni Survival Deneyimi
-            </div>
-            <h1 class="text-6xl md:text-8xl font-black mb-4 tracking-tighter drop-shadow-2xl">
-                EFSANE <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#9653fa] to-[#d8b4fe] glow-text">BAŞLIYOR</span>
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-300 mb-8 font-light max-w-2xl mx-auto">
-                Türkiye'nin en gelişmiş Skyblock ve Survival sunucusu. Klanını kur, savaşlara katıl ve liderlik tablosuna hükmet.
-            </p>
+    <section id="hero" class="relative min-h-screen flex items-center hero-bg px-4 scroll-mt-20 pt-20">
+        <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center z-10">
             
-            <!-- IP COPY BOX & DISCORD -->
-            <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
-                <!-- IP Box -->
-                <div class="group relative bg-black/60 backdrop-blur border border-white/20 p-2 pr-4 rounded-lg flex items-center gap-4 cursor-pointer hover:border-mc-main hover:shadow-[0_0_20px_rgba(150,83,250,0.3)] transition duration-300 w-full md:w-auto" onclick="copyIP()">
-                    <div class="bg-mc-main p-3 rounded text-white group-hover:bg-[#7e42d6] transition shadow-[0_0_10px_rgba(150,83,250,0.5)]">
-                        <i class="fa-solid fa-gamepad text-xl"></i>
-                    </div>
-                    <div class="text-left mr-8">
-                        <span class="block text-xs text-gray-400 uppercase font-bold group-hover:text-gray-300 transition">Sunucu Adresi</span>
-                        <span class="block text-xl font-bold tracking-wider text-white" id="server-ip">oyna.robsarcade.online</span>
-                    </div>
-                    <div class="absolute right-3 top-1/2 transform -translate-y-1/2">
-                        <i class="fa-regular fa-copy text-gray-400 group-hover:text-white transition"></i>
-                    </div>
-                    <!-- Tooltip -->
-                    <span id="copy-tooltip" class="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-mc-main text-white text-xs font-bold px-3 py-1.5 rounded shadow-lg opacity-0 transition pointer-events-none">
-                        IP Kopyalandı!
-                    </span>
+            <!-- LEFT COLUMN: Text & Actions -->
+            <div class="text-center lg:text-left">
+                <div class="mb-4 inline-block px-4 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur text-sm font-semibold text-mc-main shadow-[0_0_15px_rgba(150,83,250,0.3)]">
+                    🚀 Sezon 5 Aktif! Yeni Survival Deneyimi
                 </div>
+                <h1 class="text-6xl md:text-8xl font-black mb-4 tracking-tighter drop-shadow-2xl">
+                    EFSANE <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#9653fa] to-[#d8b4fe] glow-text">BAŞLIYOR</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8 font-light max-w-2xl mx-auto lg:mx-0">
+                    Türkiye'nin en gelişmiş Skyblock ve Survival sunucusu. Klanını kur, savaşlara katıl ve liderlik tablosuna hükmet.
+                </p>
+                
+                <!-- IP COPY BOX & DISCORD -->
+                <div class="flex flex-col md:flex-row gap-4 justify-center lg:justify-start items-center">
+                    <!-- IP Box -->
+                    <div class="group relative bg-black/60 backdrop-blur border border-white/20 p-2 pr-4 rounded-lg flex items-center gap-4 cursor-pointer hover:border-mc-main hover:shadow-[0_0_20px_rgba(150,83,250,0.3)] transition duration-300 w-full md:w-auto" onclick="copyIP()">
+                        <div class="bg-mc-main p-3 rounded text-white group-hover:bg-[#7e42d6] transition shadow-[0_0_10px_rgba(150,83,250,0.5)]">
+                            <i class="fa-solid fa-gamepad text-xl"></i>
+                        </div>
+                        <div class="text-left mr-8">
+                            <span class="block text-xs text-gray-400 uppercase font-bold group-hover:text-gray-300 transition">Sunucu Adresi</span>
+                            <span class="block text-xl font-bold tracking-wider text-white" id="server-ip">oyna.robsarcade.online</span>
+                        </div>
+                        <div class="absolute right-3 top-1/2 transform -translate-y-1/2">
+                            <i class="fa-regular fa-copy text-gray-400 group-hover:text-white transition"></i>
+                        </div>
+                        <!-- Tooltip -->
+                        <span id="copy-tooltip" class="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-mc-main text-white text-xs font-bold px-3 py-1.5 rounded shadow-lg opacity-0 transition pointer-events-none">
+                            IP Kopyalandı!
+                        </span>
+                    </div>
 
-                <!-- Discord Button -->
-                <a href="https://discord.gg/ECFf9GWwjq" target="_blank" class="bg-[#5865F2] hover:bg-[#4752C4] px-8 py-4 rounded-lg font-bold font-rajdhani text-lg flex items-center gap-2 transition w-full md:w-auto justify-center shadow-[0_0_15px_rgba(88,101,242,0.4)] hover:shadow-[0_0_25px_rgba(88,101,242,0.6)] hover:-translate-y-0.5">
-                    <i class="fa-brands fa-discord"></i> Discord'a Katıl
-                </a>
+                    <!-- Discord Button -->
+                    <a href="https://discord.gg/ECFf9GWwjq" target="_blank" class="bg-[#5865F2] hover:bg-[#4752C4] px-8 py-4 rounded-lg font-bold font-rajdhani text-lg flex items-center gap-2 transition w-full md:w-auto justify-center shadow-[0_0_15px_rgba(88,101,242,0.4)] hover:shadow-[0_0_25px_rgba(88,101,242,0.6)] hover:-translate-y-0.5">
+                        <i class="fa-brands fa-discord"></i> Discord'a Katıl
+                    </a>
+                </div>
             </div>
 
-            <!-- Fake Online Count -->
-            <div class="mt-8 text-gray-400 font-rajdhani font-bold flex items-center justify-center gap-2">
-                <span class="w-3 h-3 bg-mc-main rounded-full animate-pulse shadow-[0_0_10px_#9653fa]"></span>
-                <span id="player-count">1,245</span> OYUNCU AKTİF
+            <!-- RIGHT COLUMN: YENİ EKLENEN KART (Referans Koddan Alındı ve Uyarlandı) -->
+            <div class="hidden lg:block relative animate-float">
+                <div class="glass-panel p-6 rounded-2xl max-w-md mx-auto transform rotate-2 hover:rotate-0 transition duration-500 border border-white/5 hover:border-mc-main/30 group">
+                    <div class="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
+                        <h3 class="font-bold font-rajdhani text-xl text-white"><i class="fa-solid fa-server text-mc-main mr-2"></i> Sunucu Durumu</h3>
+                        <span class="bg-mc-main/20 text-mc-main text-xs font-bold px-2 py-1 rounded border border-mc-main/20">AKTİF</span>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-black/30 p-3 rounded flex justify-between items-center border border-white/5">
+                            <span class="text-gray-400 text-sm">Çevrimiçi</span>
+                            <span class="font-bold text-white font-mono"><span id="floating-player-count">1,420</span> / 5,000</span>
+                        </div>
+                        <!-- Progress Bar (Rengi Mora Çevrildi) -->
+                        <div class="w-full bg-gray-700/50 rounded-full h-2.5">
+                            <div class="bg-mc-main h-2.5 rounded-full shadow-[0_0_10px_rgba(150,83,250,0.5)]" style="width: 28%"></div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mt-4">
+                            <div class="bg-black/30 p-3 rounded text-center border border-white/5 hover:border-mc-main/20 transition">
+                                <span class="block text-2xl font-bold font-rajdhani text-mc-accent">12ms</span>
+                                <span class="text-xs text-gray-500">Gecikme</span>
+                            </div>
+                            <div class="bg-black/30 p-3 rounded text-center border border-white/5 hover:border-mc-main/20 transition">
+                                <span class="block text-2xl font-bold font-rajdhani text-blue-400">1.20.4</span>
+                                <span class="text-xs text-gray-500">Sürüm</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Last Purchases Ticker (Aynen korundu) -->
+                    <div class="mt-6 pt-4 border-t border-white/10">
+                        <p class="text-xs text-gray-500 font-bold mb-2 uppercase tracking-wide">Son Bağışlar</p>
+                        <div class="flex items-center gap-3 bg-white/5 p-2 rounded-lg">
+                            <img src="https://mc-heads.net/avatar/Notch/40" class="w-8 h-8 rounded" alt="Avatar">
+                            <div class="text-xs">
+                                <span class="text-white font-bold block">Notch</span>
+                                <span class="text-mc-main">VIP+ satın aldı.</span>
+                            </div>
+                            <span class="ml-auto text-xs text-gray-600">2dk önce</span>
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </div>
         
         <!-- Scroll Down Indicator -->
-        <div class="absolute bottom-32 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div class="absolute bottom-32 left-1/2 transform -translate-x-1/2 animate-bounce hidden lg:block">
             <i class="fa-solid fa-chevron-down text-white/30 text-2xl"></i>
         </div>
     </section>
@@ -561,14 +622,23 @@
         // Sahte Oyuncu Sayısı Dalgalanması
         function updatePlayerCount() {
             const countElement = document.getElementById('player-count');
-            let currentCount = parseInt(countElement.innerText.replace(',', ''));
+            const cardCountElement = document.getElementById('floating-player-count');
+            
+            let currentCount = 0;
+            if(countElement) {
+                currentCount = parseInt(countElement.innerText.replace(',', ''));
+            } else if (cardCountElement) {
+                currentCount = parseInt(cardCountElement.innerText.replace(',', ''));
+            }
             
             const change = Math.floor(Math.random() * 11) - 5;
             let newCount = currentCount + change;
             
             if (newCount < 1200) newCount = 1200;
             
-            countElement.innerText = newCount.toLocaleString();
+            const formattedCount = newCount.toLocaleString();
+            if(countElement) countElement.innerText = formattedCount;
+            if(cardCountElement) cardCountElement.innerText = formattedCount;
         }
 
         setInterval(updatePlayerCount, 5000);
