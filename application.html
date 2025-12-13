@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yetkili Başvurusu - ArcaDe Craft</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mc-main': '#9653fa',
+                        'mc-dark': '#121212',
+                        'mc-card': '#1E1E1E',
+                    },
+                    fontFamily: {
+                        'rajdhani': ['Rajdhani', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f0f13; color: #ffffff; cursor: default; }
+        h1, h2, h3 { font-family: 'Rajdhani', sans-serif; }
+        #cursor-glow { width: 600px; height: 600px; background: radial-gradient(circle, rgba(150, 83, 250, 0.15) 0%, rgba(0, 0, 0, 0) 70%); position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); pointer-events: none; z-index: 9999; mix-blend-mode: screen; }
+        input, textarea, select {
+            background-color: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            transition: all 0.3s;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #9653fa;
+            box-shadow: 0 0 10px rgba(150, 83, 250, 0.2);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div id="cursor-glow"></div>
+
+    <!-- NAVBAR -->
+    <nav class="fixed w-full z-40 bg-black/80 backdrop-blur-md border-b border-white/10">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-bold font-rajdhani tracking-wider flex items-center gap-2">
+                <img src="https://cdn-icons-png.flaticon.com/512/831/831308.png" alt="Logo" class="w-10 h-10 drop-shadow-lg filter hue-rotate-[260deg] brightness-125">
+                <span class="text-white">ArcaDe<span class="text-mc-main">Craft</span></span>
+            </a>
+            <a href="index.html" class="text-gray-300 hover:text-white font-bold"><i class="fa-solid fa-arrow-left mr-2"></i> Anasayfa</a>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-32 max-w-3xl">
+        <div class="text-center mb-12">
+            <h1 class="text-5xl font-bold mb-4">YETKİLİ <span class="text-mc-main">BAŞVURUSU</span></h1>
+            <p class="text-gray-400">Ekibimize katılmak için aşağıdaki formu eksiksiz doldurun.</p>
+        </div>
+
+        <form onsubmit="submitForm(event)" class="bg-mc-card border border-white/10 rounded-xl p-8 shadow-lg">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <!-- Ad Soyad -->
+                <div>
+                    <label class="block text-sm font-bold text-gray-400 mb-2">Adınız Soyadınız</label>
+                    <input type="text" required class="w-full rounded px-4 py-3" placeholder="Örn: Ahmet Yılmaz">
+                </div>
+                <!-- Yaş -->
+                <div>
+                    <label class="block text-sm font-bold text-gray-400 mb-2">Yaşınız</label>
+                    <input type="number" required min="13" max="99" class="w-full rounded px-4 py-3" placeholder="Örn: 17">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <!-- Oyun İçi İsim -->
+                <div>
+                    <label class="block text-sm font-bold text-gray-400 mb-2">Oyun İçi Kullanıcı Adı (Nick)</label>
+                    <input type="text" required class="w-full rounded px-4 py-3" placeholder="Örn: Gamer123">
+                </div>
+                <!-- Discord ID -->
+                <div>
+                    <label class="block text-sm font-bold text-gray-400 mb-2">Discord Kullanıcı Adı</label>
+                    <input type="text" required class="w-full rounded px-4 py-3" placeholder="Örn: ahmet#1234">
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-sm font-bold text-gray-400 mb-2">Başvurduğunuz Pozisyon</label>
+                <select class="w-full rounded px-4 py-3">
+                    <option>Rehber (Chat Moderator)</option>
+                    <option>Mimar (Builder)</option>
+                    <option>İçerik Üreticisi (Youtuber/Streamer)</option>
+                    <option>Moderatör</option>
+                </select>
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-sm font-bold text-gray-400 mb-2">Neden Sizi Seçmeliyiz?</label>
+                <textarea rows="4" required class="w-full rounded px-4 py-3" placeholder="Tecrübelerinizden ve yeteneklerinizden bahsedin..."></textarea>
+            </div>
+
+            <div class="mb-8">
+                <label class="block text-sm font-bold text-gray-400 mb-2">Günlük Aktiflik Süreniz</label>
+                <select class="w-full rounded px-4 py-3">
+                    <option>1-3 Saat</option>
+                    <option>3-5 Saat</option>
+                    <option>5+ Saat</option>
+                </select>
+            </div>
+
+            <button type="submit" class="w-full bg-mc-main hover:bg-[#7e42d6] text-white font-bold py-4 rounded-lg transition shadow-[0_0_15px_rgba(150,83,250,0.4)] flex items-center justify-center gap-2">
+                <i class="fa-solid fa-paper-plane"></i> Başvuruyu Gönder
+            </button>
+
+        </form>
+    </div>
+
+    <!-- Success Modal (Hidden by default) -->
+    <div id="successModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 hidden">
+        <div class="bg-mc-card border border-mc-main rounded-xl p-8 max-w-md text-center transform scale-100 transition">
+            <div class="w-16 h-16 bg-mc-main/20 text-mc-main rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h2 class="text-2xl font-bold mb-2">Başvuru Alındı!</h2>
+            <p class="text-gray-400 mb-6">Başvurunuz başarıyla yetkili ekibimize iletildi. En kısa sürede Discord üzerinden dönüş sağlanacaktır.</p>
+            <button onclick="closeModal()" class="bg-white text-black px-6 py-2 rounded font-bold hover:bg-gray-200 transition">Tamam</button>
+        </div>
+    </div>
+
+    <script>
+        // Glow Effect
+        const glow = document.getElementById('cursor-glow');
+        let isMouseMoving = false; let glowTimeout;
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px';
+            if (!isMouseMoving) { glow.style.opacity = '1'; isMouseMoving = true; }
+            clearTimeout(glowTimeout);
+            glowTimeout = setTimeout(() => { glow.style.opacity = '0.4'; isMouseMoving = false; }, 500);
+        });
+
+        // Form Submit Simulation
+        function submitForm(e) {
+            e.preventDefault();
+            // Burada normalde backend'e veri gönderilir.
+            // Simülasyon:
+            const modal = document.getElementById('successModal');
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('successModal');
+            modal.classList.add('hidden');
+            // İsterseniz ana sayfaya yönlendirebilirsiniz:
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

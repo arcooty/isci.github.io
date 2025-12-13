@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haberler - ArcaDe Craft</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mc-main': '#9653fa',
+                        'mc-dark': '#121212',
+                        'mc-card': '#1E1E1E',
+                        'mc-accent': '#FFAA00',
+                    },
+                    fontFamily: {
+                        'rajdhani': ['Rajdhani', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f0f13; color: #ffffff; cursor: default; }
+        h1, h2, h3, h4, .nav-link { font-family: 'Rajdhani', sans-serif; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #121212; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #9653fa; }
+        #cursor-glow { width: 600px; height: 600px; background: radial-gradient(circle, rgba(150, 83, 250, 0.15) 0%, rgba(0, 0, 0, 0) 70%); position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); pointer-events: none; z-index: 9999; mix-blend-mode: screen; }
+    </style>
+</head>
+<body class="antialiased">
+    <div id="cursor-glow"></div>
+
+    <!-- NAVBAR (Same as Index) -->
+    <nav class="fixed w-full z-40 bg-black/80 backdrop-blur-md border-b border-white/10" id="navbar">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-bold font-rajdhani tracking-wider flex items-center gap-2">
+                <img src="https://cdn-icons-png.flaticon.com/512/831/831308.png" alt="Logo" class="w-10 h-10 drop-shadow-lg filter hue-rotate-[260deg] brightness-125">
+                <span class="text-white">ArcaDe<span class="text-mc-main">Craft</span></span>
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="nav-link text-lg font-bold text-gray-300 hover:text-mc-main transition">ANASAYFA</a>
+                <a href="index.html#features" class="nav-link text-lg font-bold text-gray-300 hover:text-mc-main transition">ÖZELLİKLER</a>
+                <a href="index.html#store" class="nav-link text-lg font-bold text-gray-300 hover:text-mc-main transition">MARKET</a>
+                <a href="news.html" class="nav-link text-lg font-bold text-mc-main transition">HABERLER</a>
+            </div>
+            <div class="hidden md:block">
+                <a href="index.html#store" class="bg-mc-main hover:bg-[#7e42d6] text-white px-6 py-2 rounded font-bold font-rajdhani uppercase tracking-wide transition shadow-[0_0_20px_rgba(150,83,250,0.4)]">
+                    <i class="fa-solid fa-cart-shopping mr-2"></i> Mağaza
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HEADER -->
+    <header class="pt-32 pb-16 bg-gradient-to-b from-[#1a1a20] to-[#0f0f13] relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1599582531061-f09b244791b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <span class="text-mc-main font-bold tracking-widest uppercase text-sm mb-2 block">Gelişmeler ve Duyurular</span>
+            <h1 class="text-5xl md:text-6xl font-black font-rajdhani text-white mb-4">SON <span class="text-mc-main">HABERLER</span></h1>
+            <p class="text-gray-400 max-w-2xl mx-auto">Sunucumuzdaki yenilikler, etkinlikler ve bakım çalışmalarından anında haberdar olun.</p>
+        </div>
+    </header>
+
+    <!-- NEWS CONTENT -->
+    <section class="py-12 bg-mc-dark min-h-screen">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row gap-12">
+                <!-- Main News Feed -->
+                <div class="lg:w-2/3 space-y-8">
+                    
+                    <!-- Article 1 -->
+                    <article class="bg-mc-card border border-white/5 rounded-xl overflow-hidden hover:border-mc-main/30 transition group">
+                        <div class="h-64 bg-cover bg-center relative" style="background-image: url('https://images.unsplash.com/photo-1587573089734-09cb69c0f2b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                            <div class="absolute top-4 left-4 bg-mc-main text-white text-xs font-bold px-3 py-1 rounded">GÜNCELLEME</div>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex items-center gap-4 text-gray-500 text-xs font-bold mb-4">
+                                <span><i class="fa-regular fa-calendar mr-1"></i> 12 Aralık 2025</span>
+                                <span><i class="fa-regular fa-user mr-1"></i> Admin</span>
+                                <span><i class="fa-regular fa-comment mr-1"></i> 24 Yorum</span>
+                            </div>
+                            <h2 class="text-3xl font-bold font-rajdhani text-white mb-4 group-hover:text-mc-main transition">Kış Sezonu ve Yılbaşı Etkinlikleri</h2>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                                Sunucumuza kış teması geldi! Yılbaşına özel kasalar, özel eşyalar ve harika ödüller sizi bekliyor. Spawn bölgesi tamamen karla kaplandı ve gizli hediyeler haritanın dört bir yanına saklandı.
+                            </p>
+                            <a href="#" class="inline-block bg-white/5 hover:bg-mc-main text-white px-6 py-2 rounded text-sm font-bold transition">Devamını Oku</a>
+                        </div>
+                    </article>
+
+                    <!-- Article 2 -->
+                    <article class="bg-mc-card border border-white/5 rounded-xl overflow-hidden hover:border-red-500/30 transition group">
+                        <div class="h-64 bg-cover bg-center relative" style="background-image: url('https://images.unsplash.com/photo-1622329215092-28c037307524?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                            <div class="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded">BAKIM</div>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex items-center gap-4 text-gray-500 text-xs font-bold mb-4">
+                                <span><i class="fa-regular fa-calendar mr-1"></i> 10 Aralık 2025</span>
+                                <span><i class="fa-regular fa-user mr-1"></i> Geliştirici</span>
+                            </div>
+                            <h2 class="text-3xl font-bold font-rajdhani text-white mb-4 group-hover:text-red-500 transition">Skyblock Sunucu Bakımı</h2>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                                Performans iyileştirmeleri ve yeni ada seviyeleri için kısa süreli bir bakım çalışması yapılacaktır. Tahmini kesinti süresi 2 saattir.
+                            </p>
+                            <a href="#" class="inline-block bg-white/5 hover:bg-red-600 text-white px-6 py-2 rounded text-sm font-bold transition">Devamını Oku</a>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- Sidebar -->
+                <div class="lg:w-1/3 space-y-8">
+                    <!-- Search Widget -->
+                    <div class="bg-mc-card p-6 rounded-xl border border-white/5">
+                        <h3 class="text-xl font-bold font-rajdhani text-white mb-4 border-l-4 border-mc-main pl-3">ARAMA</h3>
+                        <div class="relative">
+                            <input type="text" placeholder="Haber ara..." class="w-full bg-black/30 border border-white/10 rounded py-3 px-4 text-white focus:border-mc-main focus:outline-none transition">
+                            <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white"><i class="fa-solid fa-search"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Categories Widget -->
+                    <div class="bg-mc-card p-6 rounded-xl border border-white/5">
+                        <h3 class="text-xl font-bold font-rajdhani text-white mb-4 border-l-4 border-mc-main pl-3">KATEGORİLER</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="flex justify-between items-center text-gray-400 hover:text-mc-main transition p-2 bg-black/20 rounded"><span>Genel</span> <span class="text-xs bg-white/5 px-2 py-1 rounded">12</span></a></li>
+                            <li><a href="#" class="flex justify-between items-center text-gray-400 hover:text-mc-main transition p-2 bg-black/20 rounded"><span>Güncellemeler</span> <span class="text-xs bg-white/5 px-2 py-1 rounded">8</span></a></li>
+                            <li><a href="#" class="flex justify-between items-center text-gray-400 hover:text-mc-main transition p-2 bg-black/20 rounded"><span>Etkinlikler</span> <span class="text-xs bg-white/5 px-2 py-1 rounded">5</span></a></li>
+                            <li><a href="#" class="flex justify-between items-center text-gray-400 hover:text-mc-main transition p-2 bg-black/20 rounded"><span>Bakım</span> <span class="text-xs bg-white/5 px-2 py-1 rounded">3</span></a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Discord Widget (Static) -->
+                    <div class="bg-[#5865F2] p-6 rounded-xl text-center">
+                        <i class="fa-brands fa-discord text-5xl text-white mb-4"></i>
+                        <h3 class="text-xl font-bold text-white mb-2">Discord'a Katıl!</h3>
+                        <p class="text-white/80 text-sm mb-6">Topluluğumuza katılın ve anlık sohbet edin.</p>
+                        <a href="#" class="bg-white text-[#5865F2] px-6 py-2 rounded font-bold hover:bg-gray-100 transition inline-block w-full">KATIL</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER (Same as Index) -->
+    <footer class="bg-black border-t border-white/10 pt-16 pb-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-500 text-sm">&copy; 2025 ArcaDe Craft.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mouse Glow
+        const glow = document.getElementById('cursor-glow');
+        let isMouseMoving = false; let glowTimeout;
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px';
+            if (!isMouseMoving) { glow.style.opacity = '1'; isMouseMoving = true; }
+            clearTimeout(glowTimeout);
+            glowTimeout = setTimeout(() => { glow.style.opacity = '0.4'; isMouseMoving = false; }, 500);
+        });
+    </script>
+</body>
+</html>
