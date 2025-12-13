@@ -160,14 +160,14 @@
         /* Animasyonlar */
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); } /* Referans koddaki animasyon değeri */
+            50% { transform: translateY(-10px); }
             100% { transform: translateY(0px); }
         }
         .animate-float {
             animation: float 3s ease-in-out infinite;
         }
 
-        /* YENİ EKLENEN: Glass Panel Efekti (Referans siteden alındı) */
+        /* Glass Panel Efekti */
         .glass-panel {
             background: rgba(24, 24, 27, 0.7);
             backdrop-filter: blur(12px);
@@ -197,8 +197,7 @@
     <nav class="fixed w-full z-40 transition-all duration-300 bg-black/80 backdrop-blur-md border-b border-white/10" id="navbar">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <!-- Logo -->
-            <a href="#" class="text-3xl font-bold font-rajdhani tracking-wider flex items-center gap-2 hover:scale-105 transition transform">
-                <!-- Logo Rengi Hue Rotate ile Mora yaklaştırıldı -->
+            <a href="index.html" class="text-3xl font-bold font-rajdhani tracking-wider flex items-center gap-2 hover:scale-105 transition transform">
                 <img src="https://cdn-icons-png.flaticon.com/512/831/831308.png" alt="Logo" class="w-10 h-10 drop-shadow-lg filter hue-rotate-[260deg] brightness-125">
                 <span class="text-white">ArcaDe<span class="text-mc-main drop-shadow-[0_0_5px_rgba(150,83,250,0.8)]">Craft</span></span>
             </a>
@@ -208,7 +207,7 @@
                 <a href="#hero" class="nav-link text-lg font-bold text-gray-300 hover:text-mc-main transition hover:drop-shadow-[0_0_5px_rgba(150,83,250,0.5)]">ANASAYFA</a>
                 <a href="#features" class="nav-link text-lg font-bold text-gray-300 hover:text-mc-main transition hover:drop-shadow-[0_0_5px_rgba(150,83,250,0.5)]">ÖZELLİKLER</a>
                 <a href="#store" class="nav-link text-lg font-bold text-gray-300 hover:text-mc-main transition hover:drop-shadow-[0_0_5px_rgba(150,83,250,0.5)]">MARKET</a>
-                <a href="#news" class="nav-link text-lg font-bold text-gray-300 hover:text-mc-main transition hover:drop-shadow-[0_0_5px_rgba(150,83,250,0.5)]">HABERLER</a>
+                <a href="news.html" class="nav-link text-lg font-bold text-gray-300 hover:text-mc-main transition hover:drop-shadow-[0_0_5px_rgba(150,83,250,0.5)]">HABERLER</a>
             </div>
 
             <!-- CTA Button -->
@@ -229,7 +228,7 @@
             <a href="#hero" class="block py-2 text-gray-300 hover:text-white font-bold">ANASAYFA</a>
             <a href="#features" class="block py-2 text-gray-300 hover:text-white font-bold">ÖZELLİKLER</a>
             <a href="#store" class="block py-2 text-gray-300 hover:text-white font-bold">MARKET</a>
-            <a href="#news" class="block py-2 text-gray-300 hover:text-white font-bold">HABERLER</a>
+            <a href="news.html" class="block py-2 text-gray-300 hover:text-white font-bold">HABERLER</a>
         </div>
     </nav>
 
@@ -276,7 +275,7 @@
                 </div>
             </div>
 
-            <!-- RIGHT COLUMN: YENİ EKLENEN KART (Referans Koddan Alındı ve Uyarlandı) -->
+            <!-- RIGHT COLUMN: Glass Panel Card -->
             <div class="hidden lg:block relative animate-float">
                 <div class="glass-panel p-6 rounded-2xl max-w-md mx-auto transform rotate-2 hover:rotate-0 transition duration-500 border border-white/5 hover:border-mc-main/30 group">
                     <div class="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
@@ -289,7 +288,7 @@
                             <span class="text-gray-400 text-sm">Çevrimiçi</span>
                             <span class="font-bold text-white font-mono"><span id="floating-player-count">1,420</span> / 5,000</span>
                         </div>
-                        <!-- Progress Bar (Rengi Mora Çevrildi) -->
+                        <!-- Progress Bar -->
                         <div class="w-full bg-gray-700/50 rounded-full h-2.5">
                             <div class="bg-mc-main h-2.5 rounded-full shadow-[0_0_10px_rgba(150,83,250,0.5)]" style="width: 28%"></div>
                         </div>
@@ -305,7 +304,7 @@
                         </div>
                     </div>
                     
-                    <!-- Last Purchases Ticker (Aynen korundu) -->
+                    <!-- Last Purchases Ticker -->
                     <div class="mt-6 pt-4 border-t border-white/10">
                         <p class="text-xs text-gray-500 font-bold mb-2 uppercase tracking-wide">Son Bağışlar</p>
                         <div class="flex items-center gap-3 bg-white/5 p-2 rounded-lg">
@@ -428,7 +427,8 @@
                     <h2 class="text-4xl font-bold font-rajdhani">SON <span class="text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">DUYURULAR</span></h2>
                     <div class="h-1 w-16 bg-white mt-2 rounded shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
                 </div>
-                <a href="#" class="text-gray-400 hover:text-white text-sm font-bold border border-gray-700 px-4 py-2 rounded hover:border-white transition hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">TÜMÜNÜ GÖR</a>
+                <!-- Güncellendi: news.html'e yönlendiriyor -->
+                <a href="news.html" class="text-gray-400 hover:text-white text-sm font-bold border border-gray-700 px-4 py-2 rounded hover:border-white transition hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">TÜMÜNÜ GÖR</a>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -442,7 +442,8 @@
                         <span class="text-gray-500 text-xs font-bold mb-2 block"><i class="fa-regular fa-calendar mr-1"></i> 12 Aralık 2025</span>
                         <h3 class="text-xl font-bold mb-2 group-hover:text-mc-main transition">Kış Sezonu ve Yılbaşı Etkinlikleri</h3>
                         <p class="text-gray-400 text-sm mb-4 line-clamp-2">Sunucumuza kış teması geldi! Yılbaşına özel kasalar, özel eşyalar ve harika ödüller sizi bekliyor.</p>
-                        <a href="#" class="text-white text-sm font-bold border-b border-mc-main pb-1 inline-block hover:text-mc-main transition">DEVAMINI OKU</a>
+                        <!-- Güncellendi: news.html -->
+                        <a href="news.html" class="text-white text-sm font-bold border-b border-mc-main pb-1 inline-block hover:text-mc-main transition">DEVAMINI OKU</a>
                     </div>
                 </div>
 
@@ -456,7 +457,8 @@
                         <span class="text-gray-500 text-xs font-bold mb-2 block"><i class="fa-regular fa-calendar mr-1"></i> 10 Aralık 2025</span>
                         <h3 class="text-xl font-bold mb-2 group-hover:text-red-500 transition">Skyblock Sunucu Bakımı</h3>
                         <p class="text-gray-400 text-sm mb-4 line-clamp-2">Performans iyileştirmeleri ve yeni ada seviyeleri için kısa süreli bir bakım çalışması yapılacaktır.</p>
-                        <a href="#" class="text-white text-sm font-bold border-b border-red-600 pb-1 inline-block hover:text-red-500 transition">DEVAMINI OKU</a>
+                        <!-- Güncellendi: news.html -->
+                        <a href="news.html" class="text-white text-sm font-bold border-b border-red-600 pb-1 inline-block hover:text-red-500 transition">DEVAMINI OKU</a>
                     </div>
                 </div>
 
@@ -470,7 +472,8 @@
                         <span class="text-gray-500 text-xs font-bold mb-2 block"><i class="fa-regular fa-calendar mr-1"></i> 05 Aralık 2025</span>
                         <h3 class="text-xl font-bold mb-2 group-hover:text-blue-500 transition">Büyük Klan Savaşları Başlıyor</h3>
                         <p class="text-gray-400 text-sm mb-4 line-clamp-2">Klanını topla ve arenada gücünü göster. Kazanan klan üyelerine VIP+ rütbesi hediye!</p>
-                        <a href="#" class="text-white text-sm font-bold border-b border-blue-500 pb-1 inline-block hover:text-blue-500 transition">DEVAMINI OKU</a>
+                        <!-- Güncellendi: news.html -->
+                        <a href="news.html" class="text-white text-sm font-bold border-b border-blue-500 pb-1 inline-block hover:text-blue-500 transition">DEVAMINI OKU</a>
                     </div>
                 </div>
             </div>
@@ -536,7 +539,7 @@
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 <div class="col-span-1 md:col-span-2">
-                    <a href="#" class="text-2xl font-bold font-rajdhani flex items-center gap-2 mb-4">
+                    <a href="index.html" class="text-2xl font-bold font-rajdhani flex items-center gap-2 mb-4">
                         <span class="text-white">ARCADE <span class="text-mc-main">CRAFT</span></span>
                     </a>
                     <p class="text-gray-500 text-sm leading-relaxed max-w-md">
@@ -550,13 +553,14 @@
                     </div>
                 </div>
                 
+                <!-- GÜNCELLENDİ: Footer Linkleri -->
                 <div>
                     <h4 class="text-white font-bold mb-6 font-rajdhani uppercase tracking-wider">Hızlı Linkler</h4>
                     <ul class="space-y-2 text-sm text-gray-500">
-                        <li><a href="#" class="hover:text-mc-main transition">Kullanıcı Sözleşmesi</a></li>
-                        <li><a href="#" class="hover:text-mc-main transition">Gizlilik Politikası</a></li>
-                        <li><a href="#" class="hover:text-mc-main transition">Kurallar</a></li>
-                        <li><a href="#" class="hover:text-mc-main transition">Yetkili Başvurusu</a></li>
+                        <li><a href="terms.html" class="hover:text-mc-main transition">Kullanıcı Sözleşmesi</a></li>
+                        <li><a href="privacy.html" class="hover:text-mc-main transition">Gizlilik Politikası</a></li>
+                        <li><a href="rules.html" class="hover:text-mc-main transition">Kurallar</a></li>
+                        <li><a href="application.html" class="hover:text-mc-main transition">Yetkili Başvurusu</a></li>
                     </ul>
                 </div>
 
@@ -565,6 +569,8 @@
                     <ul class="space-y-2 text-sm text-gray-500">
                         <li class="flex items-center gap-2"><i class="fa-solid fa-envelope text-mc-main"></i> destek@robsarcade.online</li>
                         <li class="flex items-center gap-2"><i class="fa-solid fa-ticket text-mc-main"></i> Discord Ticket</li>
+                        <!-- GÜNCELLENDİ: Wiki Linki Eklendi -->
+                        <li class="flex items-center gap-2 mt-2"><a href="wiki.html" class="text-gray-400 hover:text-white flex items-center gap-2"><i class="fa-solid fa-book text-mc-main"></i> Wiki & Yardım</a></li>
                     </ul>
                 </div>
             </div>
