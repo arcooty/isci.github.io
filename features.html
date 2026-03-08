@@ -1,0 +1,361 @@
+﻿<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Özellikler - ArcaDe Craft</title>
+    <meta name="description" content="ArcaDe Craft sunucu özellikleri: RPG sistemi, ekonomi, güvenlik, kasa sistemi ve daha fazlası.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 'mc-main': '#9653fa', 'mc-dark': '#121212', 'mc-card': '#1E1E1E', 'mc-accent': '#FFAA00' },
+                    fontFamily: { 'rajdhani': ['Rajdhani', 'sans-serif'], 'inter': ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f0f13; color: #ffffff; overflow-x: hidden; }
+        h1, h2, h3, h4, .nav-link { font-family: 'Rajdhani', sans-serif; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #121212; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #9653fa; }
+        #cursor-glow { width: 600px; height: 600px; background: radial-gradient(circle, rgba(150,83,250,0.12) 0%, rgba(0,0,0,0) 70%); position: fixed; top: 0; left: 0; transform: translate(-50%,-50%); pointer-events: none; z-index: 9999; mix-blend-mode: screen; }
+        .feature-card { transition: all 0.3s ease; }
+        .feature-card:hover { transform: translateY(-5px); }
+        .plugin-badge { font-size: 0.7rem; background: rgba(150,83,250,0.1); border: 1px solid rgba(150,83,250,0.2); padding: 2px 8px; border-radius: 999px; color: #9653fa; }
+    </style>
+</head>
+<body class="antialiased">
+    <div id="cursor-glow"></div>
+
+    <nav class="fixed w-full z-40 bg-black/80 backdrop-blur-md border-b border-white/10">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-bold font-rajdhani tracking-wider flex items-center gap-2 hover:scale-105 transition transform">
+                <img src="assets/logo.svg" alt="ArcaDe Craft Logo" class="w-10 h-10 drop-shadow-lg">
+                <span class="text-white">ArcaDe<span class="text-mc-main">Craft</span></span>
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="nav-link text-lg font-bold text-gray-300 hover:text-mc-main transition">ANASAYFA</a>
+                <a href="features.html" class="nav-link text-lg font-bold text-mc-main">ÖZELLİKLER</a>
+                <a href="jobs.html" class="nav-link text-lg font-bold text-gray-300 hover:text-mc-main transition">MESLEKLER</a>
+                <a href="leaderboard.html" class="nav-link text-lg font-bold text-gray-300 hover:text-mc-main transition">LİDERLİK</a>
+                <a href="news.html" class="nav-link text-lg font-bold text-gray-300 hover:text-mc-main transition">HABERLER</a>
+            </div>
+            <a href="index.html#store" class="hidden md:block bg-mc-main hover:bg-[#7e42d6] text-white px-6 py-2 rounded font-bold font-rajdhani uppercase tracking-wide transition shadow-[0_0_20px_rgba(150,83,250,0.4)]">
+                <i class="fa-solid fa-cart-shopping mr-2"></i> Mağaza
+            </a>
+            <button class="md:hidden text-white text-2xl" onclick="toggleMobileMenu()"><i class="fa-solid fa-bars"></i></button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-mc-dark border-b border-white/10 p-4">
+            <a href="index.html" class="block py-2 text-gray-300 font-bold">ANASAYFA</a>
+            <a href="features.html" class="block py-2 text-mc-main font-bold">ÖZELLİKLER</a>
+            <a href="jobs.html" class="block py-2 text-gray-300 font-bold">MESLEKLER</a>
+            <a href="leaderboard.html" class="block py-2 text-gray-300 font-bold">LİDERLİK</a>
+            <a href="news.html" class="block py-2 text-gray-300 font-bold">HABERLER</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="pt-32 pb-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-[#0d1a20] via-[#0f0f13] to-[#1a0d2e]"></div>
+        <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-mc-main/5 rounded-full blur-3xl"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <span class="inline-block px-4 py-1 rounded-full bg-mc-main/10 border border-mc-main/20 text-mc-main text-sm font-bold mb-4">⚙️ Sunucu Altyapısı · Paper 1.21.11 · Velocity 3.x</span>
+            <h1 class="text-5xl md:text-7xl font-black font-rajdhani mb-4">SUNUCU <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#9653fa] to-[#d8b4fe]">ÖZELLİKLERİ</span></h1>
+            <p class="text-gray-400 max-w-2xl mx-auto text-lg">Yıllar içinde geliştirdiğimiz altyapı, güvenlik ve içerik sistemleri. Her şey oyuncular için tasarlandı.</p>
+        </div>
+    </header>
+
+    <!-- ÖZELLİK KATEGORİLERİ -->
+    <section class="py-6 bg-mc-dark sticky top-16 z-30 border-b border-white/5">
+        <div class="container mx-auto px-4">
+            <div class="flex gap-3 overflow-x-auto pb-1 scrollbar-hide justify-center flex-wrap">
+                <a href="#rpg" class="px-4 py-2 bg-purple-500/10 text-purple-400 border border-purple-500/20 rounded-full text-sm font-bold whitespace-nowrap hover:bg-purple-500/20 transition">⭐ RPG</a>
+                <a href="#ekonomi" class="px-4 py-2 bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 rounded-full text-sm font-bold whitespace-nowrap hover:bg-yellow-500/20 transition">💰 Ekonomi</a>
+                <a href="#guvenlik" class="px-4 py-2 bg-red-500/10 text-red-400 border border-red-500/20 rounded-full text-sm font-bold whitespace-nowrap hover:bg-red-500/20 transition">🛡️ Güvenlik</a>
+                <a href="#koruma" class="px-4 py-2 bg-green-500/10 text-green-400 border border-green-500/20 rounded-full text-sm font-bold whitespace-nowrap hover:bg-green-500/20 transition">🗺️ Koruma</a>
+                <a href="#icerik" class="px-4 py-2 bg-orange-500/10 text-orange-400 border border-orange-500/20 rounded-full text-sm font-bold whitespace-nowrap hover:bg-orange-500/20 transition">📦 İçerik</a>
+                <a href="#altyapi" class="px-4 py-2 bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded-full text-sm font-bold whitespace-nowrap hover:bg-blue-500/20 transition">🔧 Altyapı</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="py-16 bg-[#0a0a0c]">
+        <div class="container mx-auto px-4 space-y-20">
+
+            <!-- RPG SİSTEMİ -->
+            <div id="rpg" class="scroll-mt-32">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="w-10 h-10 bg-purple-500/20 text-purple-400 rounded-lg flex items-center justify-center text-xl border border-purple-500/30">⭐</div>
+                    <h2 class="text-3xl font-bold font-rajdhani">RPG <span class="text-purple-400">YETENEKLERİ</span></h2>
+                    <span class="plugin-badge">AuraSkills 2.3.10</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="feature-card md:col-span-2 bg-mc-card border border-purple-500/20 rounded-2xl p-6">
+                        <p class="text-gray-300 leading-relaxed mb-4">AuraSkills ile gerçek bir RPG deneyimi yaşa! Mining, Farming, Forging, Combat gibi onlarca yetenek var. Her eylemde yetenek XP'si kazan, seviye atla ve güçlü stat bonusları elde et.</p>
+                        <div class="grid grid-cols-2 gap-3 mt-4">
+                            <div class="bg-black/30 rounded-lg p-3 border border-white/5">
+                                <div class="text-purple-400 font-bold text-sm mb-1">⛏️ Mining</div>
+                                <p class="text-gray-500 text-xs">Maden kazarken yetenek XP kazan, daha hızlı kazırsın</p>
+                            </div>
+                            <div class="bg-black/30 rounded-lg p-3 border border-white/5">
+                                <div class="text-purple-400 font-bold text-sm mb-1">⚔️ Combat</div>
+                                <p class="text-gray-500 text-xs">Dövüş yeteneklerin savaşta belirleyici olur</p>
+                            </div>
+                            <div class="bg-black/30 rounded-lg p-3 border border-white/5">
+                                <div class="text-purple-400 font-bold text-sm mb-1">🌾 Farming</div>
+                                <p class="text-gray-500 text-xs">Tarım süreçlerinde ekstra hasat şansı kazanırsın</p>
+                            </div>
+                            <div class="bg-black/30 rounded-lg p-3 border border-white/5">
+                                <div class="text-purple-400 font-bold text-sm mb-1">🎣 Fishing</div>
+                                <p class="text-gray-500 text-xs">Balık yakalama şansını artır, nadir eşyalar bul</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-card bg-mc-card border border-purple-500/20 rounded-2xl p-6 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold font-rajdhani text-purple-300 mb-3">Nasıl Çalışır?</h3>
+                            <ul class="space-y-2 text-gray-400 text-sm">
+                                <li class="flex items-start gap-2"><i class="fa-solid fa-chevron-right text-purple-400 mt-1 text-xs"></i>Eylem yaparak otomatik XP kazan</li>
+                                <li class="flex items-start gap-2"><i class="fa-solid fa-chevron-right text-purple-400 mt-1 text-xs"></i>Seviye atladıkça stat bonusları açılır</li>
+                                <li class="flex items-start gap-2"><i class="fa-solid fa-chevron-right text-purple-400 mt-1 text-xs"></i>Beceri ağacında özel yetenekler seç</li>
+                                <li class="flex items-start gap-2"><i class="fa-solid fa-chevron-right text-purple-400 mt-1 text-xs"></i>Liderlik tablosunda sıralan</li>
+                            </ul>
+                        </div>
+                        <div class="bg-black/30 rounded-lg p-3 text-xs font-mono text-gray-400 border border-white/5 mt-4">
+                            <i class="fa-solid fa-terminal text-purple-400 mr-2"></i>/skills
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EKONOMİ -->
+            <div id="ekonomi" class="scroll-mt-32">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="w-10 h-10 bg-yellow-500/20 text-yellow-400 rounded-lg flex items-center justify-center text-xl border border-yellow-500/30">💰</div>
+                    <h2 class="text-3xl font-bold font-rajdhani">EKONOMİ <span class="text-yellow-400">SİSTEMİ</span></h2>
+                    <span class="plugin-badge">EssentialsX · Vault · Jobs</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="feature-card bg-mc-card border border-yellow-500/20 rounded-2xl p-6 text-center">
+                        <i class="fa-solid fa-briefcase text-3xl text-yellow-400 mb-3"></i>
+                        <h3 class="text-xl font-bold font-rajdhani mb-2 text-yellow-300">Jobs Sistemi</h3>
+                        <p class="text-gray-400 text-sm">12 meslekten birini seç, çalış, para kazan. Her iş türü için ayrı ücret tablosu.</p>
+                        <code class="text-xs text-yellow-400 bg-black/30 px-3 py-1 rounded mt-3 block">/jobs browse</code>
+                    </div>
+                    <div class="feature-card bg-mc-card border border-yellow-500/20 rounded-2xl p-6 text-center">
+                        <i class="fa-solid fa-store text-3xl text-yellow-400 mb-3"></i>
+                        <h3 class="text-xl font-bold font-rajdhani mb-2 text-yellow-300">Sunucu Marketi</h3>
+                        <p class="text-gray-400 text-sm">EconomyShopGUI ile sabit fiyatlı sunucu marketi. Eşyaları al ve sat.</p>
+                        <code class="text-xs text-yellow-400 bg-black/30 px-3 py-1 rounded mt-3 block">/shop</code>
+                    </div>
+                    <div class="feature-card bg-mc-card border border-yellow-500/20 rounded-2xl p-6 text-center">
+                        <i class="fa-solid fa-vault text-3xl text-yellow-400 mb-3"></i>
+                        <h3 class="text-xl font-bold font-rajdhani mb-2 text-yellow-300">Kişisel Kasa</h3>
+                        <p class="text-gray-400 text-sm">PlayerVaults ile güvenli kişisel depolama. Eşyaların her zaman erişilebilir.</p>
+                        <code class="text-xs text-yellow-400 bg-black/30 px-3 py-1 rounded mt-3 block">/pv</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GÜVENLİK -->
+            <div id="guvenlik" class="scroll-mt-32">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="w-10 h-10 bg-red-500/20 text-red-400 rounded-lg flex items-center justify-center text-xl border border-red-500/30">🛡️</div>
+                    <h2 class="text-3xl font-bold font-rajdhani">GÜVENLİK <span class="text-red-400">ALTYAPISI</span></h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="feature-card bg-mc-card border border-red-500/20 rounded-xl p-5">
+                        <div class="text-2xl mb-3">🌐</div>
+                        <h3 class="font-bold font-rajdhani text-red-300 mb-2">TCPShield + Cloudflare</h3>
+                        <p class="text-gray-500 text-xs">DDoS saldırılarına karşı katmanlı koruma. L7 filtreleme ile sahte bağlantı engeli.</p>
+                    </div>
+                    <div class="feature-card bg-mc-card border border-red-500/20 rounded-xl p-5">
+                        <div class="text-2xl mb-3">🔐</div>
+                        <h3 class="font-bold font-rajdhani text-red-300 mb-2">Velocity Proxy</h3>
+                        <p class="text-gray-500 text-xs">Premium doğrulama, IP forwarding. Alt sunuculara direkt erişim imkânsız.</p>
+                    </div>
+                    <div class="feature-card bg-mc-card border border-red-500/20 rounded-xl p-5">
+                        <div class="text-2xl mb-3">🤖</div>
+                        <h3 class="font-bold font-rajdhani text-red-300 mb-2">GrimAC Anti-Cheat</h3>
+                        <p class="text-gray-500 text-xs">Uçma, reach, combat ve packet hilelerine karşı aktif koruma. Kick cezaları aktif.</p>
+                    </div>
+                    <div class="feature-card bg-mc-card border border-red-500/20 rounded-xl p-5">
+                        <div class="text-2xl mb-3">💎</div>
+                        <h3 class="font-bold font-rajdhani text-red-300 mb-2">Anti-XRay</h3>
+                        <p class="text-gray-500 text-xs">Paper Engine-Mode 2 ile X-Ray hilesi tam olarak engellenir. Adil madencilik.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KORUMA -->
+            <div id="koruma" class="scroll-mt-32">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="w-10 h-10 bg-green-500/20 text-green-400 rounded-lg flex items-center justify-center text-xl border border-green-500/30">🗺️</div>
+                    <h2 class="text-3xl font-bold font-rajdhani">ARAZİ <span class="text-green-400">KORUMA</span></h2>
+                    <span class="plugin-badge">GriefPrevention · WorldGuard · CoreProtect</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="feature-card bg-mc-card border border-green-500/20 rounded-xl p-6">
+                        <i class="fa-solid fa-map-location-dot text-green-400 text-2xl mb-3"></i>
+                        <h3 class="text-xl font-rajdhani font-bold text-green-300 mb-2">GriefPrevention</h3>
+                        <p class="text-gray-400 text-sm mb-3">Altın kürekle kendi alanını claim'le. Arkadaşlarını trust'la, düşmanlara kapalı tut.</p>
+                        <code class="text-xs text-green-400 bg-black/30 px-3 py-1 rounded">/trust · /abandonclaim</code>
+                    </div>
+                    <div class="feature-card bg-mc-card border border-green-500/20 rounded-xl p-6">
+                        <i class="fa-solid fa-shield text-green-400 text-2xl mb-3"></i>
+                        <h3 class="text-xl font-rajdhani font-bold text-green-300 mb-2">WorldGuard</h3>
+                        <p class="text-gray-400 text-sm mb-3">Spawn ve özel bölgeler WorldGuard ile korunur. Griefing yok, güvenli ortam garantisi.</p>
+                        <div class="text-xs text-gray-500">Yönetici tarafından yönetilir</div>
+                    </div>
+                    <div class="feature-card bg-mc-card border border-green-500/20 rounded-xl p-6">
+                        <i class="fa-solid fa-clock-rotate-left text-green-400 text-2xl mb-3"></i>
+                        <h3 class="text-xl font-rajdhani font-bold text-green-300 mb-2">CoreProtect</h3>
+                        <p class="text-gray-400 text-sm mb-3">Tüm blok değişiklikleri loglanır. Griefing durumunda geri alma mümkün. Tam şeffaflık.</p>
+                        <code class="text-xs text-green-400 bg-black/30 px-3 py-1 rounded">/co inspect</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- İÇERİK -->
+            <div id="icerik" class="scroll-mt-32">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="w-10 h-10 bg-orange-500/20 text-orange-400 rounded-lg flex items-center justify-center text-xl border border-orange-500/30">📦</div>
+                    <h2 class="text-3xl font-bold font-rajdhani">İÇERİK <span class="text-orange-400">ve EĞLENCE</span></h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="feature-card bg-mc-card border border-orange-500/20 rounded-2xl p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="text-3xl">📦</span>
+                            <div>
+                                <h3 class="text-xl font-rajdhani font-bold text-orange-300">Kasa Sistemi</h3>
+                                <span class="plugin-badge">ExcellentCrates 6.6.1</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 text-sm">Farklı türde kasalar ve anahtarlar. Nadir eşyalar, para ve özel ödüller seni bekliyor. Anahtar kazan, kasaları aç!</p>
+                    </div>
+                    <div class="feature-card bg-mc-card border border-orange-500/20 rounded-2xl p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="text-3xl">📜</span>
+                            <div>
+                                <h3 class="text-xl font-rajdhani font-bold text-orange-300">Quest Sistemi</h3>
+                                <span class="plugin-badge">BeautyQuests 2.0.0</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 text-sm">NPC'lerden görev al, tamamla, ödülünü topla. Jobs sistemi ile entegre günlük görevler Türkçe olarak yapılandırıldı.</p>
+                    </div>
+                    <div class="feature-card bg-mc-card border border-orange-500/20 rounded-2xl p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="text-3xl">🌍</span>
+                            <div>
+                                <h3 class="text-xl font-rajdhani font-bold text-orange-300">Rastgele Işınlanma</h3>
+                                <span class="plugin-badge">BetterRTP 3.6.13</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 text-sm">Dünyayı keşfetmek için /rtp kullan. Rastgele güvenli bölgelere ışınlan. Her seferinde yeni bir macera!</p>
+                    </div>
+                    <div class="feature-card bg-mc-card border border-orange-500/20 rounded-2xl p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="text-3xl">📊</span>
+                            <div>
+                                <h3 class="text-xl font-rajdhani font-bold text-orange-300">21 GUI Menüsü</h3>
+                                <span class="plugin-badge">DeluxeMenus 1.14.1</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 text-sm">İstatistikler, liderlik tabloları, sunucu bilgileri ve daha fazlası için 21 adet özel GUI menüsü. /menu ile aç!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ALTYAPI -->
+            <div id="altyapi" class="scroll-mt-32">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="w-10 h-10 bg-blue-500/20 text-blue-400 rounded-lg flex items-center justify-center text-xl border border-blue-500/30">🔧</div>
+                    <h2 class="text-3xl font-bold font-rajdhani">TEKNIK <span class="text-blue-400">ALTYAPI</span></h2>
+                </div>
+                <div class="bg-mc-card border border-white/5 rounded-2xl overflow-hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/5">
+                        <div class="p-6">
+                            <h3 class="text-lg font-rajdhani font-bold text-blue-300 mb-4 border-l-4 border-blue-400 pl-3">Ağ Yapısı</h3>
+                            <ul class="space-y-2 text-sm text-gray-400">
+                                <li><i class="fa-solid fa-circle text-blue-400 text-xs mr-2"></i>Velocity 3.x Proxy</li>
+                                <li><i class="fa-solid fa-circle text-blue-400 text-xs mr-2"></i>PicoLimbo (Kayıt Sunucusu)</li>
+                                <li><i class="fa-solid fa-circle text-blue-400 text-xs mr-2"></i>Paper 1.21.11 Lobby</li>
+                                <li><i class="fa-solid fa-circle text-blue-400 text-xs mr-2"></i>Paper 1.21.11 Survival</li>
+                                <li><i class="fa-solid fa-circle text-blue-400 text-xs mr-2"></i>ViaVersion (Multi-sürüm)</li>
+                            </ul>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-rajdhani font-bold text-blue-300 mb-4 border-l-4 border-blue-400 pl-3">Veritabanı</h3>
+                            <ul class="space-y-2 text-sm text-gray-400">
+                                <li><i class="fa-solid fa-database text-blue-400 text-xs mr-2"></i>MariaDB - LuckPerms</li>
+                                <li><i class="fa-solid fa-database text-blue-400 text-xs mr-2"></i>MySQL - VeloAuth</li>
+                                <li><i class="fa-solid fa-database text-blue-400 text-xs mr-2"></i>MySQL - Jobs</li>
+                                <li><i class="fa-solid fa-database text-blue-400 text-xs mr-2"></i>SQLite - CoreProtect</li>
+                            </ul>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-rajdhani font-bold text-blue-300 mb-4 border-l-4 border-blue-400 pl-3">Özel Sistemler</h3>
+                            <ul class="space-y-2 text-sm text-gray-400">
+                                <li><i class="fa-solid fa-check text-blue-400 text-xs mr-2"></i>LuckPerms Yetki Sistemi</li>
+                                <li><i class="fa-solid fa-check text-blue-400 text-xs mr-2"></i>LibertyBans Ağ Banı</li>
+                                <li><i class="fa-solid fa-check text-blue-400 text-xs mr-2"></i>SkinsRestorer (Korsan skin)</li>
+                                <li><i class="fa-solid fa-check text-blue-400 text-xs mr-2"></i>TAB - Ağ geneli liste</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-black border-t border-white/10 pt-16 pb-8 mt-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <a href="index.html" class="text-2xl font-bold font-rajdhani flex items-center gap-2 mb-4">
+                        <span class="text-white">ARCADE <span class="text-mc-main">CRAFT</span></span>
+                    </a>
+                    <p class="text-gray-500 text-sm leading-relaxed max-w-md">ArcaDe Craft, oyuncularına en iyi Minecraft deneyimini sunmak için tasarlanmıştır.</p>
+                    <div class="flex gap-4 mt-6">
+                        <a href="https://discord.gg/ECFf9GWwjq" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#5865F2] hover:text-white transition"><i class="fa-brands fa-discord"></i></a>
+                        <a href="https://www.youtube.com/@robmite" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#FF0000] hover:text-white transition"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://x.com/RobMite" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#1DA1F2] hover:text-white transition"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6 font-rajdhani uppercase tracking-wider">Hızlı Linkler</h4>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><a href="jobs.html" class="hover:text-mc-main transition">Meslekler</a></li>
+                        <li><a href="leaderboard.html" class="hover:text-mc-main transition">Liderlik Tablosu</a></li>
+                        <li><a href="wiki.html" class="hover:text-mc-main transition">Wiki & Yardım</a></li>
+                        <li><a href="rules.html" class="hover:text-mc-main transition">Kurallar</a></li>
+                        <li><a href="appeal.html" class="hover:text-red-500 transition text-red-400/80"><i class="fa-solid fa-gavel mr-1"></i>Ceza İtirazı</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6 font-rajdhani uppercase tracking-wider">İletişim</h4>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-envelope text-mc-main"></i>destek@robsarcade.online</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-ticket text-mc-main"></i>Discord Ticket</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
+                <p>&copy; 2026 ArcaDe Craft Sunucusu. Tüm hakları saklıdır. Mojang AB ile bir bağlantısı yoktur.</p>
+                <p>Designed with <i class="fa-solid fa-heart text-red-900"></i> by arcooty</p>
+            </div>
+        </div>
+    </footer>
+
+<script src="ui.js"></script>
+</body>
+</html>

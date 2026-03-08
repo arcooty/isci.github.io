@@ -244,6 +244,83 @@ const wikiContent = {
                 </div>
             </div>
         `
+    },
+    'jobs': {
+        title: '<i class="fa-solid fa-briefcase text-mc-main"></i> Meslekler',
+        body: `
+            <p class="mb-4">Jobs sistemi ile 12 farklı meslekten birini veya birkaçını seçerek oyun içi para ve XP kazanabilirsiniz.</p>
+            <table class="w-full text-left border-collapse">
+                <thead><tr class="border-b border-white/10 text-mc-main"><th class="py-2">Komut</th><th class="py-2">Açıklama</th></tr></thead>
+                <tbody class="text-sm">
+                    <tr class="border-b border-white/5"><td class="py-2 font-mono text-yellow-400">/jobs browse</td><td class="py-2">Tüm meslekleri listele</td></tr>
+                    <tr class="border-b border-white/5"><td class="py-2 font-mono text-yellow-400">/jobs join [meslek]</td><td class="py-2">Mesleğe katıl</td></tr>
+                    <tr class="border-b border-white/5"><td class="py-2 font-mono text-yellow-400">/jobs stats</td><td class="py-2">Meslek istatistiklerini gör</td></tr>
+                    <tr class="border-b border-white/5"><td class="py-2 font-mono text-yellow-400">/jobs quests</td><td class="py-2">Günlük görevleri gör</td></tr>
+                    <tr class="border-b border-white/5"><td class="py-2 font-mono text-yellow-400">/genelmeslek</td><td class="py-2">Tüm mesleklerin top 3 listesi</td></tr>
+                </tbody>
+            </table>
+            <div class="bg-white/5 p-3 rounded border-l-4 border-mc-main mt-4">
+                <strong>İpucu:</strong> Birden fazla mesleğe aynı anda katılabilirsiniz!
+            </div>
+        `
+    },
+    'auraskills': {
+        title: '<i class="fa-solid fa-star text-purple-400"></i> RPG Yetenekler',
+        body: `
+            <p class="mb-4">AuraSkills ile çeşitli eylemler yaparak yetenek XP'si kazanır ve karakterini güçlendirirsin.</p>
+            <div class="grid grid-cols-2 gap-3 mb-4">
+                <div class="bg-black/40 p-3 rounded">
+                    <h4 class="font-bold text-purple-400 text-sm mb-1">⛏️ Mining</h4>
+                    <p class="text-xs text-gray-400">Maden kazar, yetenek XP kazan</p>
+                </div>
+                <div class="bg-black/40 p-3 rounded">
+                    <h4 class="font-bold text-purple-400 text-sm mb-1">⚔️ Combat</h4>
+                    <p class="text-xs text-gray-400">Savaş yeteneklerin güçlenir</p>
+                </div>
+                <div class="bg-black/40 p-3 rounded">
+                    <h4 class="font-bold text-purple-400 text-sm mb-1">🌾 Farming</h4>
+                    <p class="text-xs text-gray-400">Ekstra hasat şansı kazanırsın</p>
+                </div>
+                <div class="bg-black/40 p-3 rounded">
+                    <h4 class="font-bold text-purple-400 text-sm mb-1">🎣 Fishing</h4>
+                    <p class="text-xs text-gray-400">Nadir balık ve eşya şansı artar</p>
+                </div>
+            </div>
+            <p class="text-sm text-gray-400">Tüm yetenekleri görmek için oyun içinde <code class="text-yellow-400">/skills</code> komutunu kullan.</p>
+        `
+    },
+    'crates': {
+        title: '<i class="fa-solid fa-box-open text-orange-400"></i> Kasa Sistemi',
+        body: `
+            <p class="mb-4">ExcellentCrates ile çeşitli kasalar açarak nadir ödüller kazanabilirsin.</p>
+            <ul class="list-disc list-inside space-y-2 mb-4 text-sm">
+                <li>VIP satın alarak <strong>kasa anahtarı</strong> kazanabilirsin</li>
+                <li>Oy vererek (NuVotifier) anahtar elde edebilirsin</li>
+                <li>Etkinlik ve turnuvalarda anahtar ödülleri dağıtılır</li>
+            </ul>
+            <div class="bg-white/5 p-3 rounded border-l-4 border-orange-400">
+                <strong>Not:</strong> Kasaları spawn'daki özel kasa noktasından açabilirsin.
+            </div>
+        `
+    },
+    'market': {
+        title: '<i class="fa-solid fa-store text-green-400"></i> Market & Alışveriş',
+        body: `
+            <p class="mb-4">Sunucumuzda iki farklı alım-satım yöntemi bulunur:</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div class="bg-black/40 p-3 rounded">
+                    <h4 class="font-bold text-green-400 mb-1">Sunucu Marketi</h4>
+                    <p class="text-xs text-gray-400">EconomyShopGUI ile sabit fiyatlı market. <code class="text-yellow-400">/shop</code> komutuyla aç.</p>
+                </div>
+                <div class="bg-black/40 p-3 rounded">
+                    <h4 class="font-bold text-green-400 mb-1">Kişisel Sandıklar</h4>
+                    <p class="text-xs text-gray-400">Claim alanında sandık ticareti yapabilirsin.</p>
+                </div>
+            </div>
+            <div class="bg-white/5 p-3 rounded border-l-4 border-green-400">
+                <strong>İpucu:</strong> Paranı kontrol etmek için <code class="text-yellow-400">/bal</code> komutunu kullan.
+            </div>
+        `
     }
 };
 

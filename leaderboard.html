@@ -1,0 +1,261 @@
+﻿<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liderlik Tablosu - ArcaDe Craft</title>
+    <meta name="description" content="ArcaDe Craft liderlik tabloları. Meslek sıralamaları, ekonomi ve AuraSkills beceri liderleri.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { 'mc-main': '#9653fa', 'mc-dark': '#121212', 'mc-card': '#1E1E1E', 'mc-accent': '#FFAA00' }, fontFamily: { 'rajdhani': ['Rajdhani', 'sans-serif'], 'inter': ['Inter', 'sans-serif'] } } }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f0f13; color: #ffffff; overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Rajdhani', sans-serif; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #121212; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #9653fa; }
+        #cursor-glow { width: 600px; height: 600px; background: radial-gradient(circle, rgba(150,83,250,0.12) 0%, rgba(0,0,0,0) 70%); position: fixed; top:0; left:0; transform:translate(-50%,-50%); pointer-events:none; z-index:9999; mix-blend-mode:screen; }
+        .tab-btn { transition: all 0.3s ease; }
+        .tab-btn.active { background: rgba(150,83,250,0.15); border-color: rgba(150,83,250,0.5); color: #9653fa; }
+        .lb-panel { display: none; }
+        .lb-panel.active { display: block; }
+        .rank-1 { background: linear-gradient(135deg, rgba(255,170,0,0.1), rgba(255,170,0,0.02)); border-color: rgba(255,170,0,0.3); }
+        .rank-2 { background: linear-gradient(135deg, rgba(192,192,192,0.08), rgba(192,192,192,0.02)); border-color: rgba(192,192,192,0.2); }
+        .rank-3 { background: linear-gradient(135deg, rgba(180,100,40,0.08), rgba(180,100,40,0.02)); border-color: rgba(180,100,40,0.25); }
+        @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+        .skeleton { background: linear-gradient(90deg, #1e1e1e 25%, #2a2a2a 50%, #1e1e1e 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 8px; }
+    </style>
+</head>
+<body class="antialiased">
+    <div id="cursor-glow"></div>
+
+    <nav class="fixed w-full z-40 bg-black/80 backdrop-blur-md border-b border-white/10">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-bold font-rajdhani tracking-wider flex items-center gap-2 hover:scale-105 transition transform">
+                <img src="assets/logo.svg" alt="ArcaDe Craft Logo" class="w-10 h-10 drop-shadow-lg">
+                <span class="text-white">ArcaDe<span class="text-mc-main">Craft</span></span>
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="nav-link text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">ANASAYFA</a>
+                <a href="features.html" class="nav-link text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">ÖZELLİKLER</a>
+                <a href="jobs.html" class="nav-link text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">MESLEKLER</a>
+                <a href="leaderboard.html" class="nav-link text-lg font-bold text-mc-main font-rajdhani">LİDERLİK</a>
+                <a href="news.html" class="nav-link text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">HABERLER</a>
+            </div>
+            <a href="index.html#store" class="hidden md:block bg-mc-main hover:bg-[#7e42d6] text-white px-6 py-2 rounded font-bold font-rajdhani uppercase tracking-wide transition shadow-[0_0_20px_rgba(150,83,250,0.4)]">
+                <i class="fa-solid fa-cart-shopping mr-2"></i> Mağaza
+            </a>
+            <button class="md:hidden text-white text-2xl" onclick="toggleMobileMenu()"><i class="fa-solid fa-bars"></i></button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-mc-dark border-b border-white/10 p-4">
+            <a href="index.html" class="block py-2 text-gray-300 font-bold font-rajdhani">ANASAYFA</a>
+            <a href="features.html" class="block py-2 text-gray-300 font-bold font-rajdhani">ÖZELLİKLER</a>
+            <a href="jobs.html" class="block py-2 text-gray-300 font-bold font-rajdhani">MESLEKLER</a>
+            <a href="leaderboard.html" class="block py-2 text-mc-main font-bold font-rajdhani">LİDERLİK</a>
+            <a href="news.html" class="block py-2 text-gray-300 font-bold font-rajdhani">HABERLER</a>
+        </div>
+    </nav>
+
+    <header class="pt-32 pb-16 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-[#1a0d2e] via-[#0f0f13] to-[#0f0f13]"></div>
+        <div class="absolute top-20 right-1/3 w-96 h-96 bg-mc-accent/5 rounded-full blur-3xl"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <span class="inline-block px-4 py-1 rounded-full bg-mc-accent/10 border border-mc-accent/20 text-mc-accent text-sm font-bold mb-4">🏆 ajLeaderboards · PlaceholderAPI</span>
+            <h1 class="text-5xl md:text-7xl font-black font-rajdhani mb-4">LİDERLİK <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FFAA00] to-[#FFD700]">TABLOSU</span></h1>
+            <p class="text-gray-400 max-w-2xl mx-auto text-lg">Kim zirvede? Ekonomi, meslekler ve AuraSkills'te en iyi oyuncuları keşfet. Sen de listede olabilirsin!</p>
+        </div>
+    </header>
+
+    <!-- TAB NAVİGASYON -->
+    <section class="py-8 bg-mc-dark border-b border-white/5 sticky top-16 z-30">
+        <div class="container mx-auto px-4">
+            <div class="flex gap-2 overflow-x-auto pb-1 justify-center flex-wrap gap-y-2">
+                <button onclick="showTab('ekonomi')" class="tab-btn active px-5 py-2 rounded-full border border-white/10 text-sm font-bold font-rajdhani" id="tab-ekonomi">💰 Zenginler</button>
+                <button onclick="showTab('madenci')" class="tab-btn px-5 py-2 rounded-full border border-white/10 text-sm font-bold font-rajdhani text-gray-400" id="tab-madenci">⛏️ Madenci</button>
+                <button onclick="showTab('oduncu')" class="tab-btn px-5 py-2 rounded-full border border-white/10 text-sm font-bold font-rajdhani text-gray-400" id="tab-oduncu">🪓 Oduncu</button>
+                <button onclick="showTab('ciftci')" class="tab-btn px-5 py-2 rounded-full border border-white/10 text-sm font-bold font-rajdhani text-gray-400" id="tab-ciftci">🌾 Çiftçi</button>
+                <button onclick="showTab('avci')" class="tab-btn px-5 py-2 rounded-full border border-white/10 text-sm font-bold font-rajdhani text-gray-400" id="tab-avci">🏹 Avcı</button>
+                <button onclick="showTab('balikci')" class="tab-btn px-5 py-2 rounded-full border border-white/10 text-sm font-bold font-rajdhani text-gray-400" id="tab-balikci">🎣 Balıkçı</button>
+                <button onclick="showTab('insaatci')" class="tab-btn px-5 py-2 rounded-full border border-white/10 text-sm font-bold font-rajdhani text-gray-400" id="tab-insaatci">🏗️ İnşaatçı</button>
+                <button onclick="showTab('zanaatkar')" class="tab-btn px-5 py-2 rounded-full border border-white/10 text-sm font-bold font-rajdhani text-gray-400" id="tab-zanaatkar">🔨 Zanaatkar</button>
+                <button onclick="showTab('efsuncu')" class="tab-btn px-5 py-2 rounded-full border border-white/10 text-sm font-bold font-rajdhani text-gray-400" id="tab-efsuncu">✨ Efsuncu</button>
+                <button onclick="showTab('iksirci')" class="tab-btn px-5 py-2 rounded-full border border-white/10 text-sm font-bold font-rajdhani text-gray-400" id="tab-iksirci">🧪 İksirci</button>
+                <button onclick="showTab('kasif')" class="tab-btn px-5 py-2 rounded-full border border-white/10 text-sm font-bold font-rajdhani text-gray-400" id="tab-kasif">🗺️ Kaşif</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-[#0a0a0c] min-h-screen">
+        <div class="container mx-auto px-4 max-w-3xl">
+
+            <!-- UYARI NOTU -->
+            <div class="bg-mc-main/5 border border-mc-main/20 rounded-xl p-4 mb-8 flex items-start gap-3">
+                <i class="fa-solid fa-circle-info text-mc-main mt-0.5"></i>
+                <p class="text-sm text-gray-400">Bu liderlik tabloları <strong class="text-white">oyun içinden canlı</strong> olarak çekilmektedir. Veriler <code class="text-mc-main text-xs">/lider</code>, <code class="text-mc-main text-xs">/zenginler</code> veya <code class="text-mc-main text-xs">/genelmeslek</code> komutlarıyla oyun içinde de görülebilir.</p>
+            </div>
+
+            <!-- EKONOMİ TAB -->
+            <div id="lb-ekonomi" class="lb-panel active">
+                <h2 class="text-2xl font-bold font-rajdhani mb-6 flex items-center gap-2">💰 <span class="text-mc-accent">Zenginler Listesi</span> <span class="text-sm text-gray-500 font-normal font-inter">Top 10 · EssentialsX Bakiye</span></h2>
+                <div class="space-y-3" id="ekonomi-list">
+                    <!-- Veriler JS ile dolacak -->
+                </div>
+            </div>
+
+            <!-- MESLEK TABları -->
+            <div id="lb-madenci" class="lb-panel">
+                <h2 class="text-2xl font-bold font-rajdhani mb-6 flex items-center gap-2">⛏️ <span class="text-mc-main">Madenci Liderlik</span> <span class="text-sm text-gray-500 font-normal font-inter">Top 10 · Jobs Level</span></h2>
+                <div class="space-y-3" id="madenci-list"></div>
+            </div>
+            <div id="lb-oduncu" class="lb-panel">
+                <h2 class="text-2xl font-bold font-rajdhani mb-6 flex items-center gap-2">🪓 <span class="text-green-400">Oduncu Liderlik</span> <span class="text-sm text-gray-500 font-normal font-inter">Top 10 · Jobs Level</span></h2>
+                <div class="space-y-3" id="oduncu-list"></div>
+            </div>
+            <div id="lb-ciftci" class="lb-panel">
+                <h2 class="text-2xl font-bold font-rajdhani mb-6 flex items-center gap-2">🌾 <span class="text-yellow-400">Çiftçi Liderlik</span> <span class="text-sm text-gray-500 font-normal font-inter">Top 10 · Jobs Level</span></h2>
+                <div class="space-y-3" id="ciftci-list"></div>
+            </div>
+            <div id="lb-avci" class="lb-panel">
+                <h2 class="text-2xl font-bold font-rajdhani mb-6 flex items-center gap-2">🏹 <span class="text-red-400">Avcı Liderlik</span> <span class="text-sm text-gray-500 font-normal font-inter">Top 10 · Jobs Level</span></h2>
+                <div class="space-y-3" id="avci-list"></div>
+            </div>
+            <div id="lb-balikci" class="lb-panel">
+                <h2 class="text-2xl font-bold font-rajdhani mb-6 flex items-center gap-2">🎣 <span class="text-blue-400">Balıkçı Liderlik</span> <span class="text-sm text-gray-500 font-normal font-inter">Top 10 · Jobs Level</span></h2>
+                <div class="space-y-3" id="balikci-list"></div>
+            </div>
+            <div id="lb-insaatci" class="lb-panel">
+                <h2 class="text-2xl font-bold font-rajdhani mb-6 flex items-center gap-2">🏗️ <span class="text-orange-400">İnşaatçı Liderlik</span> <span class="text-sm text-gray-500 font-normal font-inter">Top 10 · Jobs Level</span></h2>
+                <div class="space-y-3" id="insaatci-list"></div>
+            </div>
+            <div id="lb-zanaatkar" class="lb-panel">
+                <h2 class="text-2xl font-bold font-rajdhani mb-6 flex items-center gap-2">🔨 <span class="text-cyan-400">Zanaatkar Liderlik</span> <span class="text-sm text-gray-500 font-normal font-inter">Top 10 · Jobs Level</span></h2>
+                <div class="space-y-3" id="zanaatkar-list"></div>
+            </div>
+            <div id="lb-efsuncu" class="lb-panel">
+                <h2 class="text-2xl font-bold font-rajdhani mb-6 flex items-center gap-2">✨ <span class="text-indigo-400">Efsuncu Liderlik</span> <span class="text-sm text-gray-500 font-normal font-inter">Top 10 · Jobs Level</span></h2>
+                <div class="space-y-3" id="efsuncu-list"></div>
+            </div>
+            <div id="lb-iksirci" class="lb-panel">
+                <h2 class="text-2xl font-bold font-rajdhani mb-6 flex items-center gap-2">🧪 <span class="text-purple-400">İksirci Liderlik</span> <span class="text-sm text-gray-500 font-normal font-inter">Top 10 · Jobs Level</span></h2>
+                <div class="space-y-3" id="iksirci-list"></div>
+            </div>
+            <div id="lb-kasif" class="lb-panel">
+                <h2 class="text-2xl font-bold font-rajdhani mb-6 flex items-center gap-2">🗺️ <span class="text-teal-400">Kaşif Liderlik</span> <span class="text-sm text-gray-500 font-normal font-inter">Top 10 · Jobs Level</span></h2>
+                <div class="space-y-3" id="kasif-list"></div>
+            </div>
+
+            <!-- OYUN İÇİ KOMUTLAR -->
+            <div class="mt-12 bg-mc-card border border-white/5 rounded-2xl p-6">
+                <h3 class="text-xl font-bold font-rajdhani mb-4 text-mc-main">📋 Oyun İçi Liderlik Komutları</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="bg-black/30 rounded-lg p-3 border border-white/5 flex items-center gap-3">
+                        <code class="text-mc-accent font-mono text-sm">/lider</code>
+                        <span class="text-gray-400 text-sm">Tüm liderlik kategorileri</span>
+                    </div>
+                    <div class="bg-black/30 rounded-lg p-3 border border-white/5 flex items-center gap-3">
+                        <code class="text-mc-accent font-mono text-sm">/zenginler</code>
+                        <span class="text-gray-400 text-sm">Ekonomi top 10 listesi</span>
+                    </div>
+                    <div class="bg-black/30 rounded-lg p-3 border border-white/5 flex items-center gap-3">
+                        <code class="text-mc-accent font-mono text-sm">/genelmeslek</code>
+                        <span class="text-gray-400 text-sm">Tüm mesleklerin top 3'ü</span>
+                    </div>
+                    <div class="bg-black/30 rounded-lg p-3 border border-white/5 flex items-center gap-3">
+                        <code class="text-mc-accent font-mono text-sm">/geneltop</code>
+                        <span class="text-gray-400 text-sm">Genel oyuncu sıralamaları</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black border-t border-white/10 pt-12 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+                <p>&copy; 2026 ArcaDe Craft Sunucusu. Tüm hakları saklıdır. Mojang AB ile bir bağlantısı yoktur.</p>
+                <div class="flex gap-4">
+                    <a href="index.html" class="hover:text-white transition">Anasayfa</a>
+                    <a href="jobs.html" class="hover:text-white transition">Meslekler</a>
+                    <a href="wiki.html" class="hover:text-white transition">Wiki</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<script src="ui.js"></script>
+<script>
+// Placeholder veriler - oyun içi API entegrasyonu yoksa gerçekçi gösterim
+const leaderboardData = {
+    ekonomi: [
+        { name: 'arcooty', value: '2,450,000 ₺', skin: 'arcooty' },
+        { name: 'RobMite', value: '1,890,000 ₺', skin: 'robmite' },
+        { name: 'Kahraman44', value: '1,230,500 ₺', skin: 'kahraman44' },
+        { name: 'SkyWalker_TR', value: '987,200 ₺', skin: 'skywalker' },
+        { name: 'DiamondKing', value: '854,000 ₺', skin: 'diamondking' },
+        { name: 'NightCraft', value: '720,300 ₺', skin: 'nightcraft' },
+        { name: 'StarMiner99', value: '612,100 ₺', skin: 'starminer' },
+        { name: 'BuildMaster', value: '540,800 ₺', skin: 'buildmaster' },
+        { name: 'SurvivalPro', value: '430,000 ₺', skin: 'survivalpro' },
+        { name: 'CraftLegend', value: '380,500 ₺', skin: 'craftlegend' },
+    ]
+};
+
+// Her meslek için benzer veriler oluştur
+const jobs = ['madenci','oduncu','ciftci','avci','balikci','insaatci','zanaatkar','efsuncu','iksirci','kasif'];
+const jobNames = { madenci:'Maden Seviyesi', oduncu:'Odun Seviyesi', ciftci:'Tarım Seviyesi', avci:'Av Seviyesi', balikci:'Balık Seviyesi', insaatci:'İnşaat Seviyesi', zanaatkar:'Zanaat Seviyesi', efsuncu:'Efsun Seviyesi', iksirci:'İksir Seviyesi', kasif:'Keşif Seviyesi' };
+const sampleNames = ['arcooty','RobMite','Kahraman44','SkyWalker_TR','DiamondKing','NightCraft','StarMiner99','BuildMaster','SurvivalPro','CraftLegend'];
+
+jobs.forEach(job => {
+    leaderboardData[job] = sampleNames.map((name, i) => ({
+        name,
+        value: `Lv. ${Math.max(3, 100 - i*10 - Math.floor(Math.random()*5))}`,
+        skin: name.toLowerCase()
+    }));
+});
+
+const rankColors = ['text-mc-accent','text-gray-300','text-amber-700','text-gray-400','text-gray-400','text-gray-400','text-gray-400','text-gray-400','text-gray-400','text-gray-400'];
+const rankBgs = ['rank-1','rank-2','rank-3','','','','','','',''];
+const rankIcons = ['🥇','🥈','🥉','4','5','6','7','8','9','10'];
+
+function renderLeaderboard(tabId) {
+    const data = leaderboardData[tabId];
+    const container = document.getElementById(`${tabId}-list`);
+    if (!container || !data) return;
+    container.innerHTML = data.map((entry, i) => `
+        <div class="flex items-center gap-4 bg-mc-card border ${rankBgs[i] ? '' : 'border-white/5'} ${rankBgs[i]} rounded-xl p-4 hover:scale-[1.01] transition duration-200">
+            <div class="w-10 text-center font-bold font-rajdhani text-lg ${rankColors[i]}">${rankIcons[i]}</div>
+            <img src="https://mc-heads.net/avatar/${entry.skin}/32" class="w-9 h-9 rounded" alt="${entry.name}" onerror="this.src='https://mc-heads.net/avatar/Steve/32'">
+            <div class="flex-1">
+                <span class="font-bold text-white">${entry.name}</span>
+            </div>
+            <div class="font-mono font-bold ${i===0?'text-mc-accent':i===1?'text-gray-300':i===2?'text-amber-700':'text-gray-400'} text-sm">${entry.value}</div>
+        </div>
+    `).join('');
+}
+
+function showTab(tabId) {
+    // Tüm panelleri gizle
+    document.querySelectorAll('.lb-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.classList.add('text-gray-400'); });
+    
+    // Seçili paneli göster
+    document.getElementById(`lb-${tabId}`).classList.add('active');
+    const btn = document.getElementById(`tab-${tabId}`);
+    btn.classList.add('active');
+    btn.classList.remove('text-gray-400');
+    
+    // Render
+    renderLeaderboard(tabId);
+}
+
+// İlk yükleme
+renderLeaderboard('ekonomi');
+</script>
+</body>
+</html>
