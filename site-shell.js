@@ -2,7 +2,7 @@
   const discord = 'https://discord.gg/GerdDHzMWp';
   const path = location.pathname.split('/').pop() || 'index.html';
   document.body.classList.add('network-shell');
-  const survivalPages = ['survival.html','survival-systems.html','jobs.html','claims.html','economy.html','quests.html','commands.html','ranks.html','leaderboard.html'];
+  const survivalPages = ['survival.html','survival-systems.html','jobs.html','claims.html','economy.html','quests.html','commands.html','crates.html','ranks.html','leaderboard.html'];
   const current = name => path === name || (name === 'survival.html' && survivalPages.includes(path)) ? ' aria-current="page"' : '';
   const nav = document.querySelector('nav');
   if (nav) {
@@ -13,7 +13,7 @@
       <div class="site-links" id="site-links">
         <a href="index.html"${current('index.html')}>ANASAYFA</a><a href="about.html"${current('about.html')}>HAKKINDA</a><a href="servers.html"${current('servers.html')}>SUNUCULAR</a><a href="status.html"${current('status.html')}>DURUM</a>
         <div class="survival-menu"><button type="button" aria-haspopup="true" aria-expanded="false"${current('survival.html')}>SURVIVAL <i class="fa-solid fa-chevron-down"></i></button><div class="survival-dropdown">
-          <a href="survival.html">Genel Bakış</a><a href="survival-systems.html">Özellikler</a><a href="jobs.html">Meslekler</a><a href="quests.html">Görevler</a><a href="claims.html">Claim</a><a href="economy.html">Ekonomi</a><a href="commands.html">Komutlar</a><a href="ranks.html">Rütbeler</a><a href="leaderboard.html">Liderlik</a><a href="wiki.html">Bilgi Bankası</a>
+          <a href="survival.html">Genel Bakış</a><a href="survival-systems.html">Özellikler</a><a href="jobs.html">Meslekler</a><a href="quests.html">Görevler</a><a href="claims.html">Claim</a><a href="economy.html">Ekonomi</a><a href="crates.html">Kasalar</a><a href="commands.html">Komutlar</a><a href="ranks.html">Rütbeler</a><a href="leaderboard.html">Liderlik</a><a href="wiki.html">Bilgi Bankası</a>
         </div></div>
         <a href="news.html"${current('news.html')}>HABERLER</a><a href="rules.html"${current('rules.html')}>KURALLAR</a><a href="store.html"${current('store.html')}>MAĞAZA</a><a class="site-discord" href="${discord}" target="_blank" rel="noopener">DISCORD</a>
       </div></div>`;
@@ -82,7 +82,7 @@
     footer.innerHTML = `<div class="site-footer-inner">
       <section class="footer-brand"><a class="site-brand" href="index.html"><img src="assets/logo.png" alt="ArcaDe Craft Network logosu"><span>ArcaDe Craft <strong>Network</strong></span></a><p>Güvenli lobi, dengeli Survival ve dönemsel etkinlikleri tek ağda buluşturan Türkçe Minecraft topluluğu.</p><button class="footer-address" type="button" data-copy-address title="Sunucu adresini kopyala"><i class="fa-regular fa-copy"></i><span>oyna.robsarcade.online</span></button></section>
       <section><h2>Ağ</h2><a href="about.html">Hakkında</a><a href="servers.html">Sunucular</a><a href="status.html">Sunucu Durumu</a><a href="news.html">Haberler</a><a href="rules.html">Kurallar</a></section>
-      <section><h2>Survival</h2><a href="survival.html">Genel Bakış</a><a href="survival-systems.html">Özellikler</a><a href="jobs.html">Meslekler</a><a href="claims.html">Claim Rehberi</a><a href="economy.html">Ekonomi</a><a href="commands.html">Komutlar</a></section>
+      <section><h2>Survival</h2><a href="survival.html">Genel Bakış</a><a href="survival-systems.html">Özellikler</a><a href="jobs.html">Meslekler</a><a href="claims.html">Claim Rehberi</a><a href="economy.html">Ekonomi</a><a href="crates.html">Kasalar</a><a href="commands.html">Komutlar</a></section>
       <section><h2>Topluluk</h2><a href="store.html">VIP Mağazası</a><a href="${discord}" target="_blank" rel="noopener">Discord’a Katıl</a><a href="wiki.html">Bilgi Bankası</a><a href="application.html">Yetkili Başvurusu</a><a href="appeal.html">Ceza İtirazı</a></section>
     </div><div class="footer-bottom"><span>© 2026 ArcaDe Craft Network</span><span><a href="privacy.html">Gizlilik</a><a href="terms.html">Kullanım Şartları</a></span><span>Mojang Studios veya Microsoft ile bağlantılı değildir.</span></div>`;
     footer.querySelectorAll('a[href]').forEach(link => {
