@@ -1,6 +1,10 @@
 (() => {
   const api = window.ARCADE_API?.base;
   const status = document.querySelector('#store-status');
+  const selectedPackage = new URLSearchParams(location.search).get('package');
+  if (['vip', 'mvip', 'uvip'].includes(selectedPackage)) {
+    document.querySelector(`[data-buy-package="${selectedPackage}"]`)?.closest('.store-card')?.classList.add('is-selected');
+  }
   if (document.querySelector('[data-buy-package]')) {
     fetch(`${api}/store/products`).then(response => {
       if (!response.ok) throw new Error();
