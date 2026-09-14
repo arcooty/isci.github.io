@@ -3,9 +3,12 @@
   const path = location.pathname.split('/').pop() || 'index.html';
   document.body.classList.add('network-shell');
   const survivalPages = ['survival.html','survival-systems.html','jobs.html','claims.html','economy.html','quests.html','commands.html','crates.html','ranks.html','leaderboard.html','wiki.html'];
+  const networkPages = ['about.html','servers.html','status.html'];
+  const communityPages = ['news.html','rules.html','staff.html','application.html','appeal.html'];
   const current = name => path === name ||
     (name === 'survival.html' && survivalPages.includes(path)) ||
     (name === 'store.html' && path === 'order.html') ? ' aria-current="page"' : '';
+  const groupCurrent = pages => pages.includes(path) ? ' aria-current="page"' : '';
   const nav = document.querySelector('nav');
   if (nav) {
     nav.className = 'site-nav';
@@ -13,33 +16,45 @@
       <a class="site-brand" href="index.html"><img src="assets/logo.png" alt="ArcaDe Craft Network logosu"><span>ArcaDe Craft <strong>Network</strong></span></a>
       <button class="mobile-nav-button" type="button" aria-label="Menüyü aç" id="site-menu"><i class="fa-solid fa-bars"></i></button>
       <div class="site-links" id="site-links">
-        <a href="index.html"${current('index.html')}>ANASAYFA</a><a href="about.html"${current('about.html')}>HAKKINDA</a><a href="servers.html"${current('servers.html')}>SUNUCULAR</a><a href="status.html"${current('status.html')}>DURUM</a>
-        <div class="survival-menu"><button type="button" aria-haspopup="true" aria-expanded="false"${current('survival.html')}>SURVIVAL <i class="fa-solid fa-chevron-down"></i></button><div class="survival-dropdown">
+        <a href="index.html"${current('index.html')}>ANASAYFA</a>
+        <div class="nav-menu network-menu"><button type="button" aria-haspopup="true" aria-expanded="false"${groupCurrent(networkPages)}>AĞ <i class="fa-solid fa-chevron-down"></i></button><div class="nav-dropdown compact-dropdown">
+          <section class="nav-menu-group"><span>ArcaDe Craft</span><a href="about.html">Hakkında</a><a href="servers.html">Sunucular</a><a href="status.html">Sunucu Durumu</a></section>
+        </div></div>
+        <div class="nav-menu survival-menu"><button type="button" aria-haspopup="true" aria-expanded="false"${current('survival.html')}>SURVIVAL <i class="fa-solid fa-chevron-down"></i></button><div class="nav-dropdown survival-dropdown">
           <section class="survival-menu-group"><span>Başlangıç</span><a href="survival.html">Genel Bakış</a><a href="survival-systems.html">Tüm Özellikler</a><a href="wiki.html">Bilgi Bankası</a><a href="commands.html">Komutlar</a></section>
           <section class="survival-menu-group"><span>İlerleme</span><a href="jobs.html">Meslekler</a><a href="quests.html">Görevler</a><a href="leaderboard.html">Liderlik</a></section>
           <section class="survival-menu-group"><span>Ekonomi ve Haklar</span><a href="economy.html">Ekonomi</a><a href="claims.html">Claim Rehberi</a><a href="crates.html">Ödül Kasaları</a><a href="ranks.html">VIP ve Rütbeler</a></section>
         </div></div>
-        <a href="news.html"${current('news.html')}>HABERLER</a><a href="rules.html"${current('rules.html')}>KURALLAR</a><a href="store.html"${current('store.html')}>MAĞAZA</a><a class="site-discord" href="${discord}" target="_blank" rel="noopener">DISCORD</a>
+        <div class="nav-menu community-menu"><button type="button" aria-haspopup="true" aria-expanded="false"${groupCurrent(communityPages)}>TOPLULUK <i class="fa-solid fa-chevron-down"></i></button><div class="nav-dropdown compact-dropdown">
+          <section class="nav-menu-group"><span>Topluluk</span><a href="news.html">Haberler</a><a href="rules.html">Kurallar</a><a href="staff.html">Yetkili Kadroları</a><a href="application.html">Yetkili Başvurusu</a><a href="appeal.html">Ceza İtirazı</a></section>
+        </div></div>
+        <a href="store.html"${current('store.html')}>MAĞAZA</a><a class="site-discord" href="${discord}" target="_blank" rel="noopener">DISCORD</a>
       </div></div>`;
     document.getElementById('site-menu')?.addEventListener('click', () => document.getElementById('site-links')?.classList.toggle('open'));
-    const survivalMenu = nav.querySelector('.survival-menu');
-    const survivalButton = survivalMenu?.querySelector('button');
-    survivalButton?.addEventListener('click', event => {
+    const navMenus = [...nav.querySelectorAll('.nav-menu')];
+    navMenus.forEach(menu => menu.querySelector('button')?.addEventListener('click', event => {
       event.stopPropagation();
-      const isOpen = survivalMenu.classList.toggle('is-open');
-      survivalButton.setAttribute('aria-expanded', String(isOpen));
-    });
+      const willOpen = !menu.classList.contains('is-open');
+      navMenus.forEach(other => {
+        other.classList.remove('is-open');
+        other.querySelector('button')?.setAttribute('aria-expanded', 'false');
+      });
+      menu.classList.toggle('is-open', willOpen);
+      menu.querySelector('button')?.setAttribute('aria-expanded', String(willOpen));
+    }));
     document.addEventListener('click', event => {
-      if (!survivalMenu?.contains(event.target)) {
-        survivalMenu?.classList.remove('is-open');
-        survivalButton?.setAttribute('aria-expanded', 'false');
-      }
+      if (navMenus.some(menu => menu.contains(event.target))) return;
+      navMenus.forEach(menu => {
+        menu.classList.remove('is-open');
+        menu.querySelector('button')?.setAttribute('aria-expanded', 'false');
+      });
     });
-    survivalMenu?.addEventListener('keydown', event => {
+    nav.addEventListener('keydown', event => {
       if (event.key !== 'Escape') return;
-      survivalMenu.classList.remove('is-open');
-      survivalButton?.setAttribute('aria-expanded', 'false');
-      survivalButton?.focus();
+      const openMenu = nav.querySelector('.nav-menu.is-open');
+      openMenu?.classList.remove('is-open');
+      openMenu?.querySelector('button')?.setAttribute('aria-expanded', 'false');
+      openMenu?.querySelector('button')?.focus();
     });
     nav.querySelectorAll('a[href]').forEach(link => {
       const targetPath = new URL(link.getAttribute('href'), location.href).pathname.split('/').pop();
@@ -67,10 +82,11 @@
     'order.html': ['Mağaza', 'Sipariş Durumu'],
     'application.html': ['Topluluk', 'Yetkili Başvurusu'],
     'appeal.html': ['Topluluk', 'Ceza İtirazı'],
+    'staff.html': ['Topluluk', 'Yetkili Kadroları'],
     'privacy.html': ['Yasal', 'Gizlilik'],
     'terms.html': ['Yasal', 'Kullanım Şartları']
   };
-  const sectionTargets = { Survival: 'survival.html', Mağaza: 'store.html', Ağ: 'index.html', Topluluk: 'wiki.html', Yasal: 'terms.html' };
+  const sectionTargets = { Survival: 'survival.html', Mağaza: 'store.html', Ağ: 'about.html', Topluluk: 'news.html', Yasal: 'terms.html' };
   const createPageTrail = () => {
     if (path === 'index.html' || !pageLabels[path]) return null;
     const [section, label] = pageLabels[path];
@@ -129,9 +145,9 @@
     footer.className = 'site-footer';
     footer.innerHTML = `<div class="site-footer-inner">
       <section class="footer-brand"><a class="site-brand" href="index.html"><img src="assets/logo.png" alt="ArcaDe Craft Network logosu"><span>ArcaDe Craft <strong>Network</strong></span></a><p>Güvenli lobi, dengeli Survival ve dönemsel etkinlikleri tek ağda buluşturan Türkçe Minecraft topluluğu.</p><button class="footer-address" type="button" data-copy-address title="Sunucu adresini kopyala"><i class="fa-regular fa-copy"></i><span>oyna.robsarcade.online</span></button></section>
-      <section><h2>Ağ</h2><a href="about.html">Hakkında</a><a href="servers.html">Sunucular</a><a href="status.html">Sunucu Durumu</a><a href="news.html">Haberler</a><a href="rules.html">Kurallar</a></section>
+      <section><h2>Ağ</h2><a href="about.html">Hakkında</a><a href="servers.html">Sunucular</a><a href="status.html">Sunucu Durumu</a></section>
       <section><h2>Survival</h2><a href="survival.html">Genel Bakış</a><a href="survival-systems.html">Tüm Özellikler</a><a href="jobs.html">Meslekler</a><a href="quests.html">Görevler</a><a href="claims.html">Claim Rehberi</a><a href="economy.html">Ekonomi</a><a href="crates.html">Ödül Kasaları</a><a href="ranks.html">VIP ve Rütbeler</a></section>
-      <section><h2>Topluluk</h2><a href="store.html">VIP Mağazası</a><a href="leaderboard.html">Liderlik</a><a href="wiki.html">Bilgi Bankası</a><a href="commands.html">Komutlar</a><a href="${discord}" target="_blank" rel="noopener">Discord’a Katıl</a><a href="application.html">Yetkili Başvurusu</a><a href="appeal.html">Ceza İtirazı</a></section>
+      <section><h2>Topluluk</h2><a href="news.html">Haberler</a><a href="leaderboard.html">Liderlik</a><a href="wiki.html">Bilgi Bankası</a><a href="commands.html">Komutlar</a><a href="rules.html">Kurallar</a><a href="staff.html">Yetkili Kadroları</a><a href="${discord}" target="_blank" rel="noopener">Discord’a Katıl</a><a href="application.html">Yetkili Başvurusu</a><a href="appeal.html">Ceza İtirazı</a></section>
     </div><div class="footer-bottom"><span>© 2026 ArcaDe Craft Network</span><span><a href="privacy.html">Gizlilik</a><a href="terms.html">Kullanım Şartları</a></span><span>Mojang Studios veya Microsoft ile bağlantılı değildir.</span></div>`;
     footer.querySelectorAll('a[href]').forEach(link => {
       const targetPath = new URL(link.getAttribute('href'), location.href).pathname.split('/').pop();
@@ -157,7 +173,8 @@
     'leaderboard.html': [['jobs.html','Meslekler'],['economy.html','Ekonomi'],['ranks.html','Rütbeler']],
     'commands.html': [['wiki.html','Bilgi bankası'],['claims.html','Claim rehberi'],['economy.html','Ekonomi']],
     'wiki.html': [['survival.html','Survival merkezi'],['commands.html','Komutlar'],['rules.html','Kurallar']],
-    'store.html': [['ranks.html','Paketleri karşılaştır'],['crates.html','Kasa oranları'],['terms.html','Satış şartları']]
+    'store.html': [['ranks.html','Paketleri karşılaştır'],['crates.html','Kasa oranları'],['terms.html','Satış şartları']],
+    'staff.html': [['application.html','Yetkili başvurusu'],['rules.html','Topluluk kuralları'],['about.html','Ağ yaklaşımı']]
   };
   if (relatedPages[path] && !document.querySelector('.related-nav')) {
     const related = document.createElement('nav');
