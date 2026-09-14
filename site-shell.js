@@ -2,7 +2,7 @@
   const discord = 'https://discord.gg/GerdDHzMWp';
   const path = location.pathname.split('/').pop() || 'index.html';
   document.body.classList.add('network-shell');
-  const survivalPages = ['survival.html','survival-systems.html','jobs.html','claims.html','economy.html','quests.html','commands.html','crates.html','ranks.html','leaderboard.html','wiki.html'];
+  const survivalPages = ['survival.html','survival-systems.html','map.html','jobs.html','claims.html','economy.html','quests.html','commands.html','crates.html','ranks.html','leaderboard.html','wiki.html'];
   const networkPages = ['about.html','servers.html','status.html'];
   const communityPages = ['news.html','rules.html','staff.html','application.html','appeal.html'];
   const current = name => path === name ||
@@ -21,7 +21,7 @@
           <section class="nav-menu-group"><span>ArcaDe Craft</span><a href="about.html">Hakkında</a><a href="servers.html">Sunucular</a><a href="status.html">Sunucu Durumu</a></section>
         </div></div>
         <div class="nav-menu survival-menu"><button type="button" aria-haspopup="true" aria-expanded="false"${current('survival.html')}>SURVIVAL <i class="fa-solid fa-chevron-down"></i></button><div class="nav-dropdown survival-dropdown">
-          <section class="survival-menu-group"><span>Başlangıç</span><a href="survival.html">Genel Bakış</a><a href="survival-systems.html">Tüm Özellikler</a><a href="wiki.html">Bilgi Bankası</a><a href="commands.html">Komutlar</a></section>
+          <section class="survival-menu-group"><span>Başlangıç</span><a href="survival.html">Genel Bakış</a><a href="survival-systems.html">Tüm Özellikler</a><a href="map.html">Canlı Harita</a><a href="wiki.html">Bilgi Bankası</a><a href="commands.html">Komutlar</a></section>
           <section class="survival-menu-group"><span>İlerleme</span><a href="jobs.html">Meslekler</a><a href="quests.html">Görevler</a><a href="leaderboard.html">Liderlik</a></section>
           <section class="survival-menu-group"><span>Ekonomi ve Haklar</span><a href="economy.html">Ekonomi</a><a href="claims.html">Claim Rehberi</a><a href="crates.html">Ödül Kasaları</a><a href="ranks.html">VIP ve Rütbeler</a></section>
         </div></div>
@@ -69,6 +69,7 @@
     'rules.html': ['Topluluk', 'Kurallar'],
     'survival.html': ['Survival', 'Genel Bakış'],
     'survival-systems.html': ['Survival', 'Tüm Özellikler'],
+    'map.html': ['Survival', 'Canlı Harita'],
     'jobs.html': ['Survival', 'Meslekler'],
     'quests.html': ['Survival', 'Görevler'],
     'claims.html': ['Survival', 'Claim Rehberi'],
@@ -146,7 +147,7 @@
     footer.innerHTML = `<div class="site-footer-inner">
       <section class="footer-brand"><a class="site-brand" href="index.html"><img src="assets/logo.png" alt="ArcaDe Craft Network logosu"><span>ArcaDe Craft <strong>Network</strong></span></a><p>Güvenli lobi, dengeli Survival ve dönemsel etkinlikleri tek ağda buluşturan Türkçe Minecraft topluluğu.</p><button class="footer-address" type="button" data-copy-address title="Sunucu adresini kopyala"><i class="fa-regular fa-copy"></i><span>oyna.robsarcade.online</span></button></section>
       <section><h2>Ağ</h2><a href="about.html">Hakkında</a><a href="servers.html">Sunucular</a><a href="status.html">Sunucu Durumu</a></section>
-      <section><h2>Survival</h2><a href="survival.html">Genel Bakış</a><a href="survival-systems.html">Tüm Özellikler</a><a href="jobs.html">Meslekler</a><a href="quests.html">Görevler</a><a href="claims.html">Claim Rehberi</a><a href="economy.html">Ekonomi</a><a href="crates.html">Ödül Kasaları</a><a href="ranks.html">VIP ve Rütbeler</a></section>
+      <section><h2>Survival</h2><a href="survival.html">Genel Bakış</a><a href="survival-systems.html">Tüm Özellikler</a><a href="map.html">Canlı Harita</a><a href="jobs.html">Meslekler</a><a href="quests.html">Görevler</a><a href="claims.html">Claim Rehberi</a><a href="economy.html">Ekonomi</a><a href="crates.html">Ödül Kasaları</a><a href="ranks.html">VIP ve Rütbeler</a></section>
       <section><h2>Topluluk</h2><a href="news.html">Haberler</a><a href="leaderboard.html">Liderlik</a><a href="wiki.html">Bilgi Bankası</a><a href="commands.html">Komutlar</a><a href="rules.html">Kurallar</a><a href="staff.html">Yetkili Kadroları</a><a href="${discord}" target="_blank" rel="noopener">Discord’a Katıl</a><a href="application.html">Yetkili Başvurusu</a><a href="appeal.html">Ceza İtirazı</a></section>
     </div><div class="footer-bottom"><span>© 2026 ArcaDe Craft Network</span><span><a href="privacy.html">Gizlilik</a><a href="terms.html">Kullanım Şartları</a></span><span>Mojang Studios veya Microsoft ile bağlantılı değildir.</span></div>`;
     footer.querySelectorAll('a[href]').forEach(link => {
@@ -162,7 +163,8 @@
     });
   }
   const relatedPages = {
-    'survival.html': [['survival-systems.html','Tüm özellikler'],['wiki.html','Bilgi bankası'],['ranks.html','VIP ve rütbeler']],
+    'survival.html': [['survival-systems.html','Tüm özellikler'],['map.html','Canlı harita'],['wiki.html','Bilgi bankası']],
+    'map.html': [['survival.html','Survival merkezi'],['claims.html','Claim rehberi'],['wiki.html','Bilgi bankası']],
     'survival-systems.html': [['jobs.html','Meslekler'],['economy.html','Ekonomi'],['claims.html','Claim rehberi']],
     'jobs.html': [['quests.html','Görevler'],['leaderboard.html','Liderlik'],['commands.html','Komutlar']],
     'quests.html': [['jobs.html','Meslekler'],['survival-systems.html#ilerleme','İlerleme sistemleri'],['commands.html','Komutlar']],
