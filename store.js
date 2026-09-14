@@ -1,8 +1,19 @@
 (() => {
   const api = window.ARCADE_API?.base;
+  const status = document.querySelector('#store-status');
+  if (document.querySelector('[data-buy-package]')) {
+    fetch(`${api}/store/products`).then(response => {
+      if (!response.ok) throw new Error();
+      return response.json();
+    }).then(({ products }) => products.forEach(product => {
+      const button = document.querySelector(`[data-buy-package="${product.id}"]`);
+      const price = document.querySelector(`[data-price-package="${product.id}"]`);
+      if (price && product.priceLabel) price.textContent = `${product.priceLabel} · ${product.durationDays} gün`;
+      if (button && product.available) { button.disabled = false; button.textContent = `${product.name} Satın Al`; }
+    })).catch(() => { if (status) status.textContent = 'Mağaza güvenli ödeme yapılandırması tamamlanınca açılacak.'; });
+  }
   document.querySelectorAll('[data-buy-package]').forEach(button => button.addEventListener('click', async () => {
     const username = document.querySelector('#minecraft-username')?.value.trim();
-    const status = document.querySelector('#store-status');
     const consent = document.querySelector('#store-consent')?.checked;
     if (!/^[A-Za-z0-9_]{3,16}$/.test(username || '')) {
       status.textContent = 'Geçerli Minecraft kullanıcı adını yaz.';
