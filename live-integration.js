@@ -1,5 +1,5 @@
 (() => {
-  const API = '/api/v1';
+  const API = window.ARCADE_API?.base || 'https://api.robsarcade.online/api/v1';
   const setText = (selector, value) => document.querySelectorAll(selector).forEach(el => el.textContent = value);
   setText('#server-ip', window.ARCADECRAFT?.address || 'oyna.robsarcade.online');
 
