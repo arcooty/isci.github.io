@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -25,6 +25,8 @@
         #cursor-glow { width: 600px; height: 600px; background: radial-gradient(circle, rgba(239, 68, 68, 0.15) 0%, rgba(0, 0, 0, 0) 70%); position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); pointer-events: none; z-index: 9999; mix-blend-mode: screen; }
         .captcha-bg { background-image: repeating-linear-gradient(45deg, #111 0, #111 10px, #222 10px, #222 20px); }
     </style>
+    <link rel="stylesheet" href="network.css?v=20260913-5">
+<link rel="icon" href="assets/logo.png" type="image/png">
 </head>
 <body class="antialiased">
     <div id="cursor-glow"></div>
@@ -32,12 +34,12 @@
     <nav class="fixed w-full z-40 bg-black/80 backdrop-blur-md border-b border-white/10">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <a href="index.html" class="text-3xl font-bold font-rajdhani tracking-wider flex items-center gap-2">
-                <img src="assets/logo.svg" alt="ArcaDe Craft Logo" class="w-10 h-10 drop-shadow-lg">
+                <img src="assets/logo.png" alt="ArcaDe Craft Logo" class="w-10 h-10 drop-shadow-lg">
                 <span class="text-white">ArcaDe<span class="text-mc-main">Craft</span></span>
             </a>
             <div class="hidden md:flex items-center gap-6">
                 <a href="index.html" class="text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">ANASAYFA</a>
-                <a href="features.html" class="text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">ÖZELLİKLER</a>
+                <a href="survival-systems.html" class="text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">ÖZELLİKLER</a>
                 <a href="jobs.html" class="text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">MESLEKLER</a>
                 <a href="leaderboard.html" class="text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">LİDERLİK</a>
                 <a href="news.html" class="text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">HABERLER</a>
@@ -132,13 +134,13 @@
                         ArcaDe Craft, oyuncularına en iyi Minecraft deneyimini sunmak için tasarlanmıştır. Pay to win değil, Play to win mantığıyla hareket ediyoruz.
                     </p>
                     <div class="flex gap-4 mt-6">
-                        <a href="https://discord.gg/ECFf9GWwjq" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#5865F2] hover:text-white transition hover:shadow-[0_0_15px_rgba(88,101,242,0.5)]"><i class="fa-brands fa-discord"></i></a>
+                        <a href="https://discord.gg/GerdDHzMWp" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#5865F2] hover:text-white transition hover:shadow-[0_0_15px_rgba(88,101,242,0.5)]"><i class="fa-brands fa-discord"></i></a>
                         <a href="https://www.youtube.com/@robmite" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#FF0000] hover:text-white transition hover:shadow-[0_0_15px_rgba(255,0,0,0.5)]"><i class="fa-brands fa-youtube"></i></a>
                         <a href="https://x.com/RobMite" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#1DA1F2] hover:text-white transition hover:shadow-[0_0_15px_rgba(29,161,242,0.5)]"><i class="fa-brands fa-twitter"></i></a>
                         <a href="https://www.instagram.com/robmite/" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-pink-600 hover:text-white transition hover:shadow-[0_0_15px_rgba(219,39,119,0.5)]"><i class="fa-brands fa-instagram"></i></a>
                     </div>
                 </div>
-                
+
                 <div>
                     <h4 class="text-white font-bold mb-6 font-rajdhani uppercase tracking-wider">Hızlı Linkler</h4>
                     <ul class="space-y-2 text-sm text-gray-500">
@@ -166,8 +168,11 @@
             </div>
         </div>
     </footer>
-    
+
 <script src="form-logic.js"></script> <!-- Sadece form olan sayfalarda zorunlu ama hepsinde dursa zarar gelmez -->
-<script src="ui.js"></script>
+<script src="ui.js?v=20260913-5"></script>
+<script src="server-data.js"></script>
+<script src="live-integration.js"></script>
+<script src="site-shell.js?v=20260913-5"></script>
 </body>
 </html>

@@ -1,10 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ArcaDe Craft - Yeni Nesil Minecraft Deneyimi</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>ArcaDe Craft Network | Minecraft Ağı</title>
+    <script src="https://cdn.tailwindcss.com">
+</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <script>
@@ -21,11 +22,11 @@
         body { font-family: 'Inter', sans-serif; background-color: #0f0f13; color: #ffffff; overflow-x: hidden; cursor: default; }
         h1, h2, h3, h4, .nav-link, .btn-font { font-family: 'Rajdhani', sans-serif; }
         .hero-bg { background-image: linear-gradient(to bottom, rgba(5,0,15,0.50) 0%, rgba(15,15,19,0.85) 100%), url('assets/hero-bg.png'); background-size: cover; background-position: center 30%; }
-        
+
         /* GÜNCELLEME: Renk zorlaması kaldırıldı, sadece hareket efekti kaldı */
         .block-card { transition: all 0.3s ease; border-bottom: 4px solid #2d2d2d; }
-        .block-card:hover { transform: translateY(-5px); } 
-        
+        .block-card:hover { transform: translateY(-5px); }
+
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #121212; }
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
@@ -38,39 +39,57 @@
         .scroll-dot.active { background-color: #9653fa; box-shadow: 0 0 15px #9653fa, 0 0 30px rgba(150, 83, 250, 0.5); transform: scale(1.4); }
         .scroll-line { height: 3px; background-color: rgba(255,255,255,0.1); flex-grow: 1; width: 50px; border-radius: 2px; transition: background-color 0.4s ease, box-shadow 0.4s ease; }
         .scroll-line.active { background-color: #9653fa; box-shadow: 0 0 10px rgba(150, 83, 250, 0.4); }
+        #section-indicator { transform: translateX(-50%); transition: opacity .38s ease, transform .46s cubic-bezier(.2,.8,.2,1), filter .38s ease; }
+        #section-indicator.is-hidden { opacity: 0; transform: translate(-50%, 26px) scale(.96); filter: blur(5px); pointer-events: none; }
+        @media (prefers-reduced-motion: reduce) { #section-indicator { transition-duration: .01ms; } }
         @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
         .animate-float { animation: float 3s ease-in-out infinite; }
         .glass-panel { background: rgba(24, 24, 27, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
     </style>
+    <link rel="stylesheet" href="network.css?v=20260913-5">
+<link rel="icon" href="assets/logo.png" type="image/png">
 </head>
 <body class="antialiased">
 
-    <div id="cursor-glow"></div>
+    <div id="cursor-glow">
+</div>
 
-    <div class="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 bg-black/80 backdrop-blur-xl border border-mc-main/30 rounded-full px-8 py-4 flex items-center gap-1 shadow-[0_0_30px_rgba(150,83,250,0.25)] ring-1 ring-white/10 hidden md:flex">
-        <a href="#hero" class="scroll-dot active" data-target="hero" data-label="Başlangıç"></a>
-        <div class="scroll-line" id="line-1"></div>
-        <a href="#features" class="scroll-dot" data-target="features" data-label="Oyun Modları"></a>
-        <div class="scroll-line" id="line-2"></div>
-        <a href="#jobs-showcase" class="scroll-dot" data-target="jobs-showcase" data-label="Meslekler"></a>
-        <div class="scroll-line" id="line-3"></div>
-        <a href="#server-features" class="scroll-dot" data-target="server-features" data-label="Özellikler"></a>
-        <div class="scroll-line" id="line-4"></div>
-        <a href="#news" class="scroll-dot" data-target="news" data-label="Haberler"></a>
-        <div class="scroll-line" id="line-5"></div>
-        <a href="#store" class="scroll-dot" data-target="store" data-label="Mağaza"></a>
+    <div id="section-indicator" class="fixed bottom-8 left-1/2 z-50 bg-black/80 backdrop-blur-xl border border-mc-main/30 rounded-full px-8 py-4 items-center gap-1 shadow-[0_0_30px_rgba(150,83,250,0.25)] ring-1 ring-white/10 hidden md:flex" aria-label="Sayfa bölümleri">
+        <a href="#hero" class="scroll-dot active" data-target="hero" data-label="Başlangıç">
+</a>
+        <div class="scroll-line" id="line-1">
+</div>
+        <a href="#features" class="scroll-dot" data-target="features" data-label="Oyun Modları">
+</a>
+        <div class="scroll-line" id="line-2">
+</div>
+        <a href="#jobs-showcase" class="scroll-dot" data-target="network-showcase" data-label="Ağ Yapısı">
+</a>
+        <div class="scroll-line" id="line-3">
+</div>
+        <a href="#server-features" class="scroll-dot" data-target="server-features" data-label="Özellikler">
+</a>
+        <div class="scroll-line" id="line-4">
+</div>
+        <a href="#news" class="scroll-dot" data-target="news" data-label="Haberler">
+</a>
+        <div class="scroll-line" id="line-5">
+</div>
+        <a href="#store" class="scroll-dot" data-target="store" data-label="Mağaza">
+</a>
     </div>
 
     <nav class="fixed w-full z-40 transition-all duration-300 bg-black/80 backdrop-blur-md border-b border-white/10" id="navbar">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <a href="index.html" class="text-3xl font-bold font-rajdhani tracking-wider flex items-center gap-2 hover:scale-105 transition transform">
-                <img src="assets/logo.svg" alt="ArcaDe Craft Logo" class="w-10 h-10 drop-shadow-lg">
-                <span class="text-white">ArcaDe<span class="text-mc-main drop-shadow-[0_0_5px_rgba(150,83,250,0.8)]">Craft</span></span>
+                <img src="assets/logo.png" alt="ArcaDe Craft Logo" class="w-10 h-10 drop-shadow-lg">
+                <span class="text-white">ArcaDe<span class="text-mc-main drop-shadow-[0_0_5px_rgba(150,83,250,0.8)]">Craft</span>
+</span>
             </a>
 
             <div class="hidden md:flex items-center gap-8">
                 <a href="#hero" class="nav-link text-lg font-bold text-gray-300 hover:text-mc-main transition hover:drop-shadow-[0_0_5px_rgba(150,83,250,0.5)]">ANASAYFA</a>
-                <a href="features.html" class="nav-link text-lg font-bold text-gray-300 hover:text-mc-main transition hover:drop-shadow-[0_0_5px_rgba(150,83,250,0.5)]">ÖZELLİKLER</a>
+                <a href="survival-systems.html" class="nav-link text-lg font-bold text-gray-300 hover:text-mc-main transition hover:drop-shadow-[0_0_5px_rgba(150,83,250,0.5)]">ÖZELLİKLER</a>
                 <a href="jobs.html" class="nav-link text-lg font-bold text-gray-300 hover:text-mc-main transition hover:drop-shadow-[0_0_5px_rgba(150,83,250,0.5)]">MESLEKLER</a>
                 <a href="leaderboard.html" class="nav-link text-lg font-bold text-gray-300 hover:text-mc-main transition hover:drop-shadow-[0_0_5px_rgba(150,83,250,0.5)]">LİDERLİK</a>
                 <a href="news.html" class="nav-link text-lg font-bold text-gray-300 hover:text-mc-main transition hover:drop-shadow-[0_0_5px_rgba(150,83,250,0.5)]">HABERLER</a>
@@ -79,18 +98,20 @@
 
             <div class="hidden md:block">
                 <a href="#store" class="bg-mc-main hover:bg-[#7e42d6] text-white px-6 py-2 rounded font-bold font-rajdhani uppercase tracking-wide transition shadow-[0_0_20px_rgba(150,83,250,0.4)] hover:shadow-[0_0_30px_rgba(150,83,250,0.6)] transform hover:-translate-y-0.5">
-                    <i class="fa-solid fa-cart-shopping mr-2"></i> Mağaza
+                    <i class="fa-solid fa-cart-shopping mr-2">
+</i> Mağaza
                 </a>
             </div>
 
             <button class="md:hidden text-white text-2xl" onclick="toggleMobileMenu()">
-                <i class="fa-solid fa-bars"></i>
+                <i class="fa-solid fa-bars">
+</i>
             </button>
         </div>
 
         <div id="mobile-menu" class="hidden md:hidden bg-mc-dark border-b border-white/10 p-4">
             <a href="#hero" class="block py-2 text-gray-300 hover:text-white font-bold">ANASAYFA</a>
-            <a href="features.html" class="block py-2 text-gray-300 hover:text-white font-bold">ÖZELLİKLER</a>
+            <a href="survival-systems.html" class="block py-2 text-gray-300 hover:text-white font-bold">ÖZELLİKLER</a>
             <a href="jobs.html" class="block py-2 text-gray-300 hover:text-white font-bold">MESLEKLER</a>
             <a href="leaderboard.html" class="block py-2 text-gray-300 hover:text-white font-bold">LİDERLİK</a>
             <a href="news.html" class="block py-2 text-gray-300 hover:text-white font-bold">HABERLER</a>
@@ -101,34 +122,34 @@
     <section id="hero" class="relative min-h-screen flex items-center hero-bg px-4 scroll-mt-20 pt-20">
         <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center z-10">
             <div class="text-center lg:text-left">
-                <div class="mb-4 inline-block px-4 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur text-sm font-semibold text-mc-main shadow-[0_0_15px_rgba(150,83,250,0.3)]">
-                    🚀 Sürüm 1.21.11 · Survival Sunucusu · Türkçe İçerik
-                </div>
-                <h1 class="text-6xl md:text-8xl font-black mb-4 tracking-tighter drop-shadow-2xl">
-                    EFSANE <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#9653fa] to-[#d8b4fe] glow-text">BAŞLIYOR</span>
+                <h1 class="hero-brand-title font-black mb-4 drop-shadow-2xl">
+                    ARCADECRAFT
                 </h1>
                 <p class="text-xl md:text-2xl text-gray-300 mb-8 font-light max-w-2xl mx-auto lg:mx-0">
-                    12 meslek, RPG yetenek sistemi, kasa ödülleri ve özel market. Türkçe içerikli, güvenli altyapıda Survival deneyimi.
+                    Güvenli lobi, kalıcı Survival dünyası ve dönemsel etkinlikler. Tek adres üzerinden düzenli, Türkçe ve topluluk odaklı Minecraft deneyimi.
                 </p>
                 <div class="flex flex-col md:flex-row gap-4 justify-center lg:justify-start items-center">
                     <div class="group relative bg-black/60 backdrop-blur border border-white/20 p-2 pr-4 rounded-lg flex items-center gap-4 cursor-pointer hover:border-mc-main hover:shadow-[0_0_20px_rgba(150,83,250,0.3)] transition duration-300 w-full md:w-auto" onclick="copyIP()">
                         <div class="bg-mc-main p-3 rounded text-white group-hover:bg-[#7e42d6] transition shadow-[0_0_10px_rgba(150,83,250,0.5)]">
-                            <i class="fa-solid fa-gamepad text-xl"></i>
+                            <i class="fa-solid fa-gamepad text-xl">
+</i>
                         </div>
                         <div class="text-left mr-8">
                             <span class="block text-xs text-gray-400 uppercase font-bold group-hover:text-gray-300 transition">Sunucu Adresi</span>
                             <span class="block text-xl font-bold tracking-wider text-white" id="server-ip">oyna.robsarcade.online</span>
                         </div>
                         <div class="absolute right-3 top-1/2 transform -translate-y-1/2">
-                            <i class="fa-regular fa-copy text-gray-400 group-hover:text-white transition"></i>
+                            <i class="fa-regular fa-copy text-gray-400 group-hover:text-white transition">
+</i>
                         </div>
                         <span id="copy-tooltip" class="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-mc-main text-white text-xs font-bold px-3 py-1.5 rounded shadow-lg opacity-0 transition pointer-events-none">
                             IP Kopyalandı!
                         </span>
                     </div>
 
-                    <a href="https://discord.gg/ECFf9GWwjq" target="_blank" class="bg-[#5865F2] hover:bg-[#4752C4] px-8 py-4 rounded-lg font-bold font-rajdhani text-lg flex items-center gap-2 transition w-full md:w-auto justify-center shadow-[0_0_15px_rgba(88,101,242,0.4)] hover:shadow-[0_0_25px_rgba(88,101,242,0.6)] hover:-translate-y-0.5">
-                        <i class="fa-brands fa-discord"></i> Discord'a Katıl
+                    <a href="https://discord.gg/GerdDHzMWp" target="_blank" class="bg-[#5865F2] hover:bg-[#4752C4] px-8 py-4 rounded-lg font-bold font-rajdhani text-lg flex items-center gap-2 transition w-full md:w-auto justify-center shadow-[0_0_15px_rgba(88,101,242,0.4)] hover:shadow-[0_0_25px_rgba(88,101,242,0.6)] hover:-translate-y-0.5">
+                        <i class="fa-brands fa-discord">
+</i> Discord'a Katıl
                     </a>
                 </div>
             </div>
@@ -136,47 +157,45 @@
             <div class="hidden lg:block relative animate-float">
                 <div class="glass-panel p-6 rounded-2xl max-w-md mx-auto transform rotate-2 hover:rotate-0 transition duration-500 border border-white/5 hover:border-mc-main/30 group">
                     <div class="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
-                        <h3 class="font-bold font-rajdhani text-xl text-white"><i class="fa-solid fa-server text-mc-main mr-2"></i> Sunucu Durumu</h3>
+                        <h3 class="font-bold font-rajdhani text-xl text-white">
+<i class="fa-solid fa-server text-mc-main mr-2">
+</i> Sunucu Durumu</h3>
                         <span class="bg-mc-main/20 text-mc-main text-xs font-bold px-2 py-1 rounded border border-mc-main/20">AKTİF</span>
                     </div>
-                    
+
                     <div class="space-y-4">
                         <div class="bg-black/30 p-3 rounded flex justify-between items-center border border-white/5">
                             <span class="text-gray-400 text-sm">Çevrimiçi</span>
-                            <span class="font-bold text-white font-mono"><span id="floating-player-count">Yükleniyor...</span></span>
+                            <span class="font-bold text-white font-mono">
+<span id="floating-player-count">Yükleniyor...</span>
+</span>
                         </div>
                         <div class="w-full bg-gray-700/50 rounded-full h-2.5">
-                            <div class="bg-mc-main h-2.5 rounded-full shadow-[0_0_10px_rgba(150,83,250,0.5)]" style="width: 28%"></div>
+                            <div class="bg-mc-main h-2.5 rounded-full shadow-[0_0_10px_rgba(150,83,250,0.5)]" style="width: 28%">
+</div>
                         </div>
                         <div class="grid grid-cols-2 gap-4 mt-4">
                             <div class="bg-black/30 p-3 rounded text-center border border-white/5 hover:border-mc-main/20 transition">
-                                <span class="block text-2xl font-bold font-rajdhani text-mc-accent">12ms</span>
-                                <span class="text-xs text-gray-500">Gecikme</span>
+                                <span class="block text-2xl font-bold font-rajdhani text-mc-accent">Velocity</span>
+                                <span class="text-xs text-gray-500">Ağ Geçidi</span>
                             </div>
                             <div class="bg-black/30 p-3 rounded text-center border border-white/5 hover:border-mc-main/20 transition">
-                                <span class="block text-2xl font-bold font-rajdhani text-blue-400">1.21.11</span>
+                                <span class="block text-2xl font-bold font-rajdhani text-blue-400">26.2</span>
                                 <span class="text-xs text-gray-500">Sürüm</span>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="mt-6 pt-4 border-t border-white/10">
-                        <p class="text-xs text-gray-500 font-bold mb-2 uppercase tracking-wide">Son Bağışlar</p>
-                        <div class="flex items-center gap-3 bg-white/5 p-2 rounded-lg">
-                            <img src="https://mc-heads.net/avatar/arcooty/40" class="w-8 h-8 rounded" alt="Avatar">
-                            <div class="text-xs">
-                                <span class="text-white font-bold block">arcooty</span>
-                                <span class="text-mc-main">VIP+ satın aldı.</span>
-                            </div>
-                            <span class="ml-auto text-xs text-gray-600">2dk önce</span>
-                        </div>
+
+                    <div class="mt-6 pt-4 border-t border-white/10 text-xs text-gray-500">
+                        Canlı durum, genel Minecraft durum servisi üzerinden doğrulanır. Yönetim verileri web'e açılmaz.
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <div class="absolute bottom-32 left-1/2 transform -translate-x-1/2 animate-bounce hidden lg:block">
-            <i class="fa-solid fa-chevron-down text-white/30 text-2xl"></i>
+            <i class="fa-solid fa-chevron-down text-white/30 text-2xl">
+</i>
         </div>
     </section>
 
@@ -191,11 +210,11 @@
                 <p class="text-gray-500 text-sm uppercase tracking-widest font-bold mt-1">Menü Sistemi</p>
             </div>
             <div class="hover:transform hover:scale-105 transition duration-300">
-                <h3 class="text-4xl font-bold text-mc-main font-rajdhani drop-shadow-[0_0_10px_rgba(150,83,250,0.4)]">7/24</h3>
-                <p class="text-gray-500 text-sm uppercase tracking-widest font-bold mt-1">Kesintisiz Oyun</p>
+                <h3 class="text-4xl font-bold text-mc-main font-rajdhani drop-shadow-[0_0_10px_rgba(150,83,250,0.4)]">3</h3>
+                <p class="text-gray-500 text-sm uppercase tracking-widest font-bold mt-1">Ağ Katmanı</p>
             </div>
             <div class="hover:transform hover:scale-105 transition duration-300">
-                <h3 class="text-4xl font-bold text-mc-main font-rajdhani drop-shadow-[0_0_10px_rgba(150,83,250,0.4)]">1.21</h3>
+                <h3 class="text-4xl font-bold text-mc-main font-rajdhani drop-shadow-[0_0_10px_rgba(150,83,250,0.4)]">26.2</h3>
                 <p class="text-gray-500 text-sm uppercase tracking-widest font-bold mt-1">Güncel Sürüm</p>
             </div>
         </div>
@@ -204,362 +223,339 @@
     <section id="features" class="py-20 bg-mc-dark scroll-mt-20">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 font-rajdhani">OYUN <span class="text-mc-main drop-shadow-[0_0_10px_rgba(150,83,250,0.5)]">MODLARI</span></h2>
-                <div class="h-1 w-24 bg-mc-main mx-auto rounded shadow-[0_0_10px_rgba(150,83,250,0.5)]"></div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 font-rajdhani">OYUN <span class="text-mc-main drop-shadow-[0_0_10px_rgba(150,83,250,0.5)]">MODLARI</span>
+</h2>
+                <div class="h-1 w-24 bg-mc-main mx-auto rounded shadow-[0_0_10px_rgba(150,83,250,0.5)]">
+</div>
                 <p class="mt-4 text-gray-400">Her zevke uygun, özenle hazırlanmış oyun modlarımız.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- GÜNCELLEME: Ultra Survival için MAVİ hover eklendi -->
-                <div class="bg-mc-card p-8 rounded-xl block-card relative overflow-hidden group hover:border-blue-500">
-                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition duration-500">
-                        <i class="fa-solid fa-cube text-9xl"></i>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <article class="game-mode-card mode-survival">
+                    <div class="game-mode-media">
+                        <img src="assets/mode-survival-v1.webp" alt="ArcadeCraft Survival dünyası; çiftlik, ev ve maden girişi" loading="lazy" decoding="async">
+                        <span class="game-mode-status">Ana oyun modu</span>
                     </div>
-                    <div class="relative z-10">
-                        <div class="w-16 h-16 bg-blue-600/20 text-blue-500 rounded-lg flex items-center justify-center text-3xl mb-6 border border-blue-500/30 shadow-[0_0_15px_rgba(37,99,235,0.2)] group-hover:scale-110 transition duration-300">
-                            <i class="fa-solid fa-tree"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-3 font-rajdhani group-hover:text-blue-400 transition">Ultra Survival</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
-                            Gelişmiş claim sistemi, orman zindanları ve özel boss savaşları ile klasik survival deneyimini bir üst seviyeye taşıdık.
-                        </p>
-                        <a href="features.html#icerik" class="text-blue-400 font-bold hover:text-white transition flex items-center gap-2 group-hover:translate-x-2 duration-300">
-                            Detayları İncele <i class="fa-solid fa-arrow-right"></i>
-                        </a>
+                    <div class="game-mode-body">
+                        <div class="game-mode-heading">
+<span class="game-mode-icon">
+<i class="fa-solid fa-tree">
+</i>
+</span>
+<h3>Survival</h3>
+</div>
+                        <p>Claim, 12 meslek, günlük görevler, yetenekler, oyuncu pazarı ve denetlenmiş ekonomiyle ağın kalıcı dünyası.</p>
+                        <a href="survival.html" class="game-mode-link">Detayları İncele <i class="fa-solid fa-arrow-right">
+</i>
+</a>
                     </div>
-                </div>
+                </article>
 
-                <!-- GÜNCELLEME: Skyblock için MOR hover korundu -->
-                <div class="bg-mc-card p-8 rounded-xl block-card relative overflow-hidden group border-t-4 border-mc-main hover:border-mc-main">
-                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition duration-500">
-                        <i class="fa-solid fa-cloud text-9xl"></i>
+                <article class="game-mode-card mode-lobby">
+                    <div class="game-mode-media">
+                        <img src="assets/mode-lobby-v1.webp" alt="ArcadeCraft lobi meydanı ve oyun portalları" loading="lazy" decoding="async">
+                        <span class="game-mode-status">Ağ merkezi</span>
                     </div>
-                    <div class="relative z-10">
-                        <div class="w-16 h-16 bg-[#9653fa]/20 text-mc-main rounded-lg flex items-center justify-center text-3xl mb-6 border border-mc-main/30 shadow-[0_0_15px_rgba(150,83,250,0.2)] group-hover:scale-110 transition duration-300">
-                            <i class="fa-solid fa-layer-group"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-3 font-rajdhani group-hover:text-mc-main transition">Skyblock OPS</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
-                            Adanı kur, minyonlarını çalıştır ve en zengin sen ol! Otomatik sistemler ve borsa sistemi ile ekonomi senin elinde.
-                        </p>
-                        <a href="features.html" class="text-mc-main font-bold hover:text-white transition flex items-center gap-2 group-hover:translate-x-2 duration-300">
-                            Detayları İncele <i class="fa-solid fa-arrow-right"></i>
-                        </a>
+                    <div class="game-mode-body">
+                        <div class="game-mode-heading">
+<span class="game-mode-icon">
+<i class="fa-solid fa-layer-group">
+</i>
+</span>
+<h3>Lobi</h3>
+</div>
+                        <p>Oyun seçimi, güvenli hesap doğrulama, NPC yönlendirmeleri ve bütün sunuculara geçişin merkezi.</p>
+                        <a href="servers.html" class="game-mode-link">Detayları İncele <i class="fa-solid fa-arrow-right">
+</i>
+</a>
                     </div>
-                </div>
+                </article>
 
-                <!-- GÜNCELLEME: Arena PvP için KIRMIZI hover ve İKON düzeltmesi -->
-                <div class="bg-mc-card p-8 rounded-xl block-card relative overflow-hidden group hover:border-red-500">
-                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition duration-500">
-                        <i class="fa-solid fa-shield-halved text-9xl"></i>
+                <article class="game-mode-card mode-event">
+                    <div class="game-mode-media">
+                        <img src="assets/mode-event-v1.webp" alt="ArcadeCraft gece köyündeki topluluk etkinliği" loading="lazy" decoding="async">
+                        <span class="game-mode-status">Dönemsel</span>
                     </div>
-                    <div class="relative z-10">
-                        <div class="w-16 h-16 bg-red-600/20 text-red-500 rounded-lg flex items-center justify-center text-3xl mb-6 border border-red-500/30 shadow-[0_0_15px_rgba(220,38,38,0.2)] group-hover:scale-110 transition duration-300">
-                            <i class="fa-solid fa-khanda"></i> <!-- İKON DEĞİŞTİ -->
-                        </div>
-                        <h3 class="text-2xl font-bold mb-3 font-rajdhani group-hover:text-red-400 transition">Arena PvP</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
-                            Botlara karşı değil, gerçek oyunculara karşı yeteneklerini sergile. 1v1 düellolar ve turnuvalar seni bekliyor.
-                        </p>
-                        <a href="features.html" class="text-red-400 font-bold hover:text-white transition flex items-center gap-2 group-hover:translate-x-2 duration-300">
-                            Detayları İncele <i class="fa-solid fa-arrow-right"></i>
-                        </a>
+                    <div class="game-mode-body">
+                        <div class="game-mode-heading">
+<span class="game-mode-icon">
+<i class="fa-solid fa-shield-halved">
+</i>
+</span>
+<h3>Etkinlik</h3>
+</div>
+                        <p>Duyurulan tarihlerde açılan topluluk oyunları ve özel Wolfesville oturumları için ayrılmış sunucu.</p>
+                        <a href="servers.html" class="game-mode-link">Detayları İncele <i class="fa-solid fa-arrow-right">
+</i>
+</a>
                     </div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- YENİ: MESLEKLER SHOWCASE -->
-    <section id="jobs-showcase" class="py-20 bg-[#0a0a0c] scroll-mt-20">
+    <!-- AĞ DENEYİMİ -->
+    <section id="network-showcase" class="py-20 bg-[#0a0a0c] scroll-mt-20">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <span class="text-mc-main font-bold tracking-widest uppercase text-sm drop-shadow-[0_0_5px_rgba(150,83,250,0.8)]">Jobs Sistemi</span>
-                <h2 class="text-4xl md:text-5xl font-bold font-rajdhani text-white mt-2">12 AKTİF <span class="text-mc-main drop-shadow-[0_0_10px_rgba(150,83,250,0.5)]">MESLEK</span></h2>
-                <div class="h-1 w-24 bg-mc-main mx-auto rounded mt-4 shadow-[0_0_10px_rgba(150,83,250,0.5)]"></div>
-                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Türkçe günlük görevler, XP ve para kazanma. Sevdiğin mesleği seç, liderlik tablosuna çık!</p>
+            <div class="text-center mb-14">
+                <span class="text-mc-main font-bold uppercase text-sm">ArcaDe Craft Network</span>
+                <h2 class="text-4xl md:text-5xl font-bold font-rajdhani text-white mt-2">TEK AĞ, <span class="text-mc-main">ORTAK DENEYİM</span>
+</h2>
+                <div class="h-1 w-24 bg-mc-main mx-auto rounded mt-4 shadow-[0_0_10px_rgba(150,83,250,0.5)]">
+</div>
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Lobiden oyun modlarına, web rehberlerinden Discord topluluğuna kadar bütün sistemler aynı kimlik etrafında çalışır.</p>
             </div>
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-                <div class="bg-mc-card border border-white/5 rounded-xl p-5 text-center hover:border-mc-main/40 hover:-translate-y-1 transition duration-300 group cursor-pointer" onclick="location.href='jobs.html'">
-                    <div class="text-3xl mb-3">⛏️</div>
-                    <h3 class="font-bold font-rajdhani text-lg group-hover:text-mc-main transition">Madenci</h3>
-                    <p class="text-gray-500 text-xs mt-1">Maden kazan, para kazan</p>
-                </div>
-                <div class="bg-mc-card border border-white/5 rounded-xl p-5 text-center hover:border-green-500/40 hover:-translate-y-1 transition duration-300 group cursor-pointer" onclick="location.href='jobs.html'">
-                    <div class="text-3xl mb-3">🪓</div>
-                    <h3 class="font-bold font-rajdhani text-lg group-hover:text-green-400 transition">Oduncu</h3>
-                    <p class="text-gray-500 text-xs mt-1">Ormanları işle</p>
-                </div>
-                <div class="bg-mc-card border border-white/5 rounded-xl p-5 text-center hover:border-yellow-500/40 hover:-translate-y-1 transition duration-300 group cursor-pointer" onclick="location.href='jobs.html'">
-                    <div class="text-3xl mb-3">🌾</div>
-                    <h3 class="font-bold font-rajdhani text-lg group-hover:text-yellow-400 transition">Çiftçi</h3>
-                    <p class="text-gray-500 text-xs mt-1">Hasat yap, büyü</p>
-                </div>
-                <div class="bg-mc-card border border-white/5 rounded-xl p-5 text-center hover:border-red-500/40 hover:-translate-y-1 transition duration-300 group cursor-pointer" onclick="location.href='jobs.html'">
-                    <div class="text-3xl mb-3">🏹</div>
-                    <h3 class="font-bold font-rajdhani text-lg group-hover:text-red-400 transition">Avcı</h3>
-                    <p class="text-gray-500 text-xs mt-1">Mob avla, ödül al</p>
-                </div>
-                <div class="bg-mc-card border border-white/5 rounded-xl p-5 text-center hover:border-blue-500/40 hover:-translate-y-1 transition duration-300 group cursor-pointer" onclick="location.href='jobs.html'">
-                    <div class="text-3xl mb-3">🎣</div>
-                    <h3 class="font-bold font-rajdhani text-lg group-hover:text-blue-400 transition">Balıkçı</h3>
-                    <p class="text-gray-500 text-xs mt-1">Gizli hazineler keşfet</p>
-                </div>
-                <div class="bg-mc-card border border-white/5 rounded-xl p-5 text-center hover:border-orange-500/40 hover:-translate-y-1 transition duration-300 group cursor-pointer" onclick="location.href='jobs.html'">
-                    <div class="text-3xl mb-3">🏗️</div>
-                    <h3 class="font-bold font-rajdhani text-lg group-hover:text-orange-400 transition">İnşaatçı</h3>
-                    <p class="text-gray-500 text-xs mt-1">İnşa et, kazan</p>
-                </div>
-                <div class="bg-mc-card border border-white/5 rounded-xl p-5 text-center hover:border-cyan-500/40 hover:-translate-y-1 transition duration-300 group cursor-pointer" onclick="location.href='jobs.html'">
-                    <div class="text-3xl mb-3">🔨</div>
-                    <h3 class="font-bold font-rajdhani text-lg group-hover:text-cyan-400 transition">Zanaatkar</h3>
-                    <p class="text-gray-500 text-xs mt-1">Eşya üret, satışa sun</p>
-                </div>
-                <div class="bg-mc-card border border-white/5 rounded-xl p-5 text-center hover:border-indigo-500/40 hover:-translate-y-1 transition duration-300 group cursor-pointer" onclick="location.href='jobs.html'">
-                    <div class="text-3xl mb-3">✨</div>
-                    <h3 class="font-bold font-rajdhani text-lg group-hover:text-indigo-400 transition">Efsuncu</h3>
-                    <p class="text-gray-500 text-xs mt-1">Büyüler uygula</p>
-                </div>
-                <div class="bg-mc-card border border-white/5 rounded-xl p-5 text-center hover:border-red-600/40 hover:-translate-y-1 transition duration-300 group cursor-pointer" onclick="location.href='jobs.html'">
-                    <div class="text-3xl mb-3">⚔️</div>
-                    <h3 class="font-bold font-rajdhani text-lg group-hover:text-red-500 transition">Silahşör</h3>
-                    <p class="text-gray-500 text-xs mt-1">Silah üret, güçlen</p>
-                </div>
-                <div class="bg-mc-card border border-white/5 rounded-xl p-5 text-center hover:border-amber-500/40 hover:-translate-y-1 transition duration-300 group cursor-pointer" onclick="location.href='jobs.html'">
-                    <div class="text-3xl mb-3">🪏</div>
-                    <h3 class="font-bold font-rajdhani text-lg group-hover:text-amber-400 transition">Kazıcı</h3>
-                    <p class="text-gray-500 text-xs mt-1">Derinlere in</p>
-                </div>
-                <div class="bg-mc-card border border-white/5 rounded-xl p-5 text-center hover:border-purple-500/40 hover:-translate-y-1 transition duration-300 group cursor-pointer" onclick="location.href='jobs.html'">
-                    <div class="text-3xl mb-3">🧪</div>
-                    <h3 class="font-bold font-rajdhani text-lg group-hover:text-purple-400 transition">İksirci</h3>
-                    <p class="text-gray-500 text-xs mt-1">İksirler hazırla</p>
-                </div>
-                <div class="bg-mc-card border border-white/5 rounded-xl p-5 text-center hover:border-teal-500/40 hover:-translate-y-1 transition duration-300 group cursor-pointer" onclick="location.href='jobs.html'">
-                    <div class="text-3xl mb-3">🗺️</div>
-                    <h3 class="font-bold font-rajdhani text-lg group-hover:text-teal-400 transition">Kaşif</h3>
-                    <p class="text-gray-500 text-xs mt-1">Dünyayı keşfet</p>
-                </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-6xl mx-auto">
+                <article class="info-card">
+                    <div class="w-12 h-12 bg-cyan-500/10 text-cyan-300 rounded-lg flex items-center justify-center text-xl mb-4 border border-cyan-500/20">
+<i class="fa-solid fa-route">
+</i>
+</div>
+                    <h3>Akıcı Sunucu Geçişi</h3>
+                    <p>Velocity omurgası; lobi, Survival ve dönemsel etkinlikleri tek bağlantı adresinde bir araya getirir.</p>
+                </article>
+                <article class="info-card">
+                    <div class="w-12 h-12 bg-yellow-500/10 text-yellow-300 rounded-lg flex items-center justify-center text-xl mb-4 border border-yellow-500/20">
+<i class="fa-solid fa-id-card">
+</i>
+</div>
+                    <h3>Ortak Oyuncu Kimliği</h3>
+                    <p>Rütbeler, yetkiler ve güvenlik kayıtları ağ genelinde tutarlı çalışır; her oyun modu aynı hesabı tanır.</p>
+                </article>
+                <article class="info-card">
+                    <div class="w-12 h-12 bg-green-500/10 text-green-300 rounded-lg flex items-center justify-center text-xl mb-4 border border-green-500/20">
+<i class="fa-solid fa-people-group">
+</i>
+</div>
+                    <h3>Bağlı Topluluk</h3>
+                    <p>Discord, bilgi bankası, duyurular ve destek akışı oyunun dışındaki deneyimi de ağla birlikte tutar.</p>
+                </article>
             </div>
-            <div class="text-center mt-10">
-                <a href="jobs.html" class="inline-flex items-center gap-2 bg-mc-main hover:bg-[#7e42d6] text-white px-8 py-3 rounded-lg font-bold font-rajdhani uppercase tracking-wide transition shadow-[0_0_20px_rgba(150,83,250,0.4)] hover:shadow-[0_0_30px_rgba(150,83,250,0.6)] hover:-translate-y-0.5">
-                    Tüm Meslekleri İncele <i class="fa-solid fa-arrow-right"></i>
-                </a>
+            <div class="flex flex-wrap justify-center gap-3 mt-9">
+                <a href="servers.html" class="inline-flex items-center gap-2 bg-mc-main hover:bg-[#7e42d6] text-white px-7 py-3 rounded-lg font-bold transition">Sunucuları Keşfet <i class="fa-solid fa-arrow-right">
+</i>
+</a>
+                <a href="about.html" class="inline-flex items-center gap-2 border border-white/15 hover:border-white/35 text-white px-7 py-3 rounded-lg font-bold transition">Ağı Tanı</a>
             </div>
         </div>
     </section>
 
-    <!-- YENİ: SUNUCU ÖZELLİKLERİ -->
+    <!-- SURVIVAL ÖZELLİKLERİ -->
     <section id="server-features" class="py-20 bg-mc-dark scroll-mt-20">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold font-rajdhani">GÜÇLÜ <span class="text-mc-main drop-shadow-[0_0_10px_rgba(150,83,250,0.5)]">ALTYAPI</span></h2>
-                <div class="h-1 w-24 bg-mc-main mx-auto rounded mt-4 shadow-[0_0_10px_rgba(150,83,250,0.5)]"></div>
+                <h2 class="text-4xl md:text-5xl font-bold font-rajdhani">GÜÇLÜ <span class="text-mc-main drop-shadow-[0_0_10px_rgba(150,83,250,0.5)]">ALTYAPI</span>
+</h2>
+                <div class="h-1 w-24 bg-mc-main mx-auto rounded mt-4 shadow-[0_0_10px_rgba(150,83,250,0.5)]">
+</div>
                 <p class="mt-4 text-gray-400">Sunucumuz sizi güvende ve eğlencede tutar.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="bg-mc-card border border-white/5 rounded-xl p-6 hover:border-purple-500/30 hover:-translate-y-1 transition duration-300">
                     <div class="w-12 h-12 bg-purple-500/10 text-purple-400 rounded-lg flex items-center justify-center text-2xl mb-4 border border-purple-500/20">
-                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star">
+</i>
                     </div>
                     <h3 class="text-xl font-bold font-rajdhani mb-2 text-purple-300">RPG Yetenek Sistemi</h3>
                     <p class="text-gray-400 text-sm leading-relaxed">AuraSkills ile Mining, Farming, Combat gibi yetenekleri geliştir. Seviye atladıkça güçlen!</p>
                 </div>
                 <div class="bg-mc-card border border-white/5 rounded-xl p-6 hover:border-yellow-500/30 hover:-translate-y-1 transition duration-300">
                     <div class="w-12 h-12 bg-yellow-500/10 text-yellow-400 rounded-lg flex items-center justify-center text-2xl mb-4 border border-yellow-500/20">
-                        <i class="fa-solid fa-coins"></i>
+                        <i class="fa-solid fa-coins">
+</i>
                     </div>
                     <h3 class="text-xl font-bold font-rajdhani mb-2 text-yellow-300">Gelişmiş Ekonomi</h3>
                     <p class="text-gray-400 text-sm leading-relaxed">EssentialsX + Vault ile sağlam ekonomi. Marketten alışveriş yap, /jobs ile para kazan.</p>
                 </div>
                 <div class="bg-mc-card border border-white/5 rounded-xl p-6 hover:border-red-500/30 hover:-translate-y-1 transition duration-300">
                     <div class="w-12 h-12 bg-red-500/10 text-red-400 rounded-lg flex items-center justify-center text-2xl mb-4 border border-red-500/20">
-                        <i class="fa-solid fa-shield-halved"></i>
+                        <i class="fa-solid fa-shield-halved">
+</i>
                     </div>
                     <h3 class="text-xl font-bold font-rajdhani mb-2 text-red-300">Anti-Cheat & Güvenlik</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">GrimAC, TCPShield + Cloudflare DDoS koruması. Hile yok, adil oyun garantisi.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">GrimAC, proxy izolasyonu ve backend erişim sınırlarıyla katmanlı koruma.</p>
                 </div>
                 <div class="bg-mc-card border border-white/5 rounded-xl p-6 hover:border-orange-500/30 hover:-translate-y-1 transition duration-300">
                     <div class="w-12 h-12 bg-orange-500/10 text-orange-400 rounded-lg flex items-center justify-center text-2xl mb-4 border border-orange-500/20">
-                        <i class="fa-solid fa-box-open"></i>
+                        <i class="fa-solid fa-box-open">
+</i>
                     </div>
                     <h3 class="text-xl font-bold font-rajdhani mb-2 text-orange-300">Kasa Sistemi</h3>
                     <p class="text-gray-400 text-sm leading-relaxed">ExcellentCrates ile nadir ödüller kazanabilirsin. Anahtar topla, şansını dene!</p>
                 </div>
                 <div class="bg-mc-card border border-white/5 rounded-xl p-6 hover:border-green-500/30 hover:-translate-y-1 transition duration-300">
                     <div class="w-12 h-12 bg-green-500/10 text-green-400 rounded-lg flex items-center justify-center text-2xl mb-4 border border-green-500/20">
-                        <i class="fa-solid fa-map-location-dot"></i>
+                        <i class="fa-solid fa-map-location-dot">
+</i>
                     </div>
                     <h3 class="text-xl font-bold font-rajdhani mb-2 text-green-300">Arazi Koruma</h3>
                     <p class="text-gray-400 text-sm leading-relaxed">GriefPrevention ile claimlerin güvende. Altın kürekle alanını işaretle, kimse giremez!</p>
                 </div>
                 <div class="bg-mc-card border border-white/5 rounded-xl p-6 hover:border-blue-500/30 hover:-translate-y-1 transition duration-300">
                     <div class="w-12 h-12 bg-blue-500/10 text-blue-400 rounded-lg flex items-center justify-center text-2xl mb-4 border border-blue-500/20">
-                        <i class="fa-solid fa-scroll"></i>
+                        <i class="fa-solid fa-scroll">
+</i>
                     </div>
                     <h3 class="text-xl font-bold font-rajdhani mb-2 text-blue-300">Quest & Görev Sistemi</h3>
                     <p class="text-gray-400 text-sm leading-relaxed">BeautyQuests NPC görevleri ve Jobs günlük görevleriyle her gün yeni hedefler seni bekliyor.</p>
                 </div>
             </div>
             <div class="text-center mt-10">
-                <a href="features.html" class="inline-flex items-center gap-2 border border-mc-main text-mc-main hover:bg-mc-main hover:text-white px-8 py-3 rounded-lg font-bold font-rajdhani uppercase tracking-wide transition hover:-translate-y-0.5">
-                    Tüm Özellikleri Gör <i class="fa-solid fa-arrow-right"></i>
+                <a href="survival-systems.html" class="inline-flex items-center gap-2 border border-mc-main text-mc-main hover:bg-mc-main hover:text-white px-8 py-3 rounded-lg font-bold font-rajdhani uppercase tracking-wide transition hover:-translate-y-0.5">
+                    Tüm Özellikleri Gör <i class="fa-solid fa-arrow-right">
+</i>
                 </a>
             </div>
         </div>
     </section>
 
-    <section id="news" class="py-20 bg-[#0a0a0c] scroll-mt-20">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-end mb-12">
-                <div>
-                    <h2 class="text-4xl font-bold font-rajdhani">SON <span class="text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">DUYURULAR</span></h2>
-                    <div class="h-1 w-16 bg-white mt-2 rounded shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
-                </div>
-                <a href="news.html" class="text-gray-400 hover:text-white text-sm font-bold border border-gray-700 px-4 py-2 rounded hover:border-white transition hover:shadow-[0_0_10px_rgba(255,255,255,0.2)]">TÜMÜNÜ GÖR</a>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="group bg-mc-card rounded-lg overflow-hidden border border-white/5 hover:border-mc-main/50 transition duration-300 hover:shadow-[0_0_20px_rgba(150,83,250,0.1)]">
-                    <div class="h-48 bg-cover bg-center relative transform group-hover:scale-105 transition duration-500" style="background-image: url('https://images.unsplash.com/photo-1587573089734-09cb69c0f2b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
-                        <div class="absolute top-4 left-4 bg-mc-main text-white text-xs font-bold px-2 py-1 rounded shadow-lg">GÜNCELLEME</div>
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition"></div>
-                    </div>
-                    <div class="p-6 relative bg-mc-card">
-                        <span class="text-gray-500 text-xs font-bold mb-2 block"><i class="fa-regular fa-calendar mr-1"></i> 12 Aralık 2025</span>
-                        <h3 class="text-xl font-bold mb-2 group-hover:text-mc-main transition">Kış Sezonu ve Yılbaşı Etkinlikleri</h3>
-                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">Sunucumuza kış teması geldi! Yılbaşına özel kasalar, özel eşyalar ve harika ödüller sizi bekliyor.</p>
-                        <a href="news.html" class="text-white text-sm font-bold border-b border-mc-main pb-1 inline-block hover:text-mc-main transition">DEVAMINI OKU</a>
-                    </div>
-                </div>
-
-                <div class="group bg-mc-card rounded-lg overflow-hidden border border-white/5 hover:border-red-500/50 transition duration-300 hover:shadow-[0_0_20px_rgba(220,38,38,0.1)]">
-                    <div class="h-48 bg-cover bg-center relative transform group-hover:scale-105 transition duration-500" style="background-image: url('https://images.unsplash.com/photo-1622329215092-28c037307524?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
-                        <div class="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded shadow-lg">BAKIM</div>
-                         <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition"></div>
-                    </div>
-                    <div class="p-6 relative bg-mc-card">
-                        <span class="text-gray-500 text-xs font-bold mb-2 block"><i class="fa-regular fa-calendar mr-1"></i> 10 Aralık 2025</span>
-                        <h3 class="text-xl font-bold mb-2 group-hover:text-red-500 transition">Skyblock Sunucu Bakımı</h3>
-                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">Performans iyileştirmeleri ve yeni ada seviyeleri için kısa süreli bir bakım çalışması yapılacaktır.</p>
-                        <a href="news.html" class="text-white text-sm font-bold border-b border-red-600 pb-1 inline-block hover:text-red-500 transition">DEVAMINI OKU</a>
-                    </div>
-                </div>
-
-                 <div class="group bg-mc-card rounded-lg overflow-hidden border border-white/5 hover:border-blue-500/50 transition duration-300 hover:shadow-[0_0_20px_rgba(59,130,246,0.1)]">
-                    <div class="h-48 bg-cover bg-center relative transform group-hover:scale-105 transition duration-500" style="background-image: url('https://images.unsplash.com/photo-1599582531061-f09b244791b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
-                        <div class="absolute top-4 left-4 bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded shadow-lg">ETKİNLİK</div>
-                         <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition"></div>
-                    </div>
-                    <div class="p-6 relative bg-mc-card">
-                        <span class="text-gray-500 text-xs font-bold mb-2 block"><i class="fa-regular fa-calendar mr-1"></i> 05 Aralık 2025</span>
-                        <h3 class="text-xl font-bold mb-2 group-hover:text-blue-500 transition">Büyük Klan Savaşları Başlıyor</h3>
-                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">Klanını topla ve arenada gücünü göster. Kazanan klan üyelerine VIP+ rütbesi hediye!</p>
-                        <a href="news.html" class="text-white text-sm font-bold border-b border-blue-500 pb-1 inline-block hover:text-blue-500 transition">DEVAMINI OKU</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="store" class="py-20 bg-gradient-to-b from-mc-dark to-[#050505] scroll-mt-20">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <span class="text-mc-main font-bold tracking-widest uppercase text-sm drop-shadow-[0_0_5px_rgba(150,83,250,0.8)]">Destek Ol</span>
-                <h2 class="text-4xl md:text-5xl font-bold font-rajdhani text-white">SUNUCU <span class="text-mc-accent drop-shadow-[0_0_10px_rgba(255,170,0,0.5)]">MAĞAZASI</span></h2>
-                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">VIP özellikleri satın alarak hem sunucuyu destekleyebilir hem de oyun içinde avantajlar elde edebilirsin.</p>
-            </div>
-
-            <div class="flex flex-col md:flex-row justify-center gap-6 items-center md:items-stretch">
-                <div class="w-full max-w-sm bg-mc-card border border-white/10 rounded-2xl p-6 text-center hover:scale-105 transition duration-300 relative group hover:border-green-500/50">
-                    <h3 class="text-2xl font-bold text-green-400 mb-2 font-rajdhani">VIP</h3>
-                    <div class="text-4xl font-bold text-white mb-6">50 ₺<span class="text-sm text-gray-500 font-normal">/ay</span></div>
-                    <ul class="text-left space-y-3 mb-8 text-gray-400 text-sm">
-                        <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Sohbette Renkli Yazı</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Dolu Sunucuya Giriş</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> 2 Adet Kasa Anahtarı</li>
-                        <li class="flex items-center"><i class="fa-solid fa-xmark text-red-500 mr-2"></i> Özel Petler</li>
-                    </ul>
-                    <button class="w-full py-3 rounded-lg border border-green-500 text-green-400 font-bold hover:bg-green-500 hover:text-white transition uppercase shadow-[0_0_10px_rgba(0,0,0,0)] hover:shadow-[0_0_20px_rgba(34,197,94,0.4)]">Satın Al</button>
-                </div>
-
-                <div class="w-full max-w-sm bg-[#1a1a1a] border-2 border-mc-accent rounded-2xl p-6 text-center transform scale-105 shadow-[0_0_30px_rgba(255,170,0,0.15)] relative z-10 hover:shadow-[0_0_50px_rgba(255,170,0,0.25)] transition duration-300">
-                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-mc-accent text-black font-bold px-4 py-1 rounded-full text-xs shadow-lg">EN ÇOK SATAN</div>
-                    <h3 class="text-3xl font-bold text-mc-accent mb-2 font-rajdhani">MVP+</h3>
-                    <div class="text-5xl font-bold text-white mb-6">120 ₺<span class="text-sm text-gray-500 font-normal">/ay</span></div>
-                    <ul class="text-left space-y-3 mb-8 text-gray-300 text-sm font-medium">
-                        <li class="flex items-center"><i class="fa-solid fa-check text-mc-accent mr-2"></i> Tüm VIP Özellikleri</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-mc-accent mr-2"></i> Uçuş Modu (/fly)</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-mc-accent mr-2"></i> 10 Adet Kasa Anahtarı</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-mc-accent mr-2"></i> Özel Efektler</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-mc-accent mr-2"></i> Anında Işınlanma</li>
-                    </ul>
-                    <button class="w-full py-3 rounded-lg bg-mc-accent text-black font-bold hover:bg-yellow-400 transition uppercase shadow-[0_0_15px_rgba(255,170,0,0.4)] hover:shadow-[0_0_25px_rgba(255,170,0,0.6)] hover:-translate-y-1">Satın Al</button>
-                </div>
-
-                <div class="w-full max-w-sm bg-mc-card border border-white/10 rounded-2xl p-6 text-center hover:scale-105 transition duration-300 relative group hover:border-mc-main/50">
-                    <h3 class="text-2xl font-bold text-mc-main mb-2 font-rajdhani">ULTRA</h3>
-                    <div class="text-4xl font-bold text-white mb-6">250 ₺<span class="text-sm text-gray-500 font-normal">/ay</span></div>
-                    <ul class="text-left space-y-3 mb-8 text-gray-400 text-sm">
-                        <li class="flex items-center"><i class="fa-solid fa-check text-mc-main mr-2"></i> Tüm MVP+ Özellikleri</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-mc-main mr-2"></i> Sınırsız Arsa Hakkı</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-mc-main mr-2"></i> 25 Adet Kasa Anahtarı</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-mc-main mr-2"></i> Sunucu Panel Erişimi (Kısmi)</li>
-                    </ul>
-                    <button class="w-full py-3 rounded-lg border border-mc-main text-mc-main font-bold hover:bg-mc-main hover:text-white transition uppercase shadow-[0_0_10px_rgba(0,0,0,0)] hover:shadow-[0_0_20px_rgba(150,83,250,0.4)]">Satın Al</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-black border-t border-white/10 pt-16 pb-8">
+    <section id="news" class="py-20 bg-[#101216] scroll-mt-20">
+<div class="container mx-auto px-4">
+<div class="flex items-end justify-between gap-4 mb-10">
+<div>
+<span class="text-green-400 font-bold uppercase text-sm">Ağ Günlüğü</span>
+<h2 class="text-4xl md:text-5xl font-bold font-rajdhani">SON GÜNCELLEMELER</h2>
+</div>
+<a href="news.html" class="text-green-400 font-bold">Tümünü gör →</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+<article class="info-card">
+<span class="tag">13 Eylül 2026</span>
+<h3>26.2 geçişi tamamlandı</h3>
+<p>Paper, Velocity, dünyalar ve eklenti katmanı yeni sürüme hazır.</p>
+</article>
+<article class="info-card">
+<span class="tag">Survival</span>
+<h3>Ekonomi yeniden dengelendi</h3>
+<p>Market, meslek, üretim ve görev kazançları birlikte denetlendi.</p>
+</article>
+<article class="info-card">
+<span class="tag">Discord</span>
+<h3>Topluluk merkezi yenilendi</h3>
+<p>Sohbet, kayıtlar, roller ve bilgi bankası tek sunucuda toplandı.</p>
+</article>
+</div>
+</div>
+</section>
+<section id="store" class="py-20 bg-[#0b0d10] scroll-mt-20">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<span class="rank-kicker">Oyuncu rütbeleri</span>
+<h2 class="text-4xl md:text-5xl font-bold font-rajdhani">VIP RÜTBELERİ</h2>
+<p class="mt-4 text-gray-400 max-w-2xl mx-auto">VIP paketleri para veya Jobs çarpanı vermez. Fiyatlandırma ve satış sistemi yayınlanana kadar web üzerinden ödeme alınmaz.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
+<article class="info-card">
+<h3 class="text-green-400">VIP</h3>
+<p>5 ev · 2 sanal depo · 5 ilan · 2 dükkân</p>
+<p>Haftalık kit, renkli sohbet, şapka ve çöp kutusu.</p>
+</article>
+<article class="info-card">
+<h3 class="text-cyan-400">MVIP</h3>
+<p>8 ev · 3 sanal depo · 8 ilan · 3 dükkân</p>
+<p>VIP hakları, kişisel zaman/hava, tezgâh ve takma ad.</p>
+</article>
+<article class="info-card">
+<h3 class="text-yellow-400">UVIP</h3>
+<p>12 ev · 5 sanal depo · 12 ilan · 5 dükkân</p>
+<p>MVIP hakları, RGB, taşınabilir istasyonlar ve Ender Sandığı.</p>
+</article>
+</div>
+<div class="text-center mt-8">
+<a href="ranks.html" class="inline-block bg-green-500 text-black px-6 py-3 rounded font-bold">Rütbeleri incele</a>
+</div>
+</div>
+</section>
+<footer class="bg-black border-t border-white/10 pt-16 pb-8">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 <div class="col-span-1 md:col-span-2">
                     <a href="index.html" class="text-2xl font-bold font-rajdhani flex items-center gap-2 mb-4">
-                        <span class="text-white">ARCADE <span class="text-mc-main">CRAFT</span></span>
+                        <span class="text-white">ARCADE <span class="text-mc-main">CRAFT</span>
+</span>
                     </a>
                     <p class="text-gray-500 text-sm leading-relaxed max-w-md">
                         ArcaDe Craft, oyuncularına en iyi Minecraft deneyimini sunmak için tasarlanmıştır. Pay to win değil, Play to win mantığıyla hareket ediyoruz.
                     </p>
                     <div class="flex gap-4 mt-6">
-                        <a href="https://discord.gg/ECFf9GWwjq" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#5865F2] hover:text-white transition hover:shadow-[0_0_15px_rgba(88,101,242,0.5)]"><i class="fa-brands fa-discord"></i></a>
-                        <a href="https://www.youtube.com/@robmite" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#FF0000] hover:text-white transition hover:shadow-[0_0_15px_rgba(255,0,0,0.5)]"><i class="fa-brands fa-youtube"></i></a>
-                        <a href="https://x.com/RobMite" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#1DA1F2] hover:text-white transition hover:shadow-[0_0_15px_rgba(29,161,242,0.5)]"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="https://www.instagram.com/robmite/" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-pink-600 hover:text-white transition hover:shadow-[0_0_15px_rgba(219,39,119,0.5)]"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://discord.gg/GerdDHzMWp" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#5865F2] hover:text-white transition hover:shadow-[0_0_15px_rgba(88,101,242,0.5)]">
+<i class="fa-brands fa-discord">
+</i>
+</a>
+                        <a href="https://www.youtube.com/@robmite" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#FF0000] hover:text-white transition hover:shadow-[0_0_15px_rgba(255,0,0,0.5)]">
+<i class="fa-brands fa-youtube">
+</i>
+</a>
+                        <a href="https://x.com/RobMite" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#1DA1F2] hover:text-white transition hover:shadow-[0_0_15px_rgba(29,161,242,0.5)]">
+<i class="fa-brands fa-twitter">
+</i>
+</a>
+                        <a href="https://www.instagram.com/robmite/" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-pink-600 hover:text-white transition hover:shadow-[0_0_15px_rgba(219,39,119,0.5)]">
+<i class="fa-brands fa-instagram">
+</i>
+</a>
                     </div>
                 </div>
-                
+
                 <div>
                     <h4 class="text-white font-bold mb-6 font-rajdhani uppercase tracking-wider">Hızlı Linkler</h4>
                     <ul class="space-y-2 text-sm text-gray-500">
-                        <li><a href="terms.html" class="hover:text-mc-main transition">Kullanıcı Sözleşmesi</a></li>
-                        <li><a href="privacy.html" class="hover:text-mc-main transition">Gizlilik Politikası</a></li>
-                        <li><a href="rules.html" class="hover:text-mc-main transition">Kurallar</a></li>
-                        <li><a href="application.html" class="hover:text-mc-main transition">Yetkili Başvurusu</a></li>
-                        <li><a href="appeal.html" class="hover:text-red-500 transition text-red-400/80"><i class="fa-solid fa-gavel mr-1"></i> Ceza İtirazı</a></li>
+                        <li>
+<a href="terms.html" class="hover:text-mc-main transition">Kullanıcı Sözleşmesi</a>
+</li>
+                        <li>
+<a href="privacy.html" class="hover:text-mc-main transition">Gizlilik Politikası</a>
+</li>
+                        <li>
+<a href="rules.html" class="hover:text-mc-main transition">Kurallar</a>
+</li>
+                        <li>
+<a href="application.html" class="hover:text-mc-main transition">Yetkili Başvurusu</a>
+</li>
+                        <li>
+<a href="appeal.html" class="hover:text-red-500 transition text-red-400/80">
+<i class="fa-solid fa-gavel mr-1">
+</i> Ceza İtirazı</a>
+</li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 class="text-white font-bold mb-6 font-rajdhani uppercase tracking-wider">İletişim</h4>
                     <ul class="space-y-2 text-sm text-gray-500">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-envelope text-mc-main"></i> destek@robsarcade.online</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-ticket text-mc-main"></i> Discord Ticket</li>
-                        <li class="flex items-center gap-2 mt-2"><a href="wiki.html" class="text-gray-400 hover:text-white flex items-center gap-2"><i class="fa-solid fa-book text-mc-main"></i> Wiki & Yardım</a></li>
+                        <li class="flex items-center gap-2">
+<i class="fa-solid fa-envelope text-mc-main">
+</i> destek@robsarcade.online</li>
+                        <li class="flex items-center gap-2">
+<i class="fa-solid fa-ticket text-mc-main">
+</i> Discord Ticket</li>
+                        <li class="flex items-center gap-2 mt-2">
+<a href="wiki.html" class="text-gray-400 hover:text-white flex items-center gap-2">
+<i class="fa-solid fa-book text-mc-main">
+</i> Wiki & Yardım</a>
+</li>
                     </ul>
                 </div>
             </div>
 
             <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
                 <p>&copy; 2026 ArcaDe Craft Sunucusu. Tüm hakları saklıdır. Mojang AB ile bir bağlantısı yoktur.</p>
-                <p>Designed with <i class="fa-solid fa-heart text-red-900"></i> by arcooty</p>
+                <p>Designed with <i class="fa-solid fa-heart text-red-900">
+</i> by arcooty</p>
             </div>
         </div>
     </footer>
 
-<script src="form-logic.js"></script> <!-- Sadece form olan sayfalarda zorunlu ama hepsinde dursa zarar gelmez -->
-<script src="ui.js"></script>
+<script src="form-logic.js">
+</script> <!-- Sadece form olan sayfalarda zorunlu ama hepsinde dursa zarar gelmez -->
+<script src="ui.js?v=20260913-5">
+</script>
+<script src="server-data.js">
+</script>
+<script src="live-integration.js">
+</script>
+<script src="site-shell.js?v=20260913-5">
+</script>
 </body>
 
 </html>
