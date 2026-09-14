@@ -7,7 +7,7 @@
   <meta name="description" content="ArcaDe Craft yetkili kademeleri, görev alanları ve başvuru süreci.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="network.css?v=20260914-5">
+  <link rel="stylesheet" href="network.css?v=20260914-6">
   <link rel="icon" href="assets/logo.png" type="image/png">
 </head>
 <body class="network-shell">
@@ -18,6 +18,12 @@
     <h1>YETKİLİ KADROLARI</h1>
     <p>Her kademe yalnız görevini yerine getirmek için gereken yetkilere sahiptir. Oyun içi ve Discord izinleri ayrı tutulur; bütün moderasyon işlemleri kayıt altındadır.</p>
   </header>
+
+  <section class="about-section">
+    <div class="section-title"><span class="eyebrow">Canlı kadro</span><h2>AKTİF YETKİLİLER</h2></div>
+    <p id="staff-status" class="section-note" role="status">Yetkili listesi yükleniyor…</p>
+    <div id="staff-list" class="staff-grid" hidden></div>
+  </section>
 
   <section class="about-section">
     <div class="section-title"><span class="eyebrow">Sorumluluk zinciri</span><h2>GÖREV KADEMELERİ</h2></div>
@@ -46,6 +52,8 @@
   </section>
 </main>
 <footer class="site-footer"></footer>
-<script src="site-shell.js?v=20260914-5"></script>
+<script src="api-config.js"></script>
+<script src="staff.js"></script>
+<script src="site-shell.js?v=20260914-6"></script>
 </body>
 </html>

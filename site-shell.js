@@ -4,7 +4,7 @@
   document.body.classList.add('network-shell');
   const survivalPages = ['survival.html','survival-systems.html','map.html','jobs.html','claims.html','economy.html','quests.html','commands.html','crates.html','ranks.html','leaderboard.html','wiki.html'];
   const networkPages = ['about.html','servers.html','status.html'];
-  const communityPages = ['news.html','rules.html','staff.html','application.html','appeal.html'];
+  const communityPages = ['news.html','rules.html','players.html','staff.html','application.html','appeal.html'];
   const current = name => path === name ||
     (name === 'survival.html' && survivalPages.includes(path)) ||
     (name === 'store.html' && path === 'order.html') ? ' aria-current="page"' : '';
@@ -26,7 +26,7 @@
           <section class="survival-menu-group"><span>Ekonomi ve Haklar</span><a href="economy.html">Ekonomi</a><a href="claims.html">Claim Rehberi</a><a href="crates.html">Ödül Kasaları</a><a href="ranks.html">VIP ve Rütbeler</a></section>
         </div></div>
         <div class="nav-menu community-menu"><button type="button" aria-haspopup="true" aria-expanded="false"${groupCurrent(communityPages)}>TOPLULUK <i class="fa-solid fa-chevron-down"></i></button><div class="nav-dropdown compact-dropdown">
-          <section class="nav-menu-group"><span>Topluluk</span><a href="news.html">Haberler</a><a href="rules.html">Kurallar</a><a href="staff.html">Yetkili Kadroları</a><a href="application.html">Yetkili Başvurusu</a><a href="appeal.html">Ceza İtirazı</a></section>
+          <section class="nav-menu-group"><span>Topluluk</span><a href="news.html">Haberler</a><a href="players.html">Oyuncu Profilleri</a><a href="rules.html">Kurallar</a><a href="staff.html">Yetkili Kadroları</a><a href="application.html">Yetkili Başvurusu</a><a href="appeal.html">Ceza İtirazı</a></section>
         </div></div>
         <a href="store.html"${current('store.html')}>MAĞAZA</a><a class="site-discord" href="${discord}" target="_blank" rel="noopener">DISCORD</a>
       </div></div>`;
@@ -84,6 +84,7 @@
     'application.html': ['Topluluk', 'Yetkili Başvurusu'],
     'appeal.html': ['Topluluk', 'Ceza İtirazı'],
     'staff.html': ['Topluluk', 'Yetkili Kadroları'],
+    'players.html': ['Topluluk', 'Oyuncu Profilleri'],
     'privacy.html': ['Yasal', 'Gizlilik'],
     'terms.html': ['Yasal', 'Kullanım Şartları']
   };
@@ -148,7 +149,7 @@
       <section class="footer-brand"><a class="site-brand" href="index.html"><img src="assets/logo.png" alt="ArcaDe Craft Network logosu"><span>ArcaDe Craft <strong>Network</strong></span></a><p>Güvenli lobi, dengeli Survival ve dönemsel etkinlikleri tek ağda buluşturan Türkçe Minecraft topluluğu.</p><button class="footer-address" type="button" data-copy-address title="Sunucu adresini kopyala"><i class="fa-regular fa-copy"></i><span>oyna.robsarcade.online</span></button></section>
       <section><h2>Ağ</h2><a href="about.html">Hakkında</a><a href="servers.html">Sunucular</a><a href="status.html">Sunucu Durumu</a></section>
       <section><h2>Survival</h2><a href="survival.html">Genel Bakış</a><a href="survival-systems.html">Tüm Özellikler</a><a href="map.html">Canlı Harita</a><a href="jobs.html">Meslekler</a><a href="quests.html">Görevler</a><a href="claims.html">Claim Rehberi</a><a href="economy.html">Ekonomi</a><a href="crates.html">Ödül Kasaları</a><a href="ranks.html">VIP ve Rütbeler</a></section>
-      <section><h2>Topluluk</h2><a href="news.html">Haberler</a><a href="leaderboard.html">Liderlik</a><a href="wiki.html">Bilgi Bankası</a><a href="commands.html">Komutlar</a><a href="rules.html">Kurallar</a><a href="staff.html">Yetkili Kadroları</a><a href="${discord}" target="_blank" rel="noopener">Discord’a Katıl</a><a href="application.html">Yetkili Başvurusu</a><a href="appeal.html">Ceza İtirazı</a></section>
+      <section><h2>Topluluk</h2><a href="news.html">Haberler</a><a href="leaderboard.html">Liderlik</a><a href="players.html">Oyuncu Profilleri</a><a href="wiki.html">Bilgi Bankası</a><a href="commands.html">Komutlar</a><a href="rules.html">Kurallar</a><a href="staff.html">Yetkili Kadroları</a><a href="${discord}" target="_blank" rel="noopener">Discord’a Katıl</a><a href="application.html">Yetkili Başvurusu</a><a href="appeal.html">Ceza İtirazı</a></section>
     </div><div class="footer-bottom"><span>© 2026 ArcaDe Craft Network</span><span><a href="privacy.html">Gizlilik</a><a href="terms.html">Kullanım Şartları</a></span><span>Mojang Studios veya Microsoft ile bağlantılı değildir.</span></div>`;
     footer.querySelectorAll('a[href]').forEach(link => {
       const targetPath = new URL(link.getAttribute('href'), location.href).pathname.split('/').pop();
@@ -176,7 +177,8 @@
     'commands.html': [['wiki.html','Bilgi bankası'],['claims.html','Claim rehberi'],['economy.html','Ekonomi']],
     'wiki.html': [['survival.html','Survival merkezi'],['commands.html','Komutlar'],['rules.html','Kurallar']],
     'store.html': [['ranks.html','Paketleri karşılaştır'],['crates.html','Kasa oranları'],['terms.html','Satış şartları']],
-    'staff.html': [['application.html','Yetkili başvurusu'],['rules.html','Topluluk kuralları'],['about.html','Ağ yaklaşımı']]
+    'staff.html': [['application.html','Yetkili başvurusu'],['rules.html','Topluluk kuralları'],['about.html','Ağ yaklaşımı']],
+    'players.html': [['leaderboard.html','Liderlik'],['staff.html','Yetkili kadroları'],['rules.html','Topluluk kuralları']]
   };
   if (relatedPages[path] && !document.querySelector('.related-nav')) {
     const related = document.createElement('nav');

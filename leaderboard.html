@@ -31,7 +31,7 @@
         @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
         .skeleton { background: linear-gradient(90deg, #1e1e1e 25%, #2a2a2a 50%, #1e1e1e 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 8px; }
     </style>
-    <link rel="stylesheet" href="network.css?v=20260914-5">
+    <link rel="stylesheet" href="network.css?v=20260914-6">
 <link rel="icon" href="assets/logo.png" type="image/png">
 </head>
 <body class="antialiased">
@@ -90,6 +90,9 @@
                 <button onclick="showTab('efsuncu')" class="tab-btn px-5 py-2 rounded-full border border-white/10 text-sm font-bold font-rajdhani text-gray-400" id="tab-efsuncu">✨ Efsuncu</button>
                 <button onclick="showTab('iksirci')" class="tab-btn px-5 py-2 rounded-full border border-white/10 text-sm font-bold font-rajdhani text-gray-400" id="tab-iksirci">🧪 İksirci</button>
                 <button onclick="showTab('kasif')" class="tab-btn px-5 py-2 rounded-full border border-white/10 text-sm font-bold font-rajdhani text-gray-400" id="tab-kasif">🗺️ Kaşif</button>
+                <button onclick="showTab('kazici')" class="tab-btn px-5 py-2 rounded-full border border-white/10 text-sm font-bold font-rajdhani text-gray-400" id="tab-kazici">🪨 Kazıcı</button>
+                <button onclick="showTab('silahci')" class="tab-btn px-5 py-2 rounded-full border border-white/10 text-sm font-bold font-rajdhani text-gray-400" id="tab-silahci">⚔️ Silah Ustası</button>
+                <button onclick="showTab('beceriler')" class="tab-btn px-5 py-2 rounded-full border border-white/10 text-sm font-bold font-rajdhani text-gray-400" id="tab-beceriler">✨ Beceriler</button>
             </div>
         </div>
     </section>
@@ -152,6 +155,18 @@
                 <h2 class="text-2xl font-bold font-rajdhani mb-6 flex items-center gap-2">🗺️ <span class="text-teal-400">Kaşif Liderlik</span> <span class="text-sm text-gray-500 font-normal font-inter">Top 10 · Jobs Level</span></h2>
                 <div class="space-y-3" id="kasif-list"></div>
             </div>
+            <div id="lb-kazici" class="lb-panel">
+                <h2 class="text-2xl font-bold font-rajdhani mb-6 flex items-center gap-2">🪨 <span class="text-stone-300">Kazıcı Liderlik</span> <span class="text-sm text-gray-500 font-normal font-inter">Top 10 · Jobs Level</span></h2>
+                <div class="space-y-3" id="kazici-list"></div>
+            </div>
+            <div id="lb-silahci" class="lb-panel">
+                <h2 class="text-2xl font-bold font-rajdhani mb-6 flex items-center gap-2">⚔️ <span class="text-rose-300">Silah Ustası Liderlik</span> <span class="text-sm text-gray-500 font-normal font-inter">Top 10 · Jobs Level</span></h2>
+                <div class="space-y-3" id="silahci-list"></div>
+            </div>
+            <div id="lb-beceriler" class="lb-panel">
+                <h2 class="text-2xl font-bold font-rajdhani mb-6 flex items-center gap-2">✨ <span class="text-violet-300">Beceri Liderliği</span> <span class="text-sm text-gray-500 font-normal font-inter">Top 10 · AuraSkills toplam seviye</span></h2>
+                <div class="space-y-3" id="beceriler-list"></div>
+            </div>
 
             <!-- OYUN İÇİ KOMUTLAR -->
             <div class="mt-12 bg-mc-card border border-white/5 rounded-2xl p-6">
@@ -206,7 +221,11 @@ const rankIcons = ['🥇','🥈','🥉','4','5','6','7','8','9','10'];
 function renderLeaderboard(tabId) {
     const data = leaderboardData[tabId];
     const container = document.getElementById(`${tabId}-list`);
-    if (!container || !data) return;
+    if (!container) return;
+    if (!data?.length) {
+        container.innerHTML = '<div class="bg-mc-card border border-white/5 rounded-xl p-5 text-gray-400">Bu kategoride henüz sıralanacak oyuncu verisi yok.</div>';
+        return;
+    }
     container.innerHTML = data.map((entry, i) => `
         <div class="flex items-center gap-4 bg-mc-card border ${rankBgs[i] ? '' : 'border-white/5'} ${rankBgs[i]} rounded-xl p-4 hover:scale-[1.01] transition duration-200">
             <div class="w-10 text-center font-bold font-rajdhani text-lg ${rankColors[i]}">${rankIcons[i]}</div>
@@ -218,6 +237,11 @@ function renderLeaderboard(tabId) {
         </div>
     `).join('');
 }
+
+window.renderArcadeLeaderboards = payload => {
+    Object.assign(leaderboardData, payload?.boards || {});
+    renderLeaderboard(document.querySelector('.lb-panel.active')?.id.replace('lb-', '') || 'ekonomi');
+};
 
 function showTab(tabId) {
     // Tüm panelleri gizle
@@ -239,7 +263,7 @@ renderLeaderboard('ekonomi');
 </script>
 <script src="server-data.js"></script>
 <script src="api-config.js"></script>
-<script src="live-integration.js?v=20260914-1"></script>
-<script src="site-shell.js?v=20260914-5"></script>
+<script src="live-integration.js?v=20260914-2"></script>
+<script src="site-shell.js?v=20260914-6"></script>
 </body>
 </html>

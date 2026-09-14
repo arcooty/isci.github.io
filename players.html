@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Oyuncu Profilleri | ArcaDe Craft</title>
+<meta name="description" content="ArcaDe Craft oyuncularının herkese açık rütbe, oynama süresi, meslek ve beceri profilleri.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="network.css?v=20260914-6">
+<link rel="icon" href="assets/logo.png" type="image/png">
+</head>
+<body class="network-shell">
+<nav></nav>
+<main class="page-wrap">
+  <header class="page-head">
+    <span class="eyebrow">Topluluk dizini</span>
+    <h1>OYUNCU PROFİLLERİ</h1>
+    <p>Bir oyuncunun herkese açık rütbesini, oynama süresini, mesleklerini ve beceri seviyelerini görüntüle.</p>
+  </header>
+  <form class="player-search" id="player-search">
+    <label for="player-name">Minecraft kullanıcı adı</label>
+    <div><input id="player-name" name="player" minlength="3" maxlength="16" pattern="[A-Za-z0-9_]{3,16}" autocomplete="off" required><button type="submit"><i class="fa-solid fa-magnifying-glass"></i><span>Ara</span></button></div>
+  </form>
+  <p class="player-status" id="player-status" role="status"></p>
+  <section class="player-profile" id="player-profile" hidden></section>
+</main>
+<footer class="site-footer"></footer>
+<script src="api-config.js"></script>
+<script src="players.js"></script>
+<script src="site-shell.js?v=20260914-6"></script>
+</body>
+</html>
