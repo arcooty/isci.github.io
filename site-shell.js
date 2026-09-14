@@ -2,8 +2,10 @@
   const discord = 'https://discord.gg/GerdDHzMWp';
   const path = location.pathname.split('/').pop() || 'index.html';
   document.body.classList.add('network-shell');
-  const survivalPages = ['survival.html','survival-systems.html','jobs.html','claims.html','economy.html','quests.html','commands.html','crates.html','ranks.html','leaderboard.html'];
-  const current = name => path === name || (name === 'survival.html' && survivalPages.includes(path)) ? ' aria-current="page"' : '';
+  const survivalPages = ['survival.html','survival-systems.html','jobs.html','claims.html','economy.html','quests.html','commands.html','crates.html','ranks.html','leaderboard.html','wiki.html'];
+  const current = name => path === name ||
+    (name === 'survival.html' && survivalPages.includes(path)) ||
+    (name === 'store.html' && path === 'order.html') ? ' aria-current="page"' : '';
   const nav = document.querySelector('nav');
   if (nav) {
     nav.className = 'site-nav';
@@ -13,7 +15,9 @@
       <div class="site-links" id="site-links">
         <a href="index.html"${current('index.html')}>ANASAYFA</a><a href="about.html"${current('about.html')}>HAKKINDA</a><a href="servers.html"${current('servers.html')}>SUNUCULAR</a><a href="status.html"${current('status.html')}>DURUM</a>
         <div class="survival-menu"><button type="button" aria-haspopup="true" aria-expanded="false"${current('survival.html')}>SURVIVAL <i class="fa-solid fa-chevron-down"></i></button><div class="survival-dropdown">
-          <a href="survival.html">Genel Bakış</a><a href="survival-systems.html">Özellikler</a><a href="jobs.html">Meslekler</a><a href="quests.html">Görevler</a><a href="claims.html">Claim</a><a href="economy.html">Ekonomi</a><a href="crates.html">Kasalar</a><a href="commands.html">Komutlar</a><a href="ranks.html">Rütbeler</a><a href="leaderboard.html">Liderlik</a><a href="wiki.html">Bilgi Bankası</a>
+          <section class="survival-menu-group"><span>Başlangıç</span><a href="survival.html">Genel Bakış</a><a href="survival-systems.html">Tüm Özellikler</a><a href="wiki.html">Bilgi Bankası</a><a href="commands.html">Komutlar</a></section>
+          <section class="survival-menu-group"><span>İlerleme</span><a href="jobs.html">Meslekler</a><a href="quests.html">Görevler</a><a href="leaderboard.html">Liderlik</a></section>
+          <section class="survival-menu-group"><span>Ekonomi ve Haklar</span><a href="economy.html">Ekonomi</a><a href="claims.html">Claim Rehberi</a><a href="crates.html">Ödül Kasaları</a><a href="ranks.html">VIP ve Rütbeler</a></section>
         </div></div>
         <a href="news.html"${current('news.html')}>HABERLER</a><a href="rules.html"${current('rules.html')}>KURALLAR</a><a href="store.html"${current('store.html')}>MAĞAZA</a><a class="site-discord" href="${discord}" target="_blank" rel="noopener">DISCORD</a>
       </div></div>`;
@@ -37,14 +41,58 @@
       survivalButton?.setAttribute('aria-expanded', 'false');
       survivalButton?.focus();
     });
+    nav.querySelectorAll('a[href]').forEach(link => {
+      const targetPath = new URL(link.getAttribute('href'), location.href).pathname.split('/').pop();
+      if (targetPath === path) link.setAttribute('aria-current', 'page');
+    });
   }
+  const pageLabels = {
+    'about.html': ['Ağ', 'Hakkında'],
+    'servers.html': ['Ağ', 'Sunucular'],
+    'status.html': ['Ağ', 'Sunucu Durumu'],
+    'news.html': ['Ağ', 'Haberler'],
+    'rules.html': ['Topluluk', 'Kurallar'],
+    'survival.html': ['Survival', 'Genel Bakış'],
+    'survival-systems.html': ['Survival', 'Tüm Özellikler'],
+    'jobs.html': ['Survival', 'Meslekler'],
+    'quests.html': ['Survival', 'Görevler'],
+    'claims.html': ['Survival', 'Claim Rehberi'],
+    'economy.html': ['Survival', 'Ekonomi'],
+    'crates.html': ['Survival', 'Ödül Kasaları'],
+    'ranks.html': ['Survival', 'VIP ve Rütbeler'],
+    'leaderboard.html': ['Survival', 'Liderlik'],
+    'commands.html': ['Survival', 'Komutlar'],
+    'wiki.html': ['Survival', 'Bilgi Bankası'],
+    'store.html': ['Mağaza', 'VIP Mağazası'],
+    'order.html': ['Mağaza', 'Sipariş Durumu'],
+    'application.html': ['Topluluk', 'Yetkili Başvurusu'],
+    'appeal.html': ['Topluluk', 'Ceza İtirazı'],
+    'privacy.html': ['Yasal', 'Gizlilik'],
+    'terms.html': ['Yasal', 'Kullanım Şartları']
+  };
+  const sectionTargets = { Survival: 'survival.html', Mağaza: 'store.html', Ağ: 'index.html', Topluluk: 'wiki.html', Yasal: 'terms.html' };
+  const createPageTrail = () => {
+    if (path === 'index.html' || !pageLabels[path]) return null;
+    const [section, label] = pageLabels[path];
+    const trail = document.createElement('nav');
+    trail.className = 'page-trail';
+    trail.setAttribute('aria-label', 'Sayfa konumu');
+    trail.innerHTML = `<a href="index.html">Ana Sayfa</a><i class="fa-solid fa-chevron-right"></i><a href="${sectionTargets[section]}">${section}</a><i class="fa-solid fa-chevron-right"></i><span aria-current="page">${label}</span>`;
+    return trail;
+  };
+  const main = document.querySelector('main');
+  const mainTrail = createPageTrail();
+  if (main && mainTrail) main.prepend(mainTrail);
+  let legacyContent = null;
   if (path !== 'index.html' && !document.querySelector('main')) {
-    const topLevelContent = [...document.body.children].find(element =>
+    legacyContent = [...document.body.children].find(element =>
       element !== nav && element.tagName !== 'SCRIPT' && element.tagName !== 'FOOTER' &&
       (element.tagName === 'HEADER' || (element.tagName === 'DIV' && element.querySelector('h1')))
     );
-    if (topLevelContent?.tagName === 'HEADER') topLevelContent.classList.add('legacy-page-hero');
-    if (topLevelContent?.tagName === 'DIV') topLevelContent.classList.add('legacy-content-shell');
+    if (legacyContent?.tagName === 'HEADER') legacyContent.classList.add('legacy-page-hero');
+    if (legacyContent?.tagName === 'DIV') legacyContent.classList.add('legacy-content-shell');
+    const legacyTrail = createPageTrail();
+    if (legacyContent && legacyTrail) legacyContent.prepend(legacyTrail);
     const eyebrowLabels = {
       'appeal.html': 'Topluluk desteği',
       'application.html': 'Ekibe katıl',
@@ -53,7 +101,7 @@
       'rules.html': 'Topluluk düzeni',
       'terms.html': 'Kullanım koşulları'
     };
-    const heading = topLevelContent?.querySelector('h1');
+    const heading = legacyContent?.querySelector('h1');
     if (heading && eyebrowLabels[path]) {
       const eyebrow = document.createElement('span');
       eyebrow.className = 'eyebrow';
@@ -82,8 +130,8 @@
     footer.innerHTML = `<div class="site-footer-inner">
       <section class="footer-brand"><a class="site-brand" href="index.html"><img src="assets/logo.png" alt="ArcaDe Craft Network logosu"><span>ArcaDe Craft <strong>Network</strong></span></a><p>Güvenli lobi, dengeli Survival ve dönemsel etkinlikleri tek ağda buluşturan Türkçe Minecraft topluluğu.</p><button class="footer-address" type="button" data-copy-address title="Sunucu adresini kopyala"><i class="fa-regular fa-copy"></i><span>oyna.robsarcade.online</span></button></section>
       <section><h2>Ağ</h2><a href="about.html">Hakkında</a><a href="servers.html">Sunucular</a><a href="status.html">Sunucu Durumu</a><a href="news.html">Haberler</a><a href="rules.html">Kurallar</a></section>
-      <section><h2>Survival</h2><a href="survival.html">Genel Bakış</a><a href="survival-systems.html">Özellikler</a><a href="jobs.html">Meslekler</a><a href="quests.html">Görevler</a><a href="claims.html">Claim Rehberi</a><a href="economy.html">Ekonomi</a><a href="crates.html">Kasalar</a><a href="ranks.html">VIP ve Rütbeler</a><a href="leaderboard.html">Liderlik</a><a href="commands.html">Komutlar</a></section>
-      <section><h2>Topluluk</h2><a href="store.html">VIP Mağazası</a><a href="${discord}" target="_blank" rel="noopener">Discord’a Katıl</a><a href="wiki.html">Bilgi Bankası</a><a href="application.html">Yetkili Başvurusu</a><a href="appeal.html">Ceza İtirazı</a></section>
+      <section><h2>Survival</h2><a href="survival.html">Genel Bakış</a><a href="survival-systems.html">Tüm Özellikler</a><a href="jobs.html">Meslekler</a><a href="quests.html">Görevler</a><a href="claims.html">Claim Rehberi</a><a href="economy.html">Ekonomi</a><a href="crates.html">Ödül Kasaları</a><a href="ranks.html">VIP ve Rütbeler</a></section>
+      <section><h2>Topluluk</h2><a href="store.html">VIP Mağazası</a><a href="leaderboard.html">Liderlik</a><a href="wiki.html">Bilgi Bankası</a><a href="commands.html">Komutlar</a><a href="${discord}" target="_blank" rel="noopener">Discord’a Katıl</a><a href="application.html">Yetkili Başvurusu</a><a href="appeal.html">Ceza İtirazı</a></section>
     </div><div class="footer-bottom"><span>© 2026 ArcaDe Craft Network</span><span><a href="privacy.html">Gizlilik</a><a href="terms.html">Kullanım Şartları</a></span><span>Mojang Studios veya Microsoft ile bağlantılı değildir.</span></div>`;
     footer.querySelectorAll('a[href]').forEach(link => {
       const targetPath = new URL(link.getAttribute('href'), location.href).pathname.split('/').pop();
@@ -96,6 +144,31 @@
         setTimeout(() => { label.textContent = 'oyna.robsarcade.online'; }, 1600);
       });
     });
+  }
+  const relatedPages = {
+    'survival.html': [['survival-systems.html','Tüm özellikler'],['wiki.html','Bilgi bankası'],['ranks.html','VIP ve rütbeler']],
+    'survival-systems.html': [['jobs.html','Meslekler'],['economy.html','Ekonomi'],['claims.html','Claim rehberi']],
+    'jobs.html': [['quests.html','Görevler'],['leaderboard.html','Liderlik'],['commands.html','Komutlar']],
+    'quests.html': [['jobs.html','Meslekler'],['survival-systems.html#ilerleme','İlerleme sistemleri'],['commands.html','Komutlar']],
+    'claims.html': [['commands.html','Claim komutları'],['rules.html','Sunucu kuralları'],['wiki.html','Bilgi bankası']],
+    'economy.html': [['jobs.html','Kazanç sağlayan meslekler'],['leaderboard.html','Liderlik'],['commands.html','Ekonomi komutları']],
+    'crates.html': [['ranks.html','VIP hakları'],['store.html','VIP mağazası'],['wiki.html','Bilgi bankası']],
+    'ranks.html': [['store.html','VIP mağazası'],['crates.html','Kasa oranları'],['rules.html','Satın alma ve oyun kuralları']],
+    'leaderboard.html': [['jobs.html','Meslekler'],['economy.html','Ekonomi'],['ranks.html','Rütbeler']],
+    'commands.html': [['wiki.html','Bilgi bankası'],['claims.html','Claim rehberi'],['economy.html','Ekonomi']],
+    'wiki.html': [['survival.html','Survival merkezi'],['commands.html','Komutlar'],['rules.html','Kurallar']],
+    'store.html': [['ranks.html','Paketleri karşılaştır'],['crates.html','Kasa oranları'],['terms.html','Satış şartları']]
+  };
+  if (relatedPages[path] && !document.querySelector('.related-nav')) {
+    const related = document.createElement('nav');
+    related.className = 'related-nav';
+    related.setAttribute('aria-label', 'İlgili sayfalar');
+    related.innerHTML = `<span>İlgili bölümler</span><div>${relatedPages[path].map(([href,label]) => `<a href="${href}">${label}<i class="fa-solid fa-arrow-right"></i></a>`).join('')}</div>`;
+    if (main) main.append(related);
+    else if (footer) {
+      related.classList.add('legacy-related');
+      footer.before(related);
+    }
   }
   if (path === 'index.html') {
     const indicator = document.getElementById('section-indicator');
