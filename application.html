@@ -22,7 +22,6 @@
         input, textarea, select { background-color: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); color: white; transition: all 0.3s; }
         input:focus, textarea:focus, select:focus { outline: none; border-color: #9653fa; box-shadow: 0 0 10px rgba(150, 83, 250, 0.2); }
         #cursor-glow { width: 600px; height: 600px; background: radial-gradient(circle, rgba(150, 83, 250, 0.15) 0%, rgba(0, 0, 0, 0) 70%); position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); pointer-events: none; z-index: 9999; mix-blend-mode: screen; }
-        .captcha-bg { background-image: repeating-linear-gradient(45deg, #111 0, #111 10px, #222 10px, #222 20px); }
     </style>
     <link rel="stylesheet" href="network.css?v=20260914-7">
 <link rel="icon" href="assets/logo.png" type="image/png">
@@ -53,7 +52,7 @@
             <p class="text-gray-400">Ekibimize katılmak için aşağıdaki formu eksiksiz doldurun.</p>
         </div>
 
-        <form onsubmit="handleFormSubmit(event, 'application')" class="bg-mc-card border border-white/10 rounded-xl p-8 shadow-lg">
+        <form data-form-type="application" class="bg-mc-card border border-white/10 rounded-xl p-8 shadow-lg">
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
@@ -101,25 +100,15 @@
                 </select>
             </div>
 
-            <!-- CAPTCHA ALANI -->
             <div class="mb-8 bg-black/40 p-5 rounded-lg border border-white/5">
                 <label class="block text-sm font-bold text-gray-400 mb-3"><i class="fa-solid fa-shield-halved mr-1"></i> Güvenlik Doğrulaması</label>
-                <div class="flex flex-col md:flex-row items-center gap-4">
-                    <div class="relative group">
-                        <div id="captcha-display" class="captcha-bg text-white font-mono font-bold text-3xl px-8 py-3 rounded select-none tracking-widest border border-white/20 shadow-inner w-48 text-center">
-                            XXXXX
-                        </div>
-                        <button type="button" onclick="generateCaptcha()" class="absolute -right-8 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-white transition">
-                            <i class="fa-solid fa-arrows-rotate"></i>
-                        </button>
-                    </div>
-                    <input type="text" id="captcha-input" name="captcha-input" required class="flex-1 w-full rounded px-4 py-3 text-center font-bold tracking-widest uppercase border border-mc-main/30 focus:border-mc-main transition" placeholder="KODU GİRİNİZ" maxlength="6">
-                </div>
+                <div data-turnstile-widget></div>
             </div>
 
             <button type="submit" class="w-full bg-mc-main hover:bg-[#7e42d6] text-white font-bold py-4 rounded-lg transition shadow-[0_0_15px_rgba(150,83,250,0.4)] flex items-center justify-center gap-2">
                 <i class="fa-solid fa-paper-plane"></i> Başvuruyu Gönder
             </button>
+            <p data-form-status class="mt-4 text-sm text-gray-300" role="status" aria-live="polite"></p>
 
         </form>
     </div>
@@ -131,7 +120,7 @@
                 <i class="fa-solid fa-check"></i>
             </div>
             <h2 class="text-2xl font-bold mb-2">Başvuru Alındı!</h2>
-            <p class="text-gray-400 mb-6">Başvurunuz başarıyla yetkili ekibimize iletildi. En kısa sürede Discord üzerinden dönüş sağlanacaktır.</p>
+            <p class="text-gray-400 mb-6">Başvurunuz güvenli API tarafından alındı. Yanıt için Discord hesabınızı takip edin.</p>
             <button onclick="document.getElementById('successModal').classList.add('hidden'); window.location.href='index.html'" class="bg-white text-black px-6 py-2 rounded font-bold hover:bg-gray-200 transition">Tamam</button>
         </div>
     </div>
