@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ceza Sorgulama | ArcaDe Craft</title>
+<meta name="description" content="ArcaDe Craft oyuncularının herkese açık ceza kayıtlarını güvenli biçimde sorgula.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="network.css?v=20260916-8">
+<link rel="icon" href="assets/logo.png" type="image/png">
+</head>
+<body class="network-shell">
+<nav></nav>
+<main class="page-wrap">
+  <header class="page-head">
+    <span class="eyebrow">Şeffaf moderasyon</span>
+    <h1>CEZA SORGULAMA</h1>
+    <p>Bir oyuncunun herkese açık ceza geçmişini görüntüle. IP adresleri, bağlantılı hesaplar ve yönetim notları hiçbir zaman gösterilmez.</p>
+  </header>
+  <form class="player-search" id="punishment-search">
+    <label for="punishment-player">Minecraft kullanıcı adı</label>
+    <div><input id="punishment-player" name="player" minlength="3" maxlength="16" pattern="[A-Za-z0-9_]{3,16}" autocomplete="off" required><button type="submit"><i class="fa-solid fa-magnifying-glass"></i><span>Sorgula</span></button></div>
+  </form>
+  <p class="player-status" id="punishment-status" role="status" aria-live="polite"></p>
+  <section class="punishment-results" id="punishment-results" hidden></section>
+</main>
+<footer class="site-footer"></footer>
+<script src="api-config.js"></script>
+<script src="punishments.js?v=20260916-1"></script>
+<script src="site-shell.js?v=20260916-7"></script>
+</body>
+</html>
