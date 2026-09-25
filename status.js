@@ -18,7 +18,7 @@
         players.textContent = 'Lobi ve oyun sunucularının durumu canlı API üzerinden doğrulandı.';
       } else {
         state.textContent = 'Şu anda çevrimdışı veya bakımda.';
-        players.textContent = 'Oyuncu bilgisi alınamadı.';
+        players.textContent = 'Servis doğrulaması alınamadı.';
         dot.style.background = '#e05252';
       }
       Object.entries(serviceLabels).forEach(([name, element]) => {
@@ -31,7 +31,7 @@
     })
     .catch(() => {
       state.textContent = 'Durum servisine ulaşılamadı.';
-      players.textContent = 'Oyuncu bilgisi alınamadı.';
+      players.textContent = 'Servis doğrulaması alınamadı.';
       dot.style.background = '#d6a33f';
       Object.values(serviceLabels).forEach(element => { element.textContent = 'Durum alınamadı.'; });
     })

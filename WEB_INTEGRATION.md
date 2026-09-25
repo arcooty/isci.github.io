@@ -2,14 +2,16 @@
 
 ## Su an bagli
 
-- Minecraft ag durumu ve oyuncu sayisi: genel durum API'si uzerinden salt okunur.
+- Minecraft ag ve servis durumu: genel durum API'si uzerinden salt okunur.
 - Discord daveti: ana topluluk sunucusu `1448892369146609867`.
 - Survival bilgi mimarisi: sistemler, meslekler, gorevler, claim, ekonomi, komutlar, rutbeler ve liderlik.
-- Web basvuru ve itiraz formlari guvenli sunucu API'si kurulana kadar Discord'a yonlendirir.
+- Web basvuru ve itiraz formlari Turnstile dogrulamali API uzerinden ilgili Discord kanallarina iletilir; servis kullanilamazsa Discord'a yonlendirir.
+- Herkese acik ceza sorgulama, oyuncu profilleri, yetkili listesi ve liderlik tablolari canli API'ye baglidir.
+- VIP magaza katalogu yayindadir; urunler fiyatlandirma ve odeme etkinlestirilene kadar satin almaya kapalidir.
 
 ## Guvenle baglanabilecek veriler
 
-- `GET /api/v1/status`: Velocity, lobi, Survival ve etkinlik saglik durumu; toplam oyuncu sayisi.
+- `GET /api/v1/status`: Velocity, lobi, Survival, etkinlik ve harita saglik durumu.
 - `GET /api/v1/leaderboards`: izinli ekonomi, Jobs ve AuraSkills liderlikleri.
 - `GET /api/v1/economy/summary`: gunluk para girisi/cikisi ve kaynak kategorileri; oyuncu bazli hassas islem gecmisi olmadan.
 - `GET /api/v1/events`: etkinlik takvimi ve bakim duyurulari.
@@ -29,4 +31,4 @@
 
 ## Web sozlesmesi
 
-Statik site canli liderlik icin `/api/v1/leaderboards` adresini bekler. API yoksa sahte oyuncu gostermek yerine acik bir "Canli veri hazirlaniyor" durumu gosterir.
+Statik site canli liderlik icin `/api/v1/leaderboards` adresini kullanir. API gecici olarak kullanilamazsa sahte oyuncu gostermek yerine erisim hatasi gosterir ve sonraki sayfa yuklemesinde yeniden dener.

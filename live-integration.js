@@ -11,7 +11,7 @@
       .then(r => { if (!r.ok) throw new Error('API unavailable'); return r.json(); })
       .then(data => window.renderArcadeLeaderboards?.(data))
       .catch(() => document.querySelectorAll('.lb-panel').forEach(panel => {
-        panel.innerHTML = '<div class="info-card"><h2>Canlı veri hazırlanıyor</h2><p>Liderlik tablosu yalnızca imzalı web API devreye alındığında gerçek oyuncu verisi gösterecek. Örnek oyuncu ve bakiye gösterimi kaldırıldı.</p></div>';
+        panel.innerHTML = '<div class="info-card"><h2>Canlı veri alınamadı</h2><p>Liderlik servisine şu anda ulaşılamıyor. Veriler yenilendiğinde bu bölüm otomatik olarak tekrar görüntülenecek.</p></div>';
       }));
   }
 })();
