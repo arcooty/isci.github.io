@@ -17,8 +17,8 @@
       <button class="mobile-nav-button" type="button" aria-label="Menüyü aç" id="site-menu"><i class="fa-solid fa-bars"></i></button>
       <div class="site-links" id="site-links">
         <a href="index.html"${current('index.html')}>ANASAYFA</a>
-        <div class="nav-menu network-menu"><button type="button" aria-haspopup="true" aria-expanded="false"${groupCurrent(networkPages)}>AĞ <i class="fa-solid fa-chevron-down"></i></button><div class="nav-dropdown compact-dropdown">
-          <section class="nav-menu-group"><span>ArcaDe Craft</span><a href="about.html">Hakkında</a><a href="servers.html">Sunucular</a><a href="status.html">Sunucu Durumu</a></section>
+        <div class="nav-menu network-menu"><button type="button" aria-haspopup="true" aria-expanded="false"${groupCurrent(networkPages)}>OYUNLAR <i class="fa-solid fa-chevron-down"></i></button><div class="nav-dropdown compact-dropdown">
+          <section class="nav-menu-group"><span>Oyununu seç</span><a href="servers.html">Tüm Oyunlar</a><a href="survival.html">Survival</a><a href="servers.html#robs-village">Rob's Village</a><a href="status.html">Canlı Durum</a><a href="about.html">Hakkında</a></section>
         </div></div>
         <div class="nav-menu survival-menu"><button type="button" aria-haspopup="true" aria-expanded="false"${current('survival.html')}>SURVIVAL <i class="fa-solid fa-chevron-down"></i></button><div class="nav-dropdown survival-dropdown">
           <section class="survival-menu-group"><span>Başlangıç</span><a href="survival.html">Genel Bakış</a><a href="survival-systems.html">Tüm Özellikler</a><a href="map.html">Canlı Harita</a><a href="wiki.html">Bilgi Bankası</a><a href="commands.html">Komutlar</a></section>
@@ -62,10 +62,10 @@
     });
   }
   const pageLabels = {
-    'about.html': ['Ağ', 'Hakkında'],
-    'servers.html': ['Ağ', 'Sunucular'],
-    'status.html': ['Ağ', 'Sunucu Durumu'],
-    'news.html': ['Ağ', 'Haberler'],
+    'about.html': ['ArcaDe Craft', 'Hakkında'],
+    'servers.html': ['Oyunlar', 'Genel Bakış'],
+    'status.html': ['Oyunlar', 'Canlı Durum'],
+    'news.html': ['Topluluk', 'Haberler'],
     'rules.html': ['Topluluk', 'Kurallar'],
     'survival.html': ['Survival', 'Genel Bakış'],
     'survival-systems.html': ['Survival', 'Tüm Özellikler'],
@@ -89,7 +89,7 @@
     'privacy.html': ['Yasal', 'Gizlilik'],
     'terms.html': ['Yasal', 'Kullanım Şartları']
   };
-  const sectionTargets = { Survival: 'survival.html', Mağaza: 'store.html', Ağ: 'about.html', Topluluk: 'news.html', Yasal: 'terms.html' };
+  const sectionTargets = { Survival: 'survival.html', Mağaza: 'store.html', Oyunlar: 'servers.html', 'ArcaDe Craft': 'about.html', Topluluk: 'news.html', Yasal: 'terms.html' };
   const createPageTrail = () => {
     if (path === 'index.html' || !pageLabels[path]) return null;
     const [section, label] = pageLabels[path];
@@ -148,8 +148,8 @@
   if (footer) {
     footer.className = 'site-footer';
     footer.innerHTML = `<div class="site-footer-inner">
-      <section class="footer-brand"><a class="site-brand" href="index.html"><img src="assets/logo.png" alt="ArcaDe Craft Network logosu"><span>ArcaDe Craft <strong>Network</strong></span></a><p>Güvenli lobi, dengeli Survival ve dönemsel etkinlikleri tek ağda buluşturan Türkçe Minecraft topluluğu.</p><button class="footer-address" type="button" data-copy-address title="Sunucu adresini kopyala"><i class="fa-regular fa-copy"></i><span>oyna.robsarcade.online</span></button></section>
-      <section><h2>Ağ</h2><a href="about.html">Hakkında</a><a href="servers.html">Sunucular</a><a href="status.html">Sunucu Durumu</a></section>
+      <section class="footer-brand"><a class="site-brand" href="index.html"><img src="assets/logo.png" alt="ArcaDe Craft Network logosu"><span>ArcaDe Craft <strong>Network</strong></span></a><p>Kalıcı Survival dünyası ve Rob's Village topluluk oyununu tek adreste buluşturan Türkçe Minecraft topluluğu.</p><button class="footer-address" type="button" data-copy-address title="Sunucu adresini kopyala"><i class="fa-regular fa-copy"></i><span>oyna.robsarcade.online</span></button></section>
+      <section><h2>Oyunlar</h2><a href="servers.html">Tüm Oyunlar</a><a href="survival.html">Survival</a><a href="servers.html#robs-village">Rob's Village</a><a href="status.html">Canlı Durum</a><a href="about.html">Hakkında</a></section>
       <section><h2>Survival</h2><a href="survival.html">Genel Bakış</a><a href="survival-systems.html">Tüm Özellikler</a><a href="map.html">Canlı Harita</a><a href="jobs.html">Meslekler</a><a href="quests.html">Görevler</a><a href="claims.html">Claim Rehberi</a><a href="economy.html">Ekonomi</a><a href="crates.html">Ödül Kasaları</a><a href="ranks.html">VIP ve Rütbeler</a><a href="store.html">VIP Mağazası</a></section>
       <section><h2>Topluluk</h2><a href="news.html">Haberler</a><a href="leaderboard.html">Liderlik</a><a href="players.html">Oyuncu Profilleri</a><a href="wiki.html">Bilgi Bankası</a><a href="commands.html">Komutlar</a><a href="rules.html">Kurallar</a><a href="staff.html">Yetkili Kadroları</a><a href="punishments.html">Ceza Sorgulama</a><a href="${discord}" target="_blank" rel="noopener">Discord’a Katıl</a><a href="application.html">Yetkili Başvurusu</a><a href="appeal.html">Ceza İtirazı</a></section>
     </div><div class="footer-bottom"><span>© 2026 ArcaDe Craft Network</span><span><a href="privacy.html">Gizlilik</a><a href="terms.html">Kullanım Şartları</a></span><span>Mojang Studios veya Microsoft ile bağlantılı değildir.</span></div>`;

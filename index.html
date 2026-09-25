@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ArcaDe Craft Network | Minecraft Ağı</title>
+    <title>ArcaDe Craft | Survival ve Rob's Village</title>
+    <meta name="description" content="ArcaDe Craft'ta kalıcı Survival dünyanı kur, mesleğini seç ve Rob's Village topluluk oyunlarına katıl. Java ve Bedrock destekli Türkçe Minecraft sunucusu.">
     <script src="https://cdn.tailwindcss.com">
 </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -32,7 +33,6 @@
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #9653fa; }
         .glow-text { text-shadow: 0 0 20px rgba(150, 83, 250, 0.6); }
-        #cursor-glow { width: 600px; height: 600px; background: radial-gradient(circle, rgba(150, 83, 250, 0.15) 0%, rgba(0, 0, 0, 0) 70%); position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); pointer-events: none; z-index: 9999; transition: opacity 0.3s ease; mix-blend-mode: screen; }
         .scroll-dot { width: 12px; height: 12px; background-color: rgba(255, 255, 255, 0.2); border-radius: 50%; transition: all 0.4s ease; cursor: pointer; position: relative; z-index: 10; }
         .scroll-dot::after { content: attr(data-label); position: absolute; bottom: 25px; left: 50%; transform: translateX(-50%) translateY(10px); background: rgba(0,0,0,0.9); color: #9653fa; padding: 4px 8px; border-radius: 6px; font-size: 12px; font-weight: bold; opacity: 0; transition: all 0.3s; pointer-events: none; white-space: nowrap; border: 1px solid rgba(150, 83, 250, 0.3); font-family: 'Rajdhani', sans-serif; text-transform: uppercase; }
         .scroll-dot:hover::after { opacity: 1; transform: translateX(-50%) translateY(0); }
@@ -46,13 +46,10 @@
         .animate-float { animation: float 3s ease-in-out infinite; }
         .glass-panel { background: rgba(24, 24, 27, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
     </style>
-    <link rel="stylesheet" href="network.css?v=20260914-7">
+    <link rel="stylesheet" href="network.css?v=20260925-8">
 <link rel="icon" href="assets/logo.png" type="image/png">
 </head>
 <body class="antialiased">
-
-    <div id="cursor-glow">
-</div>
 
     <div id="section-indicator" class="fixed bottom-8 left-1/2 z-50 bg-black/80 backdrop-blur-xl border border-mc-main/30 rounded-full px-8 py-4 items-center gap-1 shadow-[0_0_30px_rgba(150,83,250,0.25)] ring-1 ring-white/10 hidden md:flex" aria-label="Sayfa bölümleri">
         <a href="#hero" class="scroll-dot active" data-target="hero" data-label="Başlangıç">
@@ -63,7 +60,7 @@
 </a>
         <div class="scroll-line" id="line-2">
 </div>
-        <a href="#jobs-showcase" class="scroll-dot" data-target="network-showcase" data-label="Ağ Yapısı">
+        <a href="#network-showcase" class="scroll-dot" data-target="network-showcase" data-label="Neden Biz">
 </a>
         <div class="scroll-line" id="line-3">
 </div>
@@ -119,14 +116,15 @@
         </div>
     </nav>
 
-    <section id="hero" class="relative min-h-screen flex items-center hero-bg px-4 scroll-mt-20 pt-20">
+    <section id="hero" class="home-hero relative flex items-center hero-bg px-4 scroll-mt-20 pt-20">
         <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center z-10">
             <div class="text-center lg:text-left">
+                <span class="hero-kicker"><i class="fa-solid fa-cubes"></i> SURVIVAL &bull; ROB'S VILLAGE &bull; JAVA + BEDROCK</span>
                 <h1 class="hero-brand-title font-black mb-4 drop-shadow-2xl">
                     ARCADECRAFT
                 </h1>
                 <p class="text-xl md:text-2xl text-gray-300 mb-8 font-light max-w-2xl mx-auto lg:mx-0">
-                    Güvenli lobi, kalıcı Survival dünyası ve dönemsel etkinlikler. Tek adres üzerinden düzenli, Türkçe ve topluluk odaklı Minecraft deneyimi.
+                    Kalıcı dünyada kendi düzenini kur, mesleğini seç ve ticaret yap. Etkinlik gecelerinde Rob's Village ile arkadaşlarının kimliğini çöz.
                 </p>
                 <div class="flex flex-col md:flex-row gap-4 justify-center lg:justify-start items-center">
                     <div class="group relative bg-black/60 backdrop-blur border border-white/20 p-2 pr-4 rounded-lg flex items-center gap-4 cursor-pointer hover:border-mc-main hover:shadow-[0_0_20px_rgba(150,83,250,0.3)] transition duration-300 w-full md:w-auto" onclick="copyIP()">
@@ -147,19 +145,19 @@
                         </span>
                     </div>
 
-                    <a href="https://discord.gg/GerdDHzMWp" target="_blank" class="bg-[#5865F2] hover:bg-[#4752C4] px-8 py-4 rounded-lg font-bold font-rajdhani text-lg flex items-center gap-2 transition w-full md:w-auto justify-center shadow-[0_0_15px_rgba(88,101,242,0.4)] hover:shadow-[0_0_25px_rgba(88,101,242,0.6)] hover:-translate-y-0.5">
-                        <i class="fa-brands fa-discord">
-</i> Discord'a Katıl
+                    <a href="#features" class="hero-games-button px-8 py-4 rounded-lg font-bold font-rajdhani text-lg flex items-center gap-2 transition w-full md:w-auto justify-center hover:-translate-y-0.5">
+                        <i class="fa-solid fa-compass">
+</i> Oyunları Keşfet
                     </a>
                 </div>
             </div>
 
             <div class="hidden lg:block relative animate-float">
-                <div class="glass-panel p-6 rounded-2xl max-w-md mx-auto transform rotate-2 hover:rotate-0 transition duration-500 border border-white/5 hover:border-mc-main/30 group">
+                <div class="glass-panel hero-status-panel p-6 max-w-md mx-auto transition duration-500 group">
                     <div class="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
                         <h3 class="font-bold font-rajdhani text-xl text-white">
-<i class="fa-solid fa-server text-mc-main mr-2">
-</i> Sunucu Durumu</h3>
+<i class="fa-solid fa-signal text-green-400 mr-2">
+</i> Şimdi ArcaDe Craft</h3>
                         <span class="bg-mc-main/20 text-mc-main text-xs font-bold px-2 py-1 rounded border border-mc-main/20">AKTİF</span>
                     </div>
 
@@ -170,24 +168,22 @@
 <span id="floating-player-count">Yükleniyor...</span>
 </span>
                         </div>
-                        <div class="w-full bg-gray-700/50 rounded-full h-2.5">
-                            <div class="bg-mc-main h-2.5 rounded-full shadow-[0_0_10px_rgba(150,83,250,0.5)]" style="width: 28%">
-</div>
-                        </div>
                         <div class="grid grid-cols-2 gap-4 mt-4">
-                            <div class="bg-black/30 p-3 rounded text-center border border-white/5 hover:border-mc-main/20 transition">
-                                <span class="block text-xl font-bold font-rajdhani text-mc-accent">Java + Bedrock</span>
-                                <span class="text-xs text-gray-500">Çapraz Platform</span>
+                            <div class="hero-status-mode hero-status-survival">
+                                <i class="fa-solid fa-tree"></i>
+                                <span class="block text-xl font-bold font-rajdhani">Survival</span>
+                                <small>Kalıcı dünya</small>
                             </div>
-                            <div class="bg-black/30 p-3 rounded text-center border border-white/5 hover:border-mc-main/20 transition">
-                                <span class="block text-2xl font-bold font-rajdhani text-blue-400">26.2</span>
-                                <span class="text-xs text-gray-500">Sürüm</span>
+                            <div class="hero-status-mode hero-status-event">
+                                <i class="fa-solid fa-masks-theater"></i>
+                                <span class="block text-xl font-bold font-rajdhani">Rob's Village</span>
+                                <small>Topluluk oyunu</small>
                             </div>
                         </div>
                     </div>
 
                     <div class="mt-6 pt-4 border-t border-white/10 text-xs text-gray-500">
-                        Canlı durum, genel Minecraft durum servisi üzerinden doğrulanır. Yönetim verileri web'e açılmaz.
+                        Java ve Bedrock oyuncuları aynı toplulukta buluşur.
                     </div>
                 </div>
             </div>
@@ -206,16 +202,16 @@
                 <p class="text-gray-500 text-sm uppercase tracking-widest font-bold mt-1">Aktif Meslek</p>
             </div>
             <div class="hover:transform hover:scale-105 transition duration-300">
-                <h3 class="text-4xl font-bold text-mc-main font-rajdhani drop-shadow-[0_0_10px_rgba(150,83,250,0.4)]" data-count="21" data-suffix="">21</h3>
-                <p class="text-gray-500 text-sm uppercase tracking-widest font-bold mt-1">Menü Sistemi</p>
+                <h3 class="text-4xl font-bold text-red-400 font-rajdhani">2</h3>
+                <p class="text-gray-500 text-sm uppercase tracking-widest font-bold mt-1">Ana Deneyim</p>
             </div>
             <div class="hover:transform hover:scale-105 transition duration-300">
-                <h3 class="text-4xl font-bold text-mc-main font-rajdhani drop-shadow-[0_0_10px_rgba(150,83,250,0.4)]">3</h3>
-                <p class="text-gray-500 text-sm uppercase tracking-widest font-bold mt-1">Oyun Sunucusu</p>
+                <h3 class="home-stat-platform font-bold text-cyan-300 font-rajdhani">JAVA + BEDROCK</h3>
+                <p class="text-gray-500 text-sm uppercase tracking-widest font-bold mt-1">Birlikte Oyna</p>
             </div>
             <div class="hover:transform hover:scale-105 transition duration-300">
-                <h3 class="text-4xl font-bold text-mc-main font-rajdhani drop-shadow-[0_0_10px_rgba(150,83,250,0.4)]">26.2</h3>
-                <p class="text-gray-500 text-sm uppercase tracking-widest font-bold mt-1">Güncel Sürüm</p>
+                <h3 class="text-4xl font-bold text-yellow-300 font-rajdhani">7/24</h3>
+                <p class="text-gray-500 text-sm uppercase tracking-widest font-bold mt-1">Kalıcı Dünya</p>
             </div>
         </div>
     </div>
@@ -223,11 +219,12 @@
     <section id="features" class="py-20 bg-mc-dark scroll-mt-20">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 font-rajdhani">OYUN <span class="text-mc-main drop-shadow-[0_0_10px_rgba(150,83,250,0.5)]">MODLARI</span>
+                <span class="section-kicker section-kicker-games">Bir sunucu, iki farklı tempo</span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 font-rajdhani">OYUNLARINI <span class="text-mc-main drop-shadow-[0_0_10px_rgba(150,83,250,0.5)]">SEÇ</span>
 </h2>
                 <div class="h-1 w-24 bg-mc-main mx-auto rounded shadow-[0_0_10px_rgba(150,83,250,0.5)]">
 </div>
-                <p class="mt-4 text-gray-400">Her zevke uygun, özenle hazırlanmış oyun modlarımız.</p>
+                <p class="mt-4 text-gray-400">Uzun soluklu bir dünya kur veya kısa ve gerilimli topluluk maçlarına katıl.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -244,8 +241,30 @@
 </span>
 <h3>Survival</h3>
 </div>
-                        <p>Claim, 12 meslek, günlük görevler, yetenekler, oyuncu pazarı ve denetlenmiş ekonomiyle ağın kalıcı dünyası.</p>
+                        <p>Claim, 12 meslek, günlük görevler, beceriler ve oyuncuların yön verdiği ekonomiyle kalıcı hikâyeni oluştur.</p>
+                        <div class="game-mode-chips"><span>12 Meslek</span><span>Canlı Harita</span><span>Oyuncu Pazarı</span></div>
                         <a href="survival.html" class="game-mode-link">Detayları İncele <i class="fa-solid fa-arrow-right">
+</i>
+</a>
+                    </div>
+                </article>
+
+                <article class="game-mode-card mode-event">
+                    <div class="game-mode-media">
+                        <img src="assets/mode-event-v1.webp" alt="Rob's Village gece köyü ve sosyal çıkarım oyunu" loading="lazy" decoding="async">
+                        <span class="game-mode-status">Özel oyun</span>
+                    </div>
+                    <div class="game-mode-body">
+                        <div class="game-mode-heading">
+<span class="game-mode-icon">
+<i class="fa-solid fa-masks-theater">
+</i>
+</span>
+<h3>Rob's Village</h3>
+</div>
+                        <p>Köylüler, kurtlar ve özel roller arasında blöf yap; gündüz tartış, gece yeteneğini kullan ve takımını zafere taşı.</p>
+                        <div class="game-mode-chips"><span>Dinamik Roller</span><span>Harita Oylaması</span><span>Topluluk Maçı</span></div>
+                        <a href="servers.html#robs-village" class="game-mode-link">Oyunu Tanı <i class="fa-solid fa-arrow-right">
 </i>
 </a>
                     </div>
@@ -254,38 +273,19 @@
                 <article class="game-mode-card mode-lobby">
                     <div class="game-mode-media">
                         <img src="assets/mode-lobby-v1.webp" alt="ArcaDe Craft lobi meydanı ve oyun portalları" loading="lazy" decoding="async">
-                        <span class="game-mode-status">Ağ merkezi</span>
+                        <span class="game-mode-status">Başlangıç noktası</span>
                     </div>
                     <div class="game-mode-body">
                         <div class="game-mode-heading">
 <span class="game-mode-icon">
-<i class="fa-solid fa-layer-group">
+<i class="fa-solid fa-compass">
 </i>
 </span>
-<h3>Lobi</h3>
+<h3>Oyun Lobisi</h3>
 </div>
-                        <p>Oyun seçimi, güvenli hesap doğrulama, NPC yönlendirmeleri ve bütün sunuculara geçişin merkezi.</p>
-                        <a href="servers.html" class="game-mode-link">Detayları İncele <i class="fa-solid fa-arrow-right">
-</i>
-</a>
-                    </div>
-                </article>
-
-                <article class="game-mode-card mode-event">
-                    <div class="game-mode-media">
-                        <img src="assets/mode-event-v1.webp" alt="ArcaDe Craft gece köyündeki topluluk etkinliği" loading="lazy" decoding="async">
-                        <span class="game-mode-status">Dönemsel</span>
-                    </div>
-                    <div class="game-mode-body">
-                        <div class="game-mode-heading">
-<span class="game-mode-icon">
-<i class="fa-solid fa-shield-halved">
-</i>
-</span>
-<h3>Etkinlik</h3>
-</div>
-                        <p>Duyurulan tarihlerde açılan topluluk oyunları ve özel Rob's Village (Kurt Köylü) oturumları için ayrılmış sunucu.</p>
-                        <a href="servers.html" class="game-mode-link">Detayları İncele <i class="fa-solid fa-arrow-right">
+                        <p>Sunucuya katıldığında oyununu seç, hesabını yönet ve topluluğa tek merkezden ulaş.</p>
+                        <div class="game-mode-chips"><span>Hızlı Geçiş</span><span>Sosyal Menü</span><span>Java + Bedrock</span></div>
+                        <a href="servers.html#lobi" class="game-mode-link">Merkezi İncele <i class="fa-solid fa-arrow-right">
 </i>
 </a>
                     </div>
@@ -298,44 +298,44 @@
     <section id="network-showcase" class="py-20 bg-[#0a0a0c] scroll-mt-20">
         <div class="container mx-auto px-4">
             <div class="text-center mb-14">
-                <span class="text-mc-main font-bold uppercase text-sm">ArcaDe Craft Network</span>
-                <h2 class="text-4xl md:text-5xl font-bold font-rajdhani text-white mt-2">TEK AĞ, <span class="text-mc-main">ORTAK DENEYİM</span>
+                <span class="text-mc-main font-bold uppercase text-sm">Neden ArcaDe Craft?</span>
+                <h2 class="text-4xl md:text-5xl font-bold font-rajdhani text-white mt-2">OYUNDAKİ EMEĞİN <span class="text-mc-main">DEĞERLİ</span>
 </h2>
                 <div class="h-1 w-24 bg-mc-main mx-auto rounded mt-4 shadow-[0_0_10px_rgba(150,83,250,0.5)]">
 </div>
-                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Lobiden oyun modlarına, web rehberlerinden Discord topluluğuna kadar bütün sistemler aynı kimlik etrafında çalışır.</p>
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Kısa ömürlü numaralar yerine kalıcı ilerleme, adil rekabet ve birlikte üretmeye değer bir topluluk.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-6xl mx-auto">
-                <article class="info-card">
+                <article class="info-card play-value-card value-world">
                     <div class="w-12 h-12 bg-cyan-500/10 text-cyan-300 rounded-lg flex items-center justify-center text-xl mb-4 border border-cyan-500/20">
-<i class="fa-solid fa-route">
+<i class="fa-solid fa-house-chimney">
 </i>
 </div>
-                    <h3>Akıcı Sunucu Geçişi</h3>
-                    <p>Lobi, Survival ve dönemsel etkinlikler tek bağlantı adresinde kesintisiz biçimde bir araya gelir.</p>
+                    <h3>Kalıcı Bir Dünya</h3>
+                    <p>Evin, claimin, becerilerin ve ekonomik ilerlemen seni bir sonraki girişinde kaldığın yerden karşılar.</p>
                 </article>
-                <article class="info-card">
+                <article class="info-card play-value-card value-fair">
                     <div class="w-12 h-12 bg-yellow-500/10 text-yellow-300 rounded-lg flex items-center justify-center text-xl mb-4 border border-yellow-500/20">
-<i class="fa-solid fa-id-card">
+<i class="fa-solid fa-scale-balanced">
 </i>
 </div>
-                    <h3>Ortak Oyuncu Kimliği</h3>
-                    <p>Rütbeler, yetkiler ve güvenlik kayıtları ağ genelinde tutarlı çalışır; her oyun modu aynı hesabı tanır.</p>
+                    <h3>Adil İlerleme</h3>
+                    <p>VIP paketleri para veya meslek çarpanı vermez. Başarı; oyun, ticaret ve topluluk katkısıyla kazanılır.</p>
                 </article>
-                <article class="info-card">
+                <article class="info-card play-value-card value-community">
                     <div class="w-12 h-12 bg-green-500/10 text-green-300 rounded-lg flex items-center justify-center text-xl mb-4 border border-green-500/20">
 <i class="fa-solid fa-people-group">
 </i>
 </div>
-                    <h3>Bağlı Topluluk</h3>
-                    <p>Discord, bilgi bankası, duyurular ve destek akışı oyunun dışındaki deneyimi de ağla birlikte tutar.</p>
+                    <h3>Birlikte Oynanan Etkinlikler</h3>
+                    <p>Rob's Village oturumları, dönemsel etkinlikler ve Discord buluşmaları kalıcı dünyaya farklı bir tempo katar.</p>
                 </article>
             </div>
             <div class="flex flex-wrap justify-center gap-3 mt-9">
-                <a href="servers.html" class="inline-flex items-center gap-2 bg-mc-main hover:bg-[#7e42d6] text-white px-7 py-3 rounded-lg font-bold transition">Sunucuları Keşfet <i class="fa-solid fa-arrow-right">
+                <a href="servers.html" class="inline-flex items-center gap-2 bg-mc-main hover:bg-[#7e42d6] text-white px-7 py-3 rounded-lg font-bold transition">Oyunları Keşfet <i class="fa-solid fa-arrow-right">
 </i>
 </a>
-                <a href="about.html" class="inline-flex items-center gap-2 border border-white/15 hover:border-white/35 text-white px-7 py-3 rounded-lg font-bold transition">Ağı Tanı</a>
+                <a href="about.html" class="inline-flex items-center gap-2 border border-white/15 hover:border-white/35 text-white px-7 py-3 rounded-lg font-bold transition">Bizi Tanı</a>
             </div>
         </div>
     </section>
@@ -344,60 +344,61 @@
     <section id="server-features" class="py-20 bg-mc-dark scroll-mt-20">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold font-rajdhani">GÜÇLÜ <span class="text-mc-main drop-shadow-[0_0_10px_rgba(150,83,250,0.5)]">ALTYAPI</span>
+                <span class="section-kicker section-kicker-survival">Kalıcı dünyada kendi yolunu çiz</span>
+                <h2 class="text-4xl md:text-5xl font-bold font-rajdhani">SURVIVAL'DA <span class="text-mc-main drop-shadow-[0_0_10px_rgba(150,83,250,0.5)]">NE YAPARSIN?</span>
 </h2>
                 <div class="h-1 w-24 bg-mc-main mx-auto rounded mt-4 shadow-[0_0_10px_rgba(150,83,250,0.5)]">
 </div>
-                <p class="mt-4 text-gray-400">Sunucumuz sizi güvende ve eğlencede tutar.</p>
+                <p class="mt-4 text-gray-400">Komut listelerinden önce dünyada karşılığı olan, ilerletebildiğin sistemler.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-mc-card border border-white/5 rounded-xl p-6 hover:border-purple-500/30 hover:-translate-y-1 transition duration-300">
-                    <div class="w-12 h-12 bg-purple-500/10 text-purple-400 rounded-lg flex items-center justify-center text-2xl mb-4 border border-purple-500/20">
-                        <i class="fa-solid fa-star">
+            <div class="play-feature-grid">
+                <div class="play-feature-card feature-claim">
+                    <div class="play-feature-icon">
+                        <i class="fa-solid fa-hammer">
 </i>
                     </div>
-                    <h3 class="text-xl font-bold font-rajdhani mb-2 text-purple-300">RPG Yetenek Sistemi</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">AuraSkills ile Mining, Farming, Combat gibi yetenekleri geliştir. Seviye atladıkça güçlen!</p>
+                    <h3>Kendi Bölgeni Kur</h3>
+                    <p>Yerini seç, yapını kur ve claim sistemiyle emeğini koruma altına al.</p>
                 </div>
-                <div class="bg-mc-card border border-white/5 rounded-xl p-6 hover:border-yellow-500/30 hover:-translate-y-1 transition duration-300">
-                    <div class="w-12 h-12 bg-yellow-500/10 text-yellow-400 rounded-lg flex items-center justify-center text-2xl mb-4 border border-yellow-500/20">
-                        <i class="fa-solid fa-coins">
+                <div class="play-feature-card feature-jobs">
+                    <div class="play-feature-icon">
+                        <i class="fa-solid fa-briefcase">
 </i>
                     </div>
-                    <h3 class="text-xl font-bold font-rajdhani mb-2 text-yellow-300">Gelişmiş Ekonomi</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">EssentialsX + Vault ile sağlam ekonomi. Marketten alışveriş yap, /jobs ile para kazan.</p>
+                    <h3>Mesleğini Seç</h3>
+                    <p>12 meslekten ikisinde uzmanlaş, günlük hedeflerini tamamla ve düzenli gelir kazan.</p>
                 </div>
-                <div class="bg-mc-card border border-white/5 rounded-xl p-6 hover:border-red-500/30 hover:-translate-y-1 transition duration-300">
-                    <div class="w-12 h-12 bg-red-500/10 text-red-400 rounded-lg flex items-center justify-center text-2xl mb-4 border border-red-500/20">
-                        <i class="fa-solid fa-shield-halved">
+                <div class="play-feature-card feature-market">
+                    <div class="play-feature-icon">
+                        <i class="fa-solid fa-store">
 </i>
                     </div>
-                    <h3 class="text-xl font-bold font-rajdhani mb-2 text-red-300">Anti-Cheat & Güvenlik</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">GrimAC, proxy izolasyonu ve backend erişim sınırlarıyla katmanlı koruma.</p>
+                    <h3>Oyuncularla Ticaret Yap</h3>
+                    <p>Açık artırmada ürün sat, pazarda dükkân aç ve ekonomide kendi yerini oluştur.</p>
                 </div>
-                <div class="bg-mc-card border border-white/5 rounded-xl p-6 hover:border-orange-500/30 hover:-translate-y-1 transition duration-300">
-                    <div class="w-12 h-12 bg-orange-500/10 text-orange-400 rounded-lg flex items-center justify-center text-2xl mb-4 border border-orange-500/20">
-                        <i class="fa-solid fa-box-open">
+                <div class="play-feature-card feature-quests">
+                    <div class="play-feature-icon">
+                        <i class="fa-solid fa-list-check">
 </i>
                     </div>
-                    <h3 class="text-xl font-bold font-rajdhani mb-2 text-orange-300">Kasa Sistemi</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">VIP, MVIP ve UVIP haftalık anahtarlarıyla şeffaf ödül havuzlarını incele, kasanı Java veya Bedrock menüsünden aç.</p>
+                    <h3>Her Gün Yeni Bir Hedef</h3>
+                    <p>Günlük görevler ve NPC hikâyeleriyle sadece kaynak toplamaktan fazlasını yap.</p>
                 </div>
-                <div class="bg-mc-card border border-white/5 rounded-xl p-6 hover:border-green-500/30 hover:-translate-y-1 transition duration-300">
-                    <div class="w-12 h-12 bg-green-500/10 text-green-400 rounded-lg flex items-center justify-center text-2xl mb-4 border border-green-500/20">
+                <div class="play-feature-card feature-skills">
+                    <div class="play-feature-icon">
+                        <i class="fa-solid fa-wand-sparkles">
+</i>
+                    </div>
+                    <h3>Becerilerini Geliştir</h3>
+                    <p>Madencilikten çiftçiliğe kadar yaptığın işler kalıcı beceri seviyelerine dönüşür.</p>
+                </div>
+                <div class="play-feature-card feature-map">
+                    <div class="play-feature-icon">
                         <i class="fa-solid fa-map-location-dot">
 </i>
                     </div>
-                    <h3 class="text-xl font-bold font-rajdhani mb-2 text-green-300">Arazi Koruma</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">GriefPrevention ile claimlerin güvende. Altın kürekle alanını işaretle, kimse giremez!</p>
-                </div>
-                <div class="bg-mc-card border border-white/5 rounded-xl p-6 hover:border-blue-500/30 hover:-translate-y-1 transition duration-300">
-                    <div class="w-12 h-12 bg-blue-500/10 text-blue-400 rounded-lg flex items-center justify-center text-2xl mb-4 border border-blue-500/20">
-                        <i class="fa-solid fa-scroll">
-</i>
-                    </div>
-                    <h3 class="text-xl font-bold font-rajdhani mb-2 text-blue-300">Quest & Görev Sistemi</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">BeautyQuests NPC görevleri ve Jobs günlük görevleriyle her gün yeni hedefler seni bekliyor.</p>
+                    <h3>Dünyayı Keşfet</h3>
+                    <p>Gizlilik korumalı canlı haritadan kasabaları, yolları ve keşfedilecek bölgeleri gör.</p>
                 </div>
             </div>
             <div class="text-center mt-10">
@@ -421,8 +422,8 @@
 <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
 <article class="info-card">
 <span class="tag">13 Eylül 2026</span>
-<h3>26.2 geçişi tamamlandı</h3>
-<p>Oyun dünyaları, eklentiler ve bağlantı altyapısı yeni sürüme hazır.</p>
+<h3>Survival deneyimi yenilendi</h3>
+<p>Menüler, günlük görevler, kasalar ve oyuncu araçları daha anlaşılır hale getirildi.</p>
 </article>
 <article class="info-card">
 <span class="tag">Survival</span>
@@ -445,7 +446,7 @@
 <p class="mt-4 text-gray-400 max-w-2xl mx-auto">VIP paketleri para veya Jobs çarpanı vermez. Paketler ve haklar incelenebilir; fiyatlandırma tamamlanıp mağaza açılana kadar web üzerinden ödeme alınmaz.</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
-<article class="info-card">
+<article class="info-card rank-showcase-card rank-vip">
 <h3 class="text-green-400">VIP</h3>
 <ul class="rank-feature-list">
 <li><i class="fa-solid fa-check"></i><span>5 ev noktası</span></li>
@@ -455,8 +456,9 @@
 <li><i class="fa-solid fa-check"></i><span>Haftalık VIP kiti ve kasa anahtarı</span></li>
 <li><i class="fa-solid fa-check"></i><span>Renkli sohbet, şapka ve güvenli çöp kutusu</span></li>
 </ul>
+<a class="rank-card-link" href="store.html?package=vip">Paketi incele <i class="fa-solid fa-arrow-right"></i></a>
 </article>
-<article class="info-card">
+<article class="info-card rank-showcase-card rank-mvip">
 <h3 class="text-cyan-400">MVIP</h3>
 <ul class="rank-feature-list">
 <li><i class="fa-solid fa-check"></i><span>VIP haklarının tamamı</span></li>
@@ -466,8 +468,9 @@
 <li><i class="fa-solid fa-check"></i><span>Taşınabilir çalışma masası ve takma ad</span></li>
 <li><i class="fa-solid fa-check"></i><span>Haftalık MVIP kiti ve kasa anahtarı</span></li>
 </ul>
+<a class="rank-card-link" href="store.html?package=mvip">Paketi incele <i class="fa-solid fa-arrow-right"></i></a>
 </article>
-<article class="info-card">
+<article class="info-card rank-showcase-card rank-uvip">
 <h3 class="text-yellow-400">UVIP</h3>
 <ul class="rank-feature-list">
 <li><i class="fa-solid fa-check"></i><span>MVIP haklarının tamamı</span></li>
@@ -477,10 +480,12 @@
 <li><i class="fa-solid fa-check"></i><span>Taşınabilir iş istasyonları ve Ender Sandığı</span></li>
 <li><i class="fa-solid fa-check"></i><span>Haftalık UVIP kiti ve kasa anahtarı</span></li>
 </ul>
+<a class="rank-card-link" href="store.html?package=uvip">Paketi incele <i class="fa-solid fa-arrow-right"></i></a>
 </article>
 </div>
-<div class="text-center mt-8">
-<a href="ranks.html" class="inline-block bg-green-500 text-black px-6 py-3 rounded font-bold">Rütbeleri incele</a>
+<div class="rank-showcase-actions">
+<a href="ranks.html" class="inline-block bg-green-500 text-black px-6 py-3 rounded font-bold">Rütbeleri karşılaştır</a>
+<a href="store.html" class="inline-block border border-white/20 text-white px-6 py-3 rounded font-bold">Mağaza önizlemesi</a>
 </div>
 </div>
 </section>
@@ -574,7 +579,7 @@
 </script>
 <script src="live-integration.js?v=20260925-1">
 </script>
-<script src="site-shell.js?v=20260917-9">
+<script src="site-shell.js?v=20260925-10">
 </script>
 </body>
 
