@@ -1,0 +1,62 @@
+.village-index { position:sticky; top:78px; z-index:20; gap:0 30px; background:var(--theme-bg,#f7f8fc); }
+.village-index a { color:var(--muted); }
+.village-index a:hover { color:var(--theme-link,#245bdd); border-color:currentColor; }
+.game-section[id],.village-role-panel,.village-role { scroll-margin-top:155px; }
+.village-team-tabs { display:flex; gap:28px; border-bottom:1px solid var(--line); margin:28px 0; }
+.village-team-tabs a { padding:13px 0; color:var(--muted); font-size:14px; font-weight:600; border-bottom:3px solid transparent; text-decoration:none; }
+.village-team-tabs span { margin-left:8px; font-size:11px; font-weight:400; }
+.village-team-tabs a[aria-selected="true"] { color:var(--paper); border-color:var(--team-village); }
+.village-team-tabs a[href="#rol-kurt"][aria-selected="true"] { border-color:var(--team-wolf); }
+.village-team-tabs a[href="#rol-bagimsiz"][aria-selected="true"] { border-color:var(--team-solo); }
+.village-roles,.village-objectives { --team-village:#278050; --team-wolf:#ba493b; --team-solo:#936400; }
+html[data-theme="dark"] :is(.village-roles,.village-objectives) { --team-village:#86d7a8; --team-wolf:#ffaba1; --team-solo:#f1cb77; }
+.team-village { --team-color:var(--team-village); }.team-wolf { --team-color:var(--team-wolf); }.team-solo { --team-color:var(--team-solo); }
+.village-role-panel { margin-top:28px; }
+.village-team-heading { display:flex; align-items:center; gap:16px; margin:0 0 24px; }
+.village-team-heading > i { color:var(--team-color); font-size:24px; width:32px; flex-shrink:0; }
+.village-team-heading h3 { margin:0; font:700 26px/1.3 Rajdhani,sans-serif; }
+.village-team-heading p { margin:4px 0 0; color:var(--muted); font-size:13px; }
+.village-role-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; align-items:start; }
+.village-role { min-width:0; border:1px solid var(--line); border-radius:4px; background:var(--panel); }
+.village-role summary { display:flex; align-items:center; gap:16px; min-height:80px; padding:16px 20px; cursor:pointer; list-style:none; }
+.village-role summary::-webkit-details-marker { display:none; }
+.village-role summary::marker { content:""; }
+.village-role summary > i:first-child { color:var(--team-color); font-size:23px; width:28px; text-align:center; flex-shrink:0; }
+.village-role summary > span { min-width:0; flex:1; }
+.village-role summary strong { display:block; color:var(--paper); font:700 23px/1.25 Rajdhani,sans-serif; overflow-wrap:anywhere; }
+.village-role summary small { display:block; margin-top:4px; color:var(--muted); font-size:11px; line-height:1.5; }
+.village-role summary > i:last-child { color:var(--muted); font-size:11px; flex-shrink:0; }
+.village-role[open] { border-color:var(--team-color); }
+.village-role[open] summary > i:last-child { transform:rotate(180deg); }
+.village-role > div { padding:0 20px 18px; }
+.village-role p { font-size:13px; line-height:1.8; color:var(--muted); margin:0; }
+.village-role p + p { border-top:1px solid var(--line); margin-top:14px; padding-top:14px; }
+.village-role p strong { color:var(--paper); }
+.village-objectives { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:30px; }
+.village-objectives article { padding:22px 0 0; border-top:3px solid var(--team-color); }
+.village-objectives article > i { color:var(--team-color); font-size:25px; }
+.village-objectives h3 { margin:12px 0 10px; font:700 25px/1.25 Rajdhani,sans-serif; }
+.village-objectives p { margin:0; color:var(--muted); font-size:13px; }
+.village-lobby { display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); gap:55px; align-items:start; }
+.village-lobby-steps { list-style:none; counter-reset:lobby; padding:0; margin:0; }
+.village-lobby-steps li { counter-increment:lobby; position:relative; padding:0 0 24px 44px; }
+.village-lobby-steps li::before { content:counter(lobby,decimal-leading-zero); position:absolute; left:0; top:0; color:var(--theme-link,#245bdd); font:700 25px/1.25 Rajdhani,sans-serif; }
+.village-lobby h3,.village-fair-play h3 { font:700 24px/1.25 Rajdhani,sans-serif; margin:0 0 10px; }
+.village-lobby p,.village-fair-play p { font-size:13px; color:var(--muted); margin:0; }
+.village-countdown { border-top:1px solid var(--line); padding-top:20px; }
+.village-countdown dl { margin:18px 0; }
+.village-countdown dl > div { display:flex; justify-content:space-between; gap:20px; border-bottom:1px solid var(--line); padding:13px 0; font-size:13px; }
+.village-countdown dt { color:var(--muted); }.village-countdown dd { margin:0; font-weight:600; white-space:nowrap; }
+.village-fair-play { display:flex; gap:20px; padding:26px 0; margin-top:20px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.village-fair-play > i { margin-top:4px; color:var(--theme-link,#245bdd); font-size:23px; flex-shrink:0; }
+.village-fair-play .text-link { margin-top:16px; }
+.village-back-top { margin-top:28px; }
+@media(max-width:900px) { .village-index { top:70px; }.village-lobby { gap:30px; } }
+@media(max-width:680px) {
+  .village-index { justify-content:space-between; gap:0 8px; }.village-index a { font-size:11px; }
+  .game-section[id],.village-role-panel,.village-role { scroll-margin-top:135px; }
+  .village-team-tabs { gap:0; justify-content:space-between; margin:24px 0; }.village-team-tabs a { font-size:12px; }.village-team-tabs span { display:block; margin:4px 0 0; }
+  .village-role-grid,.village-objectives,.village-lobby { grid-template-columns:1fr; }
+  .village-role summary { gap:12px; padding:15px 16px; }.village-role summary strong { font-size:22px; }.village-role > div { padding:0 16px 18px; }
+  .village-objectives { gap:24px; }.village-lobby { gap:18px; }.village-lobby-steps li { padding-left:38px; }
+}
