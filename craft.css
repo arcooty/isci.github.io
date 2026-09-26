@@ -110,7 +110,7 @@ a.tag { color:#245bdd; text-decoration:underline; }.info-card-meta { gap:12px; }
 .hub-tabs a[aria-current=page] { color:#245bdd; border-color:#245bdd; }.hub-tabs a:hover { color:#245bdd; }.hub-tabs i { font-size:13px; }
 .hub-panel { scroll-margin-top:145px; }.hub-panel:focus,.guide-article article:focus { outline:none; }
 .survival-intro { display:grid; grid-template-columns:1fr 1.1fr; align-items:center; gap:45px; }
-.survival-intro h2 { font:700 46px/1.1 Rajdhani,sans-serif; margin:0 0 20px; }.survival-intro p { color:var(--muted); margin:0 0 24px; max-width:440px; }.survival-intro img { width:100%; aspect-ratio:3/2; object-fit:cover; border-radius:4px; }
+.survival-intro h2 { font:700 46px/1.1 Rajdhani,sans-serif; margin:0 0 20px; }.survival-intro p { color:var(--muted); margin:0 0 24px; max-width:440px; }.survival-intro img { width:100%; height:auto; aspect-ratio:16/10; object-fit:cover; border-radius:4px; }
 .survival-facts { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; padding:28px 0; margin:30px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }.survival-facts strong { display:block; font:700 25px Rajdhani,sans-serif; color:#202431; }.survival-facts span { font-size:12px; color:var(--muted); }
 .hub-shortcuts h2 { font:700 30px Rajdhani,sans-serif; margin:0 0 18px; }.hub-shortcuts > div { display:grid; grid-template-columns:1fr 1fr; gap:0 40px; }
 .hub-shortcuts a { display:grid; grid-template-columns:24px 1fr 12px; align-items:center; gap:18px; padding:22px 0; border-top:1px solid var(--line); color:#202431; text-decoration:none; }.hub-shortcuts a > i { color:#245bdd; }.hub-shortcuts a small { display:block; color:var(--muted); font-size:12px; }.hub-shortcuts a:hover strong { color:#245bdd; }
