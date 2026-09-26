@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const status = form.querySelector('[data-form-status]');
   const originalLabel = submit.innerHTML;
   let widgetId;
+  let refreshWidget;
   submit.disabled = true;
 
   function show(message, failed = false) {
@@ -48,6 +49,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       window.turnstile.reset(widgetId);
       submit.disabled = false;
       submit.innerHTML = originalLabel;
+      refreshWidget?.();
     }
   });
 
@@ -60,9 +62,24 @@ document.addEventListener('DOMContentLoaded', async () => {
     script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
     script.async = true;
     script.onload = () => {
+      let widgetTheme;
+      const renderWidget = () => {
+        const previous = widgetId;
+        widgetId = undefined;
+        if (previous !== undefined) window.turnstile.remove(previous);
+        const theme = window.ARCADE_THEME.get();
+        widgetId = window.turnstile.render(widget, { sitekey: config.siteKey, action: type, theme, size: 'flexible' });
+        widgetTheme = theme;
+      };
+      refreshWidget = () => {
+        // Keep an in-flight verification intact; apply its new theme after submission.
+        if (submit.disabled || widgetId === undefined || widgetTheme === window.ARCADE_THEME.get()) return;
+        try { renderWidget(); } catch { fallback(); }
+      };
       try {
-        widgetId = window.turnstile.render(widget, { sitekey: config.siteKey, action: type, theme: 'dark' });
+        renderWidget();
         submit.disabled = false;
+        window.addEventListener('arcade-theme-change', refreshWidget);
       } catch { fallback(); }
     };
     script.onerror = fallback;

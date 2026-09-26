@@ -1,0 +1,93 @@
+/* Artwork keeps its own palette; reading surfaces follow the selected theme. */
+:root { color-scheme:light; }
+:root[data-theme="dark"] {
+  color-scheme:dark;
+  --paper:#f2f3f6;
+  --muted:#b1b5c1;
+  --line:#3b3f49;
+  --panel:#202226;
+  --theme-bg:#151619;
+  --theme-link:#9dbaff;
+  --theme-hover:#272e3d;
+}
+.theme-toggle { display:grid; place-items:center; flex-shrink:0; width:42px; height:42px; padding:0; border:1px solid #dce0e9; border-radius:4px; background:white; color:#505665; cursor:pointer; }
+.theme-toggle:hover { background:#edf2ff; color:#245bdd; }
+.theme-toggle i { font-size:16px; }
+.network-shell form[data-form-type] > button { background:#245bdd; color:white; border-radius:4px; box-shadow:none; min-height:46px; }
+.network-shell .legal-text :is(p,li),.page-trail span,.guide-location,.footer-bottom { color:var(--muted); }
+.network-shell .legal-text h2 { color:#245bdd; }
+.network-shell .footer-bottom a[aria-current="page"] { color:#245bdd; }
+html[data-theme="light"] .village-poster { --game:#bd4436; }
+html[data-theme="dark"],html[data-theme="dark"] body { background:var(--theme-bg); color:var(--paper); }
+html[data-theme="dark"] ::-webkit-scrollbar-track { background:#202226; }
+html[data-theme="dark"] ::-webkit-scrollbar-thumb { background:#555a66; }
+html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover { background:#787f8f; }
+html[data-theme="dark"] .network-shell :focus-visible { outline-color:var(--theme-link); }
+html[data-theme="dark"] .site-nav { background:#191a1ef5; border-color:var(--line); }
+html[data-theme="dark"] :is(.site-brand,.page-head h1,.info-card h2,.info-card h3,.survival-facts strong,.guide-location strong,.guide-head h2,.game-poster,.discovery-links > a,.community-editorial > a,.hub-shortcuts a,.help-list > a,.vip-comparison th,.leaderboard-list a,.punishment-entry p,.punishment-meta strong,.order-status span,.site-footer h2,.search-results a) { color:var(--paper); }
+html[data-theme="dark"] .network-shell :is(.craft-page-title,.legacy-content-shell .craft-page-title,.legacy-page-hero .craft-page-title) { color:var(--paper)!important; }
+html[data-theme="dark"] .site-brand strong { color:#ffd15a; }
+html[data-theme="dark"] :is(.site-links a,.nav-menu > button,.page-trail span,.section-navigation a,.tag,.section-tabs a,.hub-tabs a,.guide-sidebar nav a,.guide-help,.guide-location,.rank-feature-list li,.store-status,.store-identity .store-consent,.vip-comparison td,.crate-odds > div,.player-search label,.player-status,.player-stat-list > div,.footer-intro p,.site-footer section > a:not(.site-brand),.footer-bottom,.footer-bottom a,.search-count,.search-empty,.search-results small,.search-results a > i:last-child,.guide-mobile-select label,.rules-list ul) { color:var(--muted); }
+html[data-theme="dark"] :is(.text-link,.page-trail a.parent-return,.page-trail i,.eyebrow,.rank-kicker,a.tag,.nav-dropdown i,.lobby-note > i,.discovery-links > a > i,.editorial-shortcuts a,.hub-shortcuts a > i,.guide-return,.guide-location a,.guide-pagination a,.start-steps a,.start-steps li::before,.rank-feature-list i,.store-consent a,.step-number,.help-list > a > i,.faq-list a,.join-steps li::before,.sitemap-grid a,.sitemap-branches summary,.news-journal article > div:first-child span,.player-identity span,.staff-card span,.player-stat-list strong,.punishment-summary strong,.footer-intro > a:last-child,.search-results a > i:first-child,.search-empty a,.guide-outline a,.page-index a,.rules-list h2 i) { color:var(--theme-link); }
+html[data-theme="dark"] .network-shell code,html[data-theme="dark"] .command code,html[data-theme="dark"] .leaderboard-list strong { color:#adc6ff; }
+html[data-theme="dark"] :is(.site-links a:hover,.site-links a[aria-current="page"],.site-links .is-current,.nav-menu > button:hover,.nav-dropdown a:hover,.nav-dropdown a[aria-current="page"],.section-navigation a[aria-current],.section-navigation a:hover,.section-tabs a:hover,.hub-tabs a[aria-current="page"],.hub-tabs a:hover,.guide-sidebar nav a:hover,.leaderboard-list a:hover,.help-list a:hover h2,.discovery-links a:hover h3,.hub-shortcuts a:hover strong,.platform-select button[aria-selected="true"],.site-footer section > a:hover,.site-footer section > a[aria-current="page"],.footer-bottom a:hover) { color:var(--theme-link); }
+html[data-theme="dark"] :is(.site-links a[aria-current="page"],.site-links .is-current) { box-shadow:inset 0 -2px var(--theme-link); }
+html[data-theme="dark"] :is(.section-navigation a[aria-current],.section-navigation a:hover,.hub-tabs a[aria-current="page"],.platform-select button[aria-selected="true"]) { border-color:var(--theme-link); }
+html[data-theme="dark"] :is(.skip-link,.nav-dropdown,.mobile-nav-button,.site-search-button,.theme-toggle,.search-close,.site-search,.info-card,.store-card,.crate-odds,.player-profile,.staff-card,.punishment-entry,.order-status,.player-identity,.player-profile-grid > section,.punishment-summary > div,.command-copy) { background:var(--panel); border-color:var(--line); }
+html[data-theme="dark"] :is(.skip-link,.mobile-nav-button,.site-search-button,.theme-toggle,.search-close,.site-search,.command-copy) { color:var(--paper); }
+html[data-theme="dark"] :is(.nav-dropdown a:hover,.nav-dropdown a[aria-current="page"],.site-search-button:hover,.theme-toggle:hover,.search-close:hover,.command-copy:hover,.search-results a:hover,.search-results a:focus-visible,.info-card[href]:hover) { background:var(--theme-hover); color:var(--theme-link); }
+html[data-theme="dark"] .site-nav .site-links .nav-play,html[data-theme="dark"] .site-nav .site-links .nav-play:hover { color:#342810; background:#ffd15a; box-shadow:none; }
+html[data-theme="dark"] :is(.section-tabs,.hub-tabs,.section-navigation-sticky) { background:var(--theme-bg); border-bottom-color:var(--line); }
+html[data-theme="dark"] :is(.about-actions a,.craft-button,.address-button,.leaderboard-filter select,.player-search input,.store-identity input,.guide-mobile-select select,.search-field input) { background:var(--panel); color:var(--paper); border-color:#626979; }
+html[data-theme="dark"] :is(.about-actions a:hover,.craft-button:hover) { background:var(--theme-hover); color:var(--theme-link); }
+html[data-theme="dark"] :is(.about-actions a:first-child,.craft-button.primary,.store-card button,.player-search button) { background:#245bdd; color:white; border-color:#245bdd; }
+html[data-theme="dark"] :is(.about-actions a:first-child:hover,.craft-button.primary:hover) { background:#1644b3; color:white; }
+html[data-theme="dark"] .discord-button,html[data-theme="dark"] .discord-button:hover { background:#5865e8; color:white; border-color:#5865e8; }
+html[data-theme="dark"] .store-card button:disabled { background:#363b46; color:#c0c6d2; }
+html[data-theme="dark"] .store-grid .store-card { border-top-color:#d2a431; }
+html[data-theme="dark"] .store-card.tier-mvip { border-top-color:#76d4ec; }
+html[data-theme="dark"] .store-card.tier-uvip { border-top-color:#f29abb; }
+html[data-theme="dark"] .store-card.is-selected { border-color:var(--theme-link); box-shadow:0 0 0 2px #9dbaff25; }
+html[data-theme="dark"] :is(.rank-feature-list li,.crate-odds > div,.player-stat-list > div,.punishment-meta,.discovery-links > a,.search-results a,.search-field,.sitemap-branches,.footer-bottom) { border-color:var(--line); }
+html[data-theme="dark"] .search-field > i { color:var(--muted); }
+html[data-theme="dark"] .search-field:focus-within { outline-color:var(--theme-link); }
+html[data-theme="dark"] .guide-sidebar nav a[aria-current="page"] { background:var(--theme-hover); color:var(--theme-link); border-color:var(--theme-link); }
+html[data-theme="dark"] .guide-article .info-card { background:none; }
+html[data-theme="dark"] :is(.guide-note,.vip-comparison thead) { background:#222938; }
+html[data-theme="dark"] .guide-note { border-left-color:var(--theme-link); }
+html[data-theme="dark"] .game-poster { --game:#9dbaff; }
+html[data-theme="dark"] .village-poster { --game:#ff9786; }
+html[data-theme="dark"] :is(.poster-image,.map-embed,.map-embed iframe) { background:#202226; border-color:var(--line); }
+html[data-theme="dark"] .discovery-band { background:#1c2028; border-color:var(--line); }
+html[data-theme="dark"] .vip-band { background:#24221b; border-color:#4b4430; }
+html[data-theme="dark"] .vip-band .eyebrow { color:#f4ca70; }
+html[data-theme="dark"] .vip-band-actions small { color:#c7bc9f; }
+html[data-theme="dark"] :is(.crate-odds strong,.leaderboard-list li:first-child .board-place) { color:#f4ca70; }
+html[data-theme="dark"] .crate-odds.tier-mvip strong { color:#76d4ec; }
+html[data-theme="dark"] .crate-odds.tier-uvip strong { color:#f29abb; }
+html[data-theme="dark"] .board-place { color:var(--muted); }
+html[data-theme="dark"] .site-footer { background:#1c1d21; }
+html[data-theme="dark"] .network-shell .legacy-page-hero { background:var(--theme-bg)!important; }
+html[data-theme="dark"] .network-shell form[data-form-type] { color:var(--paper); }
+html[data-theme="dark"] .network-shell form[data-form-type] :is(input,select,textarea) { background:var(--panel)!important; color:var(--paper)!important; border-color:#626979!important; }
+html[data-theme="dark"] .network-shell form[data-form-type] > .bg-black\/40 { background:#222938; }
+html[data-theme="dark"] .network-shell :is(.text-gray-300,.text-gray-400,.text-gray-500,.legal-text p) { color:var(--muted); }
+html[data-theme="dark"] .network-shell :is(.text-mc-main,.legal-text h2) { color:var(--theme-link); }
+html[data-theme="dark"] .network-shell .text-white { color:var(--paper); }
+html[data-theme="dark"] .network-shell .bg-mc-card { background:var(--panel); border-color:var(--line); }
+html[data-theme="dark"] .network-shell :is(input,textarea)::placeholder { color:#a5aab8; opacity:1; }
+html[data-theme="dark"] .network-shell input[type="checkbox"] { accent-color:#245bdd; }
+/* The image hero and status card have intentional, theme-independent contrast. */
+html[data-theme="dark"] .craft-hero h1.craft-page-title { color:white!important; }
+html[data-theme="dark"] .craft-hero .hero-actions .primary { background:#ffd15a; border-color:#ffd15a; color:#342810; }
+html[data-theme="dark"] .craft-hero .hero-actions .primary:hover { background:#ffc436; color:#342810; }
+html[data-theme="dark"] .hero-actions .address-button { background:#17142199; border-color:#ffffff50; color:white; }
+@media(max-width:1100px) and (min-width:901px) { .site-nav-inner { gap:10px; }.site-links { gap:0; }.site-links a,.nav-menu > button { padding-left:6px; padding-right:6px; }.site-links .nav-play { padding:12px; margin-left:4px; } }
+@media(max-width:900px) { html[data-theme="dark"] .site-links { background:var(--panel); } }
+@media(max-width:400px) {
+  .site-nav-inner { gap:8px; padding-left:14px; padding-right:14px; }
+  .site-nav-inner .site-brand { font-size:21px; gap:6px; }
+  .site-nav-inner .site-brand img { width:30px; height:30px; }
+  .nav-tools { gap:6px; }
+  .nav-tools :is(.site-search-button,.theme-toggle,.mobile-nav-button) { width:40px; height:42px; }
+}
