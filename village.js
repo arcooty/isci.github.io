@@ -21,7 +21,8 @@
     try { id = decodeURIComponent(location.hash.slice(1)); } catch { id = ''; }
     const destination = document.getElementById(id);
     const index = destination ? panels.findIndex(panel => panel === destination || panel.contains(destination)) : -1;
-    select(index >= 0 ? tabs[index] : tabs.find(tab => tab.getAttribute('aria-selected') === 'true') || tabs[0]);
+    const initial = !destination || id === 'roller';
+    select(index >= 0 ? tabs[index] : initial ? tabs[0] : tabs.find(tab => tab.getAttribute('aria-selected') === 'true') || tabs[0]);
     if (index < 0) return;
     if (destination.tagName === 'DETAILS') destination.open = true;
     if (align) requestAnimationFrame(() => {

@@ -42,8 +42,9 @@ function harness(hash = '',pendingFonts = false) {
   const aura = new Element('rol-aura-gozcusu','DETAILS'); panels[0].children.push(aura);
   const arsonist = new Element('rol-kundakci','DETAILS'); panels[2].children.push(arsonist);
   const catalogue = new Element('roller');
+  const faq = new Element('sorular');
   const nav = new Element('role-tabs','NAV');
-  const ids = Object.fromEntries([...panels,...tabs,aura,arsonist,catalogue].map(item => [item.id,item]));
+  const ids = Object.fromEntries([...panels,...tabs,aura,arsonist,catalogue,faq].map(item => [item.id,item]));
   const location = {hash};
   const changes=[];
   const history = {
@@ -96,6 +97,10 @@ test('clicks and browser history preserve the team without duplicating history',
   assert.deepEqual(page.panels.map(panel=>panel.hidden),[true,true,false]);
   page.location.hash='#sorular'; page.listeners.hashchange();
   assert.deepEqual(page.panels.map(panel=>panel.hidden),[true,true,false]);
+  page.location.hash=''; page.listeners.popstate();
+  assert.deepEqual(page.panels.map(panel=>panel.hidden),[false,true,true]);
+  page.click(1); page.location.hash='#roller'; page.listeners.popstate();
+  assert.deepEqual(page.panels.map(panel=>panel.hidden),[false,true,true]);
   assert.equal(page.click(0,{ctrlKey:true}).prevented,undefined);
 });
 
