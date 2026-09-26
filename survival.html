@@ -7,8 +7,8 @@
   <meta name="description" content="ArcaDe Craft Survival: oyunu tanı, rehberini oku, dünyayı ve sıralamaları aynı merkezden keşfet.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="network.css?v=20260926-2">
-  <link rel="stylesheet" href="craft.css?v=20260926-2">
+  <link rel="stylesheet" href="network.css?v=20260926-3">
+  <link rel="stylesheet" href="craft.css?v=20260926-3">
   <link rel="icon" href="assets/logo.png" type="image/png">
   <link rel="canonical" href="https://robsarcade.online/survival.html">
 </head>
@@ -20,7 +20,7 @@
       <a class="craft-button primary" href="join.html"><i class="fa-solid fa-play" aria-hidden="true"></i> Oyuna katıl</a>
     </div>
     <nav class="hub-tabs" aria-label="Survival bölümleri">
-      <a href="#genel" data-hub-tab="genel" aria-current="page"><i class="fa-solid fa-house" aria-hidden="true"></i> Genel bakış</a>
+      <a href="#genel" data-hub-tab="genel" aria-current="page" title="Survival genel bakış"><i class="fa-solid fa-house" aria-hidden="true"></i> Survival</a>
       <a href="#baslangic" data-hub-tab="rehber"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Oyun rehberi</a>
       <a href="#harita" data-hub-tab="harita"><i class="fa-solid fa-map" aria-hidden="true"></i> Harita</a>
       <a href="#siralamalar" data-hub-tab="siralamalar"><i class="fa-solid fa-trophy" aria-hidden="true"></i> Sıralamalar</a>
@@ -52,9 +52,7 @@
       <h2>Mesleğini seç.</h2>
       <p>Oynayış tarzına uyan en fazla iki mesleği seç; çalıştıkça para, meslek puanı ve tecrübe kazan. Ödemeler Survival ekonomisiyle birlikte dengelenir.</p>
     </header>
-
-
-
+    <nav class="guide-outline" aria-label="Meslekler konusunun bölümleri"><a href="#jobs-meslekler" data-section-link="jobs-meslekler">Meslekler</a><a href="#jobs-sistem" data-section-link="jobs-sistem">İlerleme</a><a href="#jobs-komutlar" data-section-link="jobs-komutlar">Meslek komutları</a></nav>
     <section id="jobs-meslekler" class="about-section jobs-first-section">
       <div class="section-title"><span class="eyebrow">Oynayışını seç</span><h2>Meslekler</h2></div>
       <div class="info-grid">
@@ -74,7 +72,7 @@
     </section>
 
     <section id="jobs-sistem" class="about-section">
-      <div class="section-title"><span class="eyebrow">Adil ilerleme</span><h2>SİSTEM NASIL ÇALIŞIR?</h2></div>
+      <div class="section-title"><span class="eyebrow">Adil ilerleme</span><h2>Nasıl ilerlersin?</h2></div>
       <div class="about-band">
         <div><h2>İki Aktif Meslek</h2><p>Bir oyuncu aynı anda en fazla iki meslekte ilerleyebilir. Meslek değiştirirken mevcut seviyenin etkisini oyun içindeki uyarıdan kontrol et.</p></div>
         <div><h2>Dengeli Ödemeler</h2><p>Meslek kazançları market satışından bağımsızdır. Tekrarlı yerleştir-kır, craft geri dönüşümü ve otomasyon kaynaklı açıklar ödeme kurallarıyla sınırlandırılır.</p></div>
@@ -82,7 +80,7 @@
     </section>
 
     <section id="jobs-komutlar" class="about-section">
-      <div class="section-title"><span class="eyebrow">Hızlı erişim</span><h2>MESLEK KOMUTLARI</h2></div>
+      <div class="section-title"><h2>Meslek komutları</h2></div>
       <div class="command-list">
         <div class="command"><code>/jobs browse</code><span>Tüm meslekleri ve ayrıntılarını açar.</span></div>
         <div class="command"><code>/jobs join [meslek]</code><span>Seçtiğin mesleğe katılmanı sağlar.</span></div>
@@ -101,7 +99,8 @@
     <h2>Ödül kasaları</h2>
     <p>Haftalık rütbe kitinden anahtarını al, ödül havuzunu incele ve kasanı menüden aç. Java ve Bedrock oyuncuları aynı ödül sistemini kullanır.</p>
   </header>
-  <section class="about-section">
+  <nav class="guide-outline" aria-label="Kasalar konusunun bölümleri"><a href="#crate-havuzlar" data-section-link="crate-havuzlar">Kasalar</a><a href="#crate-odds" data-section-link="crate-odds">Ödüller ve oranlar</a><a href="#crate-kullanim" data-section-link="crate-kullanim">Anahtar ve kullanım</a></nav>
+  <section class="about-section" id="crate-havuzlar">
     <div class="section-title"><span class="eyebrow">Üç ayrı havuz</span><h2>Üç farklı ödül havuzu</h2></div>
     <div class="info-grid">
       <article class="info-card"><span class="tag">VIP</span><h2>VIP Kasası</h2><p>Kaynak paketi, geliştirilmiş demir kazma, altın elma, XP şişeleri ve para ödülleri.</p><div class="info-card-meta"><span class="tag">Haftalık 1 anahtar</span><span class="tag">VIP ve üzeri</span></div></article>
@@ -109,7 +108,7 @@
       <article class="info-card"><span class="tag">UVIP</span><h2>UVIP Kasası</h2><p>Seçkin kaynaklar, Verimlilik IV araçlar, 64 XP şişesi, para ve çok nadir Koruma IV zırh seti.</p><div class="info-card-meta"><span class="tag">Haftalık 1 anahtar</span><span class="tag">UVIP</span></div></article>
     </div>
   </section>
-  <section class="about-section">
+  <section class="about-section" id="crate-odds">
     <div class="section-title"><span class="eyebrow">Şeffaf olasılıklar</span><h2>Kasa ödülleri ve oranları</h2></div>
     <div class="crate-odds-grid">
       <article class="crate-odds tier-vip"><h3>VIP Kasası</h3><div><span>Günlük kaynak paketi</span><strong>%40</strong></div><div><span>Verimlilik II demir kazma</span><strong>%25</strong></div><div><span>3 altın elma</span><strong>%20</strong></div><div><span>500 oyun parası</span><strong>%10</strong></div><div><span>16 XP şişesi</span><strong>%4</strong></div><div><span>2.000 oyun parası</span><strong>%1</strong></div></article>
@@ -118,7 +117,7 @@
     </div>
     <p class="section-note">Her kasanın oranları kendi içinde %100’dür. Üst kasalar daha güçlü ödül havuzuna sahiptir; herhangi bir kasada garantili büyük ödül bulunmaz.</p>
   </section>
-  <section class="about-section">
+  <section class="about-section" id="crate-kullanim">
     <div class="section-title"><span class="eyebrow">Oyun içinden</span><h2>Anahtarını al, kasanı aç</h2></div>
     <div class="about-band">
       <div><h2>1. Anahtarını Al</h2><p>Rütbene ait haftalık kiti <code>/kit vip</code>, <code>/kit mvip</code> veya <code>/kit uvip</code> komutuyla aldığında bir kasa anahtarı da hesabına eklenir.</p></div>
@@ -133,6 +132,8 @@
 <h2>Günlük oyun komutları</h2>
 <p>Günlük oynayışta ihtiyaç duyacağın komutların kısa listesi.</p>
 </header>
+<nav class="guide-outline" aria-label="Komutlar konusunun bölümleri"><a href="#commands-travel" data-section-link="commands-travel">Ulaşım ve ev</a><a href="#commands-progress" data-section-link="commands-progress">İlerleme</a><a href="#commands-vip" data-section-link="commands-vip">VIP komutları</a></nav>
+<section class="about-section" id="commands-travel"><div class="section-title"><h2>Ulaşım ve ev</h2></div>
 <section class="command-list">
 <div class="command">
 <code>/menu</code>
@@ -158,6 +159,9 @@
 <code>/tpa oyuncu</code>
 <span>Işınlanma isteği</span>
 </div>
+</section></section>
+<section class="about-section" id="commands-progress"><div class="section-title"><h2>İlerleme ve topluluk</h2></div>
+<section class="command-list">
 <div class="command">
 <code>/balance</code>
 <span>Bakiyeni göster</span>
@@ -182,6 +186,9 @@
 <code>/kasalar</code>
 <span>Kasa ödüllerini incele veya anahtarla aç</span>
 </div>
+</section></section>
+<section class="about-section" id="commands-vip"><div class="section-title"><h2>VIP kolaylıkları</h2></div>
+<section class="command-list">
 <div class="command">
 <code>/vip</code>
 <span>VIP paketlerini karşılaştır</span>
@@ -198,7 +205,7 @@
 <code>/vipekstra</code>
 <span>Depo, ev, ilan ve dükkân hakları</span>
 </div>
-</section>
+</section></section>
 </article>
         <nav class="guide-pagination" aria-label="Rehber gezinmesi"><a href="#genel" class="guide-return"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Survival'a dön</a><a id="guide-next" href="#arazi">Sonraki konu: Arazi ve evler <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></nav>
       </div>
@@ -218,10 +225,10 @@
     <noscript><p>Rehber konuları aşağıda okunabilir. Haritayı <a href="https://map.robsarcade.online/">ayrı sekmede açabilirsin</a>.</p></noscript>
   </main>
   <footer></footer>
-  <script src="site-map.js?v=20260926-2"></script>
-  <script src="site-shell.js?v=20260926-2"></script>
-  <script src="survival.js?v=20260926-2"></script>
+  <script src="site-map.js?v=20260926-3"></script>
+  <script src="site-shell.js?v=20260926-3"></script>
+  <script src="survival.js?v=20260926-3"></script>
   <script src="api-config.js"></script>
-  <script src="leaderboard.js?v=20260926-2"></script>
+  <script src="leaderboard.js?v=20260926-3"></script>
 </body>
 </html>

@@ -41,28 +41,31 @@ function harness(hash = '') {
     replaceChildren(...children) { this.children=children; }
     querySelectorAll() { return this.children; }
     addEventListener(type,handler) { (this.events ||= {})[type]=handler; }
-    focus() { this.focused=true; }
+    focus() { this.focused=true; this.focusCount=(this.focusCount||0)+1; }
     getBoundingClientRect() { return {top:240,bottom:270}; }
   }
   const topics = Array.from(model.topics,([id]) => new Element({guideTopic:id}));
   const panels = ['genel','rehber','harita','siralamalar'].map(id => new Element({hubPanel:id}));
   const tabs = ['genel','rehber','harita','siralamalar'].map(id => new Element({hubTab:id}));
+  const sectionLinks = Object.values(model.topicSections).flatMap(items=>Array.from(items,([id])=>new Element({sectionLink:id})));
   const ids = Object.fromEntries(['guide-topics','guide-topic-select','guide-current','guide-next'].map(id=>[id,new Element()]));
   model.topics.forEach(([id],i)=>ids[id]=topics[i]);
+  sectionLinks.forEach(link=>ids[link.dataset.sectionLink]=new Element());
   const frame = new Element({src:'https://map.robsarcade.online/'});
   const events = {};
-  const location = {hash,pathname:'/survival.html',href:'https://robsarcade.online/survival.html'+hash};
+  const location = {hash,origin:'https://robsarcade.online',pathname:'/survival.html',href:'https://robsarcade.online/survival.html'+hash};
   const history = {pushState:(_state,_title,hash)=>{location.hash=hash;}};
   const document = {
-    querySelectorAll:selector=>selector.includes('hub-panel')?panels:selector.includes('guide-topic')?topics:tabs,
+    querySelectorAll:selector=>selector.includes('hub-panel')?panels:selector.includes('guide-topic')?topics:selector.includes('section-link')?sectionLinks:tabs,
     querySelector:selector=>selector.includes('iframe')?frame:new Element(),
     getElementById:id=>ids[id] || new Element(),
     createElement:()=>new Element(),createTextNode:text=>text,
-    addEventListener:(type,handler)=>events[type]=handler
+    addEventListener:(type,handler)=>events[type]=handler,
+    fonts:{ready:{then:handler=>events.fontsReady=handler}}
   };
   const window = {ARCADE_SITE:model,scrollY:0,scrollTo:()=>{},addEventListener:(type,handler)=>events[type]=handler};
   vm.runInNewContext(fs.readFileSync(path.join(root,'survival.js'),'utf8'),{window,document,location,history,requestAnimationFrame:fn=>fn(),URL});
-  return {topics,panels,tabs,ids,frame,events,history,location,document};
+  return {topics,panels,tabs,ids,frame,events,history,location,document,sectionLinks};
 }
 test('deep link selects precisely one guide topic and leaves the map unloaded', () => {
   const h=harness('#ekonomi');
@@ -95,4 +98,36 @@ test('the map initializes only on map selection, and guide links remember their 
 test('unknown or malformed hashes return safely to the overview', () => {
   const h=harness('#%broken');
   assert.deepEqual(h.panels.filter(p=>!p.hidden).map(p=>p.dataset.hubPanel),['genel']);
+});
+test('subsection deep links open their owner topic, focus the section and preserve context',()=>{
+  for(const [topic,items] of Object.entries(model.topicSections)) for(const [id] of items) {
+    const h=harness('#'+id);
+    assert.deepEqual(h.topics.filter(p=>!p.hidden).map(p=>p.dataset.guideTopic),[topic]);
+    assert.equal(h.ids[id].focused,true);
+    assert.equal(h.ids['guide-topic-select'].value,topic);
+    assert.equal(h.tabs.find(t=>t.dataset.hubTab==='rehber').attrs['aria-current'],'page');
+    assert.equal(h.sectionLinks.find(link=>link.dataset.sectionLink===id).attrs['aria-current'],'location');
+    assert.equal(h.frame.src,'');
+  }
+});
+test('in-page subsection clicks do not fall back to the overview',()=>{
+  const h=harness('#meslekler');
+  const link={href:'https://robsarcade.online/survival.html#jobs-komutlar'};
+  let prevented=false;
+  h.events.click({target:{closest:()=>link},button:0,preventDefault:()=>{prevented=true;}});
+  assert.equal(prevented,true);
+  assert.equal(h.location.hash,'#jobs-komutlar');
+  assert.equal(h.ids['guide-current'].textContent,'Meslekler');
+  h.location.hash='#meslekler';h.events.popstate();
+  assert.equal(h.ids['guide-current'].textContent,'Meslekler');
+});
+test('font completion realigns a deep link without overriding user navigation',()=>{
+  const h=harness('#jobs-komutlar');
+  assert.equal(h.ids['jobs-komutlar'].focusCount,1);
+  h.events.fontsReady();assert.equal(h.ids['jobs-komutlar'].focusCount,2);
+  const interacted=harness('#jobs-komutlar');interacted.events.wheel();interacted.events.fontsReady();
+  assert.equal(interacted.ids['jobs-komutlar'].focusCount,1);
+  const moved=harness('#jobs-komutlar');moved.location.hash='#ekonomi';moved.events.popstate();moved.events.fontsReady();
+  assert.equal(moved.ids['guide-current'].textContent,'Ekonomi ve ticaret');
+  assert.equal(moved.ids['ekonomi'].focusCount,1);
 });

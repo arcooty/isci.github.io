@@ -1,151 +1,45 @@
-<!DOCTYPE html>
-<html lang="tr" class="scroll-smooth">
+<!doctype html>
+<html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kurallar - ArcaDe Craft</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&amp;family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'mc-main': '#9653fa',
-                        'mc-dark': '#121212',
-                        'mc-card': '#1E1E1E',
-                    },
-                    fontFamily: {
-                        'rajdhani': ['Rajdhani', 'sans-serif'],
-                        'inter': ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0f0f13; color: #ffffff; cursor: default; }
-        h1, h2, h3 { font-family: 'Rajdhani', sans-serif; }
-        #cursor-glow { width: 600px; height: 600px; background: radial-gradient(circle, rgba(150, 83, 250, 0.15) 0%, rgba(0, 0, 0, 0) 70%); position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); pointer-events: none; z-index: 9999; mix-blend-mode: screen; }
-    </style>
-    <link rel="stylesheet" href="network.css?v=20260926-2">
-<link rel="stylesheet" href="craft.css?v=20260926-2">
-<link rel="icon" href="assets/logo.png" type="image/png">
-<link rel="canonical" href="https://robsarcade.online/rules.html">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sunucu kuralları | ArcaDe Craft</title>
+  <meta name="description" content="ArcaDe Craft sohbet, oyun içi ve hesap güvenliği kuralları. Ceza kayıtları ve itiraz yolları.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="network.css?v=20260926-3">
+  <link rel="stylesheet" href="craft.css?v=20260926-3">
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <link rel="canonical" href="https://robsarcade.online/rules.html">
 </head>
-<body class="antialiased">
-    <div id="cursor-glow"></div>
-
-    <nav class="fixed w-full z-40 bg-black/80 backdrop-blur-md border-b border-white/10">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="index.html" class="text-3xl font-bold font-rajdhani tracking-wider flex items-center gap-2">
-                <img src="assets/logo.png" alt="ArcaDe Craft Logo" class="w-10 h-10 drop-shadow-lg">
-                <span class="text-white">ArcaDe<span class="text-mc-main">Craft</span></span>
-            </a>
-            <div class="hidden md:flex items-center gap-6">
-                <a href="index.html" class="text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">ANASAYFA</a>
-                <a href="survival.html#baslangic" class="text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">ÖZELLİKLER</a>
-                <a href="survival.html#meslekler" class="text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">MESLEKLER</a>
-                <a href="survival.html#siralamalar" class="text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">LİDERLİK</a>
-                <a href="news.html" class="text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">HABERLER</a>
-                <a href="survival.html#baslangic" class="text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">WİKİ</a>
-            </div>
-            <a href="index.html" class="text-gray-300 hover:text-white font-bold text-sm"><i class="fa-solid fa-arrow-left mr-2"></i> Geri Dön</a>
-        </div>
-    </nav>
-
-    <div class="container mx-auto px-4 py-32 max-w-4xl">
-        <h1 class="text-5xl font-bold text-center mb-4">SUNUCU <span class="text-mc-main">KURALLARI</span></h1>
-        <p class="text-center text-gray-400 mb-12">Adil ve eğlenceli bir oyun ortamı için lütfen kuralları dikkatlice okuyunuz.</p>
-
-        <div class="space-y-6">
-            <div class="bg-mc-card border border-white/10 rounded-xl p-6">
-                <h2 class="text-2xl font-bold text-white mb-4 flex items-center"><i class="fa-solid fa-comment-slash text-red-500 mr-3"></i> Sohbet Kuralları</h2>
-                <ul class="list-disc list-inside space-y-2 text-gray-300 ml-2">
-                    <li>Küfür, hakaret ve argo konuşmak kesinlikle yasaktır. (Mute Sebebi)</li>
-                    <li>Sohbette spam yapmak, flood yapmak ve büyük harf kullanmak yasaktır.</li>
-                    <li>Reklam yapmak (başka sunucu, site vb.) süresiz ban sebebidir.</li>
-                    <li>Dini, milli ve siyasi değerlere hakaret yasaktır.</li>
-                </ul>
-            </div>
-
-            <div class="bg-mc-card border border-white/10 rounded-xl p-6">
-                <h2 class="text-2xl font-bold text-white mb-4 flex items-center"><i class="fa-solid fa-gamepad text-blue-500 mr-3"></i> Oyun İçi Kurallar</h2>
-                <ul class="list-disc list-inside space-y-2 text-gray-300 ml-2">
-                    <li>Hile kullanmak (Killaura, Fly, Xray vb.) kesinlikle yasaktır.</li>
-                    <li>Bug ve hataları kullanmak yasaktır, tespit edildiğinde bildirilmelidir.</li>
-                    <li>TP tuzağı kurmak ve oyuncuları kandırmak yasaktır.</li>
-                    <li>Yan hesap (Multi-account) açmak yasaktır.</li>
-                </ul>
-            </div>
-
-            <div class="bg-mc-card border border-white/10 rounded-xl p-6">
-                <h2 class="text-2xl font-bold text-white mb-4 flex items-center"><i class="fa-solid fa-user-shield text-green-500 mr-3"></i> Hesap Güvenliği</h2>
-                <ul class="list-disc list-inside space-y-2 text-gray-300 ml-2">
-                    <li>Hesap güvenliği oyuncunun sorumluluğundadır.</li>
-                    <li>Basit şifreler (123456, asd123) kullanmayınız.</li>
-                    <li>Hesap satışı ve takası sunucu içerisinde yasaktır.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="mt-12 text-center text-gray-500 text-sm">
-            Bu kurallar 12.12.2025 tarihinde güncellenmiştir. Yönetim kuralları değiştirme hakkını saklı tutar.
-        </div>
+<body class="network-shell">
+  <nav></nav>
+  <main class="page-wrap">
+    <header class="page-head"><span class="eyebrow">Adil oyun, ortak kurallar</span><h1>Sunucu kuralları</h1><p>Birlikte oynadığımız dünyayı korumak için sohbet, oyun ve hesap kuralları bütün oyunculara uygulanır.</p></header>
+    <nav class="page-index" aria-label="Kural konuları"><a href="#sohbet">Sohbet</a><a href="#oyun">Oyun içi</a><a href="#hesap">Hesap güvenliği</a></nav>
+    <div class="rules-list">
+      <section id="sohbet" aria-labelledby="sohbet-title"><h2 id="sohbet-title"><i class="fa-solid fa-comment-slash" aria-hidden="true"></i>Sohbet kuralları</h2><ul>
+        <li>Küfür, hakaret ve argo konuşmak kesinlikle yasaktır. (Mute sebebi)</li>
+        <li>Sohbette spam yapmak, flood yapmak ve büyük harf kullanmak yasaktır.</li>
+        <li>Reklam yapmak (başka sunucu, site vb.) süresiz ban sebebidir.</li>
+        <li>Dini, milli ve siyasi değerlere hakaret yasaktır.</li>
+      </ul></section>
+      <section id="oyun" aria-labelledby="oyun-title"><h2 id="oyun-title"><i class="fa-solid fa-gamepad" aria-hidden="true"></i>Oyun içi kurallar</h2><ul>
+        <li>Hile kullanmak (Killaura, Fly, Xray vb.) kesinlikle yasaktır.</li>
+        <li>Bug ve hataları kullanmak yasaktır, tespit edildiğinde bildirilmelidir.</li>
+        <li>TP tuzağı kurmak ve oyuncuları kandırmak yasaktır.</li>
+        <li>Yan hesap (Multi-account) açmak yasaktır.</li>
+      </ul></section>
+      <section id="hesap" aria-labelledby="hesap-title"><h2 id="hesap-title"><i class="fa-solid fa-user-shield" aria-hidden="true"></i>Hesap güvenliği</h2><ul>
+        <li>Hesap güvenliği oyuncunun sorumluluğundadır.</li>
+        <li>Basit şifreler (123456, asd123) kullanmayınız.</li>
+        <li>Hesap satışı ve takası sunucu içerisinde yasaktır.</li>
+      </ul></section>
     </div>
-
-    <!-- FOOTER UPDATE -->
-    <footer class="bg-black border-t border-white/10 pt-16 pb-8">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-                <div class="col-span-1 md:col-span-2">
-                    <a href="index.html" class="text-2xl font-bold font-rajdhani flex items-center gap-2 mb-4">
-                        <span class="text-white">ARCADE <span class="text-mc-main">CRAFT</span></span>
-                    </a>
-                    <p class="text-gray-500 text-sm leading-relaxed max-w-md">
-                        ArcaDe Craft, oyuncularına en iyi Minecraft deneyimini sunmak için tasarlanmıştır. Pay to win değil, Play to win mantığıyla hareket ediyoruz.
-                    </p>
-                    <div class="flex gap-4 mt-6">
-                        <a href="https://discord.gg/GerdDHzMWp" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#5865F2] hover:text-white transition hover:shadow-[0_0_15px_rgba(88,101,242,0.5)]"><i class="fa-brands fa-discord"></i></a>
-                        <a href="https://www.youtube.com/@robmite" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#FF0000] hover:text-white transition hover:shadow-[0_0_15px_rgba(255,0,0,0.5)]"><i class="fa-brands fa-youtube"></i></a>
-                        <a href="https://x.com/RobMite" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#1DA1F2] hover:text-white transition hover:shadow-[0_0_15px_rgba(29,161,242,0.5)]"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="https://www.instagram.com/robmite/" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-pink-600 hover:text-white transition hover:shadow-[0_0_15px_rgba(219,39,119,0.5)]"><i class="fa-brands fa-instagram"></i></a>
-                    </div>
-                </div>
-
-                <div>
-                    <h4 class="text-white font-bold mb-6 font-rajdhani uppercase tracking-wider">Hızlı Linkler</h4>
-                    <ul class="space-y-2 text-sm text-gray-500">
-                        <li><a href="terms.html" class="hover:text-mc-main transition">Kullanıcı Sözleşmesi</a></li>
-                        <li><a href="privacy.html" class="hover:text-mc-main transition">Gizlilik Politikası</a></li>
-                        <li><a href="rules.html" class="hover:text-mc-main transition">Kurallar</a></li>
-                        <li><a href="application.html" class="hover:text-mc-main transition">Yetkili Başvurusu</a></li>
-                        <li><a href="appeal.html" class="hover:text-red-500 transition text-red-400/80"><i class="fa-solid fa-gavel mr-1"></i> Ceza İtirazı</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-white font-bold mb-6 font-rajdhani uppercase tracking-wider">İletişim</h4>
-                    <ul class="space-y-2 text-sm text-gray-500">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-envelope text-mc-main"></i> destek@robsarcade.online</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-ticket text-mc-main"></i> Discord Ticket</li>
-                        <li class="flex items-center gap-2 mt-2"><a href="survival.html#baslangic" class="text-gray-400 hover:text-white flex items-center gap-2"><i class="fa-solid fa-book text-mc-main"></i> Wiki & Yardım</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
-                <p>&copy; 2026 ArcaDe Craft Sunucusu. Tüm hakları saklıdır. Mojang Studios ile bağlantılı veya Mojang tarafından onaylanmış değildir.</p>
-                <p>Designed with <i class="fa-solid fa-heart text-red-900"></i> by arcooty</p>
-            </div>
-        </div>
-    </footer>
-
-<script src="form-logic.js"></script> <!-- Sadece form olan sayfalarda zorunlu ama hepsinde dursa zarar gelmez -->
-<script src="ui.js?v=20260926-2"></script>
-<script src="server-data.js?v=20260925-1"></script>
-<script src="live-integration.js?v=20260925-1"></script>
-<script src="site-map.js?v=20260926-2"></script><script src="site-shell.js?v=20260926-2"></script>
+    <p class="section-note">Kural metninin son güncellemesi: 12 Aralık 2025. Yönetim kuralları değiştirme hakkını saklı tutar.</p>
+    <section class="guide-feature"><div><h2>Bir ceza hakkında bilgi mi arıyorsun?</h2><p>Herkese açık kaydını inceleyebilir veya kararın tekrar değerlendirilmesi için itiraz gönderebilirsin.</p></div><div class="about-actions"><a href="punishments.html">Ceza kaydını sorgula</a><a href="appeal.html">Ceza itirazı</a></div></section>
+  </main>
+  <footer></footer>
+  <script src="site-map.js?v=20260926-3"></script><script src="site-shell.js?v=20260926-3"></script>
 </body>
 </html>

@@ -44,6 +44,12 @@ Reference artwork, logos and copy are not imported into this project.
 site-map.js owns the section registry, guide topics and legacy route mapping.
 site-shell.js renders a five-destination primary menu, contextual return links and a
 small footer. sitemap.html and the navigation use the same page registry.
+The header search uses a public, curated index from site-map.js, with Turkish/ASCII
+normalization. It never indexes private order URLs or sends queries to a backend.
+Long guide topics have subsection anchors that retain their owning topic on reload.
+Connection tabs retain Java/Bedrock selection in the URL. Store section navigation
+stays visible and follows the section being read. Help links to delivery guidance,
+not an order page that requires a private session link.
 Update sitemap.xml whenever a public page is added or removed.
 
 ## Components
@@ -68,3 +74,4 @@ Never submit live forms or create paid orders during visual checks.
 
 Run the live-status regression checks with `node tests/ui-status.test.cjs`.
 Run navigation regression checks with `node tests/navigation.test.cjs`.
+Run search and connection checks with `node tests/search.test.cjs` and `node tests/join.test.cjs`.

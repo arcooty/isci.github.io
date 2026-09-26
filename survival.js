@@ -1,5 +1,7 @@
 (() => {
   const topics = window.ARCADE_SITE.topics;
+  const sections = window.ARCADE_SITE.topicSections;
+  const sectionOwners = Object.fromEntries(Object.entries(sections).flatMap(([topic,items])=>items.map(([id])=>[id,topic])));
   const panels = [...document.querySelectorAll('[data-hub-panel]')];
   const articles = [...document.querySelectorAll('[data-guide-topic]')];
   const tabs = [...document.querySelectorAll('[data-hub-tab]')];
@@ -17,7 +19,7 @@
   });
   function render(focus) {
     const hash = location.hash.slice(1);
-    const topic = topics.find(([id]) => id === hash);
+    const topic = topics.find(([id]) => id === (sectionOwners[hash] || hash));
     const view = topic ? 'rehber' : ['harita','siralamalar'].includes(hash) ? hash : 'genel';
     panels.forEach(panel => { panel.hidden = panel.dataset.hubPanel !== view; });
     tabs.forEach(tab => {
@@ -33,14 +35,18 @@
       next.hidden = !following;
       if (following) { next.href = '#' + following[0]; next.replaceChildren(document.createTextNode('Sonraki konu: ' + following[1] + ' ')); const arrow = document.createElement('i'); arrow.className = 'fa-solid fa-arrow-right'; arrow.setAttribute('aria-hidden','true'); next.append(arrow); }
     }
+    document.querySelectorAll('[data-section-link]').forEach(link=>{
+      if (link.dataset.sectionLink === hash) link.setAttribute('aria-current','location');
+      else link.removeAttribute('aria-current');
+    });
     tabs.find(tab => tab.dataset.hubTab === 'rehber').href = '#' + lastTopic;
     if (view === 'harita') { const frame = document.querySelector('iframe[data-src]'); if (!frame.src) frame.src = frame.dataset.src; }
     document.title = (topic ? topic[1] + ' · Survival' : view === 'harita' ? 'Harita · Survival' : view === 'siralamalar' ? 'Sıralamalar · Survival' : 'Survival') + ' | ArcaDe Craft';
     if (focus) {
-      const target = topic ? document.getElementById(topic[0]) : panels.find(panel => panel.dataset.hubPanel === view);
+      const target = topic ? document.getElementById(sectionOwners[hash] ? hash : topic[0]) : panels.find(panel => panel.dataset.hubPanel === view);
       target.tabIndex = -1; target.focus({preventScroll:true});
       const masthead = document.querySelector('.hub-masthead');
-      const top = masthead.getBoundingClientRect().bottom + window.scrollY - 88;
+      const top = sectionOwners[hash] ? target.getBoundingClientRect().top + window.scrollY - 152 : masthead.getBoundingClientRect().bottom + window.scrollY - 88;
       requestAnimationFrame(() => window.scrollTo({top,behavior:'instant'}));
     }
   }
@@ -50,7 +56,7 @@
     if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const url = new URL(link.href,location.href);
     const id = url.hash.slice(1);
-    if (url.origin !== location.origin || url.pathname !== location.pathname || !['genel','harita','siralamalar',...topics.map(([key]) => key)].includes(id)) return;
+    if (url.origin !== location.origin || url.pathname !== location.pathname || !['genel','harita','siralamalar',...topics.map(([key]) => key),...Object.keys(sectionOwners)].includes(id)) return;
     event.preventDefault();
     if (location.hash !== url.hash) history.pushState(null,'',url.hash);
     render(true);
@@ -58,5 +64,14 @@
   topicSelect.addEventListener('change',() => { history.pushState(null,'','#'+topicSelect.value); render(true); });
   window.addEventListener('popstate',() => render(true));
   window.addEventListener('hashchange',() => render(true));
-  render(!!location.hash);
+  const initialHash=location.hash;
+  render(!!initialHash);
+  // Font loading can move a deep section after the first layout pass.
+  if (initialHash) {
+    let interacted=false;
+    document.addEventListener('pointerdown',()=>interacted=true,{once:true});
+    document.addEventListener('keydown',()=>interacted=true,{once:true});
+    window.addEventListener('wheel',()=>interacted=true,{once:true,passive:true});
+    document.fonts?.ready.then(()=>{ if(!interacted && location.hash === initialHash) render(true); });
+  }
 })();

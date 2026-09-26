@@ -8,6 +8,11 @@
     ['kasalar', 'Kitler ve kasalar', 'box-open'],
     ['komutlar', 'Komutlar', 'terminal']
   ];
+  const topicSections = {
+    meslekler: [['jobs-meslekler','Meslekler'],['jobs-sistem','İlerleme'],['jobs-komutlar','Meslek komutları']],
+    kasalar: [['crate-havuzlar','Kasalar'],['crate-odds','Ödüller ve oranlar'],['crate-kullanim','Anahtar ve kullanım']],
+    komutlar: [['commands-travel','Ulaşım ve ev'],['commands-progress','İlerleme'],['commands-vip','VIP komutları']]
+  };
   const legacy = {
     'wiki.html': 'survival.html#baslangic',
     'features.html': 'survival.html#baslangic',
@@ -44,7 +49,56 @@
     }
     return target.pathname.slice(1) + target.search + target.hash;
   }
-  const model = Object.freeze({topics, legacy, sections, resolveHref});
+  const searchEntries = [
+    ['survival.html#baslangic','İlk adımlar','Survival','compass','başlangıç ilk giriş oyun menü rtp'],
+    ['survival.html#arazi','Arazi ve evler','Survival','house','claim koruma altın kürek sethome home trust ev kaydet'],
+    ['survival.html#meslekler','Meslekler','Survival','hammer','jobs madenci oduncu çiftçi avcı balıkçı inşaatçı zanaatkar efsuncu silahşör kazıcı iksirci kaşif para kazanmak'],
+    ['survival.html#jobs-komutlar','Meslek komutları','Survival','terminal','jobs browse join leave stats quests meslek komut'],
+    ['survival.html#gorevler','Görevler ve beceriler','Survival','star','quest günlük görev yetenek skills auraskills seviye'],
+    ['survival.html#ekonomi','Ekonomi ve ticaret','Survival','store','market pazar açık artırma auction takas trade para bakiye balance nah ilan dükkân'],
+    ['survival.html#crate-odds','Kasa ödülleri ve oranları','Survival','box-open','kasalar olasılık anahtar vip mvip uvip şans ödül'],
+    ['survival.html#komutlar','Oyun komutları','Survival','terminal','komut komutlar bütün liste'],
+    ['survival.html#commands-travel','Ulaşım ve ev komutları','Survival','house','spawn rtp sethome home tpa ışınlanma ev konum'],
+    ['survival.html#commands-progress','İlerleme komutları','Survival','star','balance discord jobs browse skills quests kasalar bakiye meslek beceri görev hesap bağlantı'],
+    ['survival.html#commands-vip','VIP komutları','Survival','gem','vip vipkitler vipkolaylik vipekstra rütbe kolaylık'],
+    ['store.html#paketler','VIP paketleri','VIP mağazası','gem','rütbe rank vip mvip uvip satın al fiyat ender sandığı rgb sohbet takma ad'],
+    ['store.html#karsilastirma','VIP haklarını karşılaştır','VIP mağazası','table-columns','vip mvip uvip rütbe fark kapasite ev depo dükkân ilan'],
+    ['store.html#kitler','Haftalık VIP kitleri','VIP mağazası','gift','vip mvip uvip kit anahtar kasa haftalık'],
+    ['store.html#teslimat','Teslimat ve sipariş desteği','VIP mağazası','bag-shopping','sipariş ödeme satın alma teslimat destek stripe'],
+    ['join.html','Oyuna katıl','Oyunlar','gamepad','bağlan java bedrock mobil iphone android adres ip port kayıt giriş login register'],
+    ['join.html#join-java','Java bağlantısı','Oyunlar','desktop','java edition bilgisayar pc adres ip katıl sunucu'],
+    ['join.html#join-bedrock','Bedrock ve mobil bağlantısı','Oyunlar','mobile-screen','bedrock mobil iphone android telefon windows port katıl sunucu'],
+    ['servers.html','Oyunlarımız','Oyunlar','dice','oyun lobi sunucu survival village kurt köylü'],
+    ['village.html','Rob’s Village','Oyunlar','moon','kurt köylü etkinlik rol oylama maç gece gündüz wolvesville'],
+    ['survival.html#harita','Survival haritası','Survival','map','bluemap dynmap dünya yerleşim'],
+    ['survival.html#siralamalar','Liderlik tabloları','Survival','trophy','sıralama leaderboard ekonomi jobs beceriler meslek en iyi oyuncu'],
+    ['players.html','Oyuncu profilleri','Survival','user','oyuncu ara skin rütbe oynama süresi profil istatistik'],
+    ['news.html','Topluluk ve haberler','Topluluk','newspaper','haber duyuru güncelleme discord etkinlik'],
+    ['staff.html','Ekibimiz','Topluluk','users','personel yetkili admin moderatör helper ekip'],
+    ['help.html','Destek merkezi','Yardım','life-ring','yardım destek hesap şifre sorun talep ticket'],
+    ['status.html','Sunucu durumu','Yardım','signal','sunucu çevrimiçi kapalı bakım bağlantı durum'],
+    ['rules.html','Sunucu kuralları','Yardım','shield-halved','kural hile sohbet ceza hesap güvenlik'],
+    ['punishments.html','Ceza sorgulama','Yardım','magnifying-glass','ban mute ceza sorgu oyuncu kayıt yasak'],
+    ['appeal.html','Ceza itirazı','Yardım','scale-balanced','ban yasak itiraz başvuru kanıt'],
+    ['application.html','Yetkili başvurusu','Yardım','handshake','ekip helper moderatör başvuru yaş deneyim'],
+    ['privacy.html','Gizlilik','Yasal','lock','kişisel veri gizlilik çerez'],
+    ['terms.html','Kullanım ve satış şartları','Yasal','file-lines','şart sözleşme satış iade ödeme']
+  ].map(([href,label,section,icon,keywords])=>({href,label,section,icon,keywords}));
+  const normalize = value => String(value).toLocaleLowerCase('tr').normalize('NFD').replace(/\p{M}/gu,'').replace(/ı/g,'i').replace(/[^a-z0-9]+/g,' ').trim();
+  function search(query,limit = 10) {
+    const text = normalize(query).slice(0,100);
+    if (!text) return searchEntries.filter(entry=>['survival.html#baslangic','survival.html#arazi','survival.html#meslekler','store.html#paketler','join.html','help.html'].includes(entry.href)).slice(0,limit);
+    const tokens = text.split(/\s+/);
+    return searchEntries.map((entry,index)=>{
+      const label = normalize(entry.label);
+      const words = normalize(entry.label+' '+entry.section+' '+entry.keywords).split(' ');
+      if (!tokens.every(token=>words.some(word=>word.startsWith(token)))) return null;
+      const primary = ['survival.html#arazi','survival.html#meslekler','survival.html#komutlar','store.html#paketler','join.html','help.html'].includes(entry.href) ? 5 : 0;
+      const score = (label === text ? 100 : label.startsWith(text) ? 40 : 0) + primary + tokens.reduce((sum,token)=>sum+(label.split(' ').some(word=>word.startsWith(token)) ? 10 : 1),0);
+      return {entry,score,index};
+    }).filter(Boolean).sort((a,b)=>b.score-a.score || a.index-b.index).slice(0,limit).map(({entry})=>entry);
+  }
+  const model = Object.freeze({topics, topicSections, legacy, sections, resolveHref, searchEntries, search});
   if (typeof module !== 'undefined' && module.exports) module.exports = model;
   else root.ARCADE_SITE = model;
 })(typeof window === 'undefined' ? {} : window);
