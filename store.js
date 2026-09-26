@@ -20,6 +20,8 @@
       else if (button) { button.disabled = true; button.textContent = 'Satış kapalı'; }
       });
       if (status) status.textContent = available ? '' : 'VIP satışı henüz açık değil. Paket haklarını inceleyebilirsin.';
+      const identity = document.querySelector('.store-identity');
+      if (identity) identity.hidden = !available;
     }).catch(() => {
       document.querySelectorAll('[data-buy-package]').forEach(button => { button.disabled = true; button.textContent = 'Şu anda kullanılamıyor'; });
       if (status) status.textContent = 'Satış durumuna şu anda ulaşılamıyor. Daha sonra tekrar dene.';

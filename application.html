@@ -6,7 +6,7 @@
     <title>Yetkili Başvurusu - ArcaDe Craft</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&amp;family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -23,8 +23,8 @@
         input:focus, textarea:focus, select:focus { outline: none; border-color: #9653fa; box-shadow: 0 0 10px rgba(150, 83, 250, 0.2); }
         #cursor-glow { width: 600px; height: 600px; background: radial-gradient(circle, rgba(150, 83, 250, 0.15) 0%, rgba(0, 0, 0, 0) 70%); position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); pointer-events: none; z-index: 9999; mix-blend-mode: screen; }
     </style>
-    <link rel="stylesheet" href="network.css?v=20260926-1">
-<link rel="stylesheet" href="craft.css?v=20260926-1">
+    <link rel="stylesheet" href="network.css?v=20260926-2">
+<link rel="stylesheet" href="craft.css?v=20260926-2">
 <link rel="icon" href="assets/logo.png" type="image/png">
 <link rel="canonical" href="https://robsarcade.online/application.html">
 </head>
@@ -39,10 +39,10 @@
             </a>
             <div class="hidden md:flex items-center gap-6">
                 <a href="index.html" class="text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">ANASAYFA</a>
-                <a href="survival-systems.html" class="text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">ÖZELLİKLER</a>
-                <a href="jobs.html" class="text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">MESLEKLER</a>
+                <a href="survival.html#baslangic" class="text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">ÖZELLİKLER</a>
+                <a href="survival.html#meslekler" class="text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">MESLEKLER</a>
                 <a href="news.html" class="text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">HABERLER</a>
-                <a href="wiki.html" class="text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">WİKİ</a>
+                <a href="survival.html#baslangic" class="text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">WİKİ</a>
             </div>
             <a href="index.html" class="text-gray-300 hover:text-white font-bold text-sm"><i class="fa-solid fa-arrow-left mr-2"></i> Anasayfa</a>
         </div>
@@ -74,7 +74,7 @@
                 </div>
                 <div>
                     <label class="block text-sm font-bold text-gray-400 mb-2">Discord Kullanıcı Adı</label>
-                    <input type="text" name="discord_id" required class="w-full rounded px-4 py-3" placeholder="Örn: ahmet veya kullanıcı ID'si">
+                    <input type="text" name="discord_id" required class="w-full rounded px-4 py-3" placeholder="Örn: ahmet veya kullanıcı ID&#x27;si">
                 </div>
             </div>
 
@@ -123,7 +123,7 @@
             </div>
             <h2 class="text-2xl font-bold mb-2">Başvuru Alındı!</h2>
             <p class="text-gray-400 mb-6">Başvurunuz alındı. Yanıt için Discord hesabınızı takip edin.</p>
-            <button onclick="document.getElementById('successModal').classList.add('hidden'); window.location.href='index.html'" class="bg-white text-black px-6 py-2 rounded font-bold hover:bg-gray-200 transition">Tamam</button>
+            <button onclick="document.getElementById(&#x27;successModal&#x27;).classList.add(&#x27;hidden&#x27;); window.location.href=&#x27;index.html&#x27;" class="bg-white text-black px-6 py-2 rounded font-bold hover:bg-gray-200 transition">Tamam</button>
         </div>
     </div>
 
@@ -162,7 +162,7 @@
                     <ul class="space-y-2 text-sm text-gray-500">
                         <li class="flex items-center gap-2"><i class="fa-solid fa-envelope text-mc-main"></i> destek@robsarcade.online</li>
                         <li class="flex items-center gap-2"><i class="fa-solid fa-ticket text-mc-main"></i> Discord Ticket</li>
-                        <li class="flex items-center gap-2 mt-2"><a href="wiki.html" class="text-gray-400 hover:text-white flex items-center gap-2"><i class="fa-solid fa-book text-mc-main"></i> Wiki & Yardım</a></li>
+                        <li class="flex items-center gap-2 mt-2"><a href="survival.html#baslangic" class="text-gray-400 hover:text-white flex items-center gap-2"><i class="fa-solid fa-book text-mc-main"></i> Wiki & Yardım</a></li>
                     </ul>
                 </div>
             </div>
@@ -175,9 +175,9 @@
     </footer>
 
 <script src="form-logic.js?v=20260916-1"></script>
-<script src="ui.js?v=20260926-1"></script>
+<script src="ui.js?v=20260926-2"></script>
 <script src="server-data.js?v=20260925-1"></script>
 <script src="live-integration.js?v=20260925-1"></script>
-<script src="site-shell.js?v=20260926-1"></script>
+<script src="site-map.js?v=20260926-2"></script><script src="site-shell.js?v=20260926-2"></script>
 </body>
 </html>
