@@ -1,232 +1,133 @@
 (() => {
   const discord = 'https://discord.gg/GerdDHzMWp';
   const path = location.pathname.split('/').pop() || 'index.html';
+  const sections = [
+    {name:'Oyunlar', href:'servers.html', pages:[['servers.html','Tüm oyunlar'],['survival.html','Survival'],['village.html',"Rob's Village"]]},
+    {name:'Survival rehberleri', href:'wiki.html', pages:[['wiki.html','Rehber merkezi'],['survival-systems.html','Tüm özellikler'],['claims.html','Arazi koruma'],['commands.html','Komutlar'],['jobs.html','Meslekler'],['quests.html','Görevler ve beceriler'],['economy.html','Ekonomi ve ticaret'],['map.html','Dünya haritası'],['leaderboard.html','Liderlik tabloları']]},
+    {name:'Topluluk', href:'news.html', pages:[['news.html','Haberler'],['players.html','Oyuncu profilleri'],['staff.html','Ekibimiz'],['about.html','Hakkımızda']]},
+    {name:'VIP', href:'ranks.html', pages:[['ranks.html','VIP ve rütbeler'],['store.html','VIP mağazası'],['crates.html','Ödül kasaları'],['order.html','Sipariş durumu']]},
+    {name:'Destek', href:'help.html', pages:[['help.html','Destek merkezi'],['join.html','Oyuna katılım'],['rules.html','Kurallar'],['status.html','Sunucu durumu'],['punishments.html','Ceza sorgulama'],['appeal.html','Ceza itirazı'],['application.html','Yetkili başvurusu']]},
+    {name:'Site', href:'sitemap.html', pages:[['sitemap.html','Site haritası'],['privacy.html','Gizlilik'],['terms.html','Kullanım ve satış şartları']]}
+  ];
+  window.ARCADE_SITE = Object.freeze({sections});
   document.body.classList.add('network-shell');
-  const survivalPages = ['survival.html','survival-systems.html','map.html','jobs.html','claims.html','economy.html','quests.html','commands.html','crates.html','ranks.html','leaderboard.html','wiki.html'];
-  const networkPages = ['about.html','servers.html','status.html'];
-  const communityPages = ['news.html','rules.html','players.html','staff.html','punishments.html','application.html','appeal.html'];
-  const current = name => path === name ||
-    (name === 'survival.html' && survivalPages.includes(path)) ||
-    (name === 'store.html' && path === 'order.html') ? ' aria-current="page"' : '';
-  const groupCurrent = pages => pages.includes(path) ? ' aria-current="page"' : '';
-  const nav = document.querySelector('nav');
-  if (nav) {
-    nav.className = 'site-nav';
-    nav.innerHTML = `<div class="site-nav-inner">
-      <a class="site-brand" href="index.html"><img src="assets/logo.png" alt="ArcaDe Craft Network logosu"><span>ArcaDe Craft <strong>Network</strong></span></a>
-      <button class="mobile-nav-button" type="button" aria-label="Menüyü aç" id="site-menu"><i class="fa-solid fa-bars"></i></button>
-      <div class="site-links" id="site-links">
-        <a href="index.html"${current('index.html')}>ANASAYFA</a>
-        <div class="nav-menu network-menu"><button type="button" aria-haspopup="true" aria-expanded="false"${groupCurrent(networkPages)}>OYUNLAR <i class="fa-solid fa-chevron-down"></i></button><div class="nav-dropdown compact-dropdown">
-          <section class="nav-menu-group"><span>Oyununu seç</span><a href="servers.html">Tüm Oyunlar</a><a href="survival.html">Survival</a><a href="servers.html#robs-village">Rob's Village</a><a href="status.html">Canlı Durum</a><a href="about.html">Hakkında</a></section>
-        </div></div>
-        <div class="nav-menu survival-menu"><button type="button" aria-haspopup="true" aria-expanded="false"${current('survival.html')}>SURVIVAL <i class="fa-solid fa-chevron-down"></i></button><div class="nav-dropdown survival-dropdown">
-          <section class="survival-menu-group"><span>Başlangıç</span><a href="survival.html">Genel Bakış</a><a href="survival-systems.html">Tüm Özellikler</a><a href="map.html">Canlı Harita</a><a href="wiki.html">Bilgi Bankası</a><a href="commands.html">Komutlar</a></section>
-          <section class="survival-menu-group"><span>İlerleme</span><a href="jobs.html">Meslekler</a><a href="quests.html">Görevler</a><a href="leaderboard.html">Liderlik</a></section>
-          <section class="survival-menu-group"><span>Ekonomi ve Haklar</span><a href="economy.html">Ekonomi</a><a href="claims.html">Claim Rehberi</a><a href="crates.html">Ödül Kasaları</a><a href="ranks.html">VIP ve Rütbeler</a><a href="store.html">VIP Mağazası</a></section>
-        </div></div>
-        <div class="nav-menu community-menu"><button type="button" aria-haspopup="true" aria-expanded="false"${groupCurrent(communityPages)}>TOPLULUK <i class="fa-solid fa-chevron-down"></i></button><div class="nav-dropdown compact-dropdown">
-          <section class="nav-menu-group"><span>Topluluk</span><a href="news.html">Haberler</a><a href="players.html">Oyuncu Profilleri</a><a href="rules.html">Kurallar</a><a href="staff.html">Yetkili Kadroları</a><a href="punishments.html">Ceza Sorgulama</a><a href="application.html">Yetkili Başvurusu</a><a href="appeal.html">Ceza İtirazı</a></section>
-        </div></div>
-        <a href="store.html"${current('store.html')}>MAĞAZA</a><a class="site-discord" href="${discord}" target="_blank" rel="noopener">DISCORD</a>
-      </div></div>`;
-    document.getElementById('site-menu')?.addEventListener('click', () => document.getElementById('site-links')?.classList.toggle('open'));
-    const navMenus = [...nav.querySelectorAll('.nav-menu')];
-    navMenus.forEach(menu => menu.querySelector('button')?.addEventListener('click', event => {
-      event.stopPropagation();
-      const willOpen = !menu.classList.contains('is-open');
-      navMenus.forEach(other => {
-        other.classList.remove('is-open');
-        other.querySelector('button')?.setAttribute('aria-expanded', 'false');
-      });
-      menu.classList.toggle('is-open', willOpen);
-      menu.querySelector('button')?.setAttribute('aria-expanded', String(willOpen));
-    }));
-    document.addEventListener('click', event => {
-      if (navMenus.some(menu => menu.contains(event.target))) return;
-      navMenus.forEach(menu => {
-        menu.classList.remove('is-open');
-        menu.querySelector('button')?.setAttribute('aria-expanded', 'false');
-      });
-    });
-    nav.addEventListener('keydown', event => {
-      if (event.key !== 'Escape') return;
-      const openMenu = nav.querySelector('.nav-menu.is-open');
-      openMenu?.classList.remove('is-open');
-      openMenu?.querySelector('button')?.setAttribute('aria-expanded', 'false');
-      openMenu?.querySelector('button')?.focus();
-    });
-    nav.querySelectorAll('a[href]').forEach(link => {
-      const targetPath = new URL(link.getAttribute('href'), location.href).pathname.split('/').pop();
-      if (targetPath === path) link.setAttribute('aria-current', 'page');
-    });
-  }
-  const pageLabels = {
-    'about.html': ['ArcaDe Craft', 'Hakkında'],
-    'servers.html': ['Oyunlar', 'Genel Bakış'],
-    'status.html': ['Oyunlar', 'Canlı Durum'],
-    'news.html': ['Topluluk', 'Haberler'],
-    'rules.html': ['Topluluk', 'Kurallar'],
-    'survival.html': ['Survival', 'Genel Bakış'],
-    'survival-systems.html': ['Survival', 'Tüm Özellikler'],
-    'map.html': ['Survival', 'Canlı Harita'],
-    'jobs.html': ['Survival', 'Meslekler'],
-    'quests.html': ['Survival', 'Görevler'],
-    'claims.html': ['Survival', 'Claim Rehberi'],
-    'economy.html': ['Survival', 'Ekonomi'],
-    'crates.html': ['Survival', 'Ödül Kasaları'],
-    'ranks.html': ['Survival', 'VIP ve Rütbeler'],
-    'leaderboard.html': ['Survival', 'Liderlik'],
-    'commands.html': ['Survival', 'Komutlar'],
-    'wiki.html': ['Survival', 'Bilgi Bankası'],
-    'store.html': ['Mağaza', 'VIP Mağazası'],
-    'order.html': ['Mağaza', 'Sipariş Durumu'],
-    'application.html': ['Topluluk', 'Yetkili Başvurusu'],
-    'appeal.html': ['Topluluk', 'Ceza İtirazı'],
-    'punishments.html': ['Topluluk', 'Ceza Sorgulama'],
-    'staff.html': ['Topluluk', 'Yetkili Kadroları'],
-    'players.html': ['Topluluk', 'Oyuncu Profilleri'],
-    'privacy.html': ['Yasal', 'Gizlilik'],
-    'terms.html': ['Yasal', 'Kullanım Şartları']
-  };
-  const sectionTargets = { Survival: 'survival.html', Mağaza: 'store.html', Oyunlar: 'servers.html', 'ArcaDe Craft': 'about.html', Topluluk: 'news.html', Yasal: 'terms.html' };
-  const createPageTrail = () => {
-    if (path === 'index.html' || !pageLabels[path]) return null;
-    const [section, label] = pageLabels[path];
-    const trail = document.createElement('nav');
-    trail.className = 'page-trail';
-    trail.setAttribute('aria-label', 'Sayfa konumu');
-    trail.innerHTML = `<a href="index.html">Ana Sayfa</a><i class="fa-solid fa-chevron-right"></i><a href="${sectionTargets[section]}">${section}</a><i class="fa-solid fa-chevron-right"></i><span aria-current="page">${label}</span>`;
-    return trail;
-  };
-  const main = document.querySelector('main');
-  const mainTrail = createPageTrail();
-  if (main && mainTrail) main.prepend(mainTrail);
-  let legacyContent = null;
-  if (path !== 'index.html' && !document.querySelector('main')) {
-    legacyContent = [...document.body.children].find(element =>
-      element !== nav && element.tagName !== 'SCRIPT' && element.tagName !== 'FOOTER' &&
-      (element.tagName === 'HEADER' || (element.tagName === 'DIV' && element.querySelector('h1')))
-    );
-    if (legacyContent?.tagName === 'HEADER') legacyContent.classList.add('legacy-page-hero');
-    if (legacyContent?.tagName === 'DIV') legacyContent.classList.add('legacy-content-shell');
-    const legacyTrail = createPageTrail();
-    if (legacyContent && legacyTrail) legacyContent.prepend(legacyTrail);
-    const eyebrowLabels = {
-      'appeal.html': 'Topluluk desteği',
-      'application.html': 'Ekibe katıl',
-      'punishments.html': 'Şeffaf moderasyon',
-      'leaderboard.html': 'Survival rekabeti',
-      'privacy.html': 'Veri güvenliği',
-      'rules.html': 'Topluluk düzeni',
-      'terms.html': 'Kullanım koşulları'
-    };
-    const heading = legacyContent?.querySelector('h1');
-    if (heading && eyebrowLabels[path]) {
-      const eyebrow = document.createElement('span');
-      eyebrow.className = 'eyebrow';
-      eyebrow.textContent = eyebrowLabels[path];
-      heading.before(eyebrow);
-      heading.classList.add('legacy-heading-title');
-      if (heading.nextElementSibling?.tagName === 'P') heading.nextElementSibling.classList.add('legacy-heading-copy');
-    }
-  }
-  document.querySelectorAll('a[href*="discord.gg/"]').forEach(a => a.href = discord);
-  document.querySelectorAll('.info-card').forEach(card => {
-    const children = [...card.children];
-    const trailingTags = [];
-    for (let index = children.length - 1; index >= 0 && children[index].classList.contains('tag'); index -= 1) {
-      trailingTags.unshift(children[index]);
-    }
-    if (!trailingTags.length) return;
-    const meta = document.createElement('div');
-    meta.className = 'info-card-meta';
-    trailingTags.forEach(tag => meta.appendChild(tag));
-    card.appendChild(meta);
+  document.body.dataset.page = path.replace('.html','');
+  const section = sections.find(group => group.pages.some(([href]) => href === path));
+  const label = section?.pages.find(([href]) => href === path)?.[1];
+  const survivalPages = sections[1].pages.map(([href]) => href).concat('survival.html','ranks.html','crates.html');
+  const icon = name => '<i class="fa-solid fa-' + name + '" aria-hidden="true"></i>';
+  const link = (href, text) => '<a href="' + href + '"' + (href === path ? ' aria-current="page"' : '') + '>' + text + '</a>';
+  const brand = '<a class="site-brand" href="index.html" aria-label="ArcaDe Craft ana sayfa"><img src="assets/logo.png" alt="" width="42" height="42"><span>ArcaDe <strong>Craft</strong></span></a>';
+  let nav = document.querySelector('body > nav');
+  if (!nav) { nav = document.createElement('nav'); document.body.prepend(nav); }
+  nav.className = 'site-nav';
+  nav.setAttribute('aria-label','Ana gezinme');
+  nav.innerHTML = '<div class="site-nav-inner">' + brand +
+    '<button class="mobile-nav-button" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="site-links" id="site-menu">' + icon('bars') + '</button><div class="site-links" id="site-links">' +
+    '<div class="nav-menu"><button type="button" aria-expanded="false" aria-controls="games-dropdown"' + (survivalPages.includes(path) || path === 'village.html' || path === 'servers.html' ? ' class="is-current"' : '') + '>Oyunlar ' + icon('chevron-down') + '</button><div class="nav-dropdown" id="games-dropdown">' + link('survival.html',icon('tree') + ' Survival') + link('village.html',icon('moon') + " Rob's Village") + link('servers.html','Tüm oyunları keşfet') + '</div></div>' +
+    link('wiki.html','Rehberler') +
+    '<div class="nav-menu"><button type="button" aria-expanded="false" aria-controls="community-dropdown"' + (section?.name === 'Topluluk' ? ' class="is-current"' : '') + '>Topluluk ' + icon('chevron-down') + '</button><div class="nav-dropdown" id="community-dropdown">' + sections[2].pages.map(([href,text]) => link(href,text)).join('') + '</div></div>' +
+    link('help.html','Destek') + link('store.html','VIP Mağazası') +
+    '<a class="nav-discord" href="' + discord + '" target="_blank" rel="noopener" aria-label="Discord’a katıl" title="Discord’a katıl"><i class="fa-brands fa-discord" aria-hidden="true"></i></a><a class="nav-play" href="join.html">' + icon('play') + ' Oyuna katıl</a></div></div>';
+  const skip = document.createElement('a');
+  skip.className = 'skip-link'; skip.href = '#main-content'; skip.textContent = 'İçeriğe geç'; nav.before(skip);
+  const mobile = nav.querySelector('#site-menu');
+  const links = nav.querySelector('#site-links');
+  const menus = [...nav.querySelectorAll('.nav-menu')];
+  const closeMenus = () => menus.forEach(menu => { menu.classList.remove('is-open'); menu.querySelector('button').setAttribute('aria-expanded','false'); });
+  const closeMobile = () => { links.classList.remove('open'); mobile.setAttribute('aria-expanded','false'); mobile.setAttribute('aria-label','Menüyü aç'); };
+  mobile.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    mobile.setAttribute('aria-expanded',String(open)); mobile.setAttribute('aria-label',open ? 'Menüyü kapat' : 'Menüyü aç');
+    if (!open) closeMenus();
   });
-  const footer = document.querySelector('footer');
-  if (footer) {
-    footer.className = 'site-footer';
-    footer.innerHTML = `<div class="site-footer-inner">
-      <section class="footer-brand"><a class="site-brand" href="index.html"><img src="assets/logo.png" alt="ArcaDe Craft Network logosu"><span>ArcaDe Craft <strong>Network</strong></span></a><p>Kalıcı Survival dünyası ve Rob's Village topluluk oyununu tek adreste buluşturan Türkçe Minecraft topluluğu.</p><button class="footer-address" type="button" data-copy-address title="Sunucu adresini kopyala"><i class="fa-regular fa-copy"></i><span>oyna.robsarcade.online</span></button></section>
-      <section><h2>Oyunlar</h2><a href="servers.html">Tüm Oyunlar</a><a href="survival.html">Survival</a><a href="servers.html#robs-village">Rob's Village</a><a href="status.html">Canlı Durum</a><a href="about.html">Hakkında</a></section>
-      <section><h2>Survival</h2><a href="survival.html">Genel Bakış</a><a href="survival-systems.html">Tüm Özellikler</a><a href="map.html">Canlı Harita</a><a href="jobs.html">Meslekler</a><a href="quests.html">Görevler</a><a href="claims.html">Claim Rehberi</a><a href="economy.html">Ekonomi</a><a href="crates.html">Ödül Kasaları</a><a href="ranks.html">VIP ve Rütbeler</a><a href="store.html">VIP Mağazası</a></section>
-      <section><h2>Topluluk</h2><a href="news.html">Haberler</a><a href="leaderboard.html">Liderlik</a><a href="players.html">Oyuncu Profilleri</a><a href="wiki.html">Bilgi Bankası</a><a href="commands.html">Komutlar</a><a href="rules.html">Kurallar</a><a href="staff.html">Yetkili Kadroları</a><a href="punishments.html">Ceza Sorgulama</a><a href="${discord}" target="_blank" rel="noopener">Discord’a Katıl</a><a href="application.html">Yetkili Başvurusu</a><a href="appeal.html">Ceza İtirazı</a></section>
-    </div><div class="footer-bottom"><span>© 2026 ArcaDe Craft Network</span><span><a href="privacy.html">Gizlilik</a><a href="terms.html">Kullanım Şartları</a></span><span>Mojang Studios veya Microsoft ile bağlantılı değildir.</span></div>`;
-    footer.querySelectorAll('a[href]').forEach(link => {
-      const targetPath = new URL(link.getAttribute('href'), location.href).pathname.split('/').pop();
-      if (targetPath === path) link.setAttribute('aria-current', 'page');
-    });
-    footer.querySelector('[data-copy-address]')?.addEventListener('click', event => {
-      navigator.clipboard.writeText('oyna.robsarcade.online').then(() => {
-        const label = event.currentTarget.querySelector('span');
-        label.textContent = 'Adres kopyalandı';
-        setTimeout(() => { label.textContent = 'oyna.robsarcade.online'; }, 1600);
-      });
-    });
+  menus.forEach(menu => menu.querySelector('button').addEventListener('click', () => {
+    const open = !menu.classList.contains('is-open'); closeMenus(); menu.classList.toggle('is-open',open); menu.querySelector('button').setAttribute('aria-expanded',String(open));
+  }));
+  document.addEventListener('click', event => { if (!nav.contains(event.target)) { closeMenus(); closeMobile(); } });
+  nav.addEventListener('keydown', event => {
+    if (event.key !== 'Escape') return;
+    const active = nav.querySelector('.nav-menu.is-open > button'); closeMenus();
+    if (active) active.focus(); else { closeMobile(); mobile.focus(); }
+  });
+  nav.addEventListener('focusout', () => requestAnimationFrame(() => { if (!nav.contains(document.activeElement)) { closeMenus(); closeMobile(); } }));
+
+  let content = document.querySelector('main');
+  if (!content && path !== 'index.html') {
+    content = [...document.body.children].find(el => ['HEADER','DIV'].includes(el.tagName) && el.querySelector('h1'));
+    if (content?.tagName === 'HEADER') content.classList.add('legacy-page-hero');
+    else content?.classList.add('legacy-content-shell');
   }
-  const relatedPages = {
-    'survival.html': [['survival-systems.html','Tüm özellikler'],['map.html','Canlı harita'],['wiki.html','Bilgi bankası']],
-    'map.html': [['survival.html','Survival merkezi'],['claims.html','Claim rehberi'],['wiki.html','Bilgi bankası']],
-    'survival-systems.html': [['jobs.html','Meslekler'],['economy.html','Ekonomi'],['claims.html','Claim rehberi']],
-    'jobs.html': [['quests.html','Görevler'],['leaderboard.html','Liderlik'],['commands.html','Komutlar']],
-    'quests.html': [['jobs.html','Meslekler'],['survival-systems.html#ilerleme','İlerleme sistemleri'],['commands.html','Komutlar']],
-    'claims.html': [['commands.html','Claim komutları'],['rules.html','Sunucu kuralları'],['wiki.html','Bilgi bankası']],
-    'economy.html': [['jobs.html','Kazanç sağlayan meslekler'],['leaderboard.html','Liderlik'],['commands.html','Ekonomi komutları']],
-    'crates.html': [['ranks.html','VIP hakları'],['store.html','VIP mağazası'],['wiki.html','Bilgi bankası']],
-    'ranks.html': [['store.html','VIP mağazası'],['crates.html','Kasa oranları'],['rules.html','Satın alma ve oyun kuralları']],
-    'leaderboard.html': [['jobs.html','Meslekler'],['economy.html','Ekonomi'],['ranks.html','Rütbeler']],
-    'commands.html': [['wiki.html','Bilgi bankası'],['claims.html','Claim rehberi'],['economy.html','Ekonomi']],
-    'wiki.html': [['survival.html','Survival merkezi'],['commands.html','Komutlar'],['rules.html','Kurallar']],
-    'store.html': [['ranks.html','Paketleri karşılaştır'],['crates.html','Kasa oranları'],['terms.html','Satış şartları']],
-    'staff.html': [['application.html','Yetkili başvurusu'],['rules.html','Topluluk kuralları'],['about.html','Ağ yaklaşımı']],
-    'players.html': [['leaderboard.html','Liderlik'],['staff.html','Yetkili kadroları'],['punishments.html','Ceza sorgulama']],
-    'punishments.html': [['appeal.html','Ceza itirazı'],['rules.html','Topluluk kuralları'],['players.html','Oyuncu profilleri']],
-    'appeal.html': [['punishments.html','Ceza sorgulama'],['rules.html','Topluluk kuralları'],['staff.html','Yetkili kadroları']]
-  };
-  if (relatedPages[path] && !document.querySelector('.related-nav')) {
-    const related = document.createElement('nav');
-    related.className = 'related-nav';
-    related.setAttribute('aria-label', 'İlgili sayfalar');
-    related.innerHTML = `<span>İlgili bölümler</span><div>${relatedPages[path].map(([href,label]) => `<a href="${href}">${label}<i class="fa-solid fa-arrow-right"></i></a>`).join('')}</div>`;
-    if (main) main.append(related);
-    else if (footer) {
-      related.classList.add('legacy-related');
-      footer.before(related);
+  if (content) {
+    content.id = 'main-content';
+    content.tabIndex = -1;
+    if (path !== 'index.html' && label) {
+      const trail = document.createElement('nav'); trail.className = 'page-trail'; trail.setAttribute('aria-label','Sayfa konumu');
+      const gameParent = survivalPages.includes(path);
+      const parentHref = gameParent ? 'survival.html' : section.href;
+      const parentLabel = gameParent ? 'Survival' : section.name;
+      trail.innerHTML = link('index.html','Ana sayfa') + icon('chevron-right') + (parentHref !== path ? link(parentHref,parentLabel) + icon('chevron-right') : '') + '<span aria-current="page">' + label + '</span>';
+      content.prepend(trail);
+      if (gameParent) {
+        const localNav = document.createElement('nav'); localNav.className = 'game-nav'; localNav.setAttribute('aria-label','Survival bölümleri');
+        localNav.innerHTML = link('survival.html','Survival') + link('wiki.html','Rehberler') + link('map.html','Harita') + link('leaderboard.html','Liderlik') + link('ranks.html','VIP ve rütbeler');
+        trail.after(localNav);
+      }
     }
   }
-  if (path === 'index.html') {
-    const indicator = document.getElementById('section-indicator');
-    const updateIndicator = () => {
-      if (!indicator || !footer) return;
-      const indicatorRect = indicator.getBoundingClientRect();
-      const indicatorZone = {
-        left: (innerWidth - indicatorRect.width) / 2,
-        right: (innerWidth + indicatorRect.width) / 2,
-        top: innerHeight - indicatorRect.height - 32,
-        bottom: innerHeight - 32
-      };
-      const overlapsAction = [...document.querySelectorAll('main a, main button, section a, section button')].some(action => {
-        const rect = action.getBoundingClientRect();
-        return rect.width > 0 && rect.height > 0 && rect.right > indicatorZone.left &&
-          rect.left < indicatorZone.right && rect.bottom > indicatorZone.top && rect.top < indicatorZone.bottom;
-      });
-      indicator.classList.toggle('is-hidden', footer.getBoundingClientRect().top < innerHeight - 16 || overlapsAction);
-    };
-    addEventListener('scroll', updateIndicator, { passive: true });
-    addEventListener('resize', updateIndicator, { passive: true });
-    requestAnimationFrame(updateIndicator);
+  content?.querySelector('h1')?.classList.add('craft-page-title');
+  document.querySelectorAll('a[href*="discord.gg/"]').forEach(a => a.href = discord);
+  document.querySelectorAll('a[href="servers.html#robs-village"]').forEach(a => a.href = 'village.html');
+  document.querySelectorAll('.info-card').forEach(card => {
+    const tags = [];
+    for (const child of [...card.children].reverse()) { if (!child.classList.contains('tag')) break; tags.unshift(child); }
+    if (!tags.length) return;
+    const meta = document.createElement('div'); meta.className = 'info-card-meta'; tags.forEach(tag => meta.append(tag)); card.append(meta);
+  });
+  // Associate legacy form labels without changing the submitted field names.
+  document.querySelectorAll('form[data-form-type] label').forEach((labelEl,index) => {
+    const field = labelEl.parentElement.querySelector('input,select,textarea');
+    if (!field || labelEl.contains(field)) return;
+    field.id ||= 'form-field-' + index; labelEl.htmlFor = field.id;
+  });
+  let footer = document.querySelector('footer');
+  if (!footer) { footer = document.createElement('footer'); document.body.append(footer); }
+  footer.className = 'site-footer';
+  const footerGroups = [
+    ['Oyunlar',[['servers.html','Tüm oyunlar'],['survival.html','Survival'],['village.html',"Rob's Village"],['join.html','Oyuna katılım'],['map.html','Dünya haritası']]],
+    ['Keşfet',[['wiki.html','Survival rehberleri'],['leaderboard.html','Liderlik'],['players.html','Oyuncu profilleri'],['news.html','Haberler'],['about.html','Hakkımızda']]],
+    ['VIP',[['ranks.html','VIP ve rütbeler'],['store.html','VIP mağazası'],['crates.html','Ödül kasaları'],['order.html','Sipariş durumu']]],
+    ['Yardım',[['help.html','Destek merkezi'],['rules.html','Kurallar'],['punishments.html','Ceza sorgulama'],['appeal.html','Ceza itirazı'],['application.html','Yetkili başvurusu'],['staff.html','Ekibimiz'],['status.html','Sunucu durumu']]]
+  ];
+  footer.innerHTML = '<div class="footer-intro">' + brand + '<p>Bir dünya, bir köy, bir topluluk.</p><a href="' + discord + '" target="_blank" rel="noopener"><i class="fa-brands fa-discord" aria-hidden="true"></i> Discord</a></div><div class="site-footer-inner">' + footerGroups.map(([title,pages]) => '<section><h2>' + title + '</h2>' + pages.map(([href,text]) => link(href,text)).join('') + '</section>').join('') + '</div><div class="footer-bottom"><span>© 2026 ArcaDe Craft</span><div>' + link('sitemap.html','Site haritası') + link('privacy.html','Gizlilik') + link('terms.html','Kullanım şartları') + '</div><span>Mojang veya Microsoft ile bağlantılı değildir.</span></div>';
+  document.querySelectorAll('[data-copy-address]').forEach(button => button.addEventListener('click', async () => {
+    const labelEl = button.querySelector('span'); const original = labelEl?.textContent;
+    try {
+      await navigator.clipboard.writeText('oyna.robsarcade.online');
+      if (labelEl) { labelEl.textContent = 'Adres kopyalandı'; setTimeout(() => { labelEl.textContent = original; },1800); }
+    } catch {
+      if (labelEl) labelEl.textContent = 'oyna.robsarcade.online';
+      button.title = 'Sunucu adresi: oyna.robsarcade.online';
+    }
+  }));
+  const related = {
+    'jobs.html':[['quests.html','Görevler ve beceriler'],['leaderboard.html','Meslek liderliği']],
+    'quests.html':[['jobs.html','Meslek seçimi'],['survival-systems.html#ilerleme','İlerleme özellikleri']],
+    'claims.html':[['commands.html','Komutlar'],['map.html','Dünya haritası']],
+    'economy.html':[['jobs.html','Meslek kazançları'],['leaderboard.html','Ekonomi liderliği']],
+    'crates.html':[['ranks.html','VIP hakları'],['store.html','VIP mağazası']],
+    'ranks.html':[['store.html','VIP mağazası'],['crates.html','Kasa ödülleri ve oranları']],
+    'commands.html':[['claims.html','Arazi koruma'],['economy.html','Ekonomi ve ticaret']],
+    'players.html':[['leaderboard.html','Liderlik tabloları'],['staff.html','Ekibimiz']],
+    'store.html':[['ranks.html','Bütün VIP hakları'],['crates.html','Kasa ödülleri'],['terms.html','Satış şartları']],
+    'punishments.html':[['appeal.html','Ceza itirazı'],['rules.html','Kurallar']],
+    'appeal.html':[['punishments.html','Ceza sorgulama'],['help.html','Destek merkezi']],
+    'application.html':[['staff.html','Ekibimiz'],['help.html','Destek merkezi']]
+  };
+  if (related[path]) {
+    const relatedNav = document.createElement('nav'); relatedNav.className = 'related-nav'; relatedNav.setAttribute('aria-label','İlgili sayfalar');
+    relatedNav.innerHTML = '<span>Devamını keşfet</span><div>' + related[path].map(([href,text]) => link(href,text + ' ' + icon('arrow-right'))).join('') + '</div>';
+    if (content?.tagName === 'MAIN') content.append(relatedNav); else { relatedNav.classList.add('legacy-related'); footer.before(relatedNav); }
   }
-  const reveal = () => requestAnimationFrame(() => document.documentElement.classList.add('site-ready'));
-  const fontReady = document.fonts?.ready || Promise.resolve();
-  const heroReady = path === 'index.html' ? new Promise(resolve => {
-    const heroImage = new Image();
-    heroImage.onload = resolve;
-    heroImage.onerror = resolve;
-    heroImage.src = 'assets/hero-bg.png';
-  }) : Promise.resolve();
-  Promise.race([
-    Promise.all([fontReady, heroReady]),
-    new Promise(resolve => setTimeout(resolve, 1200))
-  ]).then(reveal);
+  document.documentElement.classList.add('site-ready');
 })();

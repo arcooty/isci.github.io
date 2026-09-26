@@ -9,12 +9,21 @@
     fetch(`${api}/store/products`).then(response => {
       if (!response.ok) throw new Error();
       return response.json();
-    }).then(({ products }) => products.forEach(product => {
+    }).then(({ products }) => {
+      if (!Array.isArray(products)) throw new Error('Missing products');
+      let available = false;
+      products.forEach(product => {
       const button = document.querySelector(`[data-buy-package="${product.id}"]`);
       const price = document.querySelector(`[data-price-package="${product.id}"]`);
       if (price && product.priceLabel) price.textContent = `${product.priceLabel} · ${product.durationDays} gün`;
-      if (button && product.available) { button.disabled = false; button.textContent = `${product.name} Satın Al`; }
-    })).catch(() => { if (status) status.textContent = 'Mağaza güvenli ödeme yapılandırması tamamlanınca açılacak.'; });
+      if (button && product.available) { available = true; button.disabled = false; button.textContent = `${product.name} Satın Al`; }
+      else if (button) { button.disabled = true; button.textContent = 'Satış kapalı'; }
+      });
+      if (status) status.textContent = available ? '' : 'VIP satışı henüz açık değil. Paket haklarını inceleyebilirsin.';
+    }).catch(() => {
+      document.querySelectorAll('[data-buy-package]').forEach(button => { button.disabled = true; button.textContent = 'Şu anda kullanılamıyor'; });
+      if (status) status.textContent = 'Satış durumuna şu anda ulaşılamıyor. Daha sonra tekrar dene.';
+    });
   }
   document.querySelectorAll('[data-buy-package]').forEach(button => button.addEventListener('click', async () => {
     const username = document.querySelector('#minecraft-username')?.value.trim();
@@ -39,7 +48,7 @@
   const order = document.querySelector('#order-status');
   if (order) {
     const id = new URLSearchParams(location.search).get('session_id');
-    if (!id) order.textContent = 'Sipariş kimliği bulunamadı.';
+    if (!id) order.textContent = 'Bu sayfa ödemenin ardından sipariş bağlantınla açılır. Sipariş desteği için Discord’da sipariş kimliğinle talep oluştur.';
     else fetch(`${api}/store/order?session_id=${encodeURIComponent(id)}`).then(r => {
       if (!r.ok) throw new Error();
       return r.json();

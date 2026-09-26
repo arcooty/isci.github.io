@@ -68,4 +68,9 @@
       status.textContent = '';
     } catch { status.textContent = 'Oyuncu bulunamadı veya profil servisine şu anda ulaşılamıyor.'; }
   });
+  const linkedPlayer = new URLSearchParams(location.search).get('player');
+  if (form && /^[A-Za-z0-9_]{3,16}$/.test(linkedPlayer || '')) {
+    input.value = linkedPlayer;
+    form.requestSubmit();
+  }
 })();

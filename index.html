@@ -1,586 +1,88 @@
-<!DOCTYPE html>
-<html lang="tr" class="scroll-smooth">
+<!doctype html>
+<html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ArcaDe Craft | Survival ve Rob's Village</title>
-    <meta name="description" content="ArcaDe Craft'ta kalıcı Survival dünyanı kur, mesleğini seç ve Rob's Village topluluk oyunlarına katıl. Java ve Bedrock destekli Türkçe Minecraft sunucusu.">
-    <script src="https://cdn.tailwindcss.com">
-</script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: { 'mc-main': '#9653fa', 'mc-dark': '#121212', 'mc-card': '#1E1E1E', 'mc-accent': '#FFAA00' },
-                    fontFamily: { 'rajdhani': ['Rajdhani', 'sans-serif'], 'inter': ['Inter', 'sans-serif'] }
-                }
-            }
-        }
-    </script>
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0f0f13; color: #ffffff; overflow-x: hidden; cursor: default; }
-        h1, h2, h3, h4, .nav-link, .btn-font { font-family: 'Rajdhani', sans-serif; }
-        .hero-bg { background-image: linear-gradient(to bottom, rgba(5,0,15,0.50) 0%, rgba(15,15,19,0.85) 100%), url('assets/hero-bg.png'); background-size: cover; background-position: center 30%; }
-
-        /* GÜNCELLEME: Renk zorlaması kaldırıldı, sadece hareket efekti kaldı */
-        .block-card { transition: all 0.3s ease; border-bottom: 4px solid #2d2d2d; }
-        .block-card:hover { transform: translateY(-5px); }
-
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #121212; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #9653fa; }
-        .glow-text { text-shadow: 0 0 20px rgba(150, 83, 250, 0.6); }
-        .scroll-dot { width: 12px; height: 12px; background-color: rgba(255, 255, 255, 0.2); border-radius: 50%; transition: all 0.4s ease; cursor: pointer; position: relative; z-index: 10; }
-        .scroll-dot::after { content: attr(data-label); position: absolute; bottom: 25px; left: 50%; transform: translateX(-50%) translateY(10px); background: rgba(0,0,0,0.9); color: #9653fa; padding: 4px 8px; border-radius: 6px; font-size: 12px; font-weight: bold; opacity: 0; transition: all 0.3s; pointer-events: none; white-space: nowrap; border: 1px solid rgba(150, 83, 250, 0.3); font-family: 'Rajdhani', sans-serif; text-transform: uppercase; }
-        .scroll-dot:hover::after { opacity: 1; transform: translateX(-50%) translateY(0); }
-        .scroll-dot.active { background-color: #9653fa; box-shadow: 0 0 15px #9653fa, 0 0 30px rgba(150, 83, 250, 0.5); transform: scale(1.4); }
-        .scroll-line { height: 3px; background-color: rgba(255,255,255,0.1); flex-grow: 1; width: 50px; border-radius: 2px; transition: background-color 0.4s ease, box-shadow 0.4s ease; }
-        .scroll-line.active { background-color: #9653fa; box-shadow: 0 0 10px rgba(150, 83, 250, 0.4); }
-        #section-indicator { transform: translateX(-50%); transition: opacity .38s ease, transform .46s cubic-bezier(.2,.8,.2,1), filter .38s ease; }
-        #section-indicator.is-hidden { opacity: 0; transform: translate(-50%, 26px) scale(.96); filter: blur(5px); pointer-events: none; }
-        @media (prefers-reduced-motion: reduce) { #section-indicator { transition-duration: .01ms; } }
-        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
-        .animate-float { animation: float 3s ease-in-out infinite; }
-        .glass-panel { background: rgba(24, 24, 27, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
-    </style>
-    <link rel="stylesheet" href="network.css?v=20260925-8">
-<link rel="icon" href="assets/logo.png" type="image/png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ArcaDe Craft | Survival ve Rob's Village</title>
+  <meta name="description" content="Kendi dünyanı kur veya köyün sırrını çöz. ArcaDe Craft'ta Survival ve Rob's Village, Java ve Bedrock oyuncularını buluşturuyor.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="network.css?v=20260926-1">
+  <link rel="stylesheet" href="craft.css?v=20260926-1">
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <link rel="preload" href="assets/hero-bg.png" as="image">
+<link rel="canonical" href="https://robsarcade.online/">
+<meta property="og:title" content="ArcaDe Craft | Survival ve Rob's Village">
+<meta property="og:description" content="Bir dünya kur. Bir köyün sırrını çöz. Java ve Bedrock ile ArcaDe Craft'ta buluşalım.">
+<meta property="og:image" content="https://robsarcade.online/assets/mode-survival-v1.webp">
+<meta property="og:url" content="https://robsarcade.online/">
+<meta property="og:type" content="website">
 </head>
-<body class="antialiased">
-
-    <div id="section-indicator" class="fixed bottom-8 left-1/2 z-50 bg-black/80 backdrop-blur-xl border border-mc-main/30 rounded-full px-8 py-4 items-center gap-1 shadow-[0_0_30px_rgba(150,83,250,0.25)] ring-1 ring-white/10 hidden md:flex" aria-label="Sayfa bölümleri">
-        <a href="#hero" class="scroll-dot active" data-target="hero" data-label="Başlangıç">
-</a>
-        <div class="scroll-line" id="line-1">
-</div>
-        <a href="#features" class="scroll-dot" data-target="features" data-label="Oyun Modları">
-</a>
-        <div class="scroll-line" id="line-2">
-</div>
-        <a href="#network-showcase" class="scroll-dot" data-target="network-showcase" data-label="Neden Biz">
-</a>
-        <div class="scroll-line" id="line-3">
-</div>
-        <a href="#server-features" class="scroll-dot" data-target="server-features" data-label="Özellikler">
-</a>
-        <div class="scroll-line" id="line-4">
-</div>
-        <a href="#news" class="scroll-dot" data-target="news" data-label="Haberler">
-</a>
-        <div class="scroll-line" id="line-5">
-</div>
-        <a href="#store" class="scroll-dot" data-target="store" data-label="Mağaza">
-</a>
-    </div>
-
-    <nav class="fixed w-full z-40 transition-all duration-300 bg-black/80 backdrop-blur-md border-b border-white/10" id="navbar">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="index.html" class="text-3xl font-bold font-rajdhani tracking-wider flex items-center gap-2 hover:scale-105 transition transform">
-                <img src="assets/logo.png" alt="ArcaDe Craft Logo" class="w-10 h-10 drop-shadow-lg">
-                <span class="text-white">ArcaDe<span class="text-mc-main drop-shadow-[0_0_5px_rgba(150,83,250,0.8)]">Craft</span>
-</span>
-            </a>
-
-            <div class="hidden md:flex items-center gap-8">
-                <a href="#hero" class="nav-link text-lg font-bold text-gray-300 hover:text-mc-main transition hover:drop-shadow-[0_0_5px_rgba(150,83,250,0.5)]">ANASAYFA</a>
-                <a href="survival-systems.html" class="nav-link text-lg font-bold text-gray-300 hover:text-mc-main transition hover:drop-shadow-[0_0_5px_rgba(150,83,250,0.5)]">ÖZELLİKLER</a>
-                <a href="jobs.html" class="nav-link text-lg font-bold text-gray-300 hover:text-mc-main transition hover:drop-shadow-[0_0_5px_rgba(150,83,250,0.5)]">MESLEKLER</a>
-                <a href="leaderboard.html" class="nav-link text-lg font-bold text-gray-300 hover:text-mc-main transition hover:drop-shadow-[0_0_5px_rgba(150,83,250,0.5)]">LİDERLİK</a>
-                <a href="news.html" class="nav-link text-lg font-bold text-gray-300 hover:text-mc-main transition hover:drop-shadow-[0_0_5px_rgba(150,83,250,0.5)]">HABERLER</a>
-                <a href="wiki.html" class="text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">WİKİ</a>
-            </div>
-
-            <div class="hidden md:block">
-                <a href="#store" class="bg-mc-main hover:bg-[#7e42d6] text-white px-6 py-2 rounded font-bold font-rajdhani uppercase tracking-wide transition shadow-[0_0_20px_rgba(150,83,250,0.4)] hover:shadow-[0_0_30px_rgba(150,83,250,0.6)] transform hover:-translate-y-0.5">
-                    <i class="fa-solid fa-cart-shopping mr-2">
-</i> Mağaza
-                </a>
-            </div>
-
-            <button class="md:hidden text-white text-2xl" onclick="toggleMobileMenu()">
-                <i class="fa-solid fa-bars">
-</i>
-            </button>
+<body class="network-shell home-page">
+  <nav><a href="servers.html">Oyunlar</a><a href="store.html">Mağaza</a></nav>
+  <main id="main-content">
+    <section class="craft-hero" id="hero" aria-labelledby="hero-title">
+      <img class="craft-hero-image" src="assets/hero-bg.png" alt="" fetchpriority="high">
+      <div class="craft-hero-shade"></div>
+      <div class="craft-hero-inner">
+        <div class="craft-hero-copy">
+          <h1 id="hero-title">ArcaDe <span>Craft</span></h1>
+          <p class="hero-intro">Bir dünya kur.<br>Bir köyün sırrını çöz.</p>
+          <p class="hero-description">Survival'da kendi hikâyeni yaz. Rob's Village'da arkadaşlarının gizli rollerini keşfet.</p>
+          <div class="hero-actions">
+            <a class="craft-button primary" href="join.html"><i class="fa-solid fa-play" aria-hidden="true"></i> Oyuna katıl</a>
+            <button class="address-button" type="button" data-copy-address title="Sunucu adresini kopyala"><span>oyna.robsarcade.online</span><i class="fa-regular fa-copy" aria-hidden="true"></i></button>
+          </div>
+          <div class="hero-platforms">Java &amp; Bedrock <span>Birlikte, aynı dünyada.</span></div>
         </div>
-
-        <div id="mobile-menu" class="hidden md:hidden bg-mc-dark border-b border-white/10 p-4">
-            <a href="#hero" class="block py-2 text-gray-300 hover:text-white font-bold">ANASAYFA</a>
-            <a href="survival-systems.html" class="block py-2 text-gray-300 hover:text-white font-bold">ÖZELLİKLER</a>
-            <a href="jobs.html" class="block py-2 text-gray-300 hover:text-white font-bold">MESLEKLER</a>
-            <a href="leaderboard.html" class="block py-2 text-gray-300 hover:text-white font-bold">LİDERLİK</a>
-            <a href="news.html" class="block py-2 text-gray-300 hover:text-white font-bold">HABERLER</a>
-            <a href="wiki.html" class="block py-2 text-gray-300 hover:text-white font-bold">WİKİ</a>
-        </div>
-    </nav>
-
-    <section id="hero" class="home-hero relative flex items-center hero-bg px-4 scroll-mt-20 pt-20">
-        <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center z-10">
-            <div class="text-center lg:text-left">
-                <span class="hero-kicker"><i class="fa-solid fa-cubes"></i> SURVIVAL &bull; ROB'S VILLAGE &bull; JAVA + BEDROCK</span>
-                <h1 class="hero-brand-title font-black mb-4 drop-shadow-2xl">
-                    ARCADECRAFT
-                </h1>
-                <p class="text-xl md:text-2xl text-gray-300 mb-8 font-light max-w-2xl mx-auto lg:mx-0">
-                    Kalıcı dünyada kendi düzenini kur, mesleğini seç ve ticaret yap. Etkinlik gecelerinde Rob's Village ile arkadaşlarının kimliğini çöz.
-                </p>
-                <div class="flex flex-col md:flex-row gap-4 justify-center lg:justify-start items-center">
-                    <div class="group relative bg-black/60 backdrop-blur border border-white/20 p-2 pr-4 rounded-lg flex items-center gap-4 cursor-pointer hover:border-mc-main hover:shadow-[0_0_20px_rgba(150,83,250,0.3)] transition duration-300 w-full md:w-auto" onclick="copyIP()">
-                        <div class="bg-mc-main p-3 rounded text-white group-hover:bg-[#7e42d6] transition shadow-[0_0_10px_rgba(150,83,250,0.5)]">
-                            <i class="fa-solid fa-gamepad text-xl">
-</i>
-                        </div>
-                        <div class="text-left mr-8">
-                            <span class="block text-xs text-gray-400 uppercase font-bold group-hover:text-gray-300 transition">Sunucu Adresi</span>
-                            <span class="block text-xl font-bold tracking-wider text-white" id="server-ip">oyna.robsarcade.online</span>
-                        </div>
-                        <div class="absolute right-3 top-1/2 transform -translate-y-1/2">
-                            <i class="fa-regular fa-copy text-gray-400 group-hover:text-white transition">
-</i>
-                        </div>
-                        <span id="copy-tooltip" class="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-mc-main text-white text-xs font-bold px-3 py-1.5 rounded shadow-lg opacity-0 transition pointer-events-none">
-                            IP Kopyalandı!
-                        </span>
-                    </div>
-
-                    <a href="#features" class="hero-games-button px-8 py-4 rounded-lg font-bold font-rajdhani text-lg flex items-center gap-2 transition w-full md:w-auto justify-center hover:-translate-y-0.5">
-                        <i class="fa-solid fa-compass">
-</i> Oyunları Keşfet
-                    </a>
-                </div>
-            </div>
-
-            <div class="hidden lg:block relative animate-float">
-                <div class="glass-panel hero-status-panel p-6 max-w-md mx-auto transition duration-500 group">
-                    <div class="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
-                        <h3 class="font-bold font-rajdhani text-xl text-white">
-<i class="fa-solid fa-signal text-green-400 mr-2">
-</i> Şimdi ArcaDe Craft</h3>
-                        <span class="bg-mc-main/20 text-mc-main text-xs font-bold px-2 py-1 rounded border border-mc-main/20">AKTİF</span>
-                    </div>
-
-                    <div class="space-y-4">
-                        <div class="bg-black/30 p-3 rounded flex justify-between items-center border border-white/5">
-                            <span class="text-gray-400 text-sm">Çevrimiçi</span>
-                            <span class="font-bold text-white font-mono">
-<span id="floating-player-count">Yükleniyor...</span>
-</span>
-                        </div>
-                        <div class="grid grid-cols-2 gap-4 mt-4">
-                            <div class="hero-status-mode hero-status-survival">
-                                <i class="fa-solid fa-tree"></i>
-                                <span class="block text-xl font-bold font-rajdhani">Survival</span>
-                                <small>Kalıcı dünya</small>
-                            </div>
-                            <div class="hero-status-mode hero-status-event">
-                                <i class="fa-solid fa-masks-theater"></i>
-                                <span class="block text-xl font-bold font-rajdhani">Rob's Village</span>
-                                <small>Topluluk oyunu</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-6 pt-4 border-t border-white/10 text-xs text-gray-500">
-                        Java ve Bedrock oyuncuları aynı toplulukta buluşur.
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="absolute bottom-32 left-1/2 transform -translate-x-1/2 animate-bounce hidden lg:block">
-            <i class="fa-solid fa-chevron-down text-white/30 text-2xl">
-</i>
-        </div>
+        <aside class="floating-status" aria-label="Canlı sunucu durumu">
+          <div class="floating-status-head"><h2><i class="fa-solid fa-server" aria-hidden="true"></i> Sunucu Durumu</h2><span id="home-state" class="live-state" data-state="pending">Kontrol ediliyor</span></div>
+          <div class="floating-status-players"><span>Çevrimiçi</span><strong><span id="floating-player-count">—</span> <small>/ <span id="home-player-max">—</span></small></strong></div>
+          <div class="capacity-track" aria-hidden="true"><div id="home-capacity"></div></div>
+          <dl class="status-facts"><div><dt>Birlikte oyna</dt><dd>Java + Bedrock</dd></div><div><dt>Topluluk</dt><dd>Türkçe</dd></div></dl>
+          <a href="status.html" class="status-detail">Canlı durumu gör <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </aside>
+      </div>
+      <a class="hero-next" href="#oyunlar">Oyununu seç <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
     </section>
 
-    <div class="bg-mc-card border-y border-white/5 py-8 relative z-20">
-        <div class="container mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center px-4">
-            <div class="hover:transform hover:scale-105 transition duration-300">
-                <h3 class="text-4xl font-bold text-mc-main font-rajdhani drop-shadow-[0_0_10px_rgba(150,83,250,0.4)]" data-count="12" data-suffix="">12</h3>
-                <p class="text-gray-500 text-sm uppercase tracking-widest font-bold mt-1">Aktif Meslek</p>
-            </div>
-            <div class="hover:transform hover:scale-105 transition duration-300">
-                <h3 class="text-4xl font-bold text-red-400 font-rajdhani">2</h3>
-                <p class="text-gray-500 text-sm uppercase tracking-widest font-bold mt-1">Ana Deneyim</p>
-            </div>
-            <div class="hover:transform hover:scale-105 transition duration-300">
-                <h3 class="home-stat-platform font-bold text-cyan-300 font-rajdhani">JAVA + BEDROCK</h3>
-                <p class="text-gray-500 text-sm uppercase tracking-widest font-bold mt-1">Birlikte Oyna</p>
-            </div>
-            <div class="hover:transform hover:scale-105 transition duration-300">
-                <h3 class="text-4xl font-bold text-yellow-300 font-rajdhani">7/24</h3>
-                <p class="text-gray-500 text-sm uppercase tracking-widest font-bold mt-1">Kalıcı Dünya</p>
-            </div>
-        </div>
-    </div>
-
-    <section id="features" class="py-20 bg-mc-dark scroll-mt-20">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <span class="section-kicker section-kicker-games">Bir sunucu, iki farklı tempo</span>
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 font-rajdhani">OYUNLARINI <span class="text-mc-main drop-shadow-[0_0_10px_rgba(150,83,250,0.5)]">SEÇ</span>
-</h2>
-                <div class="h-1 w-24 bg-mc-main mx-auto rounded shadow-[0_0_10px_rgba(150,83,250,0.5)]">
-</div>
-                <p class="mt-4 text-gray-400">Uzun soluklu bir dünya kur veya kısa ve gerilimli topluluk maçlarına katıl.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <article class="game-mode-card mode-survival">
-                    <div class="game-mode-media">
-                        <img src="assets/mode-survival-v1.webp" alt="ArcaDe Craft Survival dünyası; çiftlik, ev ve maden girişi" loading="lazy" decoding="async">
-                        <span class="game-mode-status">Ana oyun modu</span>
-                    </div>
-                    <div class="game-mode-body">
-                        <div class="game-mode-heading">
-<span class="game-mode-icon">
-<i class="fa-solid fa-tree">
-</i>
-</span>
-<h3>Survival</h3>
-</div>
-                        <p>Claim, 12 meslek, günlük görevler, beceriler ve oyuncuların yön verdiği ekonomiyle kalıcı hikâyeni oluştur.</p>
-                        <div class="game-mode-chips"><span>12 Meslek</span><span>Canlı Harita</span><span>Oyuncu Pazarı</span></div>
-                        <a href="survival.html" class="game-mode-link">Detayları İncele <i class="fa-solid fa-arrow-right">
-</i>
-</a>
-                    </div>
-                </article>
-
-                <article class="game-mode-card mode-event">
-                    <div class="game-mode-media">
-                        <img src="assets/mode-event-v1.webp" alt="Rob's Village gece köyü ve sosyal çıkarım oyunu" loading="lazy" decoding="async">
-                        <span class="game-mode-status">Özel oyun</span>
-                    </div>
-                    <div class="game-mode-body">
-                        <div class="game-mode-heading">
-<span class="game-mode-icon">
-<i class="fa-solid fa-masks-theater">
-</i>
-</span>
-<h3>Rob's Village</h3>
-</div>
-                        <p>Köylüler, kurtlar ve özel roller arasında blöf yap; gündüz tartış, gece yeteneğini kullan ve takımını zafere taşı.</p>
-                        <div class="game-mode-chips"><span>Dinamik Roller</span><span>Harita Oylaması</span><span>Topluluk Maçı</span></div>
-                        <a href="servers.html#robs-village" class="game-mode-link">Oyunu Tanı <i class="fa-solid fa-arrow-right">
-</i>
-</a>
-                    </div>
-                </article>
-
-                <article class="game-mode-card mode-lobby">
-                    <div class="game-mode-media">
-                        <img src="assets/mode-lobby-v1.webp" alt="ArcaDe Craft lobi meydanı ve oyun portalları" loading="lazy" decoding="async">
-                        <span class="game-mode-status">Başlangıç noktası</span>
-                    </div>
-                    <div class="game-mode-body">
-                        <div class="game-mode-heading">
-<span class="game-mode-icon">
-<i class="fa-solid fa-compass">
-</i>
-</span>
-<h3>Oyun Lobisi</h3>
-</div>
-                        <p>Sunucuya katıldığında oyununu seç, hesabını yönet ve topluluğa tek merkezden ulaş.</p>
-                        <div class="game-mode-chips"><span>Hızlı Geçiş</span><span>Sosyal Menü</span><span>Java + Bedrock</span></div>
-                        <a href="servers.html#lobi" class="game-mode-link">Merkezi İncele <i class="fa-solid fa-arrow-right">
-</i>
-</a>
-                    </div>
-                </article>
-            </div>
-        </div>
+    <section class="craft-section games-section" id="oyunlar" aria-labelledby="games-title">
+      <div class="section-heading"><div><span class="eyebrow">ArcaDe Craft oyunları</span><h2 id="games-title">İki oyun. Bambaşka hikâyeler.</h2></div><a class="text-link" href="servers.html">Tüm oyunlar <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
+      <div class="game-pair" id="network-showcase">
+        <a class="game-poster survival-poster" href="survival.html">
+          <div class="poster-image"><img src="assets/mode-survival-v1.webp" alt="Survival'da dağlar arasında çiftlik, ev ve maden" loading="lazy" width="960" height="640"></div>
+          <div class="poster-copy"><span class="game-category">Kalıcı dünya · Kendi hızında</span><h3>Survival</h3><p>Evin, mesleğin, pazarın. Emek verdiğin bir dünyada yerini bul.</p><span class="poster-link">Dünyayı keşfet <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span></div>
+        </a>
+        <a class="game-poster village-poster" href="village.html">
+          <div class="poster-image"><img src="assets/mode-event-v1.webp" alt="Rob's Village'da gece çöken Minecraft köyü" loading="lazy" width="960" height="640"></div>
+          <div class="poster-copy"><span class="game-category">Kurt köylü · Gizli roller</span><h3>Rob's Village</h3><p>Geceyi atlat, ipuçlarını birleştir. Peki kime güveneceksin?</p><span class="poster-link">Köye adım at <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span></div>
+        </a>
+      </div>
+      <div class="lobby-note"><i class="fa-solid fa-compass" aria-hidden="true"></i><p>İlk durağın oyun lobisi. Pusuladan oyununu seç, macerana katıl.</p><a class="text-link" href="join.html">Nasıl katılırım? <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
     </section>
 
-    <!-- AĞ DENEYİMİ -->
-    <section id="network-showcase" class="py-20 bg-[#0a0a0c] scroll-mt-20">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-14">
-                <span class="text-mc-main font-bold uppercase text-sm">Neden ArcaDe Craft?</span>
-                <h2 class="text-4xl md:text-5xl font-bold font-rajdhani text-white mt-2">OYUNDAKİ EMEĞİN <span class="text-mc-main">DEĞERLİ</span>
-</h2>
-                <div class="h-1 w-24 bg-mc-main mx-auto rounded mt-4 shadow-[0_0_10px_rgba(150,83,250,0.5)]">
-</div>
-                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Kısa ömürlü numaralar yerine kalıcı ilerleme, adil rekabet ve birlikte üretmeye değer bir topluluk.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-6xl mx-auto">
-                <article class="info-card play-value-card value-world">
-                    <div class="w-12 h-12 bg-cyan-500/10 text-cyan-300 rounded-lg flex items-center justify-center text-xl mb-4 border border-cyan-500/20">
-<i class="fa-solid fa-house-chimney">
-</i>
-</div>
-                    <h3>Kalıcı Bir Dünya</h3>
-                    <p>Evin, claimin, becerilerin ve ekonomik ilerlemen seni bir sonraki girişinde kaldığın yerden karşılar.</p>
-                </article>
-                <article class="info-card play-value-card value-fair">
-                    <div class="w-12 h-12 bg-yellow-500/10 text-yellow-300 rounded-lg flex items-center justify-center text-xl mb-4 border border-yellow-500/20">
-<i class="fa-solid fa-scale-balanced">
-</i>
-</div>
-                    <h3>Adil İlerleme</h3>
-                    <p>VIP paketleri para veya meslek çarpanı vermez. Başarı; oyun, ticaret ve topluluk katkısıyla kazanılır.</p>
-                </article>
-                <article class="info-card play-value-card value-community">
-                    <div class="w-12 h-12 bg-green-500/10 text-green-300 rounded-lg flex items-center justify-center text-xl mb-4 border border-green-500/20">
-<i class="fa-solid fa-people-group">
-</i>
-</div>
-                    <h3>Birlikte Oynanan Etkinlikler</h3>
-                    <p>Rob's Village oturumları, dönemsel etkinlikler ve Discord buluşmaları kalıcı dünyaya farklı bir tempo katar.</p>
-                </article>
-            </div>
-            <div class="flex flex-wrap justify-center gap-3 mt-9">
-                <a href="servers.html" class="inline-flex items-center gap-2 bg-mc-main hover:bg-[#7e42d6] text-white px-7 py-3 rounded-lg font-bold transition">Oyunları Keşfet <i class="fa-solid fa-arrow-right">
-</i>
-</a>
-                <a href="about.html" class="inline-flex items-center gap-2 border border-white/15 hover:border-white/35 text-white px-7 py-3 rounded-lg font-bold transition">Bizi Tanı</a>
-            </div>
+    <section class="discovery-band" id="features" aria-labelledby="survival-discovery">
+      <div class="craft-section discovery-layout">
+        <div class="discovery-lead" id="server-features"><span class="eyebrow">Survival'da hayat</span><h2 id="survival-discovery">Bir kulübeyle başlar.<br>Gerisi sana kalır.</h2><p>İster bir çiftlik kur, ister ticarette adını duyur. Günlük hedefler ve meslekler yol boyunca sana eşlik eder.</p><a class="text-link" href="wiki.html">Survival rehberleri <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
+        <div class="discovery-links">
+          <a href="claims.html"><i class="fa-solid fa-house-circle-check" aria-hidden="true"></i><div><h3>Kendine bir yer ayır</h3><p>Altın kürekle arazini koru, arkadaşlarına izin ver.</p></div><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          <a href="jobs.html"><i class="fa-solid fa-briefcase" aria-hidden="true"></i><div><h3>Sevdiğin işi yap</h3><p>12 meslekten ikisini seç, oynarken uzmanlaş.</p></div><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          <a href="economy.html"><i class="fa-solid fa-store" aria-hidden="true"></i><div><h3>Pazarda yerini al</h3><p>Üret, ilan ver ve diğer oyuncularla ticaret yap.</p></div><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          <a href="map.html"><i class="fa-solid fa-map" aria-hidden="true"></i><div><h3>Dünyaya bir göz at</h3><p>Yerleşimleri ve keşfedilmiş bölgeleri haritada gör.</p></div><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
         </div>
+      </div>
     </section>
 
-    <!-- SURVIVAL ÖZELLİKLERİ -->
-    <section id="server-features" class="py-20 bg-mc-dark scroll-mt-20">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <span class="section-kicker section-kicker-survival">Kalıcı dünyada kendi yolunu çiz</span>
-                <h2 class="text-4xl md:text-5xl font-bold font-rajdhani">SURVIVAL'DA <span class="text-mc-main drop-shadow-[0_0_10px_rgba(150,83,250,0.5)]">NE YAPARSIN?</span>
-</h2>
-                <div class="h-1 w-24 bg-mc-main mx-auto rounded mt-4 shadow-[0_0_10px_rgba(150,83,250,0.5)]">
-</div>
-                <p class="mt-4 text-gray-400">Komut listelerinden önce dünyada karşılığı olan, ilerletebildiğin sistemler.</p>
-            </div>
-            <div class="play-feature-grid">
-                <div class="play-feature-card feature-claim">
-                    <div class="play-feature-icon">
-                        <i class="fa-solid fa-hammer">
-</i>
-                    </div>
-                    <h3>Kendi Bölgeni Kur</h3>
-                    <p>Yerini seç, yapını kur ve claim sistemiyle emeğini koruma altına al.</p>
-                </div>
-                <div class="play-feature-card feature-jobs">
-                    <div class="play-feature-icon">
-                        <i class="fa-solid fa-briefcase">
-</i>
-                    </div>
-                    <h3>Mesleğini Seç</h3>
-                    <p>12 meslekten ikisinde uzmanlaş, günlük hedeflerini tamamla ve düzenli gelir kazan.</p>
-                </div>
-                <div class="play-feature-card feature-market">
-                    <div class="play-feature-icon">
-                        <i class="fa-solid fa-store">
-</i>
-                    </div>
-                    <h3>Oyuncularla Ticaret Yap</h3>
-                    <p>Açık artırmada ürün sat, pazarda dükkân aç ve ekonomide kendi yerini oluştur.</p>
-                </div>
-                <div class="play-feature-card feature-quests">
-                    <div class="play-feature-icon">
-                        <i class="fa-solid fa-list-check">
-</i>
-                    </div>
-                    <h3>Her Gün Yeni Bir Hedef</h3>
-                    <p>Günlük görevler ve NPC hikâyeleriyle sadece kaynak toplamaktan fazlasını yap.</p>
-                </div>
-                <div class="play-feature-card feature-skills">
-                    <div class="play-feature-icon">
-                        <i class="fa-solid fa-wand-sparkles">
-</i>
-                    </div>
-                    <h3>Becerilerini Geliştir</h3>
-                    <p>Madencilikten çiftçiliğe kadar yaptığın işler kalıcı beceri seviyelerine dönüşür.</p>
-                </div>
-                <div class="play-feature-card feature-map">
-                    <div class="play-feature-icon">
-                        <i class="fa-solid fa-map-location-dot">
-</i>
-                    </div>
-                    <h3>Dünyayı Keşfet</h3>
-                    <p>Gizlilik korumalı canlı haritadan kasabaları, yolları ve keşfedilecek bölgeleri gör.</p>
-                </div>
-            </div>
-            <div class="text-center mt-10">
-                <a href="survival-systems.html" class="inline-flex items-center gap-2 border border-mc-main text-mc-main hover:bg-mc-main hover:text-white px-8 py-3 rounded-lg font-bold font-rajdhani uppercase tracking-wide transition hover:-translate-y-0.5">
-                    Tüm Özellikleri Gör <i class="fa-solid fa-arrow-right">
-</i>
-                </a>
-            </div>
-        </div>
+    <section class="craft-section community-section" id="news" aria-labelledby="community-title">
+      <div class="community-invitation"><span class="eyebrow">Birlikte daha iyi</span><h2 id="community-title">Oyunun dışında da<br>buluşalım.</h2><p>Etkinlik duyuruları, yeni arkadaşlar ve ihtiyaç duyduğunda yardım. Topluluğun Discord'da.</p><a class="craft-button discord-button" href="https://discord.gg/GerdDHzMWp" target="_blank" rel="noopener"><i class="fa-brands fa-discord" aria-hidden="true"></i> Discord'a katıl</a></div>
+      <div class="community-editorial"><span class="eyebrow">Topluluktan</span><a href="news.html"><h3>ArcaDe Craft'ta neler yeni?</h3><p>Oyun güncellemelerini ve topluluk haberlerini takip et.</p><span class="text-link">Haberleri oku <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></a><div class="editorial-shortcuts"><a href="leaderboard.html">Liderlik tabloları <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a><a href="players.html">Oyuncu profilleri <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div></div>
     </section>
 
-    <section id="news" class="py-20 bg-[#101216] scroll-mt-20">
-<div class="container mx-auto px-4">
-<div class="flex items-end justify-between gap-4 mb-10">
-<div>
-<span class="text-green-400 font-bold uppercase text-sm">Ağ Günlüğü</span>
-<h2 class="text-4xl md:text-5xl font-bold font-rajdhani">SON GÜNCELLEMELER</h2>
-</div>
-<a href="news.html" class="text-green-400 font-bold">Tümünü gör →</a>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-<article class="info-card">
-<span class="tag">13 Eylül 2026</span>
-<h3>Survival deneyimi yenilendi</h3>
-<p>Menüler, günlük görevler, kasalar ve oyuncu araçları daha anlaşılır hale getirildi.</p>
-</article>
-<article class="info-card">
-<span class="tag">Survival</span>
-<h3>Ekonomi yeniden dengelendi</h3>
-<p>Market, meslek, üretim ve görev kazançları birlikte denetlendi.</p>
-</article>
-<article class="info-card">
-<span class="tag">Discord</span>
-<h3>Topluluk merkezi yenilendi</h3>
-<p>Sohbet, kayıtlar, roller ve bilgi bankası tek sunucuda toplandı.</p>
-</article>
-</div>
-</div>
-</section>
-<section id="store" class="py-20 bg-[#0b0d10] scroll-mt-20">
-<div class="container mx-auto px-4">
-<div class="text-center mb-12">
-<span class="rank-kicker">Oyuncu rütbeleri</span>
-<h2 class="text-4xl md:text-5xl font-bold font-rajdhani">VIP RÜTBELERİ</h2>
-<p class="mt-4 text-gray-400 max-w-2xl mx-auto">VIP paketleri para veya Jobs çarpanı vermez. Paketler ve haklar incelenebilir; fiyatlandırma tamamlanıp mağaza açılana kadar web üzerinden ödeme alınmaz.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
-<article class="info-card rank-showcase-card rank-vip">
-<h3 class="text-green-400">VIP</h3>
-<ul class="rank-feature-list">
-<li><i class="fa-solid fa-check"></i><span>5 ev noktası</span></li>
-<li><i class="fa-solid fa-check"></i><span>2 sanal depo</span></li>
-<li><i class="fa-solid fa-check"></i><span>5 açık artırma ilanı</span></li>
-<li><i class="fa-solid fa-check"></i><span>2 pazar dükkânı</span></li>
-<li><i class="fa-solid fa-check"></i><span>Haftalık VIP kiti ve kasa anahtarı</span></li>
-<li><i class="fa-solid fa-check"></i><span>Renkli sohbet, şapka ve güvenli çöp kutusu</span></li>
-</ul>
-<a class="rank-card-link" href="store.html?package=vip">Paketi incele <i class="fa-solid fa-arrow-right"></i></a>
-</article>
-<article class="info-card rank-showcase-card rank-mvip">
-<h3 class="text-cyan-400">MVIP</h3>
-<ul class="rank-feature-list">
-<li><i class="fa-solid fa-check"></i><span>VIP haklarının tamamı</span></li>
-<li><i class="fa-solid fa-check"></i><span>8 ev noktası ve 3 sanal depo</span></li>
-<li><i class="fa-solid fa-check"></i><span>8 açık artırma ilanı ve 3 pazar dükkânı</span></li>
-<li><i class="fa-solid fa-check"></i><span>Kişisel zaman ve hava</span></li>
-<li><i class="fa-solid fa-check"></i><span>Taşınabilir çalışma masası ve takma ad</span></li>
-<li><i class="fa-solid fa-check"></i><span>Haftalık MVIP kiti ve kasa anahtarı</span></li>
-</ul>
-<a class="rank-card-link" href="store.html?package=mvip">Paketi incele <i class="fa-solid fa-arrow-right"></i></a>
-</article>
-<article class="info-card rank-showcase-card rank-uvip">
-<h3 class="text-yellow-400">UVIP</h3>
-<ul class="rank-feature-list">
-<li><i class="fa-solid fa-check"></i><span>MVIP haklarının tamamı</span></li>
-<li><i class="fa-solid fa-check"></i><span>12 ev noktası ve 5 sanal depo</span></li>
-<li><i class="fa-solid fa-check"></i><span>12 açık artırma ilanı ve 5 pazar dükkânı</span></li>
-<li><i class="fa-solid fa-check"></i><span>RGB sohbet ve renkli takma ad</span></li>
-<li><i class="fa-solid fa-check"></i><span>Taşınabilir iş istasyonları ve Ender Sandığı</span></li>
-<li><i class="fa-solid fa-check"></i><span>Haftalık UVIP kiti ve kasa anahtarı</span></li>
-</ul>
-<a class="rank-card-link" href="store.html?package=uvip">Paketi incele <i class="fa-solid fa-arrow-right"></i></a>
-</article>
-</div>
-<div class="rank-showcase-actions">
-<a href="ranks.html" class="inline-block bg-green-500 text-black px-6 py-3 rounded font-bold">Rütbeleri karşılaştır</a>
-<a href="store.html" class="inline-block border border-white/20 text-white px-6 py-3 rounded font-bold">Mağaza önizlemesi</a>
-</div>
-</div>
-</section>
-<footer class="bg-black border-t border-white/10 pt-16 pb-8">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-                <div class="col-span-1 md:col-span-2">
-                    <a href="index.html" class="text-2xl font-bold font-rajdhani flex items-center gap-2 mb-4">
-                        <span class="text-white">ARCADE <span class="text-mc-main">CRAFT</span>
-</span>
-                    </a>
-                    <p class="text-gray-500 text-sm leading-relaxed max-w-md">
-                        ArcaDe Craft, oyuncularına en iyi Minecraft deneyimini sunmak için tasarlanmıştır. Pay to win değil, Play to win mantığıyla hareket ediyoruz.
-                    </p>
-                    <div class="flex gap-4 mt-6">
-                        <a href="https://discord.gg/GerdDHzMWp" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#5865F2] hover:text-white transition hover:shadow-[0_0_15px_rgba(88,101,242,0.5)]">
-<i class="fa-brands fa-discord">
-</i>
-</a>
-                        <a href="https://www.youtube.com/@robmite" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#FF0000] hover:text-white transition hover:shadow-[0_0_15px_rgba(255,0,0,0.5)]">
-<i class="fa-brands fa-youtube">
-</i>
-</a>
-                        <a href="https://x.com/RobMite" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#1DA1F2] hover:text-white transition hover:shadow-[0_0_15px_rgba(29,161,242,0.5)]">
-<i class="fa-brands fa-twitter">
-</i>
-</a>
-                        <a href="https://www.instagram.com/robmite/" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-pink-600 hover:text-white transition hover:shadow-[0_0_15px_rgba(219,39,119,0.5)]">
-<i class="fa-brands fa-instagram">
-</i>
-</a>
-                    </div>
-                </div>
-
-                <div>
-                    <h4 class="text-white font-bold mb-6 font-rajdhani uppercase tracking-wider">Hızlı Linkler</h4>
-                    <ul class="space-y-2 text-sm text-gray-500">
-                        <li>
-<a href="terms.html" class="hover:text-mc-main transition">Kullanıcı Sözleşmesi</a>
-</li>
-                        <li>
-<a href="privacy.html" class="hover:text-mc-main transition">Gizlilik Politikası</a>
-</li>
-                        <li>
-<a href="rules.html" class="hover:text-mc-main transition">Kurallar</a>
-</li>
-                        <li>
-<a href="application.html" class="hover:text-mc-main transition">Yetkili Başvurusu</a>
-</li>
-                        <li>
-<a href="appeal.html" class="hover:text-red-500 transition text-red-400/80">
-<i class="fa-solid fa-gavel mr-1">
-</i> Ceza İtirazı</a>
-</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-white font-bold mb-6 font-rajdhani uppercase tracking-wider">İletişim</h4>
-                    <ul class="space-y-2 text-sm text-gray-500">
-                        <li class="flex items-center gap-2">
-<i class="fa-solid fa-envelope text-mc-main">
-</i> destek@robsarcade.online</li>
-                        <li class="flex items-center gap-2">
-<i class="fa-solid fa-ticket text-mc-main">
-</i> Discord Ticket</li>
-                        <li class="flex items-center gap-2 mt-2">
-<a href="wiki.html" class="text-gray-400 hover:text-white flex items-center gap-2">
-<i class="fa-solid fa-book text-mc-main">
-</i> Wiki & Yardım</a>
-</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
-                <p>&copy; 2026 ArcaDe Craft Sunucusu. Tüm hakları saklıdır. Mojang Studios ile bağlantılı veya Mojang tarafından onaylanmış değildir.</p>
-                <p>Designed with <i class="fa-solid fa-heart text-red-900">
-</i> by arcooty</p>
-            </div>
-        </div>
-    </footer>
-
-<script src="form-logic.js">
-</script> <!-- Sadece form olan sayfalarda zorunlu ama hepsinde dursa zarar gelmez -->
-<script src="ui.js?v=20260913-5">
-</script>
-<script src="server-data.js?v=20260925-1">
-</script>
-<script src="api-config.js">
-</script>
-<script src="live-integration.js?v=20260925-1">
-</script>
-<script src="site-shell.js?v=20260925-10">
-</script>
+    <section class="vip-band" id="store"><div class="craft-section vip-band-inner"><div><span class="eyebrow">Survival VIP</span><h2>Biraz daha alan.<br>Biraz daha sen.</h2><p>Daha çok ev, kişisel depo ve günlük kullanım kolaylıkları. VIP, MVIP ve UVIP haklarını incele.</p></div><div class="vip-band-actions"><a class="craft-button primary" href="ranks.html">Paketleri karşılaştır <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a><a class="text-link" href="store.html">VIP mağazası <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a><small>Para veya meslek kazancı çarpanı verilmez.</small></div></div></section>
+  </main>
+  <footer></footer>
+  <script src="api-config.js"></script>
+  <script src="site-shell.js?v=20260926-1"></script>
+  <script src="ui.js?v=20260926-1"></script>
 </body>
-
 </html>
