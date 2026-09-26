@@ -14,7 +14,7 @@
   if (!nav) { nav = document.createElement('nav'); document.body.prepend(nav); }
   nav.className = 'site-nav'; nav.setAttribute('aria-label','Ana menü');
   nav.innerHTML = '<div class="site-nav-inner">' + brand + '<div class="site-links" id="site-links">' + link('index.html','Ana sayfa') +
-    '<div class="nav-menu"><button type="button" aria-expanded="false" aria-controls="games-dropdown"' + (['Oyunlar','Survival'].includes(section?.name) ? ' class="is-current"' : '') + '>Oyunlar ' + icon('chevron-down') + '</button><div class="nav-dropdown" id="games-dropdown">' + link('survival.html',icon('tree') + ' Survival') + link('village.html',icon('moon') + " Rob's Village") + link('servers.html','Bütün oyunlar') + '</div></div>' +
+    '<div class="nav-menu"><button type="button" aria-expanded="false" aria-controls="games-dropdown"' + (['Oyunlar','Survival'].includes(section?.name) ? ' class="is-current"' : '') + '>Oyunlar ' + icon('chevron-down') + '</button><div class="nav-dropdown" id="games-dropdown">' + link('survival.html','Survival') + link('village.html',"Rob's Village") + link('servers.html','Bütün oyunlar') + '</div></div>' +
     link('news.html','Topluluk') + link('store.html','VIP mağazası') + link('help.html','Yardım') + '<a class="nav-play" href="join.html">' + icon('play') + ' Oyuna katıl</a></div><div class="nav-tools"><button class="site-search-button" type="button" aria-label="Sitede ara" title="Sitede ara" aria-haspopup="dialog" aria-controls="site-search">' + icon('magnifying-glass') + '</button><button class="theme-toggle" type="button" aria-label="Açık temaya geç" title="Açık temaya geç">' + icon('sun') + '</button><button class="mobile-nav-button" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="site-links">' + icon('bars') + '</button></div></div>';
   const themeButton = nav.querySelector('.theme-toggle');
   const renderTheme = () => {
@@ -27,6 +27,15 @@
   themeButton.addEventListener('click',() => window.ARCADE_THEME.toggle());
   window.addEventListener('arcade-theme-change',renderTheme);
   renderTheme();
+  const compatibility = window.ARCADECRAFT?.compatibility;
+  document.querySelectorAll('[data-client-range]').forEach(element => {
+    const range = compatibility?.[element.dataset.clientRange];
+    if (range) element.textContent = range.min + ' - ' + range.max;
+  });
+  document.querySelectorAll('[data-client-recommended]').forEach(element => {
+    const range = compatibility?.[element.dataset.clientRecommended];
+    if (range) element.textContent = range.recommended;
+  });
   // Keep the primary section selected on its tools and support forms too.
   const primaryHref = section?.name === 'Topluluk' ? 'news.html' : section?.name === 'VIP mağazası' || path === 'order.html' ? 'store.html' : section?.name === 'Yardım' ? 'help.html' : null;
   if (primaryHref) nav.querySelector('.site-links > a[href="' + primaryHref + '"]')?.classList.add('is-current');

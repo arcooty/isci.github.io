@@ -74,9 +74,11 @@ test('every full page loads the theme before CSS and preserves no-JS dark fallba
   for(const name of pages) {
     const html=fs.readFileSync(path.join(root,name),'utf8');
     assert.match(html,/<html[^>]*data-theme="dark"/);
-    assert.equal((html.match(/src="theme.js\?v=20260926-4"/g) || []).length,1,name);
+    const themeScripts=html.match(/src="theme.js\?v=[0-9-]+"/g) || [];
+    assert.equal(themeScripts.length,1,name);
     assert.ok(html.indexOf('theme.js') < html.indexOf('rel="stylesheet"'),name);
     assert.ok(html.indexOf('theme.css') > html.indexOf('craft.css'),name);
-    assert.match(html,/theme.css\?v=20260926-4/);
+    const version=themeScripts[0].match(/\?v=([0-9-]+)/)[1];
+    assert.ok(html.includes('theme.css?v='+version),name);
   }
 });

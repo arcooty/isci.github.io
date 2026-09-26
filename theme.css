@@ -17,6 +17,7 @@
 .network-shell .legal-text :is(p,li),.page-trail span,.guide-location,.footer-bottom { color:var(--muted); }
 .network-shell .legal-text h2 { color:#245bdd; }
 .network-shell .footer-bottom a[aria-current="page"] { color:#245bdd; }
+.status-facts dd { font-size:18px; white-space:nowrap; }
 html[data-theme="light"] .village-poster { --game:#bd4436; }
 html[data-theme="dark"],html[data-theme="dark"] body { background:var(--theme-bg); color:var(--paper); }
 html[data-theme="dark"] ::-webkit-scrollbar-track { background:#202226; }
@@ -85,6 +86,7 @@ html[data-theme="dark"] .hero-actions .address-button { background:#17142199; bo
 @media(max-width:1100px) and (min-width:901px) { .site-nav-inner { gap:10px; }.site-links { gap:0; }.site-links a,.nav-menu > button { padding-left:6px; padding-right:6px; }.site-links .nav-play { padding:12px; margin-left:4px; } }
 @media(max-width:900px) { html[data-theme="dark"] .site-links { background:var(--panel); } }
 @media(max-width:400px) {
+  .status-facts dd { font-size:16px; }
   .site-nav-inner { gap:8px; padding-left:14px; padding-right:14px; }
   .site-nav-inner .site-brand { font-size:21px; gap:6px; }
   .site-nav-inner .site-brand img { width:30px; height:30px; }
