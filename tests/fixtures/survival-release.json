@@ -120,8 +120,13 @@
     "mvip": 604800,
     "uvip": 604800
   },
+  "worldPolicy": {
+    "enabled": true,
+    "nether-radius": 10000,
+    "end-radius": 20000
+  },
   "sourceHashes": {
-    "plugins/ArcadeSurvivalGuard/config.yml": "3d37f8af4895b2adae33cf0f2ef76eb1e3d02f3ae17655330df2899ab549d020",
+    "plugins/ArcadeSurvivalGuard/config.yml": "eaa39817d82974db028ff3791122dbd273ff09a267e8ea22ddc4e45c1a75d9f0",
     "plugins/GriefPreventionData/config.yml": "15983725127bca3561752079b3ef6a7b91dfc530bccaf29aaa4a283a49c19b02",
     "plugins/Essentials/kits.yml": "900979ed0ec5574b0de58e5dace56d473da1b7031787021f322c77499ea2768a",
     "plugins\\EconomyShopGUI\\sections\\ArmorTools.yml": "73f81eeb0ec2c98035491c5c0d66c6ac72f80cb17a88fabc2d0502e34ca74d8c",

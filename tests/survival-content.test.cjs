@@ -57,6 +57,16 @@ test('store does not promise unavailable shops or cosmetic-only rewards', () => 
   assert.ok(survival.includes('1 fiziksel anahtar'));
 });
 
+test('world resource policy matches installed borders without promising automatic resets', () => {
+  assert.equal(facts.worldPolicy.enabled, true);
+  assert.equal(facts.worldPolicy['nether-radius'], 10000);
+  assert.equal(facts.worldPolicy['end-radius'], 20000);
+  assert.ok(survival.includes('/dunyakurallari'));
+  assert.ok(survival.includes('Nether sınırı merkezden 10.000, End sınırı 20.000'));
+  assert.ok(survival.includes('otomatik dünya sıfırlama yoktur'));
+  assert.ok(survival.includes('en az 14 gün önce'));
+});
+
 test('new commands remain discoverable through the existing navigation search', () => {
   const routeModule = {exports: {}};
   vm.runInNewContext(read('site-map.js'), {module: routeModule, URL});
