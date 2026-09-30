@@ -36,6 +36,12 @@
     const range = compatibility?.[element.dataset.clientRecommended];
     if (range) element.textContent = range.recommended;
   });
+  document.querySelectorAll('[data-client-notice]').forEach(element => {
+    const range = compatibility?.[element.dataset.clientNotice];
+    if (!range) return;
+    element.textContent = range.notice || '';
+    element.hidden = !range.notice;
+  });
   // Keep the primary section selected on its tools and support forms too.
   const primaryHref = section?.name === 'Topluluk' ? 'news.html' : section?.name === 'VIP mağazası' || path === 'order.html' ? 'store.html' : section?.name === 'Yardım' ? 'help.html' : null;
   if (primaryHref) nav.querySelector('.site-links > a[href="' + primaryHref + '"]')?.classList.add('is-current');

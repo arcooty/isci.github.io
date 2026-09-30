@@ -7,9 +7,13 @@ const root=path.join(__dirname,'..');
 const window={};
 vm.runInNewContext(fs.readFileSync(path.join(root,'server-data.js'),'utf8'),{window});
 const ranges=window.ARCADECRAFT.compatibility;
-test('published ranges reflect the installed server compatibility versions',()=>{
+test('published ranges do not advertise the pending 26.3 fix as deployed',()=>{
   assert.equal(ranges.java.min,'1.9');
   assert.equal(ranges.java.max,'26.2');
+  assert.equal(ranges.java.recommended,'26.2');
+  assert.ok(ranges.java.notice.includes('26.3'));
+  assert.ok(ranges.java.notice.includes('Şimdilik 26.2'));
+  assert.equal(window.ARCADECRAFT.version,'26.2');
   assert.equal(ranges.bedrock.min,'26.30');
   assert.equal(ranges.bedrock.max,'26.51');
   assert.equal(ranges.bedrock.versions[0],ranges.bedrock.min);
@@ -21,6 +25,8 @@ test('status card, connection help and status page share one version source',()=
   for(const file of ['index.html','join.html','status.html']) {
     const source=fs.readFileSync(path.join(root,file),'utf8');
     assert.ok(source.indexOf('server-data.js')<source.indexOf('site-shell.js'),file);
+    assert.ok(source.includes('data-client-notice="java"'),file);
+    assert.ok(source.includes(ranges.java.notice),file);
     for(const edition of ['java','bedrock']) {
       assert.ok(source.includes('data-client-range="'+edition+'"'),file);
       assert.ok(source.includes(ranges[edition].min+' - '+ranges[edition].max),file);
