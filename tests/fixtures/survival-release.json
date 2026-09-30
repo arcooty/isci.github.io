@@ -1,0 +1,155 @@
+{
+  "verifiedAt": "2026-09-30",
+  "dailyCap": 25000,
+  "resetZone": "Europe/Istanbul",
+  "claimModes": {
+    "world_nether": "Disabled",
+    "world": "Survival",
+    "world_the_end": "Disabled"
+  },
+  "claimTool": "GOLDEN_SHOVEL",
+  "categories": [
+    "ArmorTools",
+    "Blocks",
+    "ColoredBlocks",
+    "Decoration",
+    "Farming",
+    "Miscellaneous",
+    "Ores",
+    "Redstone"
+  ],
+  "starterDelay": -1,
+  "crates": {
+    "vip": [
+      {
+        "label": "16 ekmek, 8 pişmiş biftek, 32 meşale",
+        "chance": "%40"
+      },
+      {
+        "label": "Büyüsüz demir kazma",
+        "chance": "%25"
+      },
+      {
+        "label": "2 altın elma",
+        "chance": "%20"
+      },
+      {
+        "label": "200 oyun içi TL",
+        "chance": "%10"
+      },
+      {
+        "label": "8 XP şişesi",
+        "chance": "%4"
+      },
+      {
+        "label": "500 oyun içi TL",
+        "chance": "%1"
+      }
+    ],
+    "mvip": [
+      {
+        "label": "32 pişmiş biftek, 32 meşale, 32 meşe kütüğü",
+        "chance": "%35"
+      },
+      {
+        "label": "Büyüsüz demir kazma",
+        "chance": "%20"
+      },
+      {
+        "label": "Büyüsüz demir kılıç",
+        "chance": "%15"
+      },
+      {
+        "label": "2 altın elma",
+        "chance": "%15"
+      },
+      {
+        "label": "400 oyun içi TL",
+        "chance": "%10"
+      },
+      {
+        "label": "12 XP şişesi",
+        "chance": "%4"
+      },
+      {
+        "label": "400 oyun içi TL",
+        "chance": "%0,8"
+      },
+      {
+        "label": "Büyüsüz demir zırh seti",
+        "chance": "%0,2"
+      }
+    ],
+    "uvip": [
+      {
+        "label": "32 pişmiş biftek, 32 meşale, 16 havai fişek roketi",
+        "chance": "%30"
+      },
+      {
+        "label": "Büyüsüz demir kazma",
+        "chance": "%22"
+      },
+      {
+        "label": "Büyüsüz demir balta",
+        "chance": "%16"
+      },
+      {
+        "label": "2 altın elma",
+        "chance": "%12"
+      },
+      {
+        "label": "600 oyun içi TL",
+        "chance": "%10"
+      },
+      {
+        "label": "16 XP şişesi",
+        "chance": "%7"
+      },
+      {
+        "label": "1.000 oyun içi TL",
+        "chance": "%2,5"
+      },
+      {
+        "label": "Büyüsüz demir zırh seti",
+        "chance": "%0,5"
+      }
+    ]
+  },
+  "weeklyKitDelays": {
+    "vip": 604800,
+    "mvip": 604800,
+    "uvip": 604800
+  },
+  "sourceHashes": {
+    "plugins/ArcadeSurvivalGuard/config.yml": "3d37f8af4895b2adae33cf0f2ef76eb1e3d02f3ae17655330df2899ab549d020",
+    "plugins/GriefPreventionData/config.yml": "15983725127bca3561752079b3ef6a7b91dfc530bccaf29aaa4a283a49c19b02",
+    "plugins/Essentials/kits.yml": "900979ed0ec5574b0de58e5dace56d473da1b7031787021f322c77499ea2768a",
+    "plugins\\EconomyShopGUI\\sections\\ArmorTools.yml": "73f81eeb0ec2c98035491c5c0d66c6ac72f80cb17a88fabc2d0502e34ca74d8c",
+    "plugins\\EconomyShopGUI\\sections\\Blocks.yml": "6d113bcbd9487714d9d1b27358faeb15dadafcb70c5e67216232ed30751042ac",
+    "plugins\\EconomyShopGUI\\sections\\Cicekler-Boyalar.yml": "febbfae9d4e572ebf5cd416b8a310727d5627d93fa165ac1fec02d4cff7a6a20",
+    "plugins\\EconomyShopGUI\\sections\\ColoredBlocks.yml": "20d5713e0fac7c6576cf0817dbf8b9a0171f4fe4b3bc23bed425446628314cc5",
+    "plugins\\EconomyShopGUI\\sections\\Colors.yml": "1a54467e2186b4171eac6aaaeb54db2fa2d0b21c5aabbb544be4a9c7ce378692",
+    "plugins\\EconomyShopGUI\\sections\\Copper.yml": "75758954bcdd0a296502a4c927ff263e5b9988279242f99392fed6ee8760b4f1",
+    "plugins\\EconomyShopGUI\\sections\\Decoration.yml": "7ebad4ce32db2803b9c5090d3230b99b0f3d2be72612557cc557e0d6cf8fc861",
+    "plugins\\EconomyShopGUI\\sections\\Enchanting.yml": "7e0bc226fe16f0b25c9272409d527f05badf13a8ac81f51a7b808087584fc34d",
+    "plugins\\EconomyShopGUI\\sections\\EndItems.yml": "9bd9b6e7fbddbda55013955b4fd1ea3d4addb8927f827d1427769471a051bd60",
+    "plugins\\EconomyShopGUI\\sections\\Farming.yml": "0f06daf0c14d7cf09185be81e54183b67f9446afb5b339eaaf64b39cc5e3e36d",
+    "plugins\\EconomyShopGUI\\sections\\Food.yml": "6fa3cf2318371ebf74ae171991c770dc78c27f8bcf90811c7676fedf013abd38",
+    "plugins\\EconomyShopGUI\\sections\\GlassItems.yml": "8c6d15f74ca7097eaace8eb78b1a5cb00df5d40ef45a6e1d8e375fbbc17e467e",
+    "plugins\\EconomyShopGUI\\sections\\Heads.yml": "b760c88382e22ca99c27e6b4c3e592b21a3ca9c4bb833a0dc207605d97ace10d",
+    "plugins\\EconomyShopGUI\\sections\\Miscellaneous.yml": "46c93b197e1f318233a5ca4322c893cad709b32ef2a12ea565b8075db7db829a",
+    "plugins\\EconomyShopGUI\\sections\\Mobs.yml": "317afba1e02df1ca6d0e80379446bc3f4e537c1e00e0cb0e913f6e8aaba494d9",
+    "plugins\\EconomyShopGUI\\sections\\Music.yml": "7cbefe36af984dce4877836eae02387c39844191fb6daeb6eaa7feb529aa7792",
+    "plugins\\EconomyShopGUI\\sections\\Ores.yml": "b49e2a29844c506eb18d05ea43697e3df072a275c073ad966be3e7c9baf5c9eb",
+    "plugins\\EconomyShopGUI\\sections\\Potions.yml": "8c787ede9676eadb2409d25be40f5fdf2b656598b76b4a7dd2d278022e05b1fe",
+    "plugins\\EconomyShopGUI\\sections\\Redstone.yml": "6057505ddb2fc1c9a35bc2b390c2f463aa9afddd96b4ebfe1c8b68bb44745d3d",
+    "plugins\\EconomyShopGUI\\sections\\SpawnEggs.yml": "25fdef79b3ea25931b566a8f8dd21bbe6ace20885826c0fa5a58788ae450581a",
+    "plugins\\EconomyShopGUI\\sections\\Spawners.yml": "e235ae6a0c0c51d8ff32e9a727e2027a2837073b5aeea87209cbf09f8df089c7",
+    "plugins\\EconomyShopGUI\\sections\\Trees.yml": "2c0d1ab7550b5158b016f6379994d8d1fa623d5cdd6c4f5fa428284020c1ed4b",
+    "plugins\\EconomyShopGUI\\sections\\WoodProducts.yml": "4d01c67db13939fd1618210b6107ebec189693559279fc56c42a7db23c4b5447",
+    "plugins\\EconomyShopGUI\\sections\\Workstations.yml": "b90c1eb0634058cfa48ad128c43b5b3b481490ae4bf1ca60ff35872e201fb879",
+    "plugins/ExcellentCrates/crates/vip_kasa.yml": "5076843fa7d79206a362529f83c26fcd058a66352f720b0ba2a9547417846e07",
+    "plugins/ExcellentCrates/crates/mvip_kasa.yml": "7b5f812caf34a1d27e7de9508ed2fc802dd6f313ca95ff86fe13e659d09eae57",
+    "plugins/ExcellentCrates/crates/uvip_kasa.yml": "290e7b04ae68e88e49028ef38a3bb9493c54cecf62998cc61dcccfc89c92bb13"
+  }
+}
