@@ -29,7 +29,8 @@
     'about.html': 'news.html#hakkimizda'
   };
   const sections = [
-    {name:'Oyunlar', href:'servers.html', pages:[['servers.html','Oyunlarımız'],['survival.html','Survival'],['village.html',"Rob's Village"]]},
+    {name:'Oyunlar', href:'servers.html', pages:[['servers.html','Oyunlarımız'],['survival.html','Survival'],['skyblock.html','Skyblock'],['village.html',"Rob's Village"]]},
+    {name:'Skyblock', href:'skyblock.html', pages:[['skyblock.html#baslangic','İlk adımlar'],['skyblock.html#ada','Ada yönetimi'],['skyblock.html#gelisim','Gelişim ve siparişler'],['skyblock.html#ticaret','Skyblock ticareti'],['skyblock.html#vip','Skyblock VIP'],['skyblock.html#test','Test erişimi']]},
     {name:'Survival', href:'survival.html', pages:[['survival.html#baslangic','Oyun rehberi'],['survival.html#harita','Dünya haritası'],['survival.html#siralamalar','Sıralamalar'],['players.html','Oyuncu profilleri']]},
     {name:'Topluluk', href:'news.html', pages:[['news.html','Topluluk ve haberler'],['news.html#hakkimizda','Hakkımızda'],['staff.html','Ekibimiz']]},
     {name:'VIP mağazası', href:'store.html', pages:[['store.html','VIP paketleri'],['store.html#karsilastirma','Hakları karşılaştır'],['store.html#kitler','Haftalık kitler']]},
@@ -50,6 +51,12 @@
     return target.pathname.slice(1) + target.search + target.hash;
   }
   const searchEntries = [
+    ['skyblock.html','Skyblock','Oyunlar','cubes','skyblock ada adalar test beyaz liste'],
+    ['skyblock.html#ada','Ada yönetimi','Skyblock','house','skyblock banka takım davet ziyaret ada yarıçap kapasite'],
+    ['skyblock.html#gelisim','Ada gelişimi','Skyblock','seedling','skyblock görev koleksiyon sipariş minyon proje ticaret puanı'],
+    ['skyblock.html#ticaret','Skyblock ticareti','Skyblock','store','skyblock market pazar takas 5000 satislimiti skytakas'],
+    ['skyblock.html#vip','Skyblock VIP hakları','Skyblock','gem','skyblock vip mvip uvip ilan kozmetik iş istasyonu'],
+    ['skyblock.html#test','Skyblock test erişimi','Skyblock','flask','skyblock whitelist beyaz liste kapalı açılış test'],
     ['survival.html#baslangic','İlk adımlar','Survival','compass','başlangıç ilk giriş oyun menü rtp'],
     ['survival.html#arazi','Arazi ve evler','Survival','house','claim koruma altın kürek sethome home evler evlerim delhome trust ev kaydet nether end'],
     ['survival.html#meslekler','Meslekler','Survival','hammer','jobs madenci oduncu çiftçi avcı balıkçı inşaatçı zanaatkar efsuncu silahşör kazıcı iksirci kaşif para kazanmak'],
@@ -97,7 +104,7 @@
       const label = normalize(entry.label);
       const words = normalize(entry.label+' '+entry.section+' '+entry.keywords).split(' ');
       if (!tokens.every(token=>words.some(word=>word.startsWith(token)))) return null;
-      const primary = ['survival.html#arazi','survival.html#meslekler','survival.html#komutlar','store.html#paketler','join.html','help.html'].includes(entry.href) ? 5 : 0;
+      const primary = ['survival.html#arazi','survival.html#meslekler','survival.html#komutlar','survival.html#ekonomi','store.html#paketler','join.html','help.html'].includes(entry.href) ? 5 : 0;
       const score = (label === text ? 100 : label.startsWith(text) ? 40 : 0) + primary + tokens.reduce((sum,token)=>sum+(label.split(' ').some(word=>word.startsWith(token)) ? 10 : 1),0);
       return {entry,score,index};
     }).filter(Boolean).sort((a,b)=>b.score-a.score || a.index-b.index).slice(0,limit).map(({entry})=>entry);

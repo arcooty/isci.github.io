@@ -1,0 +1,41 @@
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const vm = require('node:vm');
+const {test} = require('node:test');
+const root = path.join(__dirname,'..');
+const read = name => fs.readFileSync(path.join(root,name),'utf8');
+const routeModule = {exports:{}};
+vm.runInNewContext(read('site-map.js'),{module:routeModule,URL});
+const model = routeModule.exports;
+
+test('Skyblock is discoverable through games, navigation, search and sitemap', () => {
+  for (const file of ['index.html','servers.html','site-shell.js','sitemap.xml']) assert.ok(read(file).includes('skyblock.html'),file);
+  assert.equal(model.search('skyblock')[0].href,'skyblock.html');
+  assert.equal(model.search('skyblock minyon')[0].href,'skyblock.html#gelisim');
+  assert.equal(model.search('skyblock vip')[0].href,'skyblock.html#vip');
+});
+test('Skyblock guide reports limited test access and remaining checks honestly', () => {
+  const page=read('skyblock.html');
+  assert.ok(page.includes('henüz herkese açık değil'));
+  assert.ok(page.includes('beyaz listeli test erişiminde'));
+  assert.ok(page.includes('Ortak ada sandığının'));
+  assert.ok(page.includes('son oyunculu kabul kontrolleri sürüyor'));
+  assert.ok(!page.includes('yayına hazır'));
+  assert.ok(read('server-data.js').includes("name:'Skyblock',state:'testing'"));
+  assert.ok(read('status.html').includes('anlık bağlantı ölçümü değildir'));
+});
+test('separate economies, feature limitations and actual commands are documented', () => {
+  const page=read('skyblock.html');
+  for(const text of ['500 oyun içi TL','32 blokla','4 kişiyle','20 tek seferlik','16 kişisel','3 günlük ve 4 haftalık','5.000 TL','5</td><td>10</td><td>15</td><td>20','/skytakas','/shop','/satislimiti','/tarimminyon kaldır']) assert.ok(page.includes(text),text);
+  for(const text of ['Çevrimdışı üretim veya otomatik satış yapmaz','otomatik bina yerleştirmez','ayrı haftalık VIP kiti tanımlı değildir','Survival bakiyen bu dünyaya taşınmaz']) assert.ok(page.includes(text),text);
+  assert.ok(read('store.html').includes('Skyblock testindeki VIP haklarını ayrı incele'));
+  assert.ok(read('survival.html').includes('/takasoyuncu'));
+});
+test('Bedrock public endpoint is distinct from the internal Geyser port', () => {
+  const page=read('join.html');
+  assert.ok(page.includes('data-copy-address="bedrock.robsarcade.online"'));
+  assert.ok(page.includes('<code>6426</code>'));
+  assert.ok(!page.includes('19132'));
+  assert.ok(read('site-shell.js').includes("button.dataset.copyAddress || 'oyna.robsarcade.online'"));
+});

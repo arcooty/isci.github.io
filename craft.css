@@ -175,6 +175,11 @@ a.tag { color:#245bdd; text-decoration:underline; }.info-card-meta { gap:12px; }
 @media(max-width:360px) { .craft-hero h1.craft-page-title{font-size:50px}.floating-status{padding:16px}.floating-status-head h2 i{display:none}.hub-tabs a{font-size:10px}.hub-masthead > .craft-button{padding:10px}.hub-masthead > .craft-button i{display:none}.hub-masthead p{max-width:155px}.site-footer-inner{grid-template-columns:1fr 1fr}.site-footer-inner section:last-child{grid-column:1/-1} }
 @media(prefers-reduced-motion:reduce) { html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.floating-status{transform:none} }
 
+.game-trio { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.skyblock-poster .poster-image { display:grid; place-items:center; background:#163337; }
+.skyblock-poster .poster-image img { width:128px; height:128px; object-fit:contain; }
+@media(max-width:900px) { .game-trio { grid-template-columns:minmax(0,1fr); } }
+
 /* Finding a destination should not require following a chain of pages. */
 .nav-tools { display:flex; gap:8px; order:3; flex-shrink:0; }.site-links { order:2; }
 .site-search-button,.search-close { display:grid; place-items:center; width:42px; height:42px; border:1px solid #dce0e9; border-radius:4px; background:white; color:#505665; cursor:pointer; }

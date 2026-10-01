@@ -4,7 +4,7 @@
   const path = location.pathname.split('/').pop() || 'index.html';
   const section = sections.find(group => group.pages.some(([href]) => href.split('#')[0] === path));
   const labels = Object.fromEntries(sections.flatMap(group => group.pages).map(([href,label]) => [href.split('#')[0],label]));
-  Object.assign(labels, {'survival.html':'Survival','news.html':'Topluluk','store.html':'VIP mağazası','order.html':'Sipariş durumu','sitemap.html':'Site haritası'});
+  Object.assign(labels, {'skyblock.html':'Skyblock','survival.html':'Survival','news.html':'Topluluk','store.html':'VIP mağazası','order.html':'Sipariş durumu','sitemap.html':'Site haritası'});
   document.body.classList.add('network-shell');
   document.body.dataset.page = path.replace('.html','');
   const icon = name => '<i class="fa-solid fa-' + name + '" aria-hidden="true"></i>';
@@ -14,7 +14,7 @@
   if (!nav) { nav = document.createElement('nav'); document.body.prepend(nav); }
   nav.className = 'site-nav'; nav.setAttribute('aria-label','Ana menü');
   nav.innerHTML = '<div class="site-nav-inner">' + brand + '<div class="site-links" id="site-links">' + link('index.html','Ana sayfa') +
-    '<div class="nav-menu"><button type="button" aria-expanded="false" aria-controls="games-dropdown"' + (['Oyunlar','Survival'].includes(section?.name) ? ' class="is-current"' : '') + '>Oyunlar ' + icon('chevron-down') + '</button><div class="nav-dropdown" id="games-dropdown">' + link('survival.html','Survival') + link('village.html',"Rob's Village") + link('servers.html','Bütün oyunlar') + '</div></div>' +
+    '<div class="nav-menu"><button type="button" aria-expanded="false" aria-controls="games-dropdown"' + (['Oyunlar','Survival','Skyblock'].includes(section?.name) ? ' class="is-current"' : '') + '>Oyunlar ' + icon('chevron-down') + '</button><div class="nav-dropdown" id="games-dropdown">' + link('survival.html','Survival') + link('skyblock.html','Skyblock') + link('village.html',"Rob's Village") + link('servers.html','Bütün oyunlar') + '</div></div>' +
     link('news.html','Topluluk') + link('store.html','VIP mağazası') + link('help.html','Yardım') + '<a class="nav-play" href="join.html">' + icon('play') + ' Oyuna katıl</a></div><div class="nav-tools"><button class="site-search-button" type="button" aria-label="Sitede ara" title="Sitede ara" aria-haspopup="dialog" aria-controls="site-search">' + icon('magnifying-glass') + '</button><button class="theme-toggle" type="button" aria-label="Açık temaya geç" title="Açık temaya geç">' + icon('sun') + '</button><button class="mobile-nav-button" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="site-links">' + icon('bars') + '</button></div></div>';
   const themeButton = nav.querySelector('.theme-toggle');
   const renderTheme = () => {
@@ -115,15 +115,15 @@
   if (!footer) { footer = document.createElement('footer'); document.body.append(footer); }
   footer.className = 'site-footer';
   const groups = [
-    ['Oyna',[['survival.html','Survival'],['village.html',"Rob's Village"],['join.html','Oyuna katıl']]],
+    ['Oyna',[['survival.html','Survival'],['skyblock.html','Skyblock'],['village.html',"Rob's Village"],['join.html','Oyuna katıl']]],
     ['Topluluk',[['news.html','Haberler ve topluluk'],['staff.html','Ekibimiz'],['store.html','VIP mağazası']]],
     ['Yardım',[['help.html','Destek merkezi'],['rules.html','Kurallar'],['status.html','Sunucu durumu']]]
   ];
-  footer.innerHTML = '<div class="footer-intro">' + brand + '<p>Bir dünya, bir köy, bir topluluk.</p><a href="' + discord + '" target="_blank" rel="noopener"><i class="fa-brands fa-discord" aria-hidden="true"></i> Discord</a></div><div class="site-footer-inner">' + groups.map(([title,pages]) => '<section><h2>' + title + '</h2>' + pages.map(([href,text]) => link(href,text)).join('') + '</section>').join('') + '</div><div class="footer-bottom"><span>© 2026 ArcaDe Craft</span><div>' + link('sitemap.html','Site haritası') + link('privacy.html','Gizlilik') + link('terms.html','Kullanım şartları') + '</div><span>Mojang veya Microsoft ile bağlantılı değildir.</span></div>';
+  footer.innerHTML = '<div class="footer-intro">' + brand + '<p>Dünyalar, adalar ve köy geceleri.</p><a href="' + discord + '" target="_blank" rel="noopener"><i class="fa-brands fa-discord" aria-hidden="true"></i> Discord</a></div><div class="site-footer-inner">' + groups.map(([title,pages]) => '<section><h2>' + title + '</h2>' + pages.map(([href,text]) => link(href,text)).join('') + '</section>').join('') + '</div><div class="footer-bottom"><span>© 2026 ArcaDe Craft</span><div>' + link('sitemap.html','Site haritası') + link('privacy.html','Gizlilik') + link('terms.html','Kullanım şartları') + '</div><span>Mojang veya Microsoft ile bağlantılı değildir.</span></div>';
   document.querySelectorAll('[data-copy-address]').forEach(button => button.addEventListener('click',async () => {
     const label = button.querySelector('span'); const original = label?.textContent;
-    try { await navigator.clipboard.writeText('oyna.robsarcade.online'); if (label) { label.textContent = 'Adres kopyalandı'; setTimeout(() => { label.textContent = original; },1800); } }
-    catch { button.title = 'Sunucu adresi: oyna.robsarcade.online'; }
+    try { await navigator.clipboard.writeText(button.dataset.copyAddress || 'oyna.robsarcade.online'); if (label) { label.textContent = 'Adres kopyalandı'; setTimeout(() => { label.textContent = original; },1800); } }
+    catch { button.title = 'Sunucu adresi: ' + (button.dataset.copyAddress || 'oyna.robsarcade.online'); }
   }));
 
   const searchDialog = document.createElement('dialog');

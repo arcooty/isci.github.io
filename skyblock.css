@@ -1,0 +1,28 @@
+.skyblock-heading { display:flex; align-items:center; justify-content:space-between; gap:24px; }
+.skyblock-heading > div { min-width:0; }
+.skyblock-heading > img { flex-shrink:0; object-fit:contain; }
+.skyblock-access { margin:0 0 24px; padding:18px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); line-height:1.8; font-size:14px; }
+.skyblock-access > i { margin-right:10px; color:#20a2ab; }
+.skyblock-section { padding:32px 0; border-bottom:1px solid var(--line); scroll-margin-top:100px; }
+.skyblock-section > header { display:flex; align-items:center; gap:14px; margin-bottom:20px; }
+.skyblock-section > header > i { color:#20a2ab; font-size:21px; flex-shrink:0; }
+.skyblock-section h2 { margin:0; font:700 30px/1.2 Rajdhani,sans-serif; }
+.skyblock-section h3 { font:700 24px/1.3 Rajdhani,sans-serif; }
+.skyblock-section p,.skyblock-section li,.skyblock-section dd { font-size:14px; line-height:1.8; }
+.skyblock-section p,.skyblock-section dd { color:var(--muted); }
+.skyblock-section a,.skyblock-access a { color:#20a2ab; }
+.skyblock-columns { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px; }
+.skyblock-feature-list { margin:0 0 24px; }
+.skyblock-feature-list > div { display:grid; grid-template-columns:210px minmax(0,1fr); gap:24px; padding:18px 0; border-top:1px solid var(--line); }
+.skyblock-feature-list dt { font-weight:600; font-size:14px; }
+.skyblock-feature-list dd { margin:0; }
+.skyblock-guide code { overflow-wrap:anywhere; }
+.skyblock-guide .comparison-wrap { max-width:100%; }
+@media(max-width:680px) {
+  .skyblock-heading { align-items:flex-start; gap:14px; }
+  .skyblock-heading > img { width:64px; height:64px; }
+  .skyblock-columns,.skyblock-feature-list > div { grid-template-columns:minmax(0,1fr); gap:8px; }
+  .skyblock-section h2 { font-size:27px; }
+  .skyblock-section { padding:26px 0; }
+  .skyblock-access { font-size:13px; }
+}
