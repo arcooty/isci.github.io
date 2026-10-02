@@ -12,6 +12,12 @@ test('updates align to the right and footer legal links have visible current sta
     assert.ok(footer.includes('href="'+page+'.html" aria-current="page"'),page);
   }
 });
+test('mobile status design four uses compact rows and a full-width action',()=>{
+  const css=read('home-status.css');
+  assert.ok(css.includes('@media(max-width:600px)'));
+  assert.ok(css.includes('grid-template-columns:minmax(0,1fr) auto; grid-template-rows:auto;'));
+  assert.ok(css.includes('width:100%; justify-self:stretch; background:#ffd573;'));
+});
 test('mobile community blocks center and footer tracks can shrink',()=>{
   assert.ok(read('home-network.css').includes(':is(.community-invitation,.community-editorial) { justify-items:center; text-align:center; }'));
   assert.ok(read('home-network.css').includes('.craft-button { justify-self:center; }'));
