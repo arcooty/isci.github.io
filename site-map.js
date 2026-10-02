@@ -38,7 +38,7 @@
     village: [['village-play.html','Oynanış','moon'],['village-roles.html','Roller','users'],['village-win.html','Kazanma','trophy'],['village-lobby.html','Lobi ve komutlar','compass'],['village-faq.html','Sorular','circle-question']]
   };
   const gameRoutes = {
-    'survival.html': {meslekler:'survival-jobs.html#jobs-meslekler', 'jobs-meslekler':'survival-jobs.html#jobs-meslekler', 'jobs-sistem':'survival-jobs-progress.html#jobs-sistem', 'jobs-komutlar':'survival-jobs-commands.html#jobs-komutlar'},
+    'survival.html': {meslekler:'survival-jobs.html#jobs-meslekler', 'jobs-meslekler':'survival-jobs.html#jobs-meslekler', 'jobs-sistem':'survival-jobs-progress.html#jobs-sistem', 'jobs-komutlar':'survival-jobs-commands.html#jobs-komutlar', kasalar:'survival-crates.html#kasalar', 'crate-havuzlar':'survival-crates.html#crate-havuzlar', 'crate-odds':'survival-crates-rewards.html#crate-odds', 'crate-kullanim':'survival-crates-keys.html#crate-kullanim', komutlar:'survival-commands.html#komutlar', 'commands-travel':'survival-commands.html#commands-travel', 'commands-progress':'survival-commands-progress.html#commands-progress', 'commands-vip':'survival-commands-vip.html#commands-vip'},
     'news.html': {hakkimizda:'community.html#hakkimizda'},
     'skyblock.html': {baslangic:'skyblock-start.html#start',ada:'skyblock-island.html#island',gelisim:'skyblock-progress.html#progress',ticaret:'skyblock-trade.html#trade',topluluk:'skyblock-community.html#community',vip:'skyblock-vip.html#vip',test:'skyblock-access.html#access'},
     'village.html': {'nasil-oynanir':'village-play.html#nasil-oynanir',roller:'village-roles.html#roller',kazanma:'village-win.html#kazanma',lobi:'village-lobby.html#lobi',sorular:'village-faq.html#sorular'},
@@ -135,7 +135,7 @@
       const label = normalize(entry.label);
       const words = normalize(entry.label+' '+entry.section+' '+entry.keywords).split(' ');
       if (!tokens.every(token=>words.some(word=>word.startsWith(token)))) return null;
-      const primary = ['survival.html#arazi','survival.html#meslekler','survival.html#komutlar','survival.html#ekonomi','store.html#paketler','join.html','help.html'].includes(entry.href) ? 5 : 0;
+      const primary = ['survival.html#arazi','survival.html#meslekler','survival.html#komutlar','survival.html#ekonomi','store.html#paketler','join.html','help.html'].map(resolveHref).includes(entry.href) ? 5 : 0;
       const score = (label === text ? 100 : label.startsWith(text) ? 40 : 0) + primary + tokens.reduce((sum,token)=>sum+(label.split(' ').some(word=>word.startsWith(token)) ? 10 : 1),0);
       return {entry,score,index};
     }).filter(Boolean).sort((a,b)=>b.score-a.score || a.index-b.index).slice(0,limit).map(({entry})=>entry);

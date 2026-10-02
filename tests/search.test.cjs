@@ -15,11 +15,11 @@ test('search normalizes Turkish letters and ASCII spellings',()=>{
 });
 test('command search opens the relevant topic or subsection',()=>{
   assert.equal(model.search('vip')[0].href,'store.html#paketler');
-  assert.equal(model.search('komut')[0].href,'survival.html#komutlar');
+  assert.equal(model.search('komut')[0].href,'survival-commands.html#komutlar');
   assert.equal(model.search('/sethome')[0].href,'survival.html#arazi');
   assert.equal(model.search('jobs stats')[0].href,'survival-jobs-commands.html#jobs-komutlar');
   assert.equal(model.search('VIP kit')[0].href,'store-kits.html#kitler');
-  assert.equal(model.search('kasa oran')[0].href,'survival.html#crate-odds');
+  assert.equal(model.search('kasa oran')[0].href,'survival-crates-rewards.html#crate-odds');
 });
 test('platform-specific searches open the correct connection panel',()=>{
   assert.equal(model.search('bedrock')[0].href,'join.html#join-bedrock');

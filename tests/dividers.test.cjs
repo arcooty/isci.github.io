@@ -9,3 +9,7 @@ test('heading separators suppress only redundant leading content borders',()=>{
   assert.match(css,/\.page-head\+\.page-index/);
   assert.match(css,/\.page-head\+form\[data-form-type\] \{ border-top:0!important; \}/);
 });
+test('command sections do not add another line beneath their final command',()=>{
+  const css=fs.readFileSync(path.join(__dirname,'../polish.css'),'utf8');
+  assert.match(css,/\.game-guide-content>section:has\(>\.command:last-child,>\.command-list:last-child\)\s*\{\s*border-bottom:0;/);
+});

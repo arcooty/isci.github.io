@@ -8,7 +8,7 @@ test('all six help pages load scoped compact navigation after shared styles',()=
   const css=read('help-navigation.css');
   for(const page of ['help','rules','status','punishments','appeal','application']) {
     const html=read(page+'.html');
-    assert.ok(html.indexOf('help-navigation.css?v=20261002-9')>html.indexOf('polish.css?v=20261002-11'));
+    assert.ok(html.indexOf('help-navigation.css?v=20261002-9')>html.indexOf('polish.css?v=20261002-14'));
     assert.ok(css.includes('[data-page='+page+']'));
   }
   assert.match(css,/repeat\(6,minmax\(0,1fr\)\)/);

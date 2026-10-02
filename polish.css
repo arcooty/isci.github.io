@@ -223,3 +223,11 @@ html[data-theme] body.network-shell .page-head+.page-index {
 }
 html[data-theme] body.network-shell .game-guide-heading+.about-section { margin-top:0; }
 html[data-theme] body.network-shell .page-head+form[data-form-type] { border-top:0!important; }
+
+/* Command rows already draw the separator at the end of their section. */
+html[data-theme] body.network-shell .game-guide-content>section:has(>.command:last-child,>.command-list:last-child) {
+  border-bottom:0;
+}
+html[data-theme] body.network-shell .game-guide-content:has(>section) + .guide-pagination {
+  border-top:0;
+}
