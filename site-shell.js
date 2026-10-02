@@ -13,7 +13,7 @@
   let nav = document.querySelector('body > nav');
   if (!nav) { nav = document.createElement('nav'); document.body.prepend(nav); }
   nav.className = 'site-nav'; nav.setAttribute('aria-label','Ana menü');
-  nav.innerHTML = '<div class="site-nav-inner">' + brand + '<div class="site-links" id="site-links">' + link('index.html','Ana sayfa') +
+  if (!nav.querySelector('.site-nav-inner')) nav.innerHTML = '<div class="site-nav-inner">' + brand + '<div class="site-links" id="site-links">' + link('index.html','Ana sayfa') +
     '<div class="nav-menu"><button type="button" aria-expanded="false" aria-controls="games-dropdown"' + (['Oyunlar','Survival','Skyblock',"Rob's Village"].includes(section?.name) ? ' class="is-current"' : '') + '>Oyunlar ' + icon('chevron-down') + '</button><div class="nav-dropdown" id="games-dropdown">' + link('survival.html','Survival') + link('skyblock.html','Skyblock') + link('village.html',"Rob's Village") + link('servers.html','Bütün oyunlar') + '</div></div>' +
     link('community.html','Topluluk') + link('store.html','VIP mağazası') + link('help.html','Yardım') + '<a class="nav-play" href="join.html">' + icon('play') + ' Oyuna katıl</a></div><div class="nav-tools"><button class="site-search-button" type="button" aria-label="Sitede ara" title="Sitede ara" aria-haspopup="dialog" aria-controls="site-search">' + icon('magnifying-glass') + '</button><button class="theme-toggle" type="button" aria-label="Açık temaya geç" title="Açık temaya geç">' + icon('sun') + '</button><button class="mobile-nav-button" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="site-links">' + icon('bars') + '</button></div></div>';
   const themeButton = nav.querySelector('.theme-toggle');
@@ -83,7 +83,9 @@
       if (['Yardım','Topluluk'].includes(section?.name) && path !== 'join.html') {
         const local = document.createElement('nav'); local.className = 'section-navigation'; local.setAttribute('aria-label',section.name + ' bölümleri');
         local.innerHTML = section.pages.filter(([href]) => !href.includes('#') && href !== 'join.html').map(([href,label]) => link(href,label)).join('');
-        trail.after(local);
+        const heading = content.querySelector('.page-head');
+        if (heading) heading.after(local);
+        else trail.after(local);
       }
     }
   }
@@ -106,7 +108,7 @@
     ['Topluluk',[['community.html','Topluluk'],['news.html','Haberler'],['staff.html','Ekibimiz']]],
     ['Yardım',[['help.html','Destek merkezi'],['rules.html','Kurallar'],['status.html','Sunucu durumu']]]
   ];
-  footer.innerHTML = '<div class="footer-intro">' + brand + '<a href="' + discord + '" target="_blank" rel="noopener"><i class="fa-brands fa-discord" aria-hidden="true"></i> Discord</a></div><div class="site-footer-inner">' + groups.map(([title,pages]) => '<section><h2>' + title + '</h2>' + pages.map(([href,text]) => link(href,text)).join('') + '</section>').join('') + '</div><div class="footer-bottom"><span>© 2026 ArcaDe Craft</span><div>' + link('sitemap.html','Site haritası') + link('privacy.html','Gizlilik') + link('terms.html','Kullanım şartları') + '</div><span>Mojang veya Microsoft ile bağlantılı değildir.</span></div>';
+  if (!footer.querySelector('.site-footer-inner')) footer.innerHTML = '<div class="footer-intro">' + brand + '<a href="' + discord + '" target="_blank" rel="noopener"><i class="fa-brands fa-discord" aria-hidden="true"></i> Discord</a></div><div class="site-footer-inner">' + groups.map(([title,pages]) => '<section><h2>' + title + '</h2>' + pages.map(([href,text]) => link(href,text)).join('') + '</section>').join('') + '</div><div class="footer-bottom"><span>© 2026 ArcaDe Craft</span><div>' + link('sitemap.html','Site haritası') + link('privacy.html','Gizlilik') + link('terms.html','Kullanım şartları') + '</div><span>Mojang veya Microsoft ile bağlantılı değildir.</span></div>';
   document.querySelectorAll('[data-copy-address]').forEach(button => button.addEventListener('click',async () => {
     const label = button.querySelector('span'); const original = label?.textContent;
     try { await navigator.clipboard.writeText(button.dataset.copyAddress || 'oyna.robsarcade.online'); if (label) { label.textContent = 'Adres kopyalandı'; setTimeout(() => { label.textContent = original; },1800); } }

@@ -4,167 +4,93 @@
     <meta charset="UTF-8"><script src="theme.js?v=20260926-5"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ceza İtirazı - ArcaDe Craft</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&amp;family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: { 'mc-main': '#9653fa', 'mc-dark': '#121212', 'mc-card': '#1E1E1E' },
-                    fontFamily: { 'rajdhani': ['Rajdhani', 'sans-serif'], 'inter': ['Inter', 'sans-serif'] }
-                }
-            }
-        }
-    </script>
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0f0f13; color: #ffffff; }
-        /* İtiraz sayfası için özel kırmızı vurgular */
-        input:focus, textarea:focus { border-color: #ef4444 !important; box-shadow: 0 0 10px rgba(239, 68, 68, 0.2) !important; }
-        input, textarea, select { background-color: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); color: white; transition: all 0.3s; }
-        #cursor-glow { width: 600px; height: 600px; background: radial-gradient(circle, rgba(239, 68, 68, 0.15) 0%, rgba(0, 0, 0, 0) 70%); position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); pointer-events: none; z-index: 9999; mix-blend-mode: screen; }
-    </style>
+    
+    
     <link rel="stylesheet" href="network.css?v=20260926-5">
 <link rel="stylesheet" href="craft.css?v=20261002-1"><link rel="stylesheet" href="theme.css?v=20260926-5">
 <link rel="icon" href="assets/logo.png" type="image/png">
 <link rel="canonical" href="https://robsarcade.online/appeal.html">
-<link rel="stylesheet" href="polish.css?v=20261002-14">
+<link rel="stylesheet" href="polish.css?v=20261002-18">
+<link rel="stylesheet" href="forms.css?v=20261002-18">
 <link rel="stylesheet" href="help-navigation.css?v=20261002-9">
 </head>
-<body class="antialiased">
-    <div id="cursor-glow"></div>
+<body class="antialiased network-shell" data-page="appeal">
+    
 
-    <nav class="fixed w-full z-40 bg-black/80 backdrop-blur-md border-b border-white/10">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="index.html" class="text-3xl font-bold font-rajdhani tracking-wider flex items-center gap-2">
-                <img src="assets/logo.png" alt="ArcaDe Craft Logo" class="w-10 h-10 drop-shadow-lg">
-                <span class="text-white">ArcaDe<span class="text-mc-main">Craft</span></span>
-            </a>
-            <div class="hidden md:flex items-center gap-6">
-                <a href="index.html" class="text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">ANASAYFA</a>
-                <a href="survival.html#baslangic" class="text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">ÖZELLİKLER</a>
-                <a href="survival.html#meslekler" class="text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">MESLEKLER</a>
-                <a href="survival.html#siralamalar" class="text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">LİDERLİK</a>
-                <a href="news.html" class="text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">HABERLER</a>
-                <a href="survival.html#baslangic" class="text-lg font-bold text-gray-300 hover:text-mc-main transition font-rajdhani">WİKİ</a>
-            </div>
-            <a href="index.html" class="text-gray-300 hover:text-white font-bold text-sm"><i class="fa-solid fa-arrow-left mr-2"></i> Geri Dön</a>
-        </div>
-    </nav>
+    <nav class="site-nav" aria-label="Ana menü"><div class="site-nav-inner"><a class="site-brand" href="index.html" aria-label="ArcaDe Craft ana sayfa"><img src="assets/logo.png" alt="" width="42" height="42"><span>ArcaDe <strong>Craft</strong></span></a><div class="site-links" id="site-links"><a href="index.html">Ana sayfa</a><div class="nav-menu"><button type="button" aria-expanded="false" aria-controls="games-dropdown">Oyunlar <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button><div class="nav-dropdown" id="games-dropdown"><a href="survival.html">Survival</a><a href="skyblock.html">Skyblock</a><a href="village.html">Rob's Village</a><a href="servers.html">Bütün oyunlar</a></div></div><a href="community.html">Topluluk</a><a href="store.html">VIP mağazası</a><a href="help.html">Yardım</a><a class="nav-play" href="join.html"><i class="fa-solid fa-play" aria-hidden="true"></i> Oyuna katıl</a></div><div class="nav-tools"><button class="site-search-button" type="button" aria-label="Sitede ara" title="Sitede ara" aria-haspopup="dialog" aria-controls="site-search"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></button><button class="theme-toggle" type="button" aria-label="Açık temaya geç" title="Açık temaya geç"><i class="fa-solid fa-sun" aria-hidden="true"></i></button><button class="mobile-nav-button" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="site-links"><i class="fa-solid fa-bars" aria-hidden="true"></i></button></div></div></nav>
 
-    <div class="container mx-auto px-4 py-32 max-w-3xl">
+    <main class="page-wrap" id="main-content">
         <header class="page-head">
             <h1>Ceza itirazı</h1>
-            <p class="text-gray-400">Haksız yere yasaklandığınızı düşünüyorsanız aşağıdaki formu doldurun.</p>
-        </header>
+            <p class="">Haksız yere yasaklandığınızı düşünüyorsanız aşağıdaki formu doldurun.</p>
+        </header><nav class="section-navigation chunky-nav" aria-label="Yardım bölümleri"><a href="help.html">Destek merkezi</a><a href="rules.html">Kurallar</a><a href="status.html">Sunucu durumu</a><a href="punishments.html">Ceza sorgulama</a><a href="appeal.html" aria-current="page">Ceza itirazı</a><a href="application.html">Yetkili başvurusu</a></nav>
 
         <!-- FORM -->
-        <form data-form-type="appeal" class="bg-mc-card border border-white/10 rounded-xl p-8 shadow-lg relative overflow-hidden">
+        <form data-form-type="appeal" class="support-form">
             <!-- Üst Kırmızı Çizgi -->
-            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-red-900"></div>
+            
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div class="form-row">
                 <div>
-                    <label class="block text-sm font-bold text-gray-400 mb-2">Oyun İçi Kullanıcı Adı</label>
-                    <input type="text" name="kullanici_adi" required class="w-full rounded px-4 py-3" placeholder="Örn: Steve">
+                    <label class="">Oyun İçi Kullanıcı Adı</label>
+                    <input type="text" name="kullanici_adi" required class="" placeholder="Örn: Steve">
                 </div>
                 <div>
-                    <label class="block text-sm font-bold text-gray-400 mb-2">Discord ID / Kullanıcı Adı</label>
-                    <input type="text" name="discord_id" required class="w-full rounded px-4 py-3" placeholder="Örn: ahmet veya kullanıcı ID&#x27;si">
+                    <label class="">Discord ID / Kullanıcı Adı</label>
+                    <input type="text" name="discord_id" required class="" placeholder="Örn: ahmet veya kullanıcı ID&#x27;si">
                 </div>
             </div>
 
-            <div class="mb-6">
-                <label class="block text-sm font-bold text-gray-400 mb-2">Yasaklanma Sebebi (Size Bildirilen)</label>
-                <input type="text" name="ban_sebebi" required class="w-full rounded px-4 py-3" placeholder="Örn: Hile kullanımı">
+            <div class="">
+                <label class="">Yasaklanma Sebebi (Size Bildirilen)</label>
+                <input type="text" name="ban_sebebi" required class="" placeholder="Örn: Hile kullanımı">
             </div>
 
-            <div class="mb-6">
-                <label class="block text-sm font-bold text-gray-400 mb-2">Savunmanız / Açıklamanız</label>
-                <textarea name="aciklama" rows="5" required class="w-full rounded px-4 py-3" placeholder="Neden yasaklanmamanız gerektiğini detaylıca anlatın..."></textarea>
+            <div class="">
+                <label class="">Savunmanız / Açıklamanız</label>
+                <textarea name="aciklama" rows="5" required class="" placeholder="Neden yasaklanmamanız gerektiğini detaylıca anlatın..."></textarea>
             </div>
 
-            <div class="mb-8">
-                <label class="block text-sm font-bold text-gray-400 mb-2">Kanıt Linki (Zorunlu Değil)</label>
-                <input type="url" name="kanit_linki" class="w-full rounded px-4 py-3" placeholder="https://imgur.com/... veya https://youtube.com/...">
-                <p class="text-xs text-gray-500 mt-1">Ekran görüntüsü veya video varsa linkini buraya yapıştırın.</p>
+            <div class="">
+                <label class="">Kanıt Linki (Zorunlu Değil)</label>
+                <input type="url" name="kanit_linki" class="" placeholder="https://imgur.com/... veya https://youtube.com/...">
+                <p class="">Ekran görüntüsü veya video varsa linkini buraya yapıştırın.</p>
             </div>
 
-            <div class="mb-8 bg-black/40 p-5 rounded-lg border border-white/5">
-                <label class="block text-sm font-bold text-gray-400 mb-3"><i class="fa-solid fa-shield-halved mr-1"></i> Güvenlik Doğrulaması</label>
+            <div class="">
+                <label class=""><i class=""></i> Güvenlik Doğrulaması</label>
                 <div data-turnstile-widget></div>
             </div>
 
-            <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-4 rounded-lg transition shadow-[0_0_15px_rgba(220,38,38,0.4)] flex items-center justify-center gap-2">
-                <i class="fa-solid fa-gavel"></i> İtirazı Gönder
+            <button type="submit" class="">
+                <i class=""></i> İtirazı Gönder
             </button>
-            <p data-form-status class="mt-4 text-sm text-gray-300" role="status" aria-live="polite"></p>
+            <p data-form-status class="" role="status" aria-live="polite"></p>
         </form>
-    </div>
+    </main>
 
     <!-- Success Modal -->
-    <div id="successModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 hidden backdrop-blur-sm">
-        <div class="bg-mc-card border border-red-500 rounded-xl p-8 max-w-md text-center transform scale-100 transition">
-            <div class="w-16 h-16 bg-red-500/20 text-red-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
-                <i class="fa-solid fa-check"></i>
+    <div id="successModal" class="support-modal hidden">
+        <div class="">
+            <div class="">
+                <i class=""></i>
             </div>
-            <h2 class="text-2xl font-bold mb-2 text-white">İtiraz Gönderildi!</h2>
-            <p class="text-gray-400 mb-6">İtirazınız alındı. Yanıt için Discord hesabınızı takip edin.</p>
-            <button onclick="document.getElementById(&#x27;successModal&#x27;).classList.add(&#x27;hidden&#x27;); window.location.href=&#x27;index.html&#x27;" class="bg-white text-black px-6 py-2 rounded font-bold hover:bg-gray-200 transition">Anlaşıldı</button>
+            <h2 class="">İtiraz Gönderildi!</h2>
+            <p class="">İtirazınız alındı. Yanıt için Discord hesabınızı takip edin.</p>
+            <button onclick="document.getElementById(&#x27;successModal&#x27;).classList.add(&#x27;hidden&#x27;); window.location.href=&#x27;index.html&#x27;" class="craft-button">Anlaşıldı</button>
         </div>
     </div>
 
     <!-- FOOTER UPDATE -->
-    <footer class="bg-black border-t border-white/10 pt-16 pb-8">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-                <div class="col-span-1 md:col-span-2">
-                    <a href="index.html" class="text-2xl font-bold font-rajdhani flex items-center gap-2 mb-4">
-                        <span class="text-white">ARCADE <span class="text-mc-main">CRAFT</span></span>
-                    </a>
-                    <p class="text-gray-500 text-sm leading-relaxed max-w-md">
-                        ArcaDe Craft, oyuncularına en iyi Minecraft deneyimini sunmak için tasarlanmıştır. Pay to win değil, Play to win mantığıyla hareket ediyoruz.
-                    </p>
-                    <div class="flex gap-4 mt-6">
-                        <a href="https://discord.gg/GerdDHzMWp" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#5865F2] hover:text-white transition hover:shadow-[0_0_15px_rgba(88,101,242,0.5)]"><i class="fa-brands fa-discord"></i></a>
-                        <a href="https://www.youtube.com/@robmite" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#FF0000] hover:text-white transition hover:shadow-[0_0_15px_rgba(255,0,0,0.5)]"><i class="fa-brands fa-youtube"></i></a>
-                        <a href="https://x.com/RobMite" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#1DA1F2] hover:text-white transition hover:shadow-[0_0_15px_rgba(29,161,242,0.5)]"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="https://www.instagram.com/robmite/" target="_blank" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:bg-pink-600 hover:text-white transition hover:shadow-[0_0_15px_rgba(219,39,119,0.5)]"><i class="fa-brands fa-instagram"></i></a>
-                    </div>
-                </div>
-
-                <div>
-                    <h4 class="text-white font-bold mb-6 font-rajdhani uppercase tracking-wider">Hızlı Linkler</h4>
-                    <ul class="space-y-2 text-sm text-gray-500">
-                        <li><a href="terms.html" class="hover:text-mc-main transition">Kullanıcı Sözleşmesi</a></li>
-                        <li><a href="privacy.html" class="hover:text-mc-main transition">Gizlilik Politikası</a></li>
-                        <li><a href="rules.html" class="hover:text-mc-main transition">Kurallar</a></li>
-                        <li><a href="application.html" class="hover:text-mc-main transition">Yetkili Başvurusu</a></li>
-                        <li><a href="appeal.html" class="hover:text-red-500 transition text-red-400/80"><i class="fa-solid fa-gavel mr-1"></i> Ceza İtirazı</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-white font-bold mb-6 font-rajdhani uppercase tracking-wider">İletişim</h4>
-                    <ul class="space-y-2 text-sm text-gray-500">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-envelope text-mc-main"></i> destek@robsarcade.online</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-ticket text-mc-main"></i> Discord Ticket</li>
-                        <li class="flex items-center gap-2 mt-2"><a href="survival.html#baslangic" class="text-gray-400 hover:text-white flex items-center gap-2"><i class="fa-solid fa-book text-mc-main"></i> Wiki & Yardım</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
-                <p>&copy; 2026 ArcaDe Craft Sunucusu. Tüm hakları saklıdır. Mojang Studios ile bağlantılı veya Mojang tarafından onaylanmış değildir.</p>
-                <p>Designed with <i class="fa-solid fa-heart text-red-900"></i> by arcooty</p>
-            </div>
-        </div>
-    </footer>
+    <footer class="site-footer"><div class="footer-intro"><a class="site-brand" href="index.html" aria-label="ArcaDe Craft ana sayfa"><img src="assets/logo.png" alt="" width="42" height="42"><span>ArcaDe <strong>Craft</strong></span></a><a href="https://discord.gg/GerdDHzMWp" target="_blank" rel="noopener"><i class="fa-brands fa-discord" aria-hidden="true"></i> Discord</a></div><div class="site-footer-inner"><section><h2>Oyna</h2><a href="survival.html">Survival</a><a href="skyblock.html">Skyblock</a><a href="village.html">Rob's Village</a><a href="join.html">Oyuna katıl</a></section><section><h2>Topluluk</h2><a href="community.html">Topluluk</a><a href="news.html">Haberler</a><a href="staff.html">Ekibimiz</a></section><section><h2>Yardım</h2><a href="help.html">Destek merkezi</a><a href="rules.html">Kurallar</a><a href="status.html">Sunucu durumu</a></section></div><div class="footer-bottom"><span>© 2026 ArcaDe Craft</span><div><a href="sitemap.html">Site haritası</a><a href="privacy.html">Gizlilik</a><a href="terms.html">Kullanım şartları</a></div><span>Mojang veya Microsoft ile bağlantılı değildir.</span></div></footer>
 
 <script src="form-logic.js?v=20260926-5"></script>
-<script src="ui.js?v=20260926-5"></script>
-<script src="server-data.js?v=20260926-5"></script>
-<script src="live-integration.js?v=20260925-1"></script>
-<script src="site-map.js?v=20261002-17"></script><script src="site-shell.js?v=20261002-17"></script>
+
+
+
+<script src="site-map.js?v=20261002-17"></script><script src="site-shell.js?v=20261002-18"></script>
 </body>
 </html>

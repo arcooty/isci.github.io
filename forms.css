@@ -1,0 +1,16 @@
+.support-form { display:grid; gap:24px; max-width:760px; }
+html[data-theme] body.network-shell form.support-form { border-top:0!important; padding-top:0!important; }
+.support-form .form-row { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
+.support-form label { display:block; margin-bottom:8px; font-weight:600; font-size:14px; }
+.support-form :is(input,select,textarea) { width:100%; padding:12px 14px; font:inherit; }
+.support-form textarea { resize:vertical; }
+.support-form :is(input,select,textarea):focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+.support-form button { width:100%; padding:14px; font:700 14px Inter,sans-serif; cursor:pointer; }
+.support-form button:disabled { opacity:.6; cursor:wait; }
+.support-form [data-form-status] { margin:0; font-size:14px; line-height:1.6; }
+.support-form p { color:var(--quiet); font-size:14px; }
+html[data-theme] .support-modal { position:fixed; inset:0; z-index:100; display:grid; place-items:center; padding:20px; background:#0009; }
+html[data-theme] .support-modal.hidden { display:none; }
+.support-modal>div { width:100%; max-width:420px; padding:28px; background:var(--surface); color:var(--ink); border:1px solid var(--line); border-radius:6px; }
+.support-modal button { padding:12px 20px; }
+@media(max-width:600px) { .support-form .form-row { grid-template-columns:1fr; } }

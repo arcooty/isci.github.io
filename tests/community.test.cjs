@@ -31,7 +31,7 @@ test('community has the Discord widget without duplicate shortcuts or old promot
 test('community information and news have separate owners without losing old bookmarks',()=>{
   assert.match(read('community.html'), /id="hakkimizda"/);
   assert.doesNotMatch(read('community.html'), /class="news-journal"/);
-  assert.match(read('news.html'), /<h1>Haberler<\/h1>/);
+  assert.match(read('news.html'), /<h1[^>]*>Haberler<\/h1>/);
   assert.equal([...read('news.html').matchAll(/<article>/g)].length,8);
   assert.doesNotMatch(read('news.html'), /id="hakkimizda"/);
   assert.equal(route.exports.resolveHref('news.html?from=discord#hakkimizda'),'community.html?from=discord#hakkimizda');

@@ -186,7 +186,8 @@ test('hub exposes six compact navigation buttons, gameplay imagery and legacy ro
   assert.match(hub,/<h1>Rob's Village<\/h1>/);
   assert.match(hub,/data-game-hub="village"/);
   assert.match(hub,/class="chunky-nav /);
-  assert.equal((hub.match(/aria-current="page"/g) || []).length,1);
+  const topicNav=hub.match(/<nav class="chunky-nav [\s\S]*?<\/nav>/)[0];
+  assert.equal((topicNav.match(/aria-current="page"/g) || []).length,1);
   for (const page of ['village-play','village-roles','village-win','village-lobby','village-faq']) {
     assert.match(hub,new RegExp('href="'+page+'\\.html"'));
   }
@@ -213,7 +214,7 @@ test('guides share standard shell, themes, category menus and literal headings',
     assert.match(page,/<body class="network-shell game-guide-page[^"]*" data-game="village"/);
     assert.match(page,/theme\.js\?v=20260926-5/);
     for (const css of ['network','craft','theme','village']) assert.match(page,new RegExp(css+'\\.css\\?v='));
-    assert.match(page,/polish\.css\?v=20261002-14"[\s\S]*?game-guides\.css\?v=20261002-3"/);
+    assert.match(page,/polish\.css\?v=20261002-18"[\s\S]*?game-guides\.css\?v=20261002-3"/);
     for (const script of ['site-map','site-shell','game-guide']) assert.match(page,new RegExp(script+'\\.js\\?v='));
     assert.match(page,/game-guide\.js\?v=20261002-3/);
     assert.match(page,new RegExp('rel="canonical" href="https://robsarcade.online/'+name+'\\.html"'));
