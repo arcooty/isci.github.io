@@ -15,7 +15,7 @@ test('four community pages have consistent compact navigation and unique selecti
     assert.equal([...nav.matchAll(/<a /g)].length,4);
     assert.equal([...nav.matchAll(/aria-current="page"/g)].length,1);
     assert.ok(nav.includes('href="'+file+'" aria-current="page"'));
-    assert.ok(html.includes('community-layout.css?v=20261002-17'));
+    assert.ok(html.includes('community-layout.css?v=20261002-19'));
     assert.ok(read('sitemap.xml').includes('/'+file));
   }
 });
@@ -27,6 +27,9 @@ test('community has the Discord widget without duplicate shortcuts or old promot
   assert.match(html,/title="ArcaDe Craft Discord sunucusu"/);
   assert.doesNotMatch(read('index.html'),/editorial-shortcuts|Liderlik tabloları/);
   assert.match(read('community-layout.css'),/repeat\(4,minmax\(0,1fr\)\)/);
+  assert.match(html,/class="community-hub-image" src="assets\/hub-gameplay.png"/);
+  assert.match(html,/class="community-invite"/);
+  assert.match(read('community-layout.css'),/\.community-hub-image \{[^}]*height:220px/);
 });
 test('community information and news have separate owners without losing old bookmarks',()=>{
   assert.match(read('community.html'), /id="hakkimizda"/);
