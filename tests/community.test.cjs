@@ -29,3 +29,11 @@ test('community information and news have separate owners without losing old boo
   assert.equal(route.exports.resolveHref('about.html'),'community.html#hakkimizda');
   assert.match(read('staff.html'), /id="staff-list"/);
 });
+
+test('community overview does not contain a game-specific event promotion',()=>{
+  const html=read('community.html');
+  assert.doesNotMatch(html, /class="guide-feature"/);
+  assert.doesNotMatch(html, /Bir sonraki köy gecesi|etkinlik saatleri kesinleştiğinde/);
+  assert.match(html, /class="community-discord"/);
+  assert.match(html, /id="hakkimizda"/);
+});
