@@ -34,3 +34,11 @@ test('home community blocks share heading, description and action spacing',()=>{
   assert.ok(css.includes('.community-section :is(h2,h3) { margin:0; font:700 34px/1.2'));
   assert.ok(css.includes('.community-section p { margin:0;'));
 });
+test('all game hubs have one shared Games button and Village has no generated duplicate trail',()=>{
+  for(const file of ['survival.html','skyblock.html','village.html']) {
+    const html=read(file);
+    assert.equal((html.match(/class="craft-button primary game-hub-return"/g)||[]).length,1,file);
+    assert.ok(html.includes('game-hub-buttons.css?v=20261002-1'),file);
+  }
+  assert.ok(read('site-shell.js').includes('.game-guide-toolbar,.game-hub-heading,.village-masthead,.chunky-nav'));
+});
