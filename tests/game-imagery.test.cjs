@@ -39,6 +39,10 @@ test('survival sharing previews also use real gameplay', () => {
 });
 
 test('survival overview image keeps a responsive height rather than its pixel height attribute', () => {
-  const css = fs.readFileSync(path.join(root,'craft.css'),'utf8');
-  assert.match(css,/\.survival-intro img\s*\{[^}]*height:auto;[^}]*aspect-ratio:16\/10;/);
+  const css = fs.readFileSync(path.join(root,'game-guides.css'),'utf8');
+  assert.match(css,/\.game-guide-cover img\s*\{[^}]*height:100%;[^}]*object-fit:cover;/);
+  const html=fs.readFileSync(path.join(root,'survival.html'),'utf8');
+  assert.ok(html.indexOf('<figure class="game-guide-cover"')<html.indexOf('<div class="topic-grid">'));
+  assert.ok(!html.includes('class="survival-intro"'));
+  assert.ok(!html.includes('class="survival-facts"'));
 });

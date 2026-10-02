@@ -4,13 +4,13 @@
 .village-hub-heading h1 { margin:12px 0; font:700 52px/1.1 Rajdhani,sans-serif; }
 .village-hub-heading p { margin:0; }
 .village-hub-heading > a { flex-shrink:0; }
-.village-hub-topics { order:1; margin:0 0 28px; }
+.village-hub-topics { margin:0 0 28px; }
 .village-hub-topics h2 { margin:0 0 18px; font:700 28px/1.2 Rajdhani,sans-serif; }
 .village-hub .topic-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
 .village-hub .topic-card { display:flex; align-items:center; justify-content:space-between; gap:20px; min-width:0; min-height:140px; padding:24px; text-decoration:none; }
 .village-hub .topic-card strong { font:700 24px/1.2 Rajdhani,sans-serif; overflow-wrap:anywhere; }
 .village-hub .topic-art { flex-shrink:0; font-size:38px; }
-.village-hub-cover { order:2; margin:0; }
+.village-hub-cover { margin:0; }
 .village-hub-cover picture { display:block; height:100%; }
 .village-hub-cover img { display:block; width:100%; height:auto; aspect-ratio:1920/620; object-fit:cover; }
 .village-hub-cover figcaption { margin-top:8px; font-size:12px; color:var(--muted); }
@@ -72,9 +72,8 @@ html[data-theme="dark"] :is(.village-roles,.village-objectives) { --team-village
   .village-hub-heading { flex-wrap:wrap; gap:16px; }
   .village-hub-heading h1 { font-size:40px; }
   .village-hub-heading > a { margin:0; }
-  .village-hub-cover { order:1; margin-bottom:24px; }
+  .village-hub-cover { margin-bottom:24px; }
   .village-hub-cover img { aspect-ratio:16/9; }
-  .village-hub-topics { order:2; }
   .village-hub .topic-grid { grid-template-columns:minmax(0,1fr); }
   .village-hub .topic-card { min-height:110px; }
   .village-hub .topic-card strong { font-size:23px; }

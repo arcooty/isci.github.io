@@ -42,3 +42,12 @@ test('all game hubs have one shared Games button and Village has no generated du
   }
   assert.ok(read('site-shell.js').includes('.game-guide-toolbar,.game-hub-heading,.village-masthead,.chunky-nav'));
 });
+test('Survival and Village overview images precede their topic tiles without feature duplication',()=>{
+  for(const file of ['survival.html','village.html']) {
+    const html=read(file);
+    assert.ok(html.indexOf('<figure class="game-guide-cover')<html.indexOf('class="topic-grid"'),file);
+  }
+  assert.ok(!read('village.css').includes('order:'));
+  assert.ok(!read('survival.html').includes('Başlangıç rehberi'));
+  assert.ok(!read('survival.html').includes('class="survival-facts"'));
+});

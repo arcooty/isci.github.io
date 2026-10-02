@@ -10,7 +10,8 @@ test('home and Survival use factual headings instead of promotional slogans', ()
   const survival = read('survival.html');
   assert.match(home, /<h2 id="community-title">Discord<\/h2>/);
   assert.match(home, /<h2>VIP Paketleri<\/h2>/);
-  assert.match(survival, /<h2 id="overview-title">Survival özellikleri<\/h2>/);
+  assert.ok(!survival.includes('Survival özellikleri'));
+  assert.ok(survival.includes('12 meslekten ikisini seç'));
   for (const html of [home, survival, read('servers.html'), read('store.html')]) {
     assert.doesNotMatch(html, /class="(?:eyebrow|game-category)"/);
     assert.doesNotMatch(html, /Biraz daha alan|Biraz daha sen|Bir evden çok daha fazlası|Oyunun dışında da buluşalım|Kendi hızında/);
