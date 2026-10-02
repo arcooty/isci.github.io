@@ -17,5 +17,6 @@ test('support design four has separate headings and accessible action buttons',(
   assert.ok(!html.includes('class="help-list"'));
   const css=fs.readFileSync(path.join(root,'help-support.css'),'utf8');
   assert.ok(css.includes('grid-template-rows:1fr auto'));
+  assert.ok(css.includes('.support-action:first-child { border-left:0; }'));
   assert.ok(css.includes('@media(max-width:1000px)'));
 });
