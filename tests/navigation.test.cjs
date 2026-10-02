@@ -8,6 +8,24 @@ const routeModule = {exports:{}};
 vm.runInNewContext(fs.readFileSync(path.join(root,'site-map.js'),'utf8'),{module:routeModule,URL});
 const model = routeModule.exports;
 
+test('split game topic menus list rankings first', () => {
+  for (const file of fs.readdirSync(root).filter(file => /^(survival|skyblock)-.*\.html$/.test(file))) {
+    const html = fs.readFileSync(path.join(root,file),'utf8');
+    const menu = html.match(/<nav[^>]*aria-label="Rehber konuları"[^>]*>([\s\S]*?)<\/nav>/);
+    if (!menu) continue;
+    const href = menu[1].match(/<a[^>]*href="([^"]+)"/)[1];
+    assert.equal(href,file.startsWith('survival-') ? 'survival.html#siralamalar' : 'skyblock-leaderboard.html',file);
+  }
+  const html = fs.readFileSync(path.join(root,'survival.html'),'utf8');
+  assert.match(html, /class="survival-hub-section-heading"[\s\S]*?id="topics-title"[\s\S]*?href="#siralamalar"/);
+  assert.ok(!html.includes('class="topic-card" href="#siralamalar"'));
+});
+
+test('Survival hub topic menu lists rankings first', () => {
+  const h = harness('#baslangic');
+  assert.equal(h.ids['guide-topics'].children[0].dataset.topicLink,'siralamalar');
+});
+
 test('13 compatibility routes resolve to existing content, not another redirect', () => {
   assert.equal(Object.keys(model.legacy).length,13);
   for (const [old,destination] of Object.entries(model.legacy)) {
@@ -77,11 +95,11 @@ test('deep link selects precisely one guide topic and leaves the map unloaded', 
   assert.equal(h.frame.src,'');
 });
 
-test('nine Survival tiles include each topic, map and rankings once', () => {
+test('eight Survival tiles include each topic and map, with rankings in the heading', () => {
   const html=fs.readFileSync(path.join(root,'survival.html'),'utf8');
   const tiles=[...html.matchAll(/<a class="topic-card" href="([^"]+)"[^>]*><span><strong>([^<]+)<\/strong>/g)];
   const topics=model.topics;
-  assert.equal(tiles.length,topics.length+2);
+  assert.equal(tiles.length,topics.length+1);
   assert.deepEqual(tiles.slice(0,7).map(([,href,label])=>[href,label]),Array.from(topics,([id,label])=>[model.gameRoutes['survival.html'][id]?.split('#')[0] || '#'+id,id==='baslangic'?'Oyun rehberi':label]));
   assert.match(html,/href="#baslangic" data-hub-tab="rehber"/);
 });

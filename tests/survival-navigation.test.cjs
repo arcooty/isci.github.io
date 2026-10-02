@@ -10,7 +10,7 @@ test('every split Survival page shares the game toolbar, menu and footer',()=>{
   for(const file of files) {
     const html=read(file);
     assert.ok(!html.includes('jobs-masthead'),file);
-    assert.ok(html.includes('survival-navigation.css?v=20261002-1'),file);
+    assert.ok(html.includes('survival-navigation.css?v=20261002-2'),file);
     assert.ok(html.includes('game-guide.js?v=20261002-3'),file);
     const toolbar=html.match(/<nav class="game-guide-toolbar survival-topic-toolbar"[\s\S]*?<\/details><\/nav>/)[0];
     assert.equal((toolbar.match(/<a /g)||[]).length,10,file);

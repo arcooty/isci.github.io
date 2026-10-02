@@ -26,17 +26,15 @@
     location.replace(target);
     return true;
   };
-  topics.forEach(([id,label,icon]) => {
+  const navigationTopics = [['siralamalar','Sıralamalar','trophy'], ...topics, ['harita','Harita','map']];
+  navigationTopics.forEach(([id,label,icon]) => {
     const link = document.createElement('a'); link.href = topicHref(id); link.dataset.topicLink = id;
     const mark = document.createElement('i'); mark.className = 'fa-solid fa-' + icon; mark.setAttribute('aria-hidden','true');
     link.append(mark,document.createTextNode(label)); topicNav.append(link);
-    const option = document.createElement('option'); option.value = id; option.textContent = label; topicSelect.append(option);
+    if (topics.some(([topicId]) => topicId === id)) {
+      const option = document.createElement('option'); option.value = id; option.textContent = label; topicSelect.append(option);
+    }
   });
-  for (const [id,label,icon] of [['harita','Harita','map'],['siralamalar','Sıralamalar','trophy']]) {
-    const link=document.createElement('a'); link.href='#'+id; link.dataset.topicLink=id;
-    const mark=document.createElement('i'); mark.className='fa-solid fa-'+icon; mark.setAttribute('aria-hidden','true');
-    link.append(mark,document.createTextNode(label)); topicNav.append(link);
-  }
   function render(focus) {
     if (leaveSplitTopic()) return;
     const hash = location.hash.slice(1);

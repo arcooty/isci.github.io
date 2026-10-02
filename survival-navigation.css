@@ -1,4 +1,13 @@
 html[data-theme] body.network-shell .survival-topic-toolbar { --guide-color:#83e6a3; --guide-ink:#15321e; }
+html[data-theme] body.network-shell.survival-hub .survival-hub-section-heading { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:24px; }
+html[data-theme] body.network-shell.survival-hub .survival-hub-section-heading h2 { margin:0; }
+html[data-theme] body.network-shell.survival-hub .survival-hub-section-heading .craft-button { display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; gap:12px; padding:12px 18px; }
+html[data-theme] body.network-shell.survival-hub .survival-hub-section-heading .craft-button > i { color:inherit; }
+@media(max-width:600px) {
+  html[data-theme] body.network-shell.survival-hub .survival-hub-section-heading h2 { font-size:23px; }
+  html[data-theme] body.network-shell.survival-hub .survival-hub-section-heading .craft-button { padding:12px; font-size:12px; gap:8px; }
+  html[data-theme] body.network-shell.survival-hub .survival-hub-section-heading .craft-button > i:first-child { display:none; }
+}
 html[data-survival-view=content] body.survival-hub .hub-masthead { display:none; }
 html[data-theme] body.network-shell .survival-topic-toolbar[hidden] { display:none; }
 html[data-theme] body.network-shell.survival-hub .guide-layout { display:block; }
