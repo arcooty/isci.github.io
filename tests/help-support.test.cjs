@@ -1,0 +1,19 @@
+const {test}=require('node:test');
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
+test('support design four has separate headings and accessible action buttons',()=>{
+  const root=path.join(__dirname,'..');
+  const html=fs.readFileSync(path.join(root,'help.html'),'utf8');
+  const section=html.match(/<section class="support-actions"[\s\S]*?<\/section>/)[0];
+  assert.equal((section.match(/class="support-action"/g)||[]).length,2);
+  assert.equal((section.match(/<h2>/g)||[]).length,2);
+  assert.equal((section.match(/<a class="craft-button/g)||[]).length,2);
+  assert.ok(section.includes('href="store-delivery.html"'));
+  assert.ok(section.includes('href="https://discord.gg/GerdDHzMWp" target="_blank" rel="noopener"'));
+  assert.equal((section.match(/Şifreni veya özel hesap bilgilerini paylaşma/g)||[]).length,1);
+  assert.ok(!html.includes('class="help-list"'));
+  const css=fs.readFileSync(path.join(root,'help-support.css'),'utf8');
+  assert.ok(css.includes('grid-template-rows:1fr auto'));
+  assert.ok(css.includes('@media(max-width:700px)'));
+});
