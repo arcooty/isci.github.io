@@ -79,6 +79,7 @@
   });
   topicSelect.addEventListener('change',() => { history.pushState(null,'','#'+topicSelect.value); render(true); });
   window.addEventListener('popstate',() => render(true));
+  window.addEventListener('pageshow',() => render(false));
   window.addEventListener('hashchange',() => render(true));
   const initialHash=location.hash;
   render(!!initialHash);

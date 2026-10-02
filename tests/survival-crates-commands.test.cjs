@@ -16,7 +16,7 @@ test('crate and command pages keep compact navigation with one selected topic', 
     else assert.ok(!html.includes('Sonraki konu:'), file);
     assert.equal((html.match(/aria-current="page"/g) || []).length, 1, file);
     for (const sibling of group) assert.ok(html.includes('href="'+sibling+'"'), file);
-    assert.ok(html.includes('survival-jobs.css?v=20261002-12'), file);
+    assert.ok(html.includes('survival-jobs.css?v=20261002-16'), file);
     assert.ok(!html.includes('command-copy'), file+' must let the shell create working copy buttons');
     assert.ok(fs.readFileSync(path.join(__dirname, '..', 'sitemap.xml'), 'utf8').includes('/'+file));
   }

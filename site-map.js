@@ -21,8 +21,8 @@
     'jobs.html': 'survival-jobs.html#jobs-meslekler',
     'quests.html': 'survival.html#gorevler',
     'economy.html': 'survival.html#ekonomi',
-    'commands.html': 'survival.html#komutlar',
-    'crates.html': 'survival.html#kasalar',
+    'commands.html': 'survival-commands.html#komutlar',
+    'crates.html': 'survival-crates.html#kasalar',
     'map.html': 'survival.html#harita',
     'leaderboard.html': 'survival.html#siralamalar',
     'ranks.html': 'store.html#paketler',
@@ -75,7 +75,7 @@
       const anchors = {ekonomi:'ekonomi',ilerleme:'meslekler',koruma:'arazi',icerik:'kasalar',kalite:'baslangic'};
       target.hash = anchors[url.hash.slice(1)] || 'baslangic';
     }
-    return target.pathname.slice(1) + target.search + target.hash;
+    return resolveHref(target.pathname.slice(1) + target.search + target.hash);
   }
   const searchEntries = [
     ['skyblock.html','Skyblock','Oyunlar','cubes','skyblock ada adalar test beyaz liste'],

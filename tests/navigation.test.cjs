@@ -130,6 +130,21 @@ test('unknown or malformed hashes return safely to the overview', () => {
   const h=harness('#%broken');
   assert.deepEqual(h.panels.filter(p=>!p.hidden).map(p=>p.dataset.hubPanel),['genel']);
 });
+
+test('returning from page history restores the next-topic visibility', () => {
+  const h=harness('#gorevler');
+  h.ids['guide-next'].hidden=true;
+  h.events.pageshow();
+  assert.equal(h.ids['guide-next'].hidden,false);
+  assert.equal(h.ids['guide-next'].href,'survival.html#ekonomi');
+});
+
+test('old crates, commands and systems links go directly to final guide pages', () => {
+  for (const [old,target] of [['crates.html?from=discord','survival-crates.html?from=discord#kasalar'],['commands.html','survival-commands.html#komutlar'],['survival-systems.html#ilerleme','survival-jobs.html#jobs-meslekler'],['survival-systems.html#icerik','survival-crates.html#kasalar']]) {
+    assert.equal(model.resolveHref(old),target);
+    assert.equal(model.resolveHref(target),target);
+  }
+});
 test('subsection deep links open their owner topic, focus the section and preserve context',()=>{
   for(const [topic,items] of Object.entries(model.topicSections)) for(const [id] of items) {
     const h=harness('#'+id);
