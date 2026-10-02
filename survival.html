@@ -2,6 +2,9 @@
 <html data-theme="dark" lang="tr">
 <head>
   <meta charset="utf-8"><script src="theme.js?v=20260926-5"></script>
+  <script src="site-map.js?v=20261002-13"></script>
+  <script src="early-route.js?v=20261002-15"></script>
+  <style>html[data-survival-loading] .hub-panel { visibility:hidden; }</style>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Survival | ArcaDe Craft</title>
   <meta name="description" content="ArcaDe Craft Survival: oyunu tanı, rehberini oku, dünyayı ve sıralamaları aynı merkezden keşfet.">
@@ -35,11 +38,11 @@
         <div class="topic-grid">
           <a class="topic-card" href="#baslangic"><span><strong>İlk adımlar</strong><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span><i class="topic-art fa-solid fa-compass" aria-hidden="true"></i></a>
           <a class="topic-card" href="#arazi"><span><strong>Arazi ve evler</strong><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span><i class="topic-art fa-solid fa-house" aria-hidden="true"></i></a>
-          <a class="topic-card" href="#meslekler"><span><strong>Meslekler</strong><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span><i class="topic-art fa-solid fa-hammer" aria-hidden="true"></i></a>
+          <a class="topic-card" href="survival-jobs.html"><span><strong>Meslekler</strong><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span><i class="topic-art fa-solid fa-hammer" aria-hidden="true"></i></a>
           <a class="topic-card" href="#gorevler"><span><strong>Görevler ve beceriler</strong><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span><i class="topic-art fa-solid fa-star" aria-hidden="true"></i></a>
           <a class="topic-card" href="#ekonomi"><span><strong>Ekonomi ve ticaret</strong><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span><i class="topic-art fa-solid fa-store" aria-hidden="true"></i></a>
-          <a class="topic-card" href="#kasalar"><span><strong>Kitler ve kasalar</strong><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span><i class="topic-art fa-solid fa-box-open" aria-hidden="true"></i></a>
-          <a class="topic-card" href="#komutlar"><span><strong>Komutlar</strong><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span><i class="topic-art fa-solid fa-terminal" aria-hidden="true"></i></a>
+          <a class="topic-card" href="survival-crates.html"><span><strong>Kitler ve kasalar</strong><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span><i class="topic-art fa-solid fa-box-open" aria-hidden="true"></i></a>
+          <a class="topic-card" href="survival-commands.html"><span><strong>Komutlar</strong><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span><i class="topic-art fa-solid fa-terminal" aria-hidden="true"></i></a>
         </div>
       </section>
       <div class="survival-intro">
@@ -59,7 +62,7 @@
         <nav class="guide-location" aria-label="Rehberdeki konumun"><a href="#genel">Survival</a><span aria-hidden="true">/</span><span>Oyun rehberi</span><span aria-hidden="true">/</span><strong id="guide-current">İlk adımlar</strong></nav>
         <article id="baslangic" data-guide-topic="baslangic" tabindex="-1">
           <header class="guide-head"><h2>Başlangıç</h2><p>Başlangıç kitini al, ev konumunu kaydet ve arazini koru.</p></header>
-          <ol class="start-steps"><li><h3>Dünyaya açıl</h3><p>Lobide pusuladan Survival'ı seç. <code>/menu</code> içindeki Ödüller → Kitler bölümünden tek seferlik başlangıç kitini al; <code>/rtp</code> ile yeni bir başlangıç bölgesi bul.</p></li><li><h3>Evini kaydet ve koru</h3><p><code>/evler</code> panelinden konumunu kaydet ve evlerini yönet. Altın kürekle arazinin karşılıklı iki köşesine sağ tıklayarak yapını koru.</p><a href="#arazi">Arazi ve evler <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></li><li><h3>İlk mesleğini seç</h3><p><code>/jobs browse</code> ile 12 mesleği incele. Aynı anda en fazla iki meslek seçebilirsin.</p><a href="#meslekler">Meslekler <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></li><li><h3>Ürettiklerini değerlendir</h3><p>Temel ihtiyaçlar için sunucu marketini, nadir eşyalar için oyuncu ilanlarını kullan. Günlük meslek görevleri ve beceriler yeni hedefler sunar.</p><a href="#ekonomi">Ekonomi ve ticaret <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></li></ol>
+          <ol class="start-steps"><li><h3>Dünyaya açıl</h3><p>Lobide pusuladan Survival'ı seç. <code>/menu</code> içindeki Ödüller → Kitler bölümünden tek seferlik başlangıç kitini al; <code>/rtp</code> ile yeni bir başlangıç bölgesi bul.</p></li><li><h3>Evini kaydet ve koru</h3><p><code>/evler</code> panelinden konumunu kaydet ve evlerini yönet. Altın kürekle arazinin karşılıklı iki köşesine sağ tıklayarak yapını koru.</p><a href="#arazi">Arazi ve evler <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></li><li><h3>İlk mesleğini seç</h3><p><code>/jobs browse</code> ile 12 mesleği incele. Aynı anda en fazla iki meslek seçebilirsin.</p><a href="survival-jobs.html">Meslekler <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></li><li><h3>Ürettiklerini değerlendir</h3><p>Temel ihtiyaçlar için sunucu marketini, nadir eşyalar için oyuncu ilanlarını kullan. Günlük meslek görevleri ve beceriler yeni hedefler sunar.</p><a href="#ekonomi">Ekonomi ve ticaret <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></li></ol>
           <div class="guide-note"><strong>Standart oyuncu hakları</strong><p>3 ev noktası, 1 sanal depo ve 2 açık artırma ilanı. Arazi koruma, meslekler, günlük meslek görevleri ve ticaret bütün oyunculara açıktır. Ana menü: Dünya ve Evler / Ticaret / Meslek ve Görev / Ödüller / Oyuncu Ayarları.</p></div>
           <section class="about-section"><h2>Spawn hizmetleri</h2><p>Spawn’da evler, arazi koruma, meslekler, günlük görevler, beceriler, oyuncu pazarı, ödüller ve VIP için ayrı NPC’ler var. Tüccar, ışınlanma, ana menü ve yatak NPC’leri de kullanılabilir. Türkçe başlıklar her hizmeti gösterir; NPC’ye tıklamak ilgili menüyü açar.</p></section>
         </article>
@@ -70,7 +73,7 @@
       <h2>Meslekler</h2>
       <p>Oynayış tarzına uyan en fazla iki mesleği seç; çalıştıkça para, meslek puanı ve tecrübe kazan. Ödemeler Survival ekonomisiyle birlikte dengelenir.</p>
     </header>
-    <nav class="guide-outline" aria-label="Meslekler konusunun bölümleri"><a href="#jobs-meslekler" data-section-link="jobs-meslekler">Meslekler</a><a href="#jobs-sistem" data-section-link="jobs-sistem">İlerleme</a><a href="#jobs-komutlar" data-section-link="jobs-komutlar">Meslek komutları</a></nav>
+    <nav class="guide-outline" aria-label="Meslekler konusunun bölümleri"><a href="survival-jobs.html#jobs-meslekler" data-section-link="jobs-meslekler">Meslekler</a><a href="survival-jobs-progress.html#jobs-sistem" data-section-link="jobs-sistem">İlerleme</a><a href="survival-jobs-commands.html#jobs-komutlar" data-section-link="jobs-komutlar">Meslek komutları</a></nav>
     <section id="jobs-meslekler" class="about-section jobs-first-section">
       <div class="section-title"><h2>Meslekler</h2></div>
       <div class="info-grid">
@@ -117,7 +120,7 @@
     <h2>Ödül kasaları</h2>
     <p>Haftalık rütbe kitinden anahtarını al, ödül havuzunu incele ve kasanı menüden aç. Java ve Bedrock oyuncuları aynı ödül sistemini kullanır.</p>
   </header>
-  <nav class="guide-outline" aria-label="Kasalar konusunun bölümleri"><a href="#crate-havuzlar" data-section-link="crate-havuzlar">Kasalar</a><a href="#crate-odds" data-section-link="crate-odds">Ödüller ve oranlar</a><a href="#crate-kullanim" data-section-link="crate-kullanim">Anahtar ve kullanım</a></nav>
+  <nav class="guide-outline" aria-label="Kasalar konusunun bölümleri"><a href="survival-crates.html#crate-havuzlar" data-section-link="crate-havuzlar">Kasalar</a><a href="survival-crates-rewards.html#crate-odds" data-section-link="crate-odds">Ödüller ve oranlar</a><a href="survival-crates-keys.html#crate-kullanim" data-section-link="crate-kullanim">Anahtar ve kullanım</a></nav>
   <section class="about-section" id="crate-havuzlar">
     <div class="section-title"><h2>Üç farklı ödül havuzu</h2></div>
     <div class="info-grid">
@@ -150,7 +153,7 @@
 <h2>Günlük oyun komutları</h2>
 <p>Günlük oynayışta ihtiyaç duyacağın komutların kısa listesi.</p>
 </header>
-<nav class="guide-outline" aria-label="Komutlar konusunun bölümleri"><a href="#commands-travel" data-section-link="commands-travel">Ulaşım ve ev</a><a href="#commands-progress" data-section-link="commands-progress">İlerleme</a><a href="#commands-vip" data-section-link="commands-vip">VIP komutları</a></nav>
+<nav class="guide-outline" aria-label="Komutlar konusunun bölümleri"><a href="survival-commands.html#commands-travel" data-section-link="commands-travel">Ulaşım ve ev</a><a href="survival-commands-progress.html#commands-progress" data-section-link="commands-progress">İlerleme</a><a href="survival-commands-vip.html#commands-vip" data-section-link="commands-vip">VIP komutları</a></nav>
 <section class="about-section" id="commands-travel"><div class="section-title"><h2>Ulaşım ve ev</h2></div>
 <section class="command-list">
 <div class="command">
@@ -253,10 +256,9 @@
     <noscript><p>Rehber konuları aşağıda okunabilir. Haritayı <a href="https://map.robsarcade.online/">ayrı sekmede açabilirsin</a>.</p></noscript>
   </main>
   <footer></footer>
-  <script src="site-map.js?v=20261002-13"></script>
   <script src="site-shell.js?v=20261002-12"></script>
   <script src="game-guide.js?v=20261002-3"></script>
-  <script src="survival.js?v=20261002-1"></script>
+  <script src="survival.js?v=20261002-15"></script>
   <script src="api-config.js"></script>
   <script src="leaderboard.js?v=20260926-5"></script>
 </body>

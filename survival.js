@@ -17,13 +17,22 @@
   });
   history.scrollRestoration = 'manual';
   let lastTopic = 'baslangic';
+  const topicHref = id => window.ARCADE_SITE.resolveHref('survival.html#' + id);
+  const leaveSplitTopic = () => {
+    const original = 'survival.html' + (location.search || '') + location.hash;
+    const target = window.ARCADE_SITE.resolveHref(original);
+    if (target === original || typeof location.replace !== 'function') return false;
+    location.replace(target);
+    return true;
+  };
   topics.forEach(([id,label,icon]) => {
-    const link = document.createElement('a'); link.href = '#' + id; link.dataset.topicLink = id;
+    const link = document.createElement('a'); link.href = topicHref(id); link.dataset.topicLink = id;
     const mark = document.createElement('i'); mark.className = 'fa-solid fa-' + icon; mark.setAttribute('aria-hidden','true');
     link.append(mark,document.createTextNode(label)); topicNav.append(link);
     const option = document.createElement('option'); option.value = id; option.textContent = label; topicSelect.append(option);
   });
   function render(focus) {
+    if (leaveSplitTopic()) return;
     const hash = location.hash.slice(1);
     const topic = topics.find(([id]) => id === (sectionOwners[hash] || hash));
     const view = topic ? 'rehber' : ['harita','siralamalar'].includes(hash) ? hash : 'genel';
@@ -39,7 +48,7 @@
       const index = topics.indexOf(topic);
       const following = topics[index + 1];
       next.hidden = !following;
-      if (following) { next.href = '#' + following[0]; next.replaceChildren(document.createTextNode('Sonraki konu: ' + following[1] + ' ')); const arrow = document.createElement('i'); arrow.className = 'fa-solid fa-arrow-right'; arrow.setAttribute('aria-hidden','true'); next.append(arrow); }
+      if (following) { next.href = topicHref(following[0]); next.replaceChildren(document.createTextNode('Sonraki konu: ' + following[1] + ' ')); const arrow = document.createElement('i'); arrow.className = 'fa-solid fa-arrow-right'; arrow.setAttribute('aria-hidden','true'); next.append(arrow); }
     }
     document.querySelectorAll('[data-section-link]').forEach(link=>{
       if (link.dataset.sectionLink === hash) link.setAttribute('aria-current','location');
@@ -73,6 +82,7 @@
   window.addEventListener('hashchange',() => render(true));
   const initialHash=location.hash;
   render(!!initialHash);
+  document.documentElement?.removeAttribute('data-survival-loading');
   // Font loading can move a deep section after the first layout pass.
   if (initialHash) {
     let interacted=false;

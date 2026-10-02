@@ -32,7 +32,7 @@ test('public registry never links to a compatibility endpoint', () => {
   }
 });
 
-function harness(hash = '') {
+function harness(hash = '', realRoutes = false) {
   class Element {
     constructor(dataset = {}) { this.dataset=dataset; this.attrs={}; this.hidden=false; this.children=[]; this.value=''; this.textContent=''; this.src=''; }
     setAttribute(key,value) { this.attrs[key]=value; }
@@ -54,6 +54,7 @@ function harness(hash = '') {
   const frame = new Element({src:'https://map.robsarcade.online/'});
   const events = {};
   const location = {hash,origin:'https://robsarcade.online',pathname:'/survival.html',href:'https://robsarcade.online/survival.html'+hash};
+  if (realRoutes) location.replace = target => { location.replaced = target; };
   const history = {pushState:(_state,_title,hash)=>{location.hash=hash;}};
   const document = {
     querySelectorAll:selector=>selector.includes('hub-panel')?panels:selector.includes('guide-topic')?topics:selector.includes('section-link')?sectionLinks:tabs,
@@ -78,9 +79,22 @@ test('deep link selects precisely one guide topic and leaves the map unloaded', 
 
 test('all seven large guide tiles use the canonical topic labels and destinations', () => {
   const html=fs.readFileSync(path.join(root,'survival.html'),'utf8');
-  const tiles=[...html.matchAll(/<a class="topic-card" href="#([^"]+)"><span><strong>([^<]+)<\/strong>/g)];
+  const tiles=[...html.matchAll(/<a class="topic-card" href="([^"]+)"><span><strong>([^<]+)<\/strong>/g)];
   assert.equal(tiles.length,model.topics.length);
-  assert.deepEqual(tiles.map(([,id,label])=>[id,label]),Array.from(model.topics,([id,label])=>[id,label]));
+  assert.deepEqual(tiles.map(([,href,label])=>[href,label]),Array.from(model.topics,([id,label])=>[model.gameRoutes['survival.html'][id]?.split('#')[0] || '#'+id,label]));
+});
+
+test('split topics redirect on selection and history without rendering the old article', () => {
+  const h=harness('#baslangic',true);
+  const oldLabel=h.ids['guide-current'].textContent;
+  h.ids['guide-topic-select'].value='meslekler';
+  h.ids['guide-topic-select'].events.change();
+  assert.equal(h.location.replaced,'survival-jobs.html#jobs-meslekler');
+  assert.equal(h.ids['guide-current'].textContent,oldLabel);
+  h.location.hash='#kasalar'; h.events.popstate();
+  assert.equal(h.location.replaced,'survival-crates.html#kasalar');
+  h.location.hash='#komutlar'; h.events.hashchange();
+  assert.equal(h.location.replaced,'survival-commands.html#komutlar');
 });
 
 test('choosing another topic closes the category menu without losing the active topic', () => {
