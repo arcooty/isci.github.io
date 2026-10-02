@@ -8,6 +8,9 @@ test('jobs subsections are separate pages with shared compact navigation',()=>{
   for(const file of pages) {
     const html=read(file);
     assert.match(html,/<h1>Survival<\/h1>/);
+    assert.match(html,/<nav class="game-guide-next" aria-label="Rehber gezinmesi">/);
+    assert.ok(html.includes("Survival'a dön</a>"));
+    assert.ok(html.includes('href="survival.html#gorevler">Sonraki konu: Görevler ve beceriler'));
     assert.match(html,/survival-jobs\.css\?v=20261002-12/);
     const nav=html.match(/<nav class="chunky-nav "[\s\S]*?<\/nav>/)[0];
     assert.equal([...nav.matchAll(/aria-current="page"/g)].length,1);
