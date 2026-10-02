@@ -47,7 +47,7 @@ test('Survival and Village overview images precede their topic tiles without fea
     const html=read(file);
     assert.ok(html.indexOf('<figure class="game-guide-cover')<html.indexOf('class="topic-grid"'),file);
   }
-  assert.ok(!read('village.css').includes('order:'));
+  assert.doesNotMatch(read('village.css'),/(?:\{|;)\s*order:/);
   assert.ok(!read('survival.html').includes('Başlangıç rehberi'));
   assert.ok(!read('survival.html').includes('class="survival-facts"'));
 });
