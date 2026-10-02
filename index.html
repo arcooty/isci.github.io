@@ -19,6 +19,7 @@
 <meta property="og:type" content="website">
 <link rel="stylesheet" href="polish.css?v=20261002-20">
 <link rel="stylesheet" href="home-network.css?v=20261002-6">
+<link rel="stylesheet" href="home-connection.css?v=20261002-1">
 <link rel="stylesheet" href="home-status.css?v=20261002-6">
 </head>
 <body class="network-shell home-page" data-page="index">
@@ -33,9 +34,11 @@
           <p class="hero-description">Survival, Skyblock ve Rob's Village.</p>
           <div class="hero-actions">
             <a class="craft-button primary" href="join.html"><i class="fa-solid fa-play" aria-hidden="true"></i> Oyuna katıl</a>
-            <button class="address-button" type="button" data-copy-address title="Sunucu adresini kopyala"><span>oyna.robsarcade.online</span><i class="fa-regular fa-copy" aria-hidden="true"></i></button>
+            <button class="address-button" type="button" data-hero-copy title="Java adresini kopyala" aria-label="Java adresini kopyala"><span id="hero-address">oyna.robsarcade.online</span><i class="fa-regular fa-copy" aria-hidden="true"></i></button>
+            <button class="hero-platform-toggle" type="button" aria-label="Bedrock adresini göster" title="Bedrock adresini göster" aria-controls="hero-address" aria-pressed="false"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i></button>
           </div>
-          <div class="hero-platforms">Java &amp; Bedrock</div>
+          <div class="hero-platforms" id="hero-platform-label">Java Edition</div>
+          <span class="hero-copy-status" role="status" aria-live="polite"></span>
         </div>
       </div>
     </section>
@@ -89,5 +92,6 @@
   <script src="server-data.js?v=skyblock-1"></script>
   <script src="site-map.js?v=20261002-17"></script><script src="site-shell.js?v=20261002-24"></script>
   <script src="ui.js?v=20260926-5"></script>
+  <script src="home-connection.js?v=20261002-1"></script>
 </body>
 </html>

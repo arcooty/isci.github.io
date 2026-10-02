@@ -10,7 +10,7 @@ test('all guide footers use one final shared button stylesheet',()=>{
     if(!/class="(?:guide-pagination|game-guide-next)"/.test(html)) continue;
     count++;
     const styles=[...html.matchAll(/<link[^>]+rel="stylesheet"[^>]+href="([^"]+)"/g)].map(match=>match[1]);
-    assert.equal(styles.at(-1),'guide-navigation.css?v=20261002-23',file);
+    assert.equal(styles.at(-1),'guide-navigation.css?v=20261002-24',file);
     assert.equal(styles.filter(style=>style.startsWith('guide-navigation.css')).length,1,file);
     const nav=html.match(/<nav class="(?:guide-pagination|game-guide-next)"[\s\S]*?<\/nav>/)[0];
     assert.ok(nav.includes('href="'),file);
@@ -23,7 +23,8 @@ test('navigation colors, sizing and hidden terminal links have one contract',()=
   assert.ok(css.includes(':is(.guide-pagination,.game-guide-next)>a'));
   assert.ok(css.includes('background:#83e6a3'));
   assert.ok(css.includes('background:#77ddf2'));
-  assert.ok(css.includes('color:#000;'));
+  assert.equal((css.match(/color:#000!important;/g)||[]).length,3);
+  assert.ok(css.includes('color:inherit!important;'));
   assert.ok(css.includes('min-height:46px'));
   assert.ok(css.includes('>a[hidden] { display:none; }'));
 });

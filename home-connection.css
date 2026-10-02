@@ -1,0 +1,14 @@
+html[data-theme] body.home-page .hero-actions { display:grid; grid-template-columns:auto 300px 46px; gap:12px; align-items:center; }
+html[data-theme] body.home-page .hero-actions .address-button { width:100%; max-width:none; min-height:52px; }
+html[data-theme] body.home-page .hero-actions .address-button span { min-width:0; text-align:left; }
+html[data-theme] body.home-page .hero-actions .hero-platform-toggle { display:flex; align-items:center; justify-content:center; gap:4px; width:46px; max-width:none; height:46px; padding:6px; border:1px solid #718474; border-radius:4px; background:#17261eee; color:white; cursor:pointer; }
+html[data-theme] body.home-page .hero-platform-toggle>i:first-child { font-size:12px; }
+html[data-theme] body.home-page .hero-platform-toggle>i:last-child { font-size:16px; }
+html[data-theme] body.home-page .hero-platform-toggle:hover { background:#2b3d30; }
+html[data-theme] body.home-page .hero-platform-toggle:focus-visible { outline:3px solid var(--game-gold); outline-offset:3px; }
+html[data-theme] body.home-page .hero-copy-status { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+@media(max-width:600px) {
+  html[data-theme] body.home-page .hero-actions { grid-template-columns:minmax(0,1fr) 46px; width:min(100%,358px); margin-inline:auto; }
+  html[data-theme] body.home-page .hero-actions>.craft-button { grid-column:1/-1; width:100%; max-width:none; }
+  html[data-theme] body.home-page .hero-actions .address-button { font-size:12px; padding:12px; gap:8px; }
+}
