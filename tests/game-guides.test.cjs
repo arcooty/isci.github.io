@@ -14,8 +14,8 @@ test('all split game guides have canonical pages, topic navigation and shared st
     const html=read(file);
     assert.ok(html.includes('https://robsarcade.online/'+file),file+' canonical');
     assert.ok(html.includes('<h1>'+label+'</h1>'),file+' title');
-    assert.ok(html.includes('class="game-guide-toolbar"'),file+' navigation');
-    assert.ok(html.includes('game-guides.css?v=20261002-2'),file+' styles');
+    assert.ok(html.includes(game === 'village' ? 'class="chunky-nav ' : 'class="game-guide-toolbar"'),file+' navigation');
+    assert.ok(html.includes('game-guides.css?v=20261002-3'),file+' styles');
     assert.ok(html.includes('data-game="'+game+'"'),file+' palette');
     for (const [destination] of pages) assert.ok(html.includes('href="'+destination+'"'),file+' category '+destination);
     assert.ok(read('sitemap.xml').includes('/'+file),file+' sitemap');

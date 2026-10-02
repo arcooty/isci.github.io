@@ -67,7 +67,7 @@
     content.id = 'main-content'; content.tabIndex = -1;
     skip.addEventListener('click',event=>{ event.preventDefault(); content.focus({preventScroll:true}); content.scrollIntoView({block:'start',behavior:'instant'}); });
     content.querySelector('h1')?.classList.add('craft-page-title');
-    if (path !== 'index.html' && path !== 'survival.html' && !content.querySelector('.game-guide-toolbar,.game-hub-heading')) {
+    if (path !== 'index.html' && path !== 'survival.html' && !content.querySelector('.game-guide-toolbar,.game-hub-heading,.chunky-nav')) {
       const parent = path === 'players.html' ? ['survival.html#siralamalar',"Survival'a dön"] : path === 'join.html' ? ['servers.html','Oyunlara dön'] : path === 'order.html' ? ['store.html','Mağazaya dön'] : section && path !== section.href ? [section.href,section.name + ' bölümüne dön'] : ['index.html','Ana sayfaya dön'];
       const trail = document.createElement('nav'); trail.className = 'page-trail'; trail.setAttribute('aria-label','Geri dönüş ve sayfa konumu');
       trail.innerHTML = '<a class="parent-return" href="' + parent[0] + '">' + icon('arrow-left') + ' ' + parent[1] + '</a><span class="trail-divider" aria-hidden="true">/</span><span aria-current="page">' + (labels[path] || 'Sayfa') + '</span>';
@@ -76,27 +76,6 @@
         const local = document.createElement('nav'); local.className = 'section-navigation'; local.setAttribute('aria-label',section.name + ' bölümleri');
         local.innerHTML = section.pages.filter(([href]) => !href.includes('#') && href !== 'join.html').map(([href,label]) => link(href,label)).join('');
         trail.after(local);
-      }
-      if (path === 'store.html') {
-        const local = document.createElement('nav'); local.className = 'section-navigation section-navigation-sticky'; local.setAttribute('aria-label','VIP mağazası bölümleri');
-        local.innerHTML = [['paketler','VIP paketleri'],['karsilastirma','Karşılaştır'],['kitler','Kitler ve kasalar'],['teslimat','Teslimat']].map(([id,label]) => link('#'+id,label)).join('');
-        trail.after(local);
-        const anchors = [...local.querySelectorAll('a')];
-        const selectSection = selected => {
-          anchors.forEach(a=>a === selected ? a.setAttribute('aria-current','location') : a.removeAttribute('aria-current'));
-        };
-        const updateSection = () => selectSection(anchors.find(a=>a.getAttribute('href') === location.hash) || anchors[0]);
-        window.addEventListener('hashchange',updateSection); updateSection();
-        let scrollPending = false;
-        window.addEventListener('scroll',()=>{
-          if (scrollPending) return;
-          scrollPending=true;
-          requestAnimationFrame(()=>{
-            const boundary=local.getBoundingClientRect().bottom+140;
-            const passed=anchors.filter(a=>document.querySelector(a.getAttribute('href')).getBoundingClientRect().top <= boundary);
-            selectSection(passed.at(-1) || anchors[0]); scrollPending=false;
-          });
-        },{passive:true});
       }
     }
   }

@@ -35,11 +35,14 @@
       ['skyblock-minion.html','Tarım minyonu','seedling'],['skyblock-trade.html','Ekonomi ve ticaret','store'],
       ['skyblock-community.html','Topluluk','users'],['skyblock-vip.html','VIP hakları','gem'],['skyblock-access.html','Test erişimi','flask']
     ],
-    village: [['village-play.html','Oynanış ve kazanma','moon'],['village-roles.html','Roller','users'],['village-lobby.html','Lobi ve komutlar','compass']]
+    village: [['village-play.html','Oynanış','moon'],['village-roles.html','Roller','users'],['village-win.html','Kazanma','trophy'],['village-lobby.html','Lobi ve komutlar','compass'],['village-faq.html','Sorular','circle-question']]
   };
   const gameRoutes = {
     'skyblock.html': {baslangic:'skyblock-start.html#start',ada:'skyblock-island.html#island',gelisim:'skyblock-progress.html#progress',ticaret:'skyblock-trade.html#trade',topluluk:'skyblock-community.html#community',vip:'skyblock-vip.html#vip',test:'skyblock-access.html#access'},
-    'village.html': {'nasil-oynanir':'village-play.html#nasil-oynanir',roller:'village-roles.html#roller',kazanma:'village-play.html#kazanma',lobi:'village-lobby.html#lobi',sorular:'village-lobby.html#sorular'}
+    'village.html': {'nasil-oynanir':'village-play.html#nasil-oynanir',roller:'village-roles.html#roller',kazanma:'village-win.html#kazanma',lobi:'village-lobby.html#lobi',sorular:'village-faq.html#sorular'},
+    'village-play.html': {kazanma:'village-win.html#kazanma'},
+    'village-lobby.html': {sorular:'village-faq.html#sorular'},
+    'store.html': {karsilastirma:'store-compare.html#karsilastirma',kitler:'store-kits.html#kitler',teslimat:'store-delivery.html#teslimat'}
   };
   for (const id of ['roles-title','tab-koy','tab-kurt','tab-bagimsiz','team-village-title','team-wolf-title','team-solo-title']) gameRoutes['village.html'][id] = 'village-roles.html#'+id;
   gameRoutes['village.html']['countdown-title'] = 'village-lobby.html#countdown-title';
@@ -49,7 +52,7 @@
     {name:"Rob's Village", href:'village.html', pages:gameGuides.village.map(([href,label])=>[href,label])},
     {name:'Survival', href:'survival.html', pages:[['survival.html#baslangic','Oyun rehberi'],['survival.html#harita','Dünya haritası'],['survival.html#siralamalar','Sıralamalar'],['players.html','Oyuncu profilleri']]},
     {name:'Topluluk', href:'news.html', pages:[['news.html','Topluluk ve haberler'],['news.html#hakkimizda','Hakkımızda'],['staff.html','Ekibimiz']]},
-    {name:'VIP mağazası', href:'store.html', pages:[['store.html','VIP paketleri'],['store.html#karsilastirma','Hakları karşılaştır'],['store.html#kitler','Haftalık kitler']]},
+    {name:'VIP mağazası', href:'store.html', pages:[['store.html','Survival VIP paketleri'],['store-compare.html','Survival karşılaştırma'],['store-kits.html','Survival kitleri ve kasaları'],['store-skyblock.html','Skyblock VIP paketleri'],['store-skyblock-compare.html','Skyblock karşılaştırma'],['store-skyblock-kits.html','Skyblock kit durumu'],['store-delivery.html','Teslimat']]},
     {name:'Yardım', href:'help.html', pages:[['help.html','Destek merkezi'],['join.html','Oyuna katıl'],['rules.html','Kurallar'],['status.html','Sunucu durumu'],['punishments.html','Ceza sorgulama'],['appeal.html','Ceza itirazı'],['application.html','Yetkili başvurusu']]},
     {name:'Yasal', href:'help.html', pages:[['privacy.html','Gizlilik'],['terms.html','Kullanım ve satış şartları']]}
   ];

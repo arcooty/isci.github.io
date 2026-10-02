@@ -1,6 +1,6 @@
 (() => {
   const model = window.ARCADE_SITE;
-  if (document.body.dataset.gameHub) {
+  if (document.body.dataset.gameHub || document.body.dataset.routeHub) {
     const redirect = () => {
       const original = location.pathname.split('/').pop() + location.search + location.hash;
       const target = model.resolveHref(original);

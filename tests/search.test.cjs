@@ -18,7 +18,7 @@ test('command search opens the relevant topic or subsection',()=>{
   assert.equal(model.search('komut')[0].href,'survival.html#komutlar');
   assert.equal(model.search('/sethome')[0].href,'survival.html#arazi');
   assert.equal(model.search('jobs stats')[0].href,'survival.html#jobs-komutlar');
-  assert.equal(model.search('VIP kit')[0].href,'store.html#kitler');
+  assert.equal(model.search('VIP kit')[0].href,'store-kits.html#kitler');
   assert.equal(model.search('kasa oran')[0].href,'survival.html#crate-odds');
 });
 test('platform-specific searches open the correct connection panel',()=>{

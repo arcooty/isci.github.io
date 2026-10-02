@@ -49,7 +49,7 @@ test('homes, claim scope, manual starter and real daily quests are explained wit
 });
 
 test('store does not promise unavailable shops or cosmetic-only rewards', () => {
-  const store = read('store.html');
+  const store = read('store-kits.html');
   assert.ok(!store.includes('pazar dükkânı'));
   assert.ok(!store.includes('<th scope="row">Pazar dükkânı'));
   assert.ok(store.includes('Kasalar yalnızca kozmetik değildir'));

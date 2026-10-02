@@ -14,7 +14,7 @@
   <link rel="icon" href="assets/logo.png" type="image/png">
   <link rel="canonical" href="https://robsarcade.online/survival.html">
 <link rel="stylesheet" href="polish.css?v=20261002-1">
-<link rel="stylesheet" href="game-guides.css?v=20261002-2">
+<link rel="stylesheet" href="game-guides.css?v=20261002-3">
 </head>
 <body class="network-shell survival-hub">
   <nav></nav>
@@ -23,13 +23,13 @@
       <div><a class="text-link" href="servers.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Bütün oyunlar</a><h1>Survival</h1><p>Arazi koruma, meslekler ve oyuncu ticareti.</p></div>
       <a class="craft-button primary" href="join.html"><i class="fa-solid fa-play" aria-hidden="true"></i> Oyuna katıl</a>
     </div>
-    <nav class="hub-tabs" aria-label="Survival bölümleri">
+    <section id="genel" class="hub-panel" data-hub-panel="genel" aria-labelledby="topics-title">
+    <nav class="chunky-nav survival-sections" aria-label="Survival bölümleri">
       <a href="#genel" data-hub-tab="genel" aria-current="page" title="Survival genel bakış"><i class="fa-solid fa-house" aria-hidden="true"></i> Survival</a>
       <a href="#baslangic" data-hub-tab="rehber"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Oyun rehberi</a>
       <a href="#harita" data-hub-tab="harita"><i class="fa-solid fa-map" aria-hidden="true"></i> Harita</a>
       <a href="#siralamalar" data-hub-tab="siralamalar"><i class="fa-solid fa-trophy" aria-hidden="true"></i> Sıralamalar</a>
     </nav>
-    <section id="genel" class="hub-panel" data-hub-panel="genel" aria-labelledby="topics-title">
       <section class="hub-shortcuts" aria-labelledby="topics-title">
         <h2 id="topics-title">Rehber konuları</h2>
         <div class="topic-grid">
@@ -237,11 +237,13 @@
       </div>
     </section>
     <section id="harita" class="hub-panel" data-hub-panel="harita" aria-labelledby="map-title">
+      <a class="craft-button section-return" href="#genel"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Survival</a>
       <div class="hub-content-heading"><div><h2 id="map-title">Survival haritası</h2><p>Yerleşimleri ve keşfedilmiş bölgeleri gör. Oyuncu konumları yayınlanmaz.</p></div><a class="text-link" href="https://map.robsarcade.online/" target="_blank" rel="noopener">Tam ekran harita <i class="fa-solid fa-up-right-from-square" aria-hidden="true"></i></a></div>
       <div class="map-embed"><iframe data-src="https://map.robsarcade.online/" title="ArcaDe Craft Survival canlı haritası" allowfullscreen></iframe></div>
       <a class="text-link panel-return" href="#genel"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Survival'a dön</a>
     </section>
     <section id="siralamalar" class="hub-panel" data-hub-panel="siralamalar" aria-labelledby="ranking-title">
+      <a class="craft-button section-return" href="#genel"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Survival</a>
       <div class="hub-content-heading"><div><h2 id="ranking-title">Zirvede kim var?</h2><p>Ekonomi, meslek ve beceri sıralamaları.</p></div><a class="text-link" href="players.html">Oyuncu ara <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></a></div>
       <div class="leaderboard-controls"><div class="platform-select" role="tablist" aria-label="Liderlik kategorisi"><button type="button" role="tab" id="board-economy" aria-selected="true" aria-controls="board-panel" data-board-category="ekonomi">Ekonomi</button><button type="button" role="tab" id="board-jobs" aria-selected="false" aria-controls="board-panel" tabindex="-1" data-board-category="jobs">Meslekler</button><button type="button" role="tab" id="board-skills" aria-selected="false" aria-controls="board-panel" tabindex="-1" data-board-category="beceriler">Beceriler</button></div>
       <div class="leaderboard-filter" id="board-job-filter" hidden><label for="board-job">Meslek seç</label><select id="board-job"><option value="madenci">Madenci</option><option value="oduncu">Oduncu</option><option value="ciftci">Çiftçi</option><option value="avci">Avcı</option><option value="balikci">Balıkçı</option><option value="insaatci">İnşaatçı</option><option value="zanaatkar">Zanaatkar</option><option value="efsuncu">Efsuncu</option><option value="iksirci">İksirci</option><option value="kasif">Kaşif</option><option value="kazici">Kazıcı</option><option value="silahci">Silah Ustası</option></select></div>
@@ -251,8 +253,8 @@
     <noscript><p>Rehber konuları aşağıda okunabilir. Haritayı <a href="https://map.robsarcade.online/">ayrı sekmede açabilirsin</a>.</p></noscript>
   </main>
   <footer></footer>
-  <script src="site-map.js?v=20261002-2"></script>
-  <script src="site-shell.js?v=20261002-2"></script>
+  <script src="site-map.js?v=20261002-3"></script>
+  <script src="site-shell.js?v=20261002-3"></script>
   <script src="survival.js?v=20261002-1"></script>
   <script src="api-config.js"></script>
   <script src="leaderboard.js?v=20260926-5"></script>

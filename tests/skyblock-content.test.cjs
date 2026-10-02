@@ -29,7 +29,7 @@ test('separate economies, feature limitations and actual commands are documented
   const page=model.gameGuides.skyblock.map(([file])=>read(file)).join('');
   for(const text of ['500 oyun içi TL','32 blokla','4 kişiyle','20 tek seferlik','16 kişisel','3 günlük ve 4 haftalık','5.000 TL','5</td><td>10</td><td>15</td><td>20','/skytakas','/shop','/satislimiti','/tarimminyon kaldır']) assert.ok(page.includes(text),text);
   for(const text of ['Alan yüklü değilken üretim yapmaz','otomatik bina yerleştirmez','ayrı haftalık VIP kiti tanımlı değildir','Survival bakiyen bu dünyaya taşınmaz']) assert.ok(page.includes(text),text);
-  assert.ok(read('store.html').includes('Skyblock testindeki VIP haklarını ayrı incele'));
+  assert.ok(read('store.html').includes('href="store-skyblock.html"'));
   assert.ok(read('survival.html').includes('/takasoyuncu'));
 });
 

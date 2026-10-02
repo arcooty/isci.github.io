@@ -4,10 +4,12 @@ const path = require('node:path');
 const vm = require('node:vm');
 const {test} = require('node:test');
 const root = path.join(__dirname,'..');
-const pages = Object.fromEntries(['village','village-play','village-roles','village-lobby'].map(name => [name,fs.readFileSync(path.join(root,name+'.html'),'utf8')]));
+const pages = Object.fromEntries(['village','village-play','village-roles','village-win','village-lobby','village-faq'].map(name => [name,fs.readFileSync(path.join(root,name+'.html'),'utf8')]));
 const html = pages['village-roles'];
 const play = pages['village-play'];
+const win = pages['village-win'];
 const lobby = pages['village-lobby'];
+const faq = pages['village-faq'];
 const source = fs.readFileSync(path.join(root,'village.js'),'utf8');
 
 test('every individual role hash opens its role and selects its owning team', () => {
@@ -179,14 +181,14 @@ test('all verified role descriptions and limits survive the split unchanged', ()
   assert.deepEqual(actual,verifiedRoleDescriptions);
 });
 
-test('hub exposes three separate guides, gameplay imagery and legacy routing hook', () => {
+test('hub exposes six large navigation buttons, gameplay imagery and legacy routing hook', () => {
   const hub = pages.village;
   assert.match(hub,/<h1>Rob's Village<\/h1>/);
   assert.match(hub,/data-game-hub="village"/);
-  assert.match(hub,/class="topic-grid"/);
-  assert.equal((hub.match(/class="topic-card"/g) || []).length,3);
-  for (const page of ['village-play','village-roles','village-lobby']) {
-    assert.match(hub,new RegExp('class="topic-card" href="'+page+'\\.html"'));
+  assert.match(hub,/class="chunky-nav /);
+  assert.equal((hub.match(/aria-current="page"/g) || []).length,1);
+  for (const page of ['village-play','village-roles','village-win','village-lobby','village-faq']) {
+    assert.match(hub,new RegExp('href="'+page+'\\.html"'));
   }
   assert.match(hub,/robs-village-gameplay-wide\.webp" width="1920" height="620"/);
   assert.match(hub,/<img src="assets\/robs-village-gameplay\.webp"[^>]*width="1536" height="960"/);
@@ -199,27 +201,26 @@ test('guides share standard shell, themes, category menus and literal headings',
     assert.match(page,/<body class="network-shell game-guide-page[^"]*" data-game="village"/);
     assert.match(page,/theme\.js\?v=20260926-5/);
     for (const css of ['network','craft','theme','village']) assert.match(page,new RegExp(css+'\\.css\\?v='));
-    assert.match(page,/polish\.css\?v=20261002-1"[\s\S]*?game-guides\.css\?v=20261002-2"/);
+    assert.match(page,/polish\.css\?v=20261002-1"[\s\S]*?game-guides\.css\?v=20261002-3"/);
     for (const script of ['site-map','site-shell','game-guide']) assert.match(page,new RegExp(script+'\\.js\\?v='));
-    assert.match(page,/game-guide\.js\?v=20261002-2/);
+    assert.match(page,/game-guide\.js\?v=20261002-3/);
     assert.match(page,new RegExp('rel="canonical" href="https://robsarcade.online/'+name+'\\.html"'));
     assert.equal((page.match(/<h1>/g) || []).length,1);
     assert.doesNotMatch(page,/class="eyebrow"/);
     if (name === 'village') continue;
-    assert.match(page,/class="game-guide-toolbar"[\s\S]*?href="village\.html"/);
+    assert.match(page,/class="chunky-nav "[\s\S]*?href="village\.html"/);
     assert.match(page,/class="game-guide-heading"/);
     assert.match(page,/class="game-guide-content"/);
-    assert.match(page,/<details class="game-guide-menu"><summary>/);
-    for (const guide of ['village-play','village-roles','village-lobby']) assert.match(page,new RegExp('href="'+guide+'\\.html"'));
+    for (const guide of ['village-play','village-roles','village-win','village-lobby','village-faq']) assert.match(page,new RegExp('href="'+guide+'\\.html"'));
     assert.match(page,new RegExp('href="'+name+'\\.html" aria-current="page"'));
   }
 });
 
 test('win conditions retain village, wolf, arsonist and special jester rules', () => {
-  assert.match(play,/Kurtlar ve bağımsız oyuncular elendiğinde köy takımı kazanır/);
-  assert.match(play,/diğer bütün yaşayan oyuncuların toplamına eşit veya daha fazla/);
-  assert.match(play,/Kundakçı herkes elendikten sonra tek başına kalırsa kazanır/);
-  assert.match(play,/Soytarının yer aldığı özel maçlarda ise oylamayla idam edilmesi/);
+  assert.match(win,/Kurtlar ve bağımsız oyuncular elendiğinde köy takımı kazanır/);
+  assert.match(win,/diğer bütün yaşayan oyuncuların toplamına eşit veya daha fazla/);
+  assert.match(win,/Kundakçı herkes elendikten sonra tek başına kalırsa kazanır/);
+  assert.match(win,/Soytarının yer aldığı özel maçlarda ise oylamayla idam edilmesi/);
 });
 
 test('lobby preserves countdown, map voting, reconnect, fair play and command semantics', () => {
@@ -232,9 +233,9 @@ test('lobby preserves countdown, map voting, reconnect, fair play and command se
   assert.match(lobby,/Oy verilmezse hazır haritalardan biri rastgele seçilir/);
   assert.match(lobby,/haritalar eşitse aralarından rastgele seçim/);
   assert.match(lobby,/oyuncu sayısına uygun ve kurulumu tamamlanmış haritalar/);
-  assert.match(lobby,/geri dönmek için 90 saniyelik süresi vardır/);
-  assert.match(lobby,/yeniden bağlanamazsan oyundan elenirsin; çıkış yapmak maçı durdurmaz/);
-  assert.match(lobby,/Devam eden maça oyuncu olarak eklenmezsin/);
+  assert.match(faq,/geri dönmek için 90 saniyelik süresi vardır/);
+  assert.match(faq,/yeniden bağlanamazsan oyundan elenirsin; çıkış yapmak maçı durdurmaz/);
+  assert.match(faq,/Devam eden maça oyuncu olarak eklenmezsin/);
   assert.match(lobby,/Discord veya özel mesajlarla rolleri ifşa etme/);
   assert.match(lobby,/Medyumun ölülerle konuşma yeteneği/);
   const commands = {menu:'Lobide oyun menüsünü açar.',maps:'Harita kataloğunu açar.',vote:'Aktif gündüz oyuncu oylamasını açar.',spectate:'Lobide oyuncu ve seyirci durumunu değiştirir.'};
@@ -279,9 +280,8 @@ test('role catalogue contains all 17 implemented roles with no-JS content availa
   assert.equal((html.match(/class="village-role"/g) || []).length,roles.length);
   for (const role of roles) assert.match(html,new RegExp('<details class="village-role" id="rol-'+role+'"'));
   assert.doesNotMatch(html,/<section[^>]+class="village-role-panel[^>]+hidden/);
-  for (const [page,ids] of [[play,['nasil-oynanir','kazanma']],[html,['roller']],[lobby,['lobi','sorular','komutlar']]]) {
+  for (const [page,ids] of [[play,['nasil-oynanir']],[win,['kazanma']],[html,['roller']],[lobby,['lobi','komutlar']],[faq,['sorular']]]) {
     for (const id of ids) {
-      assert.match(page,new RegExp('href="#'+id+'"'));
       assert.match(page,new RegExp('id="'+id+'"'));
     }
   }
@@ -291,7 +291,7 @@ test('role caveats reflect implemented abilities instead of older generic descri
   assert.match(html,/Aura Gözcüsü[\s\S]*?doğrudan rolünü öğrenirsin/);
   assert.match(html,/Hedef bir kurt veya Kundakçıysa o elenir/);
   assert.match(html,/Soytarı mevcut otomatik maç dağılımında bulunmaz/);
-  assert.match(play,/diğer bütün yaşayan oyuncuların toplamına eşit veya daha fazla/);
+  assert.match(win,/diğer bütün yaşayan oyuncuların toplamına eşit veya daha fazla/);
 });
 
 function harness(hash = '',pendingFonts = false,missing = null) {
