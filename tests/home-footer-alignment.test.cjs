@@ -17,4 +17,7 @@ test('mobile community blocks center and footer tracks can shrink',()=>{
   assert.ok(read('home-network.css').includes('.craft-button { justify-self:center; }'));
   assert.ok(read('polish.css').includes('grid-template-columns:minmax(0,1fr); padding:32px 22px 24px;'));
   assert.ok(read('polish.css').includes('.footer-bottom>*) { min-width:0; max-width:100%; overflow-wrap:anywhere; }'));
+  assert.ok(read('polish.css').includes('flex-direction:column; flex-wrap:nowrap;'));
+  assert.ok(read('polish.css').includes('.footer-bottom>span:last-child { flex-basis:auto; width:100%; }'));
+  assert.ok(read('home-network.css').includes('.games-section .section-heading>.craft-button { justify-self:end; }'));
 });

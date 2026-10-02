@@ -220,7 +220,7 @@ test('guides share standard shell, themes, category menus and literal headings',
     assert.match(page,/<body class="network-shell game-guide-page[^"]*" data-game="village"/);
     assert.match(page,/theme\.js\?v=20261002-22/);
     for (const css of ['network','craft','theme','village']) assert.match(page,new RegExp(css+'\\.css\\?v='));
-    assert.match(page,/polish\.css\?v=20261002-26"[\s\S]*?game-guides\.css\?v=20261002-23"/);
+    assert.match(page,/polish\.css\?v=20261002-27"[\s\S]*?game-guides\.css\?v=20261002-23"/);
     for (const script of ['site-map','site-shell','game-guide']) assert.match(page,new RegExp(script+'\\.js\\?v='));
     assert.match(page,/game-guide\.js\?v=20261002-3/);
     assert.match(page,new RegExp('rel="canonical" href="https://robsarcade.online/'+name+'\\.html"'));

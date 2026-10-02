@@ -6,7 +6,7 @@ const root=path.join(__dirname,'..');
 const read=file=>fs.readFileSync(path.join(root,file),'utf8');
 test('status presentation is scoped to the homepage and loads after shared styles',()=>{
   const html=read('index.html');
-  assert.ok(html.indexOf('home-status.css?v=20261002-6')>html.indexOf('polish.css?v=20261002-26'));
+  assert.ok(html.indexOf('home-status.css?v=20261002-6')>html.indexOf('polish.css?v=20261002-27'));
   assert.ok(html.includes('id="sunucu-durumu"'));
   const css=read('home-status.css');
   assert.ok(css.includes('body.home-page .home-status-band'));

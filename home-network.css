@@ -15,6 +15,8 @@ html[data-theme] body.home-page .community-section .community-editorial { justif
 @media(max-width:600px) {
   html[data-theme] body.home-page .community-section :is(.community-invitation,.community-editorial) { justify-items:center; text-align:center; }
   html[data-theme] body.home-page .community-section .craft-button { justify-self:center; }
+  html[data-theme] body.home-page .games-section .section-heading { display:grid; grid-template-columns:minmax(0,1fr); gap:18px; }
+  html[data-theme] body.home-page .games-section .section-heading>.craft-button { justify-self:end; }
 }
 html[data-theme] body.home-page .player-hub h2 {
   margin:0 0 28px;
