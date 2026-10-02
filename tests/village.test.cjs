@@ -199,7 +199,7 @@ test('Village hub exposes five Skyblock-style topics, gameplay imagery and legac
 
 test('Village topic pages share the Skyblock toolbar and footer navigation', () => {
   for (const [name,page] of Object.entries(pages)) {
-    assert.match(page, /village-navigation\.css\?v=20261002-24/);
+    assert.match(page, /village-navigation\.css\?v=20261003-1/);
     if(name==='village') continue;
     assert.match(page, /class="game-guide-toolbar"/);
     assert.match(page, /<strong>Rob's Village<\/strong>/);
