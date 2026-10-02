@@ -21,5 +21,6 @@ test('status lists both endpoints and the common shell omits redundant connectio
   assert.ok(html.includes('<code>bedrock.robsarcade.online</code><span>Port: 6426</span>'));
   assert.ok(html.includes('<dt>Java adresi</dt>'));
   assert.ok(html.includes('<dt>Bedrock adresi</dt>'));
-  assert.ok(read('site-shell.js').includes("!['index.html','survival.html','join.html','servers.html'].includes(path)"));
+  const exclusions=read('site-shell.js').match(/if \(!\[([^\]]+)\]\.includes\(path\)/)[1];
+  for(const page of ['index','survival','join','servers','privacy','terms','sitemap']) assert.ok(exclusions.includes("'"+page+".html'"));
 });
