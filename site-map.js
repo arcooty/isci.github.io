@@ -26,7 +26,7 @@
     'map.html': 'survival.html#harita',
     'leaderboard.html': 'survival.html#siralamalar',
     'ranks.html': 'store.html#paketler',
-    'about.html': 'news.html#hakkimizda'
+    'about.html': 'community.html#hakkimizda'
   };
   const gameGuides = {
     skyblock: [
@@ -38,6 +38,7 @@
     village: [['village-play.html','Oynanış','moon'],['village-roles.html','Roller','users'],['village-win.html','Kazanma','trophy'],['village-lobby.html','Lobi ve komutlar','compass'],['village-faq.html','Sorular','circle-question']]
   };
   const gameRoutes = {
+    'news.html': {hakkimizda:'community.html#hakkimizda'},
     'skyblock.html': {baslangic:'skyblock-start.html#start',ada:'skyblock-island.html#island',gelisim:'skyblock-progress.html#progress',ticaret:'skyblock-trade.html#trade',topluluk:'skyblock-community.html#community',vip:'skyblock-vip.html#vip',test:'skyblock-access.html#access'},
     'village.html': {'nasil-oynanir':'village-play.html#nasil-oynanir',roller:'village-roles.html#roller',kazanma:'village-win.html#kazanma',lobi:'village-lobby.html#lobi',sorular:'village-faq.html#sorular'},
     'village-play.html': {kazanma:'village-win.html#kazanma'},
@@ -51,7 +52,7 @@
     {name:'Skyblock', href:'skyblock.html', pages:gameGuides.skyblock.map(([href,label])=>[href,label])},
     {name:"Rob's Village", href:'village.html', pages:gameGuides.village.map(([href,label])=>[href,label])},
     {name:'Survival', href:'survival.html', pages:[['survival.html#baslangic','Oyun rehberi'],['survival.html#harita','Dünya haritası'],['survival.html#siralamalar','Sıralamalar'],['players.html','Oyuncu profilleri']]},
-    {name:'Topluluk', href:'news.html', pages:[['news.html','Topluluk ve haberler'],['news.html#hakkimizda','Hakkımızda'],['staff.html','Ekibimiz']]},
+    {name:'Topluluk', href:'community.html', pages:[['community.html','Topluluk'],['news.html','Haberler'],['staff.html','Ekibimiz']]},
     {name:'VIP mağazası', href:'store.html', pages:[['store.html','Survival VIP paketleri'],['store-compare.html','Survival karşılaştırma'],['store-kits.html','Survival kitleri ve kasaları'],['store-skyblock.html','Skyblock VIP paketleri'],['store-skyblock-compare.html','Skyblock karşılaştırma'],['store-skyblock-kits.html','Skyblock kit durumu'],['store-delivery.html','Teslimat']]},
     {name:'Yardım', href:'help.html', pages:[['help.html','Destek merkezi'],['join.html','Oyuna katıl'],['rules.html','Kurallar'],['status.html','Sunucu durumu'],['punishments.html','Ceza sorgulama'],['appeal.html','Ceza itirazı'],['application.html','Yetkili başvurusu']]},
     {name:'Yasal', href:'help.html', pages:[['privacy.html','Gizlilik'],['terms.html','Kullanım ve satış şartları']]}
@@ -109,7 +110,8 @@
     ['survival.html#harita','Survival haritası','Survival','map','bluemap dynmap dünya yerleşim'],
     ['survival.html#siralamalar','Liderlik tabloları','Survival','trophy','sıralama leaderboard ekonomi jobs beceriler meslek en iyi oyuncu'],
     ['players.html','Oyuncu profilleri','Survival','user','oyuncu ara skin rütbe oynama süresi profil istatistik'],
-    ['news.html','Topluluk ve haberler','Topluluk','newspaper','haber duyuru güncelleme discord etkinlik'],
+    ['community.html','Topluluk','Topluluk','users','discord oyuncu sohbet etkinlik hakkımızda'],
+    ['news.html','Haberler','Topluluk','newspaper','haber duyuru güncelleme'],
     ['staff.html','Ekibimiz','Topluluk','users','personel yetkili admin moderatör helper ekip'],
     ['help.html','Destek merkezi','Yardım','life-ring','yardım destek hesap şifre sorun talep ticket'],
     ['status.html','Sunucu durumu','Yardım','signal','sunucu çevrimiçi kapalı bakım bağlantı durum'],

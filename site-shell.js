@@ -4,7 +4,7 @@
   const path = location.pathname.split('/').pop() || 'index.html';
   const section = sections.find(group => group.pages.some(([href]) => href.split('#')[0] === path));
   const labels = Object.fromEntries(sections.flatMap(group => group.pages).map(([href,label]) => [href.split('#')[0],label]));
-  Object.assign(labels, {'skyblock.html':'Skyblock','survival.html':'Survival','news.html':'Topluluk','store.html':'VIP mağazası','order.html':'Sipariş durumu','sitemap.html':'Site haritası'});
+  Object.assign(labels, {'skyblock.html':'Skyblock','survival.html':'Survival','community.html':'Topluluk','news.html':'Haberler','store.html':'VIP mağazası','order.html':'Sipariş durumu','sitemap.html':'Site haritası'});
   document.body.classList.add('network-shell');
   document.body.dataset.page = path.replace('.html','');
   const icon = name => '<i class="fa-solid fa-' + name + '" aria-hidden="true"></i>';
@@ -15,7 +15,7 @@
   nav.className = 'site-nav'; nav.setAttribute('aria-label','Ana menü');
   nav.innerHTML = '<div class="site-nav-inner">' + brand + '<div class="site-links" id="site-links">' + link('index.html','Ana sayfa') +
     '<div class="nav-menu"><button type="button" aria-expanded="false" aria-controls="games-dropdown"' + (['Oyunlar','Survival','Skyblock',"Rob's Village"].includes(section?.name) ? ' class="is-current"' : '') + '>Oyunlar ' + icon('chevron-down') + '</button><div class="nav-dropdown" id="games-dropdown">' + link('survival.html','Survival') + link('skyblock.html','Skyblock') + link('village.html',"Rob's Village") + link('servers.html','Bütün oyunlar') + '</div></div>' +
-    link('news.html','Topluluk') + link('store.html','VIP mağazası') + link('help.html','Yardım') + '<a class="nav-play" href="join.html">' + icon('play') + ' Oyuna katıl</a></div><div class="nav-tools"><button class="site-search-button" type="button" aria-label="Sitede ara" title="Sitede ara" aria-haspopup="dialog" aria-controls="site-search">' + icon('magnifying-glass') + '</button><button class="theme-toggle" type="button" aria-label="Açık temaya geç" title="Açık temaya geç">' + icon('sun') + '</button><button class="mobile-nav-button" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="site-links">' + icon('bars') + '</button></div></div>';
+    link('community.html','Topluluk') + link('store.html','VIP mağazası') + link('help.html','Yardım') + '<a class="nav-play" href="join.html">' + icon('play') + ' Oyuna katıl</a></div><div class="nav-tools"><button class="site-search-button" type="button" aria-label="Sitede ara" title="Sitede ara" aria-haspopup="dialog" aria-controls="site-search">' + icon('magnifying-glass') + '</button><button class="theme-toggle" type="button" aria-label="Açık temaya geç" title="Açık temaya geç">' + icon('sun') + '</button><button class="mobile-nav-button" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="site-links">' + icon('bars') + '</button></div></div>';
   const themeButton = nav.querySelector('.theme-toggle');
   const renderTheme = () => {
     const dark = window.ARCADE_THEME.get() === 'dark';
@@ -43,7 +43,7 @@
     element.hidden = !range.notice;
   });
   // Keep the primary section selected on its tools and support forms too.
-  const primaryHref = section?.name === 'Topluluk' ? 'news.html' : section?.name === 'VIP mağazası' || path === 'order.html' ? 'store.html' : section?.name === 'Yardım' ? 'help.html' : null;
+  const primaryHref = section?.name === 'Topluluk' ? 'community.html' : section?.name === 'VIP mağazası' || path === 'order.html' ? 'store.html' : section?.name === 'Yardım' ? 'help.html' : null;
   if (primaryHref) nav.querySelector('.site-links > a[href="' + primaryHref + '"]')?.classList.add('is-current');
   if (path === 'players.html') nav.querySelector('.nav-menu > button').classList.add('is-current');
   const skip = document.createElement('a'); skip.className = 'skip-link'; skip.href = '#main-content'; skip.textContent = 'İçeriğe geç'; nav.before(skip);
@@ -95,7 +95,7 @@
   footer.className = 'site-footer';
   const groups = [
     ['Oyna',[['survival.html','Survival'],['skyblock.html','Skyblock'],['village.html',"Rob's Village"],['join.html','Oyuna katıl']]],
-    ['Topluluk',[['news.html','Haberler ve topluluk'],['staff.html','Ekibimiz'],['store.html','VIP mağazası']]],
+    ['Topluluk',[['community.html','Topluluk'],['news.html','Haberler'],['staff.html','Ekibimiz']]],
     ['Yardım',[['help.html','Destek merkezi'],['rules.html','Kurallar'],['status.html','Sunucu durumu']]]
   ];
   footer.innerHTML = '<div class="footer-intro">' + brand + '<a href="' + discord + '" target="_blank" rel="noopener"><i class="fa-brands fa-discord" aria-hidden="true"></i> Discord</a></div><div class="site-footer-inner">' + groups.map(([title,pages]) => '<section><h2>' + title + '</h2>' + pages.map(([href,text]) => link(href,text)).join('') + '</section>').join('') + '</div><div class="footer-bottom"><span>© 2026 ArcaDe Craft</span><div>' + link('sitemap.html','Site haritası') + link('privacy.html','Gizlilik') + link('terms.html','Kullanım şartları') + '</div><span>Mojang veya Microsoft ile bağlantılı değildir.</span></div>';
