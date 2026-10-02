@@ -18,7 +18,7 @@
     'features.html': 'survival.html#baslangic',
     'survival-systems.html': 'survival.html#baslangic',
     'claims.html': 'survival.html#arazi',
-    'jobs.html': 'survival.html#meslekler',
+    'jobs.html': 'survival-jobs.html#jobs-meslekler',
     'quests.html': 'survival.html#gorevler',
     'economy.html': 'survival.html#ekonomi',
     'commands.html': 'survival.html#komutlar',
@@ -38,6 +38,7 @@
     village: [['village-play.html','Oynanış','moon'],['village-roles.html','Roller','users'],['village-win.html','Kazanma','trophy'],['village-lobby.html','Lobi ve komutlar','compass'],['village-faq.html','Sorular','circle-question']]
   };
   const gameRoutes = {
+    'survival.html': {meslekler:'survival-jobs.html#jobs-meslekler', 'jobs-meslekler':'survival-jobs.html#jobs-meslekler', 'jobs-sistem':'survival-jobs-progress.html#jobs-sistem', 'jobs-komutlar':'survival-jobs-commands.html#jobs-komutlar'},
     'news.html': {hakkimizda:'community.html#hakkimizda'},
     'skyblock.html': {baslangic:'skyblock-start.html#start',ada:'skyblock-island.html#island',gelisim:'skyblock-progress.html#progress',ticaret:'skyblock-trade.html#trade',topluluk:'skyblock-community.html#community',vip:'skyblock-vip.html#vip',test:'skyblock-access.html#access'},
     'village.html': {'nasil-oynanir':'village-play.html#nasil-oynanir',roller:'village-roles.html#roller',kazanma:'village-win.html#kazanma',lobi:'village-lobby.html#lobi',sorular:'village-faq.html#sorular'},
