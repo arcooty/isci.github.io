@@ -25,3 +25,10 @@ test('support content does not repeat destinations already in the section menu',
   assert.match(list,/href="store-delivery\.html"/);
   assert.equal([...html.matchAll(/<details>/g)].length,4);
 });
+
+test('rules retain every topic and bookmark without a redundant local navigation strip',()=>{
+  const html=read('rules.html');
+  assert.doesNotMatch(html, /class="page-index"|aria-label="Kural konuları"/);
+  for(const id of ['sohbet','oyun','hesap']) assert.match(html,new RegExp('<section id="'+id+'"'));
+  assert.equal([...html.matchAll(/<li>/g)].length,11);
+});
