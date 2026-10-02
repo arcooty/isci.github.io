@@ -1,0 +1,215 @@
+/* Shared Minecraft presentation; game and service logic live in their own files. */
+:root {
+  --accent:#176641; --theme-link:#176641; --paper:#202821; --muted:#56645a;
+  --line:#cfd8d0; --panel:#fff; --site-bg:#f4f7f3; --surface:#fff;
+  --surface-raised:#eaf0e9; --ink:#202821; --quiet:#56645a;
+  --game-green:#83e6a3; --game-cyan:#77ddf2; --game-pink:#f3a1cc; --game-gold:#ffd36b;
+}
+:root[data-theme=dark] {
+  --accent:#83e6a3; --theme-link:#83e6a3; --paper:#f5f7f2; --muted:#b7c3b9;
+  --line:#3b493f; --panel:#212923; --site-bg:#171c19; --surface:#212923;
+  --surface-raised:#2a352d; --ink:#f5f7f2; --quiet:#b7c3b9;
+}
+body[data-page="skyblock"] { --accent:#14758a; }
+body[data-page="village"] { --accent:#a63569; }
+body[data-page="store"],body[data-page="order"] { --accent:#855900; }
+html[data-theme=dark] body[data-page="skyblock"] { --accent:#77ddf2; }
+html[data-theme=dark] body[data-page="village"] { --accent:#f3a1cc; }
+html[data-theme=dark] body[data-page="store"],html[data-theme=dark] body[data-page="order"] { --accent:#ffd36b; }
+html,html[data-theme=dark],html[data-theme=light] { background:var(--site-bg); }
+html[data-theme] body.network-shell { --theme-link:var(--accent); background:var(--site-bg); color:var(--ink); font-family:Inter,sans-serif; }
+html[data-theme] body.network-shell :focus-visible { outline-color:var(--accent); }
+html[data-theme] body.network-shell :is(h1,h2,h3,h4) { text-wrap:balance; }
+html[data-theme] body.network-shell p { text-wrap:pretty; }
+html[data-theme] body.network-shell :is(a,button,input,select,textarea) { -webkit-tap-highlight-color:transparent; }
+html[data-theme] body.network-shell .site-nav { background:var(--surface); border-bottom:3px solid var(--game-green); backdrop-filter:none; }
+html[data-theme] body.network-shell .site-brand { font-size:28px; }
+html[data-theme] body.network-shell .site-links a,html[data-theme] body.network-shell .nav-menu>button { color:var(--quiet); border-radius:4px; }
+html[data-theme] body.network-shell .site-links a:hover,html[data-theme] body.network-shell .site-links a[aria-current=page],html[data-theme] body.network-shell .nav-menu>button.is-current { color:var(--accent); box-shadow:inset 0 -3px var(--accent); }
+html[data-theme] body.network-shell .site-links .nav-play,html[data-theme] body.network-shell .site-links .nav-play:hover { background:var(--game-gold); color:#302508; box-shadow:inset 0 -3px #b78b34; }
+html[data-theme] body.network-shell :is(.nav-dropdown,.site-search,.site-search-input,.mobile-nav-button,.theme-toggle) { background:var(--surface); border-color:var(--line); color:var(--ink); }
+html[data-theme] body.network-shell .nav-dropdown a:hover { background:var(--surface-raised); color:var(--accent); }
+html[data-theme] body.network-shell .nav-dropdown a:nth-child(1) i { color:#42b96c; }
+html[data-theme] body.network-shell .nav-dropdown a:nth-child(2) i { color:#23b6d4; }
+html[data-theme] body.network-shell .nav-dropdown a:nth-child(3) i { color:#dd70a7; }
+html[data-theme] body.network-shell .page-head { max-width:none; padding:8px 0 28px; border-bottom:3px solid var(--accent); }
+html[data-theme] body.network-shell .page-head h1,html[data-theme] body.network-shell .hub-masthead h1.craft-page-title { font-size:52px; line-height:1.1; margin:0 0 12px; }
+html[data-theme] body.network-shell .page-head p { max-width:760px; margin:8px 0; color:var(--quiet); }
+html[data-theme] body.network-shell .page-trail { margin-bottom:20px; }
+html[data-theme] body.network-shell :is(.text-link,.parent-return,.command code,.guide-location a,.guide-pagination a,.start-steps li::before,.section-title>i) { color:var(--accent); }
+html[data-theme] body.network-shell .craft-button,html[data-theme] body.network-shell .about-actions a,html[data-theme] body.network-shell .address-button { border-radius:4px; min-height:46px; box-shadow:inset 0 -3px #00000018; }
+html[data-theme] body.network-shell .craft-button.primary,html[data-theme] body.network-shell .about-actions a:first-child { background:var(--game-green); color:#15321e; border-color:var(--game-green); box-shadow:inset 0 -3px #3e9a60; }
+html[data-theme] body.network-shell .craft-button.primary:hover,html[data-theme] body.network-shell .about-actions a:first-child:hover { background:#a0efb9; color:#15321e; }
+html[data-theme] body.network-shell .discord-button { background:#626eea; color:#fff; border-color:#626eea; box-shadow:inset 0 -3px #3c47a7; }
+html[data-theme] body.network-shell .discord-button:hover { background:#747ff2; color:#fff; }
+html[data-theme] body.network-shell .craft-section { padding-top:52px; padding-bottom:52px; }
+html[data-theme] body.network-shell .craft-section h2 { font-size:36px; }
+
+/* Leave the central NPCs visible, with the controls on the foreground paving. */
+html[data-theme] body.network-shell .craft-hero { margin-top:78px; height:calc(100svh - 150px); min-height:510px; max-height:710px; padding:34px 28px; align-items:stretch; }
+html[data-theme] body.network-shell .craft-hero-image { object-position:center 52%; }
+html[data-theme] body.network-shell .craft-hero-shade { background:#10181326; }
+html[data-theme] body.network-shell .craft-hero-inner { display:flex; align-items:stretch; margin:0 auto; }
+html[data-theme] body.network-shell .craft-hero-copy { display:flex; flex-direction:column; align-items:center; width:100%; text-align:center; }
+html[data-theme] body.network-shell .craft-hero h1.craft-page-title { color:#fff!important; font-size:76px; line-height:1; margin:0 0 6px; text-shadow:0 3px 0 #17261e,0 0 18px #17261e; }
+html[data-theme] body.network-shell .hero-description { color:#fff; font-weight:600; margin:0; text-shadow:0 1px 4px #102518; }
+html[data-theme] body.network-shell .hero-actions { margin-top:auto; justify-content:center; }
+html[data-theme] body.network-shell .hero-actions .primary { background:var(--game-gold); color:#302508; border-color:var(--game-gold); box-shadow:inset 0 -3px #b78b34; }
+html[data-theme] body.network-shell .hero-actions .address-button { background:#17261eee; color:white; border-color:#718474; }
+html[data-theme] body.network-shell .hero-platforms { margin-top:10px; color:#fff; }
+html[data-theme] body.network-shell .hero-next { display:none; }
+html[data-theme] body.network-shell .home-status-band { background:var(--surface); border-bottom:1px solid var(--line); }
+html[data-theme] body.network-shell .floating-status { max-width:1184px; margin:auto; width:auto; display:grid; grid-template-columns:1.05fr .7fr 1.5fr auto; gap:24px; align-items:center; padding:22px 28px; border:0; border-radius:0; background:none; box-shadow:none; transform:none; animation:none; color:var(--ink); }
+html[data-theme] body.network-shell .floating-status-head { display:block; padding:0; border:0; }
+html[data-theme] body.network-shell .floating-status-head h2 { color:var(--ink); font-size:20px; }
+html[data-theme] body.network-shell .floating-status-head i { color:var(--accent); }
+html[data-theme] body.network-shell .live-state { margin-top:6px; color:var(--quiet); }
+html[data-theme] body.network-shell .floating-status-players { margin:0; display:block; color:var(--quiet); }
+html[data-theme] body.network-shell .floating-status-players strong { display:block; color:var(--ink); font-size:25px; }
+html[data-theme] body.network-shell .floating-status-players small { color:var(--quiet); }
+html[data-theme] body.network-shell .floating-status .capacity-track { display:none; }
+html[data-theme] body.network-shell .floating-status .status-facts { padding:0; margin:0; border:0; color:var(--quiet); }
+html[data-theme] body.network-shell .floating-status .status-facts dd { color:var(--ink); }
+html[data-theme] body.network-shell .floating-status .status-detail { padding:0; border:0; color:var(--accent); font-size:12px; }
+html[data-theme] body.network-shell .floating-status .section-note { grid-column:1/-1; margin:0; }
+
+/* Whole-card navigation, bright game surfaces, real server images. */
+html[data-theme] body.network-shell .tile-games { gap:18px; }
+html[data-theme] body.network-shell .tile-games .game-poster { --tile:#83e6a3; display:grid; grid-template-columns:1fr 1fr; min-height:218px; background:var(--tile); color:#15321e; border:0; border-radius:6px; box-shadow:inset 0 -4px #00000020; overflow:hidden; transition:box-shadow .15s; }
+html[data-theme] body.network-shell .tile-games .skyblock-poster { --tile:#77ddf2; color:#15323a; }
+html[data-theme] body.network-shell .tile-games .village-poster { --tile:#f3a1cc; color:#382039; }
+html[data-theme] body.network-shell .tile-games .poster-copy { padding:24px 18px; border:0; background:none; }
+html[data-theme] body.network-shell .tile-games .poster-copy h2,html[data-theme] body.network-shell .tile-games .poster-copy h3 { font-size:30px; color:inherit; margin:0 0 10px; }
+html[data-theme] body.network-shell .tile-games .poster-copy p { color:inherit; font-size:13px; line-height:1.6; }
+html[data-theme] body.network-shell .tile-games .poster-link { color:inherit; font-size:12px; }
+html[data-theme] body.network-shell .tile-games .poster-image { min-height:218px; border-radius:0; position:relative; }
+html[data-theme] body.network-shell .tile-games .poster-image img { object-fit:cover; width:100%; height:100%; opacity:1; }
+html[data-theme] body.network-shell .tile-games .game-poster:hover { transform:none; box-shadow:inset 0 -4px #00000040,0 0 0 3px var(--tile); }
+html[data-theme] body.network-shell .tile-games .skyblock-poster .poster-image img { padding:0; }
+html[data-theme] body.network-shell .art-label { position:absolute; bottom:10px; right:10px; padding:3px 7px; background:#17261eee; color:#fff; font-size:10px; }
+html[data-theme] body.network-shell .discovery-band { background:var(--surface); border-color:var(--line); }
+html[data-theme] body.network-shell .discovery-links>a { border-color:var(--line); }
+html[data-theme] body.network-shell .discovery-links>a>i:first-child { color:var(--accent); }
+html[data-theme] body.network-shell .vip-band { background:var(--surface-raised); border-color:var(--game-gold); border-top-width:3px; }
+html[data-theme] body.network-shell .vip-band-actions small { color:var(--quiet); }
+
+/* Stable three-column categories; one-column on narrow phones. */
+html[data-theme] body.network-shell .topic-grid,html[data-theme] body.network-shell .skyblock-topics { gap:16px; }
+html[data-theme] body.network-shell .topic-card,html[data-theme] body.network-shell .skyblock-topics>a { --tile:#83e6a3; --tile-ink:#15321e; background:var(--tile); color:var(--tile-ink); border:0; border-radius:6px; min-height:132px; padding:24px; box-shadow:inset 0 -4px #00000020; }
+html[data-theme] body.network-shell .topic-card:nth-child(3n+2),html[data-theme] body.network-shell .skyblock-topics>a:nth-child(3n+2) { --tile:#77ddf2; --tile-ink:#15323a; }
+html[data-theme] body.network-shell .topic-card:nth-child(3n),html[data-theme] body.network-shell .skyblock-topics>a:nth-child(3n) { --tile:#ffd36b; --tile-ink:#3b2c10; }
+html[data-theme] body.network-shell .topic-card:nth-child(4),html[data-theme] body.network-shell .skyblock-topics>a:nth-child(4) { --tile:#f3a1cc; --tile-ink:#382039; }
+html[data-theme] body.network-shell .topic-grid .topic-card,html[data-theme] body.network-shell .page-index.skyblock-topics>a { color:var(--tile-ink); }
+html[data-theme] body.network-shell .topic-card :is(strong,span,i),html[data-theme] body.network-shell .skyblock-topics>a i { color:inherit; }
+html[data-theme] body.network-shell .topic-card>i,html[data-theme] body.network-shell .skyblock-topics>a>i { opacity:.8; }
+html[data-theme] body.network-shell.survival-hub .topic-grid .topic-art { color:currentColor; opacity:.65; }
+html[data-theme] body.network-shell .topic-card:hover,html[data-theme] body.network-shell .skyblock-topics>a:hover { background:var(--tile); border:0; box-shadow:inset 0 -4px #00000040,0 0 0 3px var(--tile); transform:none; }
+html[data-theme] body.network-shell .guide-toolbar { background:var(--surface-raised); padding:14px 18px; border:0; border-left:4px solid var(--accent); border-radius:0; }
+html[data-theme] body.network-shell :is(.hub-tabs,.section-tabs,.section-navigation,.page-index) { background:var(--site-bg); border-color:var(--line); }
+html[data-theme] body.network-shell :is(.hub-tabs a,.section-tabs a,.section-navigation a) { color:var(--quiet); }
+html[data-theme] body.network-shell :is(.hub-tabs a,.section-tabs a,.section-navigation a)[aria-current=page] { color:var(--accent); border-color:var(--accent); }
+html[data-theme] body.network-shell .guide-head h2 { font-size:34px; }
+html[data-theme] body.network-shell .guide-note { background:var(--surface-raised); border-color:var(--accent); }
+html[data-theme] body.network-shell :is(.guide-return,.guide-category-menu summary,.guide-category-menu a,.guide-help) { color:var(--accent); }
+html[data-theme] body.network-shell .guide-category-menu nav { background:var(--surface); border-color:var(--line); }
+html[data-theme] body.network-shell .skyblock-section>header>i { color:var(--accent); }
+html[data-theme] body.network-shell .skyblock-access { border-left:4px solid var(--accent); background:var(--surface-raised); padding:18px 20px; }
+html[data-theme] body.network-shell .skyblock-access>i { color:var(--accent); }
+html[data-theme] body.network-shell .skyblock-scene { position:relative; margin:0 0 26px; height:250px; overflow:hidden; }
+html[data-theme] body.network-shell .skyblock-scene img { width:100%; height:100%; object-fit:cover; object-position:center 58%; }
+html[data-theme] body.network-shell .village-cover { border-radius:0; }
+html[data-theme] body.network-shell .village-role summary { border-left:3px solid var(--team-color,var(--accent)); }
+html[data-theme] body.network-shell .village-role { background:var(--surface); border-color:var(--line); }
+
+/* Services share the same reading surfaces, but keep their existing behavior. */
+html[data-theme] body.network-shell .help-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+html[data-theme] body.network-shell .help-list>a { display:grid; grid-template-columns:38px minmax(0,1fr) 14px; gap:18px; background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--game-green); padding:24px; border-radius:6px; }
+html[data-theme] body.network-shell .help-list>a:nth-child(3n+2) { border-left-color:var(--game-cyan); }
+html[data-theme] body.network-shell .help-list>a:nth-child(3n) { border-left-color:var(--game-pink); }
+html[data-theme] body.network-shell .help-list>a>i { color:var(--accent); }
+html[data-theme] body.network-shell .help-list h2 { font-size:24px; color:var(--ink); }
+html[data-theme] body.network-shell .help-list p { color:var(--quiet); }
+html[data-theme] body.network-shell .help-list>a:hover { background:var(--surface-raised); }
+html[data-theme] body.network-shell :is(.info-card,.staff-card,.player-card,.profile-card,.join-panel,.order-status,.sitemap-group,.faq-list details) { border-color:var(--line); background:var(--surface); border-radius:6px; box-shadow:none; }
+html[data-theme] body.network-shell .guide-article .info-card { background:none; border-radius:0; }
+html[data-theme] body.network-shell .info-card h2,html[data-theme] body.network-shell .info-card h3 { color:var(--ink); }
+html[data-theme] body.network-shell .store-card { --tier:#ffd36b; border:1px solid var(--line); border-top:6px solid var(--tier); background:var(--surface); border-radius:6px; box-shadow:none; }
+html[data-theme] body.network-shell .store-card.tier-mvip { --tier:#77ddf2; }
+html[data-theme] body.network-shell .store-card.tier-uvip { --tier:#f3a1cc; }
+html[data-theme] body.network-shell .store-card h2 { color:var(--tier); font-size:40px; }
+html[data-theme=light] body.network-shell .store-card h2 { color:#855900; }
+html[data-theme=light] body.network-shell .tier-mvip h2 { color:#14758a; }
+html[data-theme=light] body.network-shell .tier-uvip h2 { color:#a63569; }
+html[data-theme] body.network-shell .rank-feature-list i { color:var(--accent); }
+html[data-theme] body.network-shell .store-card button:disabled { background:var(--surface-raised); color:var(--quiet); opacity:1; border:1px solid var(--line); }
+html[data-theme] body.network-shell :is(.vip-comparison,.comparison-table,.data-table) thead { background:var(--surface-raised); }
+html[data-theme] body.network-shell :is(.vip-comparison,.comparison-table,.data-table) th,html[data-theme] body.network-shell :is(.vip-comparison,.comparison-table,.data-table) td { border-color:var(--line); }
+html[data-theme] body.network-shell :is(input,textarea,select) { border-radius:4px; }
+html[data-theme] body.network-shell :is(input,textarea,select):focus { outline:2px solid var(--accent); outline-offset:2px; box-shadow:none!important; }
+html[data-theme] body.network-shell :is(.legacy-content-shell,.legacy-page-hero) { color:var(--ink); }
+html[data-theme] body.network-shell .legacy-content-shell { max-width:960px; }
+html[data-theme] body.network-shell .legacy-page-hero { text-align:left; padding-bottom:24px; border-bottom:3px solid var(--accent); }
+html[data-theme] body.network-shell .legacy-page-hero h1 { text-transform:none; font-size:46px; }
+html[data-theme] body.network-shell .legacy-content-shell>form,html[data-theme] body.network-shell .legal-text { background:transparent!important; color:var(--ink); box-shadow:none; border:0; border-radius:0; padding:0; }
+html[data-theme] body.network-shell .legacy-content-shell>form>.absolute { display:none; }
+html[data-theme] body.network-shell .legacy-content-shell :is(input,textarea,select) { background:var(--site-bg); color:var(--ink); border:1px solid var(--line); }
+html[data-theme] body.network-shell .legacy-content-shell :is(label,.text-gray-400,.text-gray-500) { color:var(--quiet); }
+html[data-theme] body.network-shell .legal-text { line-height:1.85; }
+html[data-theme] body.network-shell .legal-text h2 { color:var(--ink); margin-top:30px; }
+html[data-theme] body.network-shell .site-footer { background:var(--surface); border-top:3px solid var(--game-green); }
+html[data-theme] body.network-shell .footer-grid { gap:28px; }
+html[data-theme] body.network-shell .footer-grid h3 { color:var(--ink); }
+html[data-theme] body.network-shell .footer-grid a { color:var(--quiet); }
+html[data-theme] body.network-shell .footer-grid a:hover { color:var(--accent); }
+html[data-theme] body.network-shell .footer-bottom { border-color:var(--line); color:var(--quiet); }
+@media(max-width:1100px) {
+  html[data-theme] body.network-shell .tile-games .game-poster { grid-template-columns:1.2fr 1fr; }
+  html[data-theme] body.network-shell .tile-games .poster-copy { padding:20px 16px; }
+  html[data-theme] body.network-shell .tile-games .poster-copy h3 { font-size:27px; }
+  html[data-theme] body.network-shell .floating-status { grid-template-columns:1fr 1fr; gap:18px 30px; }
+}
+@media(max-width:760px) {
+  html[data-theme] body.network-shell .site-nav .site-links { background:var(--surface); border-color:var(--line); }
+  html[data-theme] body.network-shell .craft-hero { margin-top:78px; min-height:500px; height:calc(100svh - 170px); max-height:630px; padding:32px 20px; }
+  html[data-theme] body.network-shell .craft-hero h1.craft-page-title { font-size:56px; }
+  html[data-theme] body.network-shell .craft-hero-image { object-position:center 50%; }
+  html[data-theme] body.network-shell .craft-hero-shade { background:#10181340; }
+  html[data-theme] body.network-shell .hero-description { max-width:280px; font-size:13px; }
+  html[data-theme] body.network-shell .floating-status { padding:22px 20px; gap:20px; }
+  html[data-theme] body.network-shell .page-head h1,html[data-theme] body.network-shell .hub-masthead h1.craft-page-title { font-size:40px; }
+  html[data-theme] body.network-shell .craft-section { padding:36px 20px; }
+  html[data-theme] body.network-shell .craft-section h2 { font-size:30px; }
+  html[data-theme] body.network-shell .tile-games .game-poster { grid-template-columns:1.2fr 1fr; min-height:180px; }
+  html[data-theme] body.network-shell .tile-games .poster-image { min-height:180px; }
+  html[data-theme] body.network-shell .help-list { grid-template-columns:1fr; }
+  html[data-theme] body.network-shell .help-list>a { padding:22px 18px; gap:14px; }
+  html[data-theme] body.network-shell .legacy-page-hero h1 { font-size:36px; }
+  html[data-theme] body.network-shell .skyblock-scene { height:210px; }
+}
+@media(max-width:480px) {
+  html[data-theme] body.network-shell .site-brand { font-size:24px; }
+  html[data-theme] body.network-shell .craft-hero h1.craft-page-title { font-size:46px; white-space:normal; }
+  html[data-theme] body.network-shell .craft-hero { min-height:490px; padding:26px 16px; }
+  html[data-theme] body.network-shell .hero-actions { width:100%; flex-direction:column; align-items:center; gap:10px; }
+  html[data-theme] body.network-shell .hero-actions>* { width:100%; max-width:310px; }
+  html[data-theme] body.network-shell .hero-actions .address-button span { min-width:0; }
+  html[data-theme] body.network-shell .floating-status { gap:18px; }
+  html[data-theme] body.network-shell .floating-status .status-facts { grid-column:1/-1; }
+  html[data-theme] body.network-shell .floating-status .status-detail { grid-column:1/-1; }
+  html[data-theme] body.network-shell .floating-status-head h2 { font-size:18px; white-space:normal; }
+  html[data-theme] body.network-shell .topic-card,html[data-theme] body.network-shell .skyblock-topics>a { min-height:110px; padding:20px; }
+  html[data-theme] body.network-shell .page-head h1,html[data-theme] body.network-shell .hub-masthead h1.craft-page-title { font-size:36px; }
+  html[data-theme] body.network-shell .guide-head h2 { font-size:29px; }
+  html[data-theme] body.network-shell .tile-games .poster-copy h3 { font-size:27px; }
+  html[data-theme] body.network-shell .tile-games .poster-copy p { font-size:12px; }
+  html[data-theme] body.network-shell .tile-games .poster-link { font-size:11px; }
+  html[data-theme] body.network-shell .help-list h2 { font-size:22px; }
+}
+@media(prefers-reduced-motion:reduce) { html[data-theme] body.network-shell * { scroll-behavior:auto!important; animation:none!important; transition:none!important; } }
+@media(max-width:360px) {
+  html[data-theme] body.network-shell .site-nav-inner { gap:6px; }
+  html[data-theme] body.network-shell .site-brand { font-size:20px; gap:6px; }
+  html[data-theme] body.network-shell .site-brand img { width:28px; height:28px; }
+  html[data-theme] body.network-shell .nav-tools { gap:5px; }
+  html[data-theme] body.network-shell .nav-tools button { width:36px; }
+}

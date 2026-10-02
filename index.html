@@ -3,38 +3,41 @@
 <head>
   <meta charset="utf-8"><script src="theme.js?v=20260926-5"></script>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>ArcaDe Craft | Survival ve Rob's Village</title>
-  <meta name="description" content="Kendi dünyanı kur veya köyün sırrını çöz. ArcaDe Craft&#x27;ta Survival ve Rob&#x27;s Village, Java ve Bedrock oyuncularını buluşturuyor.">
+  <title>ArcaDe Craft | Survival, Skyblock ve Rob's Village</title>
+  <meta name="description" content="ArcaDe Craft Minecraft sunucuları: Survival, Skyblock ve Rob&#x27;s Village. Oyun rehberleri, bağlantı bilgileri ve VIP paketleri.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="network.css?v=20260926-5">
-  <link rel="stylesheet" href="craft.css?v=skyblock-1"><link rel="stylesheet" href="theme.css?v=20260926-5">
+  <link rel="stylesheet" href="craft.css?v=20261002-1"><link rel="stylesheet" href="theme.css?v=20260926-5">
   <link rel="icon" href="assets/logo.png" type="image/png">
-  <link rel="preload" href="assets/hero-bg.png" as="image">
+  <link rel="preload" href="assets/hub-gameplay.png" as="image">
 <link rel="canonical" href="https://robsarcade.online/">
-<meta property="og:title" content="ArcaDe Craft | Survival ve Rob&#x27;s Village">
-<meta property="og:description" content="Bir dünya kur. Bir köyün sırrını çöz. Java ve Bedrock ile ArcaDe Craft&#x27;ta buluşalım.">
+<meta property="og:title" content="ArcaDe Craft | Survival, Skyblock ve Rob&#x27;s Village">
+<meta property="og:description" content="Survival, Skyblock ve Rob&#x27;s Village. Oyun rehberleri ve Java ile Bedrock bağlantı bilgileri.">
 <meta property="og:image" content="https://robsarcade.online/assets/survival-gameplay.webp">
 <meta property="og:url" content="https://robsarcade.online/">
 <meta property="og:type" content="website">
+<link rel="stylesheet" href="polish.css?v=20261002-1">
 </head>
 <body class="network-shell home-page">
   <nav><a href="servers.html">Oyunlar</a><a href="store.html">Mağaza</a></nav>
   <main id="main-content">
     <section class="craft-hero" id="hero" aria-labelledby="hero-title">
-      <img class="craft-hero-image" src="assets/hero-bg.png" alt="" fetchpriority="high">
+      <img class="craft-hero-image" src="assets/hub-gameplay.png" alt="" width="1919" height="1075" fetchpriority="high">
       <div class="craft-hero-shade"></div>
       <div class="craft-hero-inner">
         <div class="craft-hero-copy">
           <h1 id="hero-title">ArcaDe <span>Craft</span></h1>
-          <p class="hero-intro">Bir dünya kur.<br>Bir köyün sırrını çöz.</p>
-          <p class="hero-description">Survival'da kendi hikâyeni yaz. Rob's Village'da arkadaşlarının gizli rollerini keşfet.</p>
+          <p class="hero-description">Survival, Skyblock ve Rob's Village.</p>
           <div class="hero-actions">
             <a class="craft-button primary" href="join.html"><i class="fa-solid fa-play" aria-hidden="true"></i> Oyuna katıl</a>
             <button class="address-button" type="button" data-copy-address title="Sunucu adresini kopyala"><span>oyna.robsarcade.online</span><i class="fa-regular fa-copy" aria-hidden="true"></i></button>
           </div>
-          <div class="hero-platforms">Java &amp; Bedrock <span>Birlikte, aynı dünyada.</span></div>
+          <div class="hero-platforms">Java &amp; Bedrock</div>
         </div>
+      </div>
+    </section>
+    <section class="home-status-band" aria-label="Bağlantı durumu">
         <aside class="floating-status" aria-label="Canlı sunucu durumu">
           <div class="floating-status-head"><h2><i class="fa-solid fa-server" aria-hidden="true"></i> Sunucu Durumu</h2><span id="home-state" class="live-state" data-state="pending">Kontrol ediliyor</span></div>
           <div class="floating-status-players"><span>Çevrimiçi</span><strong><span id="floating-player-count">—</span> <small>/ <span id="home-player-max">—</span></small></strong></div>
@@ -43,49 +46,47 @@
           <p class="section-note" data-client-notice="java" hidden></p>
           <a href="status.html" class="status-detail">Canlı durumu gör <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
         </aside>
-      </div>
-      <a class="hero-next" href="#oyunlar">Oyununu seç <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
     </section>
 
     <section class="craft-section games-section" id="oyunlar" aria-labelledby="games-title">
-      <div class="section-heading"><div><span class="eyebrow">ArcaDe Craft oyunları</span><h2 id="games-title">Dünyalar, adalar ve köy geceleri.</h2></div><a class="text-link" href="servers.html">Tüm oyunlar <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
-      <div class="game-pair game-trio" id="network-showcase">
+      <div class="section-heading"><div><h2 id="games-title">Oyunlar</h2></div><a class="text-link" href="servers.html">Sunucu bilgileri <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
+      <div class="game-pair game-trio tile-games" id="network-showcase">
         <a class="game-poster survival-poster" href="survival.html">
           <div class="poster-image"><img src="assets/survival-gameplay.webp" alt="Survival giriş alanındaki tüccar, ışınlanma ve menü NPC&#x27;leri" loading="lazy" width="1504" height="940"></div>
-          <div class="poster-copy"><span class="game-category">Kalıcı dünya · Kendi hızında</span><h3>Survival</h3><p>Evin, mesleğin, pazarın. Emek verdiğin bir dünyada yerini bul.</p><span class="poster-link">Dünyayı keşfet <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span></div>
+          <div class="poster-copy"><h3>Survival</h3><p>Arazi koruma, meslekler ve oyuncu pazarı.</p><span class="poster-link">Survival rehberi <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span></div>
         </a>
-        <a class="game-poster skyblock-poster" href="skyblock.html"><div class="poster-image"><img src="assets/logo.png" alt="ArcaDe Craft Skyblock test rehberi" loading="lazy" width="256" height="256"></div><div class="poster-copy"><span class="game-category">Ada gelişimi · Sınırlı test erişimi</span><h3>Skyblock</h3><p>Kendi adanı kur, takımınla üret. Görevler, siparişler ve oyuncu ticareti.</p><span class="poster-link">Test rehberini aç <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></div></a>
+        <a class="game-poster skyblock-poster" href="skyblock.html"><div class="poster-image"><img src="assets/skyblock-island.png" alt="Skyblock adasını temsil eden Minecraft tarzı görsel" loading="lazy" width="1536" height="1024"><span class="art-label">Temsili görsel</span></div><div class="poster-copy"><h3>Skyblock</h3><p>Takım adaları, görevler ve günlük siparişler. Sınırlı test erişiminde.</p><span class="poster-link">Skyblock rehberi <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></div></a>
         <a class="game-poster village-poster" href="village.html">
           <div class="poster-image"><img src="assets/robs-village-gameplay.webp" alt="Rob&#x27;s Village oyun haritasında gece vakti köy sokağı" loading="lazy" width="1536" height="960"></div>
-          <div class="poster-copy"><span class="game-category">Kurt köylü · Gizli roller</span><h3>Rob's Village</h3><p>Geceyi atlat, ipuçlarını birleştir. Peki kime güveneceksin?</p><span class="poster-link">Köye adım at <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span></div>
+          <div class="poster-copy"><h3>Rob's Village</h3><p>Kurt köylü, gizli roller ve oylama.</p><span class="poster-link">Oyun ve roller <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span></div>
         </a>
       </div>
-      <div class="lobby-note"><i class="fa-solid fa-compass" aria-hidden="true"></i><p>İlk durağın oyun lobisi. Pusuladan oyununu seç, macerana katıl.</p><a class="text-link" href="join.html">Nasıl katılırım? <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
+      <div class="lobby-note"><i class="fa-solid fa-compass" aria-hidden="true"></i><p>Oyunlara lobideki pusuladan veya NPC'lerden geçebilirsin.</p><a class="text-link" href="join.html">Bağlantı bilgileri <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
     </section>
 
     <section class="discovery-band" id="features" aria-labelledby="survival-discovery">
       <div class="craft-section discovery-layout">
-        <div class="discovery-lead" id="server-features"><span class="eyebrow">Survival'da hayat</span><h2 id="survival-discovery">Bir kulübeyle başlar.<br>Gerisi sana kalır.</h2><p>İster bir çiftlik kur, ister ticarette adını duyur. Günlük hedefler ve meslekler yol boyunca sana eşlik eder.</p><a class="text-link" href="survival.html#baslangic">Survival rehberleri <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
+        <div class="discovery-lead" id="server-features"><h2 id="survival-discovery">Survival özellikleri</h2><p>Arazi koruma, 12 meslek, günlük görevler ve oyuncular arası ticaret.</p><a class="text-link" href="survival.html#baslangic">Survival rehberi <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
         <div class="discovery-links">
-          <a href="survival.html#arazi"><i class="fa-solid fa-house-circle-check" aria-hidden="true"></i><div><h3>Kendine bir yer ayır</h3><p>Altın kürekle arazini koru, arkadaşlarına izin ver.</p></div><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-          <a href="survival.html#meslekler"><i class="fa-solid fa-briefcase" aria-hidden="true"></i><div><h3>Sevdiğin işi yap</h3><p>12 meslekten ikisini seç, oynarken uzmanlaş.</p></div><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-          <a href="survival.html#ekonomi"><i class="fa-solid fa-store" aria-hidden="true"></i><div><h3>Pazarda yerini al</h3><p>Üret, ilan ver ve diğer oyuncularla ticaret yap.</p></div><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-          <a href="survival.html#harita"><i class="fa-solid fa-map" aria-hidden="true"></i><div><h3>Dünyaya bir göz at</h3><p>Yerleşimleri ve keşfedilmiş bölgeleri haritada gör.</p></div><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          <a href="survival.html#arazi"><i class="fa-solid fa-house-circle-check" aria-hidden="true"></i><div><h3>Arazi koruma</h3><p>Claim ve ev noktaları.</p></div><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          <a href="survival.html#meslekler"><i class="fa-solid fa-briefcase" aria-hidden="true"></i><div><h3>Meslekler</h3><p>12 meslek, aynı anda 2 seçim.</p></div><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          <a href="survival.html#ekonomi"><i class="fa-solid fa-store" aria-hidden="true"></i><div><h3>Ticaret</h3><p>Market, oyuncu ilanları ve güvenli takas.</p></div><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          <a href="survival.html#harita"><i class="fa-solid fa-map" aria-hidden="true"></i><div><h3>Dünya haritası</h3><p>Yerleşimler ve keşfedilmiş bölgeler.</p></div><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
         </div>
       </div>
     </section>
 
     <section class="craft-section community-section" id="news" aria-labelledby="community-title">
-      <div class="community-invitation"><span class="eyebrow">Birlikte daha iyi</span><h2 id="community-title">Oyunun dışında da<br>buluşalım.</h2><p>Etkinlik duyuruları, yeni arkadaşlar ve ihtiyaç duyduğunda yardım. Topluluğun Discord'da.</p><a class="craft-button discord-button" href="https://discord.gg/GerdDHzMWp" target="_blank" rel="noopener"><i class="fa-brands fa-discord" aria-hidden="true"></i> Discord'a katıl</a></div>
-      <div class="community-editorial"><span class="eyebrow">Topluluktan</span><a href="news.html"><h3>ArcaDe Craft'ta neler yeni?</h3><p>Oyun güncellemelerini ve topluluk haberlerini takip et.</p><span class="text-link">Haberleri oku <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></a><div class="editorial-shortcuts"><a href="survival.html#siralamalar">Liderlik tabloları <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a><a href="players.html">Oyuncu profilleri <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div></div>
+      <div class="community-invitation"><h2 id="community-title">Discord</h2><p>Duyurular, oyuncu sohbeti ve destek.</p><a class="craft-button discord-button" href="https://discord.gg/GerdDHzMWp" target="_blank" rel="noopener"><i class="fa-brands fa-discord" aria-hidden="true"></i> Discord'a katıl</a></div>
+      <div class="community-editorial"><a href="news.html"><h3>Güncellemeler</h3><p>Sunucudaki son değişiklikler.</p><span class="text-link">Güncellemeleri oku <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></a><div class="editorial-shortcuts"><a href="survival.html#siralamalar">Liderlik tabloları <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a><a href="players.html">Oyuncu profilleri <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div></div>
     </section>
 
-    <section class="vip-band" id="store"><div class="craft-section vip-band-inner"><div><span class="eyebrow">Survival VIP</span><h2>Biraz daha alan.<br>Biraz daha sen.</h2><p>Daha çok ev, kişisel depo ve günlük kullanım kolaylıkları. VIP, MVIP ve UVIP haklarını incele.</p></div><div class="vip-band-actions"><a class="craft-button primary" href="store.html#paketler">Paketleri karşılaştır <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a><a class="text-link" href="store.html">VIP mağazası <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a><small>Para veya meslek kazancı çarpanı verilmez.</small></div></div></section>
+    <section class="vip-band" id="store"><div class="craft-section vip-band-inner"><div><h2>VIP Paketleri</h2><p>Survival ev ve depo kapasiteleri, kitler ve kullanım hakları.</p></div><div class="vip-band-actions"><a class="craft-button primary" href="store.html#paketler">Paketleri karşılaştır <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a><small>Para veya meslek kazancı çarpanı verilmez.</small></div></div></section>
   </main>
   <footer></footer>
   <script src="api-config.js"></script>
   <script src="server-data.js?v=skyblock-1"></script>
-  <script src="site-map.js?v=skyblock-1"></script><script src="site-shell.js?v=skyblock-1"></script>
+  <script src="site-map.js?v=skyblock-1"></script><script src="site-shell.js?v=20261002-1"></script>
   <script src="ui.js?v=20260926-5"></script>
 </body>
 </html>

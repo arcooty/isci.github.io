@@ -9,6 +9,12 @@
   const topicSelect = document.getElementById('guide-topic-select');
   const locationLabel = document.getElementById('guide-current');
   const next = document.getElementById('guide-next');
+  const categoryMenu = document.getElementById('guide-category-menu');
+  categoryMenu?.addEventListener('keydown',event => {
+    if (event.key !== 'Escape' || !categoryMenu.open) return;
+    categoryMenu.open = false;
+    categoryMenu.querySelector('summary').focus();
+  });
   history.scrollRestoration = 'manual';
   let lastTopic = 'baslangic';
   topics.forEach(([id,label,icon]) => {
@@ -43,6 +49,7 @@
     if (view === 'harita') { const frame = document.querySelector('iframe[data-src]'); if (!frame.src) frame.src = frame.dataset.src; }
     document.title = (topic ? topic[1] + ' · Survival' : view === 'harita' ? 'Harita · Survival' : view === 'siralamalar' ? 'Sıralamalar · Survival' : 'Survival') + ' | ArcaDe Craft';
     if (focus) {
+      if (categoryMenu) categoryMenu.open = false;
       const target = topic ? document.getElementById(sectionOwners[hash] ? hash : topic[0]) : panels.find(panel => panel.dataset.hubPanel === view);
       target.tabIndex = -1; target.focus({preventScroll:true});
       const masthead = document.querySelector('.hub-masthead');

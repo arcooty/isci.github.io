@@ -48,7 +48,7 @@ function harness(hash = '') {
   const panels = ['genel','rehber','harita','siralamalar'].map(id => new Element({hubPanel:id}));
   const tabs = ['genel','rehber','harita','siralamalar'].map(id => new Element({hubTab:id}));
   const sectionLinks = Object.values(model.topicSections).flatMap(items=>Array.from(items,([id])=>new Element({sectionLink:id})));
-  const ids = Object.fromEntries(['guide-topics','guide-topic-select','guide-current','guide-next'].map(id=>[id,new Element()]));
+  const ids = Object.fromEntries(['guide-topics','guide-topic-select','guide-current','guide-next','guide-category-menu'].map(id=>[id,new Element()]));
   model.topics.forEach(([id],i)=>ids[id]=topics[i]);
   sectionLinks.forEach(link=>ids[link.dataset.sectionLink]=new Element());
   const frame = new Element({src:'https://map.robsarcade.online/'});
@@ -74,6 +74,23 @@ test('deep link selects precisely one guide topic and leaves the map unloaded', 
   assert.equal(h.ids['guide-current'].textContent,'Ekonomi ve ticaret');
   assert.equal(h.ids['guide-topic-select'].value,'ekonomi');
   assert.equal(h.frame.src,'');
+});
+
+test('all seven large guide tiles use the canonical topic labels and destinations', () => {
+  const html=fs.readFileSync(path.join(root,'survival.html'),'utf8');
+  const tiles=[...html.matchAll(/<a class="topic-card" href="#([^"]+)"><span><strong>([^<]+)<\/strong>/g)];
+  assert.equal(tiles.length,model.topics.length);
+  assert.deepEqual(tiles.map(([,id,label])=>[id,label]),Array.from(model.topics,([id,label])=>[id,label]));
+});
+
+test('choosing another topic closes the category menu without losing the active topic', () => {
+  const h=harness('#baslangic');
+  h.ids['guide-category-menu'].open=true;
+  h.ids['guide-topic-select'].value='ekonomi';
+  h.ids['guide-topic-select'].events.change();
+  assert.equal(h.ids['guide-category-menu'].open,false);
+  assert.equal(h.ids['guide-current'].textContent,'Ekonomi ve ticaret');
+  assert.equal(h.topics.filter(t=>!t.hidden).length,1);
 });
 test('topic selection and Back/Forward popstate restore the correct view', () => {
   const h=harness('#ekonomi');

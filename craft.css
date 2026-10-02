@@ -216,3 +216,58 @@ a.tag { color:#245bdd; text-decoration:underline; }.info-card-meta { gap:12px; }
 @media(max-width:360px) {
   .site-nav-inner { gap:12px; }.site-brand { font-size:21px; gap:8px; }.site-brand img { width:34px; height:34px; }
 }
+
+/* Whole-tile links keep game and guide selection easy to scan and tap. */
+.tile-games { gap:20px; }
+.tile-games .game-poster { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); min-height:190px; border:1px solid var(--line); border-left:4px solid #369568; border-radius:6px; overflow:hidden; background:var(--panel); }
+.tile-games .skyblock-poster { border-left-color:#2886ab; }
+.tile-games .village-poster { border-left-color:#b65380; }
+.tile-games .poster-image { grid-column:2; grid-row:1; height:100%; aspect-ratio:auto; border-radius:0; }
+.tile-games .poster-copy { grid-column:1; grid-row:1; display:flex; flex-direction:column; justify-content:center; padding:20px; min-width:0; }
+.tile-games .poster-copy h2,.tile-games .poster-copy h3 { font-size:26px; margin:0 0 10px; }
+.tile-games .poster-copy p { font-size:11px; line-height:1.5; margin:0 0 10px; }
+.tile-games .poster-link { font-size:11px; margin:0; }
+.tile-games .game-poster:hover { border-color:#6586a5; }
+.survival-hub .hub-shortcuts { margin:0 0 38px; }
+.survival-hub .topic-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+.survival-hub .topic-grid .topic-card { display:flex; justify-content:space-between; align-items:center; gap:20px; min-height:130px; padding:24px; border:1px solid var(--line); border-radius:6px; background:var(--panel); color:var(--paper); }
+.topic-card span { min-width:0; }
+.topic-card strong { display:block; font-size:17px; line-height:1.4; }
+.topic-card span > i { display:block; margin-top:14px; font-size:12px; color:var(--muted); }
+.survival-hub .topic-grid .topic-art { font-size:38px; flex-shrink:0; color:#369568; }
+.survival-hub .topic-card:nth-child(3n+2) .topic-art { color:#2886ab; }
+.survival-hub .topic-card:nth-child(3n) .topic-art { color:#b65380; }
+.survival-hub .topic-card:hover { border-color:#6586a5; }
+.survival-hub .guide-layout { display:block; }
+.guide-toolbar { margin-bottom:28px; padding-bottom:16px; border-bottom:1px solid var(--line); }
+.guide-toolbar > .guide-return { margin-bottom:16px; }
+.guide-toolbar summary { display:flex; gap:10px; align-items:center; width:max-content; max-width:100%; padding:12px 16px; border:1px solid var(--line); border-radius:4px; cursor:pointer; font:600 13px Inter,sans-serif; }
+.guide-toolbar summary::marker,.guide-toolbar summary::-webkit-details-marker { display:none; }
+.guide-toolbar summary:hover { color:var(--accent); }
+.guide-toolbar #guide-topics { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin-top:20px; }
+.guide-toolbar #guide-topics a { display:flex; align-items:center; gap:14px; min-height:88px; padding:18px; border:1px solid var(--line); border-radius:6px; background:var(--panel); color:var(--paper); text-decoration:none; font-size:14px; font-weight:600; }
+.guide-toolbar #guide-topics i { font-size:24px; color:#2886ab; }
+.guide-toolbar #guide-topics a[aria-current] { border-color:#2886ab; box-shadow:inset 0 -3px #2886ab; }
+.skyblock-guide .skyblock-topics { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; border:0; padding:0; }
+.skyblock-guide .skyblock-topics a { display:flex; align-items:center; gap:20px; min-height:105px; padding:24px; border:1px solid var(--line); border-radius:6px; background:var(--panel); color:var(--paper); font-size:16px; font-weight:600; }
+.skyblock-topics i { font-size:28px; color:#2886ab; }
+.skyblock-guide .skyblock-topics a:hover { border-color:#2886ab; }
+@media(min-width:761px) {
+  .topic-grid .topic-card:last-child:nth-child(3n+1),.skyblock-topics a:last-child:nth-child(3n+1) { grid-column:2; }
+}
+@media(max-width:1000px) {
+  .tile-games { grid-template-columns:minmax(0,1fr); }
+  .tile-games .game-poster { min-height:160px; }
+  .tile-games .poster-image { max-height:190px; }
+}
+@media(max-width:760px) {
+  .survival-hub .topic-grid,.guide-toolbar #guide-topics,.skyblock-guide .skyblock-topics { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+  .survival-hub .topic-grid .topic-card { padding:18px; min-height:125px; gap:12px; }
+  .topic-card strong { font-size:14px; }.survival-hub .topic-grid .topic-art { font-size:28px; }
+}
+@media(max-width:480px) {
+  .survival-hub .topic-grid,.guide-toolbar #guide-topics,.skyblock-guide .skyblock-topics { grid-template-columns:minmax(0,1fr); }
+  .survival-hub .topic-grid .topic-card { min-height:95px; padding:18px 22px; }
+  .topic-card span > i { margin-top:8px; }.survival-hub .topic-grid .topic-art { font-size:32px; }
+  .tile-games .poster-copy { padding:18px; }.tile-games .poster-copy h2,.tile-games .poster-copy h3 { font-size:24px; }
+}

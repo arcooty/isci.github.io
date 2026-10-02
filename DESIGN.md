@@ -2,13 +2,16 @@
 
 ## Direction
 
-Game imagery, a recognizable wordmark and calm editorial structure lead the site.
-The home page has two primary game destinations and retains the floating live-status panel.
+Game imagery, a recognizable wordmark and clear, large category links lead the site.
+The home page has three game destinations. Its status tool sits below the hub scene,
+so the real NPCs remain visible and neither text nor tools obscure the central scene.
 No decorative capsule badges, cursor glows, fabricated activity, or technical stack promotion.
-The reading surface is white and cool neutral, with charcoal text and cobalt navigation.
-Gold marks the play action; coral distinguishes Rob's Village. The floating status panel
-retains its original dark-violet character without turning every page into a dark theme.
-Existing bitmap scenes are illustrative, not represented as screenshots of the live server.
+Both themes use neutral reading surfaces: charcoal-green at night and cool white in light mode.
+Green identifies Survival, cyan Skyblock, pink Rob's Village, and gold the play action.
+Repeated category tiles use these four bright colors, hard lower edges and small corners.
+No marketing slogans, decorative orbs, floating rotations or fake player/price displays.
+Hub, Survival and Village images are actual server screenshots. The generated Skyblock
+island is explicitly labeled as illustrative wherever it appears.
 
 ## Reference Study
 
@@ -25,7 +28,7 @@ Reference artwork, logos and copy are not imported into this project.
 
 ## Page Ownership
 
-- Games: servers.html, survival.html, village.html.
+- Games: servers.html, survival.html, skyblock.html, village.html.
 - Survival: ONE page, four persistent sections (overview, guide, map, rankings).
   Seven guide topics are views of survival.html, never separate page destinations.
   Guide contents remain static HTML. Hash URLs support deep links, reload and history.
@@ -54,7 +57,9 @@ Update sitemap.xml whenever a public page is added or removed.
 
 ## Components
 
-network.css retains compatibility with existing tools; craft.css supplies the shared visual layer.
+network.css retains compatibility with existing tools; craft.css supplies the shared layout.
+polish.css is loaded last on every full page and owns the common color and component finish.
+Legacy route files remain redirects rather than duplicate styled pages.
 Use unframed bands and link rows for page sections. Cards are reserved for repeated items
 such as purchase packages, reward pools and player records, and the live-status tool.
 Use plain contextual metadata rather than decorative badges.
