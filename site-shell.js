@@ -14,7 +14,7 @@
   if (!nav) { nav = document.createElement('nav'); document.body.prepend(nav); }
   nav.className = 'site-nav'; nav.setAttribute('aria-label','Ana menü');
   nav.innerHTML = '<div class="site-nav-inner">' + brand + '<div class="site-links" id="site-links">' + link('index.html','Ana sayfa') +
-    '<div class="nav-menu"><button type="button" aria-expanded="false" aria-controls="games-dropdown"' + (['Oyunlar','Survival','Skyblock'].includes(section?.name) ? ' class="is-current"' : '') + '>Oyunlar ' + icon('chevron-down') + '</button><div class="nav-dropdown" id="games-dropdown">' + link('survival.html','Survival') + link('skyblock.html','Skyblock') + link('village.html',"Rob's Village") + link('servers.html','Bütün oyunlar') + '</div></div>' +
+    '<div class="nav-menu"><button type="button" aria-expanded="false" aria-controls="games-dropdown"' + (['Oyunlar','Survival','Skyblock',"Rob's Village"].includes(section?.name) ? ' class="is-current"' : '') + '>Oyunlar ' + icon('chevron-down') + '</button><div class="nav-dropdown" id="games-dropdown">' + link('survival.html','Survival') + link('skyblock.html','Skyblock') + link('village.html',"Rob's Village") + link('servers.html','Bütün oyunlar') + '</div></div>' +
     link('news.html','Topluluk') + link('store.html','VIP mağazası') + link('help.html','Yardım') + '<a class="nav-play" href="join.html">' + icon('play') + ' Oyuna katıl</a></div><div class="nav-tools"><button class="site-search-button" type="button" aria-label="Sitede ara" title="Sitede ara" aria-haspopup="dialog" aria-controls="site-search">' + icon('magnifying-glass') + '</button><button class="theme-toggle" type="button" aria-label="Açık temaya geç" title="Açık temaya geç">' + icon('sun') + '</button><button class="mobile-nav-button" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="site-links">' + icon('bars') + '</button></div></div>';
   const themeButton = nav.querySelector('.theme-toggle');
   const renderTheme = () => {
@@ -67,7 +67,7 @@
     content.id = 'main-content'; content.tabIndex = -1;
     skip.addEventListener('click',event=>{ event.preventDefault(); content.focus({preventScroll:true}); content.scrollIntoView({block:'start',behavior:'instant'}); });
     content.querySelector('h1')?.classList.add('craft-page-title');
-    if (path !== 'index.html' && path !== 'survival.html') {
+    if (path !== 'index.html' && path !== 'survival.html' && !content.querySelector('.game-guide-toolbar,.game-hub-heading')) {
       const parent = path === 'players.html' ? ['survival.html#siralamalar',"Survival'a dön"] : path === 'join.html' ? ['servers.html','Oyunlara dön'] : path === 'order.html' ? ['store.html','Mağazaya dön'] : section && path !== section.href ? [section.href,section.name + ' bölümüne dön'] : ['index.html','Ana sayfaya dön'];
       const trail = document.createElement('nav'); trail.className = 'page-trail'; trail.setAttribute('aria-label','Geri dönüş ve sayfa konumu');
       trail.innerHTML = '<a class="parent-return" href="' + parent[0] + '">' + icon('arrow-left') + ' ' + parent[1] + '</a><span class="trail-divider" aria-hidden="true">/</span><span aria-current="page">' + (labels[path] || 'Sayfa') + '</span>';

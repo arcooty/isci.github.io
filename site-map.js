@@ -28,9 +28,25 @@
     'ranks.html': 'store.html#paketler',
     'about.html': 'news.html#hakkimizda'
   };
+  const gameGuides = {
+    skyblock: [
+      ['skyblock-start.html','Başlangıç','compass'],['skyblock-island.html','Ada ve takım','house'],
+      ['skyblock-progress.html','Görevler ve koleksiyonlar','star'],['skyblock-orders.html','Siparişler ve projeler','clipboard-list'],
+      ['skyblock-minion.html','Tarım minyonu','seedling'],['skyblock-trade.html','Ekonomi ve ticaret','store'],
+      ['skyblock-community.html','Topluluk','users'],['skyblock-vip.html','VIP hakları','gem'],['skyblock-access.html','Test erişimi','flask']
+    ],
+    village: [['village-play.html','Oynanış ve kazanma','moon'],['village-roles.html','Roller','users'],['village-lobby.html','Lobi ve komutlar','compass']]
+  };
+  const gameRoutes = {
+    'skyblock.html': {baslangic:'skyblock-start.html#start',ada:'skyblock-island.html#island',gelisim:'skyblock-progress.html#progress',ticaret:'skyblock-trade.html#trade',topluluk:'skyblock-community.html#community',vip:'skyblock-vip.html#vip',test:'skyblock-access.html#access'},
+    'village.html': {'nasil-oynanir':'village-play.html#nasil-oynanir',roller:'village-roles.html#roller',kazanma:'village-play.html#kazanma',lobi:'village-lobby.html#lobi',sorular:'village-lobby.html#sorular'}
+  };
+  for (const id of ['roles-title','tab-koy','tab-kurt','tab-bagimsiz','team-village-title','team-wolf-title','team-solo-title']) gameRoutes['village.html'][id] = 'village-roles.html#'+id;
+  gameRoutes['village.html']['countdown-title'] = 'village-lobby.html#countdown-title';
   const sections = [
     {name:'Oyunlar', href:'servers.html', pages:[['servers.html','Oyunlarımız'],['survival.html','Survival'],['skyblock.html','Skyblock'],['village.html',"Rob's Village"]]},
-    {name:'Skyblock', href:'skyblock.html', pages:[['skyblock.html#baslangic','İlk adımlar'],['skyblock.html#ada','Ada yönetimi'],['skyblock.html#gelisim','Gelişim ve siparişler'],['skyblock.html#ticaret','Skyblock ticareti'],['skyblock.html#vip','Skyblock VIP'],['skyblock.html#test','Test erişimi']]},
+    {name:'Skyblock', href:'skyblock.html', pages:gameGuides.skyblock.map(([href,label])=>[href,label])},
+    {name:"Rob's Village", href:'village.html', pages:gameGuides.village.map(([href,label])=>[href,label])},
     {name:'Survival', href:'survival.html', pages:[['survival.html#baslangic','Oyun rehberi'],['survival.html#harita','Dünya haritası'],['survival.html#siralamalar','Sıralamalar'],['players.html','Oyuncu profilleri']]},
     {name:'Topluluk', href:'news.html', pages:[['news.html','Topluluk ve haberler'],['news.html#hakkimizda','Hakkımızda'],['staff.html','Ekibimiz']]},
     {name:'VIP mağazası', href:'store.html', pages:[['store.html','VIP paketleri'],['store.html#karsilastirma','Hakları karşılaştır'],['store.html#kitler','Haftalık kitler']]},
@@ -41,6 +57,12 @@
     if (!href || href.startsWith('#') || /^(?:[a-z]+:|\/\/)/i.test(href)) return href;
     const url = new URL(href, 'https://robsarcade.online/');
     const page = url.pathname.split('/').pop();
+    const hash = url.hash.slice(1);
+    const gameTarget = gameRoutes[page]?.[hash] || (page === 'village.html' && hash.startsWith('rol-') ? 'village-roles.html#'+hash : null);
+    if (gameTarget) {
+      const target = new URL(gameTarget,url.origin); target.search = url.search;
+      return target.pathname.slice(1) + target.search + target.hash;
+    }
     if (!legacy[page]) return href;
     const target = new URL(legacy[page], url.origin);
     target.search = url.search;
@@ -93,8 +115,11 @@
     ['appeal.html','Ceza itirazı','Yardım','scale-balanced','ban yasak itiraz başvuru kanıt'],
     ['application.html','Yetkili başvurusu','Yardım','handshake','ekip helper moderatör başvuru yaş deneyim'],
     ['privacy.html','Gizlilik','Yasal','lock','kişisel veri gizlilik çerez'],
-    ['terms.html','Kullanım ve satış şartları','Yasal','file-lines','şart sözleşme satış iade ödeme']
-  ].map(([href,label,section,icon,keywords])=>({href,label,section,icon,keywords}));
+    ['terms.html','Kullanım ve satış şartları','Yasal','file-lines','şart sözleşme satış iade ödeme'],
+    ['skyblock-orders.html','Siparişler ve projeler','Skyblock','clipboard-list','skyblock siparis sipariş günlük haftalık proje meydan sera iskele ticaret puanı rozet'],
+    ['skyblock-minion.html','Tarım minyonu','Skyblock','seedling','skyblock tarimminyon minyon tohum hasat varil üretim'],
+    ['skyblock-community.html','Ada vitrini ve ziyaretler','Skyblock','users','skyblock skyshowcase vitrin oy aday ziyaret topluluk']
+  ].map(([href,label,section,icon,keywords])=>({href:resolveHref(href),label,section,icon,keywords}));
   const normalize = value => String(value).toLocaleLowerCase('tr').normalize('NFD').replace(/\p{M}/gu,'').replace(/ı/g,'i').replace(/[^a-z0-9]+/g,' ').trim();
   function search(query,limit = 10) {
     const text = normalize(query).slice(0,100);
@@ -109,7 +134,7 @@
       return {entry,score,index};
     }).filter(Boolean).sort((a,b)=>b.score-a.score || a.index-b.index).slice(0,limit).map(({entry})=>entry);
   }
-  const model = Object.freeze({topics, topicSections, legacy, sections, resolveHref, searchEntries, search});
+  const model = Object.freeze({topics, topicSections, legacy, gameGuides, gameRoutes, sections, resolveHref, searchEntries, search});
   if (typeof module !== 'undefined' && module.exports) module.exports = model;
   else root.ARCADE_SITE = model;
 })(typeof window === 'undefined' ? {} : window);

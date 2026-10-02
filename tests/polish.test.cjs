@@ -10,10 +10,11 @@ test('every full page loads one shared finish after the page-specific styles',()
   for (const page of pages) {
     const html = read(page+'.html');
     const styles = [...html.matchAll(/<link[^>]+rel="stylesheet"[^>]+href="([^"]+)"/g)].map(match=>match[1]);
-    assert.equal(styles.at(-1),'polish.css?v=20261002-1',page);
+    const game = ['survival','skyblock','village'].includes(page);
+    assert.equal(styles.at(-1),game ? 'game-guides.css?v=20261002-2' : 'polish.css?v=20261002-1',page);
     assert.equal(styles.filter(style=>style.startsWith('polish.css')).length,1,page);
     assert.ok(html.includes('craft.css?v=20261002-1'),page+' layout cache');
-    assert.ok(html.includes('site-shell.js?v=20261002-1'),page+' navigation cache');
+    assert.ok(html.includes('site-shell.js?v=20261002-2'),page+' navigation cache');
   }
 });
 

@@ -27,12 +27,12 @@ test('platform-specific searches open the correct connection panel',()=>{
   assert.equal(model.search('java')[0].href,'join.html#join-java');
 });
 test('village role names lead to the relevant team instead of another guide page',()=>{
-  assert.equal(model.search('aura gözcüsü')[0].href,'village.html#rol-koy');
-  assert.equal(model.search('bulasikci')[0].href,'village.html#rol-koy');
-  assert.equal(model.search('gölge')[0].href,'village.html#rol-kurt');
-  assert.equal(model.search('kundakci')[0].href,'village.html#rol-bagimsiz');
-  assert.equal(model.search('soytarı')[0].href,'village.html#rol-bagimsiz');
-  assert.equal(model.search('geri sayım')[0].href,'village.html#lobi');
+  assert.equal(model.search('aura gözcüsü')[0].href,'village-roles.html#rol-koy');
+  assert.equal(model.search('bulasikci')[0].href,'village-roles.html#rol-koy');
+  assert.equal(model.search('gölge')[0].href,'village-roles.html#rol-kurt');
+  assert.equal(model.search('kundakci')[0].href,'village-roles.html#rol-bagimsiz');
+  assert.equal(model.search('soytarı')[0].href,'village-roles.html#rol-bagimsiz');
+  assert.equal(model.search('geri sayım')[0].href,'village-lobby.html#lobi');
 });
 test('every search result is public, unique and targets existing content',()=>{
   const urls=new Set();

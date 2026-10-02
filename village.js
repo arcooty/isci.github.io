@@ -2,8 +2,10 @@
   const tabs = [...document.querySelectorAll('.village-team-tabs a')];
   if (!tabs.length) return;
   const catalogue = document.getElementById('roller');
-  const panels = tabs.map(tab => document.getElementById(tab.getAttribute('href').slice(1)));
-  document.querySelector('.village-team-tabs').setAttribute('role','tablist');
+  const panels = tabs.map(tab => document.getElementById((tab.getAttribute('href') || '').slice(1)));
+  const tablist = document.querySelector('.village-team-tabs');
+  if (!catalogue || !tablist || panels.some(panel => !panel)) return;
+  tablist.setAttribute('role','tablist');
   tabs.forEach((tab,index) => {
     tab.setAttribute('role','tab');
     tab.setAttribute('aria-controls',panels[index].id);
@@ -20,13 +22,13 @@
     let id;
     try { id = decodeURIComponent(location.hash.slice(1)); } catch { id = ''; }
     const destination = document.getElementById(id);
-    const index = destination ? panels.findIndex(panel => panel === destination || panel.contains(destination)) : -1;
+    const index = destination ? panels.findIndex((panel,index) => panel === destination || panel.contains(destination) || tabs[index] === destination) : -1;
     const initial = !destination || id === 'roller';
     select(index >= 0 ? tabs[index] : initial ? tabs[0] : tabs.find(tab => tab.getAttribute('aria-selected') === 'true') || tabs[0]);
     if (index < 0) return;
     if (destination.tagName === 'DETAILS') destination.open = true;
     if (align) requestAnimationFrame(() => {
-      const target = panels[index] === destination ? catalogue : destination;
+      const target = panels[index] === destination || tabs[index] === destination ? catalogue : destination;
       target.scrollIntoView({block:'start',behavior:'instant'});
     });
   };

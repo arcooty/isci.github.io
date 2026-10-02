@@ -19,7 +19,7 @@ test('home and Survival use factual headings instead of promotional slogans', ()
 
 test('removing decorative labels preserves access and VIP limitations', () => {
   assert.match(read('index.html'), /Sınırlı test erişiminde/);
-  assert.match(read('skyblock.html'), /beyaz listeli test erişiminde/);
+  assert.match(read('skyblock-access.html'), /beyaz listeli test erişiminde/);
   assert.match(read('store.html'), /tablosu Survival’a aittir/);
   assert.match(read('index.html'), /Para veya meslek kazancı çarpanı verilmez/);
 });
