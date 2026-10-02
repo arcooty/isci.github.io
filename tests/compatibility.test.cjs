@@ -34,10 +34,9 @@ test('status card, connection help and status page share one version source',()=
     }
   }
 });
-test('game dropdown includes Skyblock and keeps equally aligned text-only destinations',()=>{
+test('Games navigation links directly to the all-games page without dropdown behavior',()=>{
   const shell=fs.readFileSync(path.join(root,'site-shell.js'),'utf8');
-  const dropdown=shell.split('id="games-dropdown">')[1].split('</div></div>')[0];
-  assert.equal((dropdown.match(/link\(/g)||[]).length,4);
-  assert.ok(!dropdown.includes('icon('));
-  assert.ok(dropdown.includes('survival.html') && dropdown.includes('skyblock.html') && dropdown.includes('village.html') && dropdown.includes('servers.html'));
+  assert.ok(shell.includes("link('servers.html','Oyunlar')"));
+  assert.ok(!shell.includes('games-dropdown'));
+  assert.ok(!shell.includes('gameButton.addEventListener'));
 });

@@ -15,7 +15,7 @@
   if (!nav) { nav = document.createElement('nav'); document.body.prepend(nav); }
   nav.className = 'site-nav'; nav.setAttribute('aria-label','Ana menü');
   if (!nav.querySelector('.site-nav-inner')) nav.innerHTML = '<div class="site-nav-inner">' + brand + '<div class="site-links" id="site-links">' + link('index.html','Ana sayfa') +
-    '<div class="nav-menu"><button type="button" aria-expanded="false" aria-controls="games-dropdown"' + (['Oyunlar','Survival','Skyblock',"Rob's Village"].includes(section?.name) ? ' class="is-current"' : '') + '>Oyunlar ' + icon('chevron-down') + '</button><div class="nav-dropdown" id="games-dropdown">' + link('survival.html','Survival') + link('skyblock.html','Skyblock') + link('village.html',"Rob's Village") + link('servers.html','Bütün oyunlar') + '</div></div>' +
+    link('servers.html','Oyunlar') +
     link('community.html','Topluluk') + link('store.html','VIP mağazası') + link('help.html','Yardım') + '<a class="nav-play" href="join.html">' + icon('play') + ' Oyuna katıl</a></div><div class="nav-tools"><button class="site-search-button" type="button" aria-label="Sitede ara" title="Sitede ara" aria-haspopup="dialog" aria-controls="site-search">' + icon('magnifying-glass') + '</button><button class="theme-toggle" type="button" aria-label="Açık temaya geç" title="Açık temaya geç">' + icon('sun') + '</button><button class="mobile-nav-button" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="site-links">' + icon('bars') + '</button></div></div>';
   const themeButton = nav.querySelector('.theme-toggle');
   const renderTheme = () => {
@@ -58,16 +58,14 @@
   const skip = document.createElement('a'); skip.className = 'skip-link'; skip.href = '#main-content'; skip.textContent = 'İçeriğe geç'; nav.before(skip);
   const mobile = nav.querySelector('.mobile-nav-button');
   const links = nav.querySelector('#site-links');
-  const gameMenu = nav.querySelector('.nav-menu');
-  const gameButton = gameMenu.querySelector('button');
-  gameButton.classList.toggle('is-current',gamePage);
-  if (gamePage) gameButton.setAttribute('aria-current','location');
-  else gameButton.removeAttribute('aria-current');
-  const close = () => { gameMenu.classList.remove('is-open'); gameButton.setAttribute('aria-expanded','false'); links.classList.remove('open'); mobile.setAttribute('aria-expanded','false'); mobile.setAttribute('aria-label','Menüyü aç'); };
+  const gamesLink = links.querySelector('a[href="servers.html"]');
+  gamesLink.classList.toggle('is-current',gamePage);
+  if (gamePage) gamesLink.setAttribute('aria-current',path === 'servers.html' ? 'page' : 'location');
+  else gamesLink.removeAttribute('aria-current');
+  const close = () => { links.classList.remove('open'); mobile.setAttribute('aria-expanded','false'); mobile.setAttribute('aria-label','Menüyü aç'); };
   mobile.addEventListener('click', () => { const open = links.classList.toggle('open'); mobile.setAttribute('aria-expanded',String(open)); mobile.setAttribute('aria-label',open ? 'Menüyü kapat' : 'Menüyü aç'); });
-  gameButton.addEventListener('click', () => { const open = gameMenu.classList.toggle('is-open'); gameButton.setAttribute('aria-expanded',String(open)); });
   document.addEventListener('click',event => { if (!nav.contains(event.target)) close(); });
-  nav.addEventListener('keydown',event => { if (event.key === 'Escape') { const focus = gameMenu.classList.contains('is-open') ? gameButton : mobile; close(); focus.focus(); } });
+  nav.addEventListener('keydown',event => { if (event.key === 'Escape' && links.classList.contains('open')) { close(); mobile.focus(); } });
   nav.addEventListener('focusout',() => requestAnimationFrame(() => { if (!nav.contains(document.activeElement)) close(); }));
 
   let content = document.querySelector('main');
