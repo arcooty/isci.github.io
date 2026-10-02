@@ -1,7 +1,6 @@
 (() => {
   const state = document.getElementById('network-state');
   const players = document.getElementById('player-state');
-  const dot = document.getElementById('network-dot');
   const time = document.getElementById('status-time');
   const serviceLabels = {
     lobby: document.getElementById('lobby-state'),
@@ -19,7 +18,6 @@
       } else {
         state.textContent = 'Şu anda çevrimdışı veya bakımda.';
         players.textContent = 'Servis doğrulaması alınamadı.';
-        dot.style.background = '#e05252';
       }
       Object.entries(serviceLabels).forEach(([name, element]) => {
         if (name === 'event' && !data.services?.[name]) {
@@ -32,7 +30,6 @@
     .catch(() => {
       state.textContent = 'Durum servisine ulaşılamadı.';
       players.textContent = 'Servis doğrulaması alınamadı.';
-      dot.style.background = '#d6a33f';
       Object.values(serviceLabels).forEach(element => { element.textContent = 'Durum alınamadı.'; });
     })
     .finally(() => { time.textContent = `Son kontrol: ${new Date().toLocaleString('tr-TR', { timeZone: 'Europe/Istanbul' })} GMT+3`; });
