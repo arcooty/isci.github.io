@@ -23,7 +23,7 @@ test('Skyblock guide reports limited test access and remaining checks honestly',
   assert.ok(page.includes('son oyunculu kabul kontrolleri sürüyor'));
   assert.ok(!page.includes('yayına hazır'));
   assert.ok(read('server-data.js').includes("name:'Skyblock',state:'testing'"));
-  assert.ok(read('status.html').includes('anlık bağlantı ölçümü değildir'));
+  assert.ok(read('status.html').includes('Canlı durum değil, erişim koşulu.'));
 });
 test('separate economies, feature limitations and actual commands are documented', () => {
   const page=model.gameGuides.skyblock.map(([file])=>read(file)).join('');

@@ -6,7 +6,7 @@ const root=path.join(__dirname,'..');
 const read=file=>fs.readFileSync(path.join(root,file),'utf8');
 test('status presentation is scoped to the homepage and loads after shared styles',()=>{
   const html=read('index.html');
-  assert.ok(html.indexOf('home-status.css?v=20261002-5')>html.indexOf('polish.css?v=20261002-20'));
+  assert.ok(html.indexOf('home-status.css?v=20261002-6')>html.indexOf('polish.css?v=20261002-20'));
   assert.ok(html.includes('id="sunucu-durumu"'));
   const css=read('home-status.css');
   assert.ok(css.includes('body.home-page .home-status-band'));
@@ -23,6 +23,6 @@ test('compact status retains the live renderer targets and connection data',()=>
     assert.equal((html.match(new RegExp('id="'+id+'"','g'))||[]).length,1,id);
   }
   for(const client of ['java','bedrock']) assert.ok(html.includes('data-client-range="'+client+'"'));
-  assert.ok(html.includes('href="status.html" class="status-detail"'));
+  assert.ok(html.includes('href="status.html" class="status-detail craft-button primary"'));
   assert.ok(html.includes('data-client-notice="java" hidden'));
 });
