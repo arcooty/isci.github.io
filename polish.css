@@ -231,3 +231,5 @@ html[data-theme] body.network-shell .game-guide-content>section:has(>.command:la
 html[data-theme] body.network-shell .game-guide-content:has(>section) + .guide-pagination {
   border-top:0;
 }
+html[data-theme] body.network-shell .chunky-nav>a[aria-current=page] { filter:brightness(.88); }
+html[data-theme] body.network-shell .chunky-nav>a[aria-current=page]:hover { filter:brightness(.88); }
