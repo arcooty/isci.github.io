@@ -26,7 +26,7 @@ html[data-theme] body.network-shell .game-guide-toolbar summary::-webkit-details
 html[data-theme] body.network-shell .game-guide-toolbar details nav { position:absolute; right:0; top:calc(100% + 8px); z-index:5; display:grid; width:min(560px,100%); grid-template-columns:repeat(2,minmax(0,1fr)); gap:4px; padding:12px; background:var(--surface); border:1px solid var(--line); border-radius:6px; box-shadow:0 8px 24px #00000022; }
 html[data-theme] body.network-shell .game-guide-toolbar details nav a { display:flex; align-items:center; gap:10px; padding:14px; color:var(--ink); text-decoration:none; font-size:13px; }
 html[data-theme] body.network-shell .game-guide-toolbar details nav a:is(:hover,[aria-current=page]) { background:var(--surface-raised); color:var(--accent); }
-html[data-theme] body.network-shell .game-guide-heading { border-bottom:1px solid var(--line); padding:0 0 24px; margin-bottom:26px; }
+html[data-theme] body.network-shell .game-guide-heading { border-bottom:0; padding:0; margin-bottom:24px; }
 html[data-theme] body.network-shell .game-guide-heading h1 { font:700 42px/1.15 Rajdhani,sans-serif; margin:0 0 12px; }
 html[data-theme] body.network-shell .game-guide-heading p { margin:0; max-width:75ch; color:var(--quiet); font-size:15px; line-height:1.75; }
 html[data-theme] body.network-shell .game-guide-content { min-width:0; }

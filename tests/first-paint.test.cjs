@@ -25,6 +25,10 @@ test('help navigation is static, follows the heading and has one active page',()
     assert.equal((nav.match(/aria-current="page"/g)||[]).length,1);
   }
   assert.match(read('polish.css'),/\.page-head \{[^}]*border-bottom:0;/);
+  assert.match(read('polish.css'),/\.page-head \{[^}]*padding:8px 0 0; margin-bottom:24px;/);
+  assert.match(read('polish.css'),/\.page-head p \{[^}]*margin:8px 0 0;/);
+  assert.match(read('game-guides.css'),/\.game-guide-heading \{[^}]*padding:0; margin-bottom:24px;/);
+  assert.match(read('store-layout.css'),/\.game-guide-heading \{[^}]*padding-bottom:0;/);
 });
 test('retired forms retain field names, verification and modal visibility without utility CSS',()=>{
   for(const page of ['appeal','application']) {

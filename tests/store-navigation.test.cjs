@@ -20,7 +20,7 @@ test('store topics are real pages with four compact buttons and one active topic
     assert.ok(html.includes('https://robsarcade.online/'+file));
     assert.ok(read('sitemap.xml').includes('/'+file));
     assert.equal((html.match(/<h1>/g)||[]).length,1);
-    assert.ok(html.includes('game-guides.css?v=20261002-3'));
+    assert.ok(html.includes('game-guides.css?v=20261002-20'));
   }
   assert.ok(!read('store.html').includes('id="karsilastirma"'));
   assert.ok(!read('store.html').includes('id="kitler"'));
@@ -30,7 +30,7 @@ test('store topics are real pages with four compact buttons and one active topic
 test('all store pages place a shared masthead above compact sections',()=>{
   for(const file of pages) {
     const html=read(file);
-    assert.ok(html.includes('store-layout.css?v=20261002-7'));
+    assert.ok(html.includes('store-layout.css?v=20261002-20'));
     assert.ok(html.indexOf('<h1>VIP mağazası</h1>')<html.indexOf('class="chunky-nav '));
     assert.doesNotMatch(html, /<a class="text-link" href="servers.html">/);
     if(['store.html','store-skyblock.html'].includes(file)) {

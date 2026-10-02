@@ -16,7 +16,7 @@ test('all split game guides have canonical pages, topic navigation and shared st
     const heading = game === 'village' ? 'h2' : 'h1';
     assert.match(html,new RegExp('<'+heading+'[^>]*>'+label+'</'+heading+'>'),file+' title');
     assert.ok(html.includes(game === 'village' ? 'class="chunky-nav ' : 'class="game-guide-toolbar"'),file+' navigation');
-    assert.ok(html.includes('game-guides.css?v=20261002-3'),file+' styles');
+    assert.ok(html.includes('game-guides.css?v=20261002-20'),file+' styles');
     assert.ok(html.includes('data-game="'+game+'"'),file+' palette');
     for (const [destination] of pages) assert.ok(html.includes('href="'+destination+'"'),file+' category '+destination);
     assert.ok(read('sitemap.xml').includes('/'+file),file+' sitemap');
