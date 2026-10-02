@@ -30,10 +30,10 @@ test('store topics are real pages with four compact buttons and one active topic
 test('all store pages place a shared masthead above compact sections',()=>{
   for(const file of pages) {
     const html=read(file);
-    assert.ok(html.includes('store-layout.css?v=20261002-20'));
+    assert.ok(html.includes('store-layout.css?v=20261002-21'));
     assert.ok(html.indexOf('<h1>VIP mağazası</h1>')<html.indexOf('class="chunky-nav '));
     assert.doesNotMatch(html, /<a class="text-link" href="servers.html">/);
-    if(['store.html','store-skyblock.html','store-delivery.html'].includes(file)) {
+    if(['store.html','store-skyblock.html','store-delivery.html','store-kits.html','store-skyblock-kits.html'].includes(file)) {
       assert.doesNotMatch(html, /<header class="game-guide-heading">|hakları ve kullanım sınırları\.<\/p>/);
     } else assert.match(html, /<header class="game-guide-heading"><h2>/);
   }
@@ -66,6 +66,19 @@ test('old store and Village links preserve their anchors and package query',()=>
   assert.equal(model.resolveHref('store.html#teslimat'),'store-delivery.html#teslimat');
   assert.equal(model.resolveHref('village-play.html#kazanma'),'village-win.html#kazanma');
   assert.equal(model.resolveHref('village-lobby.html#sorular'),'village-faq.html#sorular');
+});
+test('kit pages omit duplicate introductions and retain commands and reward destinations',()=>{
+  for(const file of ['store-kits.html','store-skyblock-kits.html']) {
+    const html=read(file);
+    assert.ok(html.includes('store-kit-section'));
+    assert.ok(!html.includes('hakları ve kullanım sınırları.'));
+    assert.ok(html.includes('class="craft-button primary"'));
+  }
+  for(const command of ['/kit vip','/kit mvip','/kit uvip','/vipkolaylik']) assert.ok(read('store-kits.html').includes(command));
+  assert.ok(read('store-skyblock-kits.html').includes('Sipariş puanları kozmetik rozetlerde kullanılır; oyun içi TL değildir.'));
+  const css=read('store-layout.css');
+  assert.ok(css.includes('.skyblock-feature-list dd { margin:0;'));
+  assert.ok(css.includes('grid-template-columns:140px minmax(0,1fr) 40px'));
 });
 test('Survival uses hub tiles, a shared toolbar and matching map/ranking footers',()=>{
   const html=read('survival.html');
