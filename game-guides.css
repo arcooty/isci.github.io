@@ -43,13 +43,14 @@ html[data-theme] body.network-shell .game-guide-next a { font-size:13px; font-we
 
 /* Survival topic views use the same bright category bar, without another sidebar. */
 html[data-theme] body.network-shell.survival-hub .guide-toolbar { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:14px; background:var(--guide-color); color:var(--guide-ink); padding:18px 22px; border:0; border-radius:6px; box-shadow:inset 0 -4px #00000020; }
-html[data-theme] body.network-shell.survival-hub .guide-return { margin:0; color:inherit; font-weight:700; }
+html[data-theme] body.network-shell.survival-hub .guide-toolbar>.guide-return { margin:0; color:inherit; font-weight:700; }
 html[data-theme] body.network-shell.survival-hub .guide-toolbar>details { margin-left:auto; }
 html[data-theme] body.network-shell.survival-hub .guide-toolbar summary { color:inherit; border-color:#00000030; }
 html[data-theme] body.network-shell.survival-hub .guide-toolbar details[open] { flex-basis:100%; }
 html[data-theme] body.network-shell.survival-hub .guide-toolbar #guide-topics a { background:var(--surface); color:var(--ink); border:0; border-left:3px solid var(--guide-color); min-height:72px; }
 html[data-theme] body.network-shell.survival-hub .guide-head { max-width:none; padding:0 0 24px; border-bottom:1px solid var(--line); }
 html[data-theme] body.network-shell.survival-hub .guide-head p { max-width:85ch; }
+html[data-theme] body.network-shell.survival-hub .guide-head+.start-steps>li:first-child { border-top:0; }
 html[data-theme] body.network-shell.survival-hub .guide-outline { border:0; background:var(--surface-raised); padding:12px 18px; border-radius:4px; }
 html[data-theme] body.network-shell.survival-hub .guide-outline a { color:var(--accent); padding:8px 0; }
 html[data-theme] body.network-shell .guide-article .info-card { padding:22px 0; border-top:3px solid var(--guide-color,#83e6a3); }

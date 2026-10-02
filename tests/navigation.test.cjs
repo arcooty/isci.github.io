@@ -77,11 +77,13 @@ test('deep link selects precisely one guide topic and leaves the map unloaded', 
   assert.equal(h.frame.src,'');
 });
 
-test('all seven large guide tiles use the canonical topic labels and destinations', () => {
+test('six guide tiles retain canonical topics without repeating the main guide button', () => {
   const html=fs.readFileSync(path.join(root,'survival.html'),'utf8');
   const tiles=[...html.matchAll(/<a class="topic-card" href="([^"]+)"><span><strong>([^<]+)<\/strong>/g)];
-  assert.equal(tiles.length,model.topics.length);
-  assert.deepEqual(tiles.map(([,href,label])=>[href,label]),Array.from(model.topics,([id,label])=>[model.gameRoutes['survival.html'][id]?.split('#')[0] || '#'+id,label]));
+  const topics=model.topics.filter(([id])=>id!=='baslangic');
+  assert.equal(tiles.length,topics.length);
+  assert.deepEqual(tiles.map(([,href,label])=>[href,label]),Array.from(topics,([id,label])=>[model.gameRoutes['survival.html'][id]?.split('#')[0] || '#'+id,label]));
+  assert.match(html,/href="#baslangic" data-hub-tab="rehber"/);
 });
 
 test('split topics redirect on selection and history without rendering the old article', () => {

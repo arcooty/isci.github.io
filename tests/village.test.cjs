@@ -181,13 +181,13 @@ test('all verified role descriptions and limits survive the split unchanged', ()
   assert.deepEqual(actual,verifiedRoleDescriptions);
 });
 
-test('hub exposes six compact navigation buttons, gameplay imagery and legacy routing hook', () => {
+test('Village hub exposes five Skyblock-style topics, gameplay imagery and legacy routing hook', () => {
   const hub = pages.village;
   assert.match(hub,/<h1>Rob's Village<\/h1>/);
   assert.match(hub,/data-game-hub="village"/);
-  assert.match(hub,/class="chunky-nav /);
-  const topicNav=hub.match(/<nav class="chunky-nav [\s\S]*?<\/nav>/)[0];
-  assert.equal((topicNav.match(/aria-current="page"/g) || []).length,1);
+  assert.match(hub,/class="topic-grid"/);
+  assert.equal((hub.match(/class="topic-card"/g) || []).length,5);
+  assert.doesNotMatch(hub,/class="chunky-nav /);
   for (const page of ['village-play','village-roles','village-win','village-lobby','village-faq']) {
     assert.match(hub,new RegExp('href="'+page+'\\.html"'));
   }
@@ -197,32 +197,37 @@ test('hub exposes six compact navigation buttons, gameplay imagery and legacy ro
   assert.match(hub,/id="village-top"/);
 });
 
-test('every Village page keeps its game heading above compact navigation', () => {
-  for (const page of Object.values(pages)) {
-    assert.match(page, /village-navigation\.css\?v=20261002-21/);
-    assert.match(page, /class="village-masthead"/);
-    assert.ok(page.indexOf('<h1>Rob\'s Village</h1>') < page.indexOf('class="chunky-nav '));
-    assert.match(page, /<span>Genel bakış<\/span>/);
+test('Village topic pages share the Skyblock toolbar and footer navigation', () => {
+  for (const [name,page] of Object.entries(pages)) {
+    assert.match(page, /village-navigation\.css\?v=20261002-24/);
+    if(name==='village') continue;
+    assert.match(page, /class="game-guide-toolbar"/);
+    assert.match(page, /<h1>Rob's Village<\/h1>/);
+    assert.match(page, /class="game-guide-next"/);
+    assert.match(page, /Bütün konular/);
+    assert.doesNotMatch(page, /class="chunky-nav /);
+    const menu=page.match(/<nav aria-label="Rehber konuları">[\s\S]*?<\/nav>/)[0];
+    assert.equal((menu.match(/aria-current="page"/g)||[]).length,1);
   }
   const css = fs.readFileSync(path.join(root,'village-navigation.css'),'utf8');
-  assert.match(css, /min-height:54px/);
-  assert.match(css, /flex-direction:row/);
+  assert.match(css, /\.game-guide-toolbar>h1/);
   assert.match(css, /\.game-guide-content \.journey \{ border-bottom:0; margin-bottom:0; padding-bottom:0;/);
 });
 
 test('guides share standard shell, themes, category menus and literal headings', () => {
+  assert.equal((pages['village-roles'].match(/class="village-role-column"/g)||[]).length,6);
   for (const [name,page] of Object.entries(pages)) {
     assert.match(page,/<body class="network-shell game-guide-page[^"]*" data-game="village"/);
-    assert.match(page,/theme\.js\?v=20260926-5/);
+    assert.match(page,/theme\.js\?v=20261002-22/);
     for (const css of ['network','craft','theme','village']) assert.match(page,new RegExp(css+'\\.css\\?v='));
-    assert.match(page,/polish\.css\?v=20261002-20"[\s\S]*?game-guides\.css\?v=20261002-20"/);
+    assert.match(page,/polish\.css\?v=20261002-20"[\s\S]*?game-guides\.css\?v=20261002-23"/);
     for (const script of ['site-map','site-shell','game-guide']) assert.match(page,new RegExp(script+'\\.js\\?v='));
     assert.match(page,/game-guide\.js\?v=20261002-3/);
     assert.match(page,new RegExp('rel="canonical" href="https://robsarcade.online/'+name+'\\.html"'));
     assert.equal((page.match(/<h1>/g) || []).length,1);
     assert.doesNotMatch(page,/class="eyebrow"/);
     if (name === 'village') continue;
-    assert.match(page,/class="chunky-nav "[\s\S]*?href="village\.html"/);
+    assert.match(page,/class="game-guide-toolbar"[\s\S]*?href="village\.html"/);
     if(['village-play','village-win','village-faq'].includes(name)) assert.doesNotMatch(page,/class="game-guide-heading"/);
     else assert.match(page,/class="game-guide-heading"/);
     assert.match(page,/class="game-guide-content"/);

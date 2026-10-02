@@ -13,6 +13,10 @@ test('all rendered pages carry the shared theme and navigation before scripts ru
     assert.match(html,/<nav class="site-nav"/,file);
     assert.match(html,/class="site-nav-inner"/,file);
     assert.match(html,/<footer class="site-footer"/,file);
+    const footer=html.match(/<footer class="site-footer">[\s\S]*?<\/footer>/)[0];
+    const intro=footer.match(/<div class="footer-intro">[\s\S]*?<\/div>/)[0];
+    assert.doesNotMatch(intro,/discord.gg/);
+    assert.match(footer,/<section><h2>Topluluk<\/h2>[\s\S]*?> Discord<\/a><\/section>/);
     assert.doesNotMatch(html,/cdn\.tailwindcss\.com|tailwind\.config|id="cursor-glow"/,file);
   }
 });

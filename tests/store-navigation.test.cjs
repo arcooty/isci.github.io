@@ -20,7 +20,7 @@ test('store topics are real pages with four compact buttons and one active topic
     assert.ok(html.includes('https://robsarcade.online/'+file));
     assert.ok(read('sitemap.xml').includes('/'+file));
     assert.equal((html.match(/<h1>/g)||[]).length,1);
-    assert.ok(html.includes('game-guides.css?v=20261002-20'));
+    assert.ok(html.includes('game-guides.css?v=20261002-23'));
   }
   assert.ok(!read('store.html').includes('id="karsilastirma"'));
   assert.ok(!read('store.html').includes('id="kitler"'));
@@ -70,7 +70,7 @@ test('old store and Village links preserve their anchors and package query',()=>
 test('Survival main navigation lives inside the overview and map/rankings retain returns',()=>{
   const html=read('survival.html');
   assert.ok(!html.includes('class="hub-tabs"'));
-  assert.ok(html.indexOf('data-hub-panel="genel"')<html.indexOf('class="chunky-nav survival-sections"'));
+  assert.ok(html.indexOf('class="chunky-nav survival-sections"')<html.indexOf('data-hub-panel="genel"'));
   for(const view of ['genel','rehber','harita','siralamalar']) assert.ok(html.includes('data-hub-tab="'+view+'"'));
   for(const id of ['harita','siralamalar']) {
     const panel=html.slice(html.indexOf('<section id="'+id+'"'));
