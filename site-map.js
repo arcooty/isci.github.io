@@ -33,14 +33,14 @@
       ['skyblock-start.html','Başlangıç','compass'],['skyblock-island.html','Ada ve takım','house'],
       ['skyblock-progress.html','Görevler ve koleksiyonlar','star'],['skyblock-orders.html','Siparişler ve projeler','clipboard-list'],
       ['skyblock-minion.html','Tarım minyonu','seedling'],['skyblock-trade.html','Ekonomi ve ticaret','store'],
-      ['skyblock-community.html','Topluluk','users'],['skyblock-vip.html','VIP hakları','gem'],['skyblock-access.html','Test erişimi','flask']
+      ['skyblock-community.html','Topluluk','users'],['skyblock-vip.html','VIP hakları','gem'],['skyblock-access.html','Test erişimi','flask'],['skyblock-leaderboard.html','Sıralamalar','trophy']
     ],
     village: [['village-play.html','Oynanış','moon'],['village-roles.html','Roller','users'],['village-win.html','Kazanma','trophy'],['village-lobby.html','Lobi ve komutlar','compass'],['village-faq.html','Sorular','circle-question']]
   };
   const gameRoutes = {
     'survival.html': {meslekler:'survival-jobs.html#jobs-meslekler', 'jobs-meslekler':'survival-jobs.html#jobs-meslekler', 'jobs-sistem':'survival-jobs-progress.html#jobs-sistem', 'jobs-komutlar':'survival-jobs-commands.html#jobs-komutlar', kasalar:'survival-crates.html#kasalar', 'crate-havuzlar':'survival-crates.html#crate-havuzlar', 'crate-odds':'survival-crates-rewards.html#crate-odds', 'crate-kullanim':'survival-crates-keys.html#crate-kullanim', komutlar:'survival-commands.html#komutlar', 'commands-travel':'survival-commands.html#commands-travel', 'commands-progress':'survival-commands-progress.html#commands-progress', 'commands-vip':'survival-commands-vip.html#commands-vip'},
     'news.html': {hakkimizda:'community.html#hakkimizda'},
-    'skyblock.html': {baslangic:'skyblock-start.html#start',ada:'skyblock-island.html#island',gelisim:'skyblock-progress.html#progress',ticaret:'skyblock-trade.html#trade',topluluk:'skyblock-community.html#community',vip:'skyblock-vip.html#vip',test:'skyblock-access.html#access'},
+    'skyblock.html': {baslangic:'skyblock-start.html#start',ada:'skyblock-island.html#island',gelisim:'skyblock-progress.html#progress',ticaret:'skyblock-trade.html#trade',topluluk:'skyblock-community.html#community',vip:'skyblock-vip.html#vip',test:'skyblock-access.html#access',siralamalar:'skyblock-leaderboard.html#rankings'},
     'village.html': {'nasil-oynanir':'village-play.html#nasil-oynanir',roller:'village-roles.html#roller',kazanma:'village-win.html#kazanma',lobi:'village-lobby.html#lobi',sorular:'village-faq.html#sorular'},
     'village-play.html': {kazanma:'village-win.html#kazanma'},
     'village-lobby.html': {sorular:'village-faq.html#sorular'},
@@ -84,6 +84,7 @@
     ['skyblock.html#ticaret','Skyblock ticareti','Skyblock','store','skyblock market pazar takas 5000 satislimiti skytakas'],
     ['skyblock.html#vip','Skyblock VIP hakları','Skyblock','gem','skyblock vip mvip uvip ilan kozmetik iş istasyonu'],
     ['skyblock.html#test','Skyblock test erişimi','Skyblock','flask','skyblock whitelist beyaz liste kapalı açılış test'],
+    ['skyblock-leaderboard.html','Skyblock sıralamaları','Skyblock','trophy','skyblock liderlik leaderboard sıralama ekonomi banka görev değerlendirme ada'],
     ['survival.html#baslangic','İlk adımlar','Survival','compass','başlangıç ilk giriş oyun menü rtp'],
     ['survival.html#arazi','Arazi ve evler','Survival','house','claim koruma altın kürek sethome home evler evlerim delhome trust ev kaydet nether end'],
     ['survival.html#meslekler','Meslekler','Survival','hammer','jobs madenci oduncu çiftçi avcı balıkçı inşaatçı zanaatkar efsuncu silahşör kazıcı iksirci kaşif para kazanmak'],

@@ -13,6 +13,7 @@
 
 - `GET /api/v1/status`: Velocity, lobi, Survival, etkinlik ve harita saglik durumu.
 - `GET /api/v1/leaderboards`: izinli ekonomi, Jobs ve AuraSkills liderlikleri.
+- `GET /api/v1/skyblock/leaderboards`: Skyblock cuzdani, ortak ada bankasi, tamamlanan ada gorevleri ve ada degerlendirmeleri. Survival verisiyle karistirilmaz; Essentials dosyalari ve SuperiorSkyblock SQLite yalniz okunur.
 - `GET /api/v1/economy/summary`: gunluk para girisi/cikisi ve kaynak kategorileri; oyuncu bazli hassas islem gecmisi olmadan.
 - `GET /api/v1/events`: etkinlik takvimi ve bakim duyurulari.
 - `GET /api/v1/news`: Discord duyurularinin web kopyasi veya yonetim panelinden yayinlanan haberler.

@@ -16,7 +16,7 @@ test('all guide footers use one final shared button stylesheet',()=>{
     assert.ok(nav.includes('href="'),file);
     assert.ok(!nav.includes(' hidden'),file);
   }
-  assert.equal(count,24);
+  assert.equal(count,25);
 });
 test('navigation colors, sizing and hidden terminal links have one contract',()=>{
   const css=fs.readFileSync(path.join(root,'guide-navigation.css'),'utf8');

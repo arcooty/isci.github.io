@@ -40,7 +40,8 @@ test('legacy game bookmarks retain their topic and query without redirect loops'
 
 test('the Skyblock overview is a category hub, not the previous long guide',()=>{
   const html=read('skyblock.html');
-  assert.equal((html.match(/class="topic-card"/g)||[]).length,9);
+  assert.equal((html.match(/class="topic-card"/g)||[]).length,model.gameGuides.skyblock.length-1);
+  assert.ok(html.includes('class="sky-action" href="skyblock-leaderboard.html"'));
   assert.ok(!html.includes('class="skyblock-section"'));
   for (const [file] of model.gameGuides.skyblock) assert.ok(html.includes('href="'+file+'"'));
 });
