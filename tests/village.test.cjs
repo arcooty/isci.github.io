@@ -181,7 +181,7 @@ test('all verified role descriptions and limits survive the split unchanged', ()
   assert.deepEqual(actual,verifiedRoleDescriptions);
 });
 
-test('hub exposes six large navigation buttons, gameplay imagery and legacy routing hook', () => {
+test('hub exposes six compact navigation buttons, gameplay imagery and legacy routing hook', () => {
   const hub = pages.village;
   assert.match(hub,/<h1>Rob's Village<\/h1>/);
   assert.match(hub,/data-game-hub="village"/);
@@ -194,6 +194,18 @@ test('hub exposes six large navigation buttons, gameplay imagery and legacy rout
   assert.match(hub,/<img src="assets\/robs-village-gameplay\.webp"[^>]*width="1536" height="960"/);
   assert.doesNotMatch(hub,/class="village-role"|class="faq-list"/);
   assert.match(hub,/id="village-top"/);
+});
+
+test('every Village page keeps its game heading above compact navigation', () => {
+  for (const page of Object.values(pages)) {
+    assert.match(page, /village-navigation\.css\?v=20261002-6/);
+    assert.match(page, /class="village-masthead"/);
+    assert.ok(page.indexOf('<h1>Rob\'s Village</h1>') < page.indexOf('class="chunky-nav '));
+    assert.match(page, /<span>Genel bakış<\/span>/);
+  }
+  const css = fs.readFileSync(path.join(root,'village-navigation.css'),'utf8');
+  assert.match(css, /min-height:54px/);
+  assert.match(css, /flex-direction:row/);
 });
 
 test('guides share standard shell, themes, category menus and literal headings', () => {
