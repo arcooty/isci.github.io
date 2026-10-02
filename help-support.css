@@ -13,6 +13,6 @@ html[data-theme] body.network-shell[data-page=help] .support-action .craft-butto
 html[data-theme] body.network-shell[data-page=help] .support-privacy { grid-column:1/-1; margin:0; color:var(--quiet); font-size:12px; line-height:1.6; }
 @media(max-width:1000px) {
   html[data-theme] body.network-shell[data-page=help] .support-actions { grid-template-columns:1fr; gap:24px; }
-  html[data-theme] body.network-shell[data-page=help] .support-action { padding-left:16px; }
+  html[data-theme] body.network-shell[data-page=help] .support-action { padding-left:0; border-left:0; }
   html[data-theme] body.network-shell[data-page=help] .support-action:first-child { padding-left:0; }
 }
