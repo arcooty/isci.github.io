@@ -39,6 +39,7 @@ html[data-theme] body.home-page .home-status-band .status-detail.craft-button { 
   html[data-theme] body.home-page .home-status-band .status-facts>div+div { padding-left:12px; }
 }
 @media(max-width:900px) {
+  html[data-theme] body.home-page .home-status-band .floating-status :is(.floating-status-head,.floating-status-players) { grid-template-rows:auto; }
   html[data-theme] body.home-page .home-status-band .floating-status { grid-template-columns:minmax(0,1fr); gap:0; padding:22px; }
   html[data-theme] body.home-page .home-status-band .floating-status-head { grid-template-columns:minmax(0,1fr) auto; grid-template-rows:auto; gap:12px; margin-bottom:12px; }
   html[data-theme] body.home-page .home-status-band .floating-status-head h2 { font:700 24px/1.2 Rajdhani,sans-serif; }
