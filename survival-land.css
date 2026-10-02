@@ -1,0 +1,24 @@
+html[data-theme] body.network-shell.survival-hub .land-command-tables { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px; margin-bottom:24px; }
+html[data-theme] body.network-shell.survival-hub .land-command-tables > section { min-width:0; }
+html[data-theme] body.network-shell.survival-hub .land-command-table { width:100%; table-layout:fixed; border-collapse:collapse; }
+html[data-theme] body.network-shell.survival-hub .land-command-table caption { padding:0 0 16px; color:var(--ink); font:700 26px/1.25 Rajdhani,sans-serif; text-align:left; }
+html[data-theme] body.network-shell.survival-hub .land-command-table caption i { margin-right:10px; color:#83e6a3; font-size:20px; }
+html[data-theme] body.network-shell.survival-hub .land-command-table.claim-commands caption i { color:#77ddf2; }
+html[data-theme] body.network-shell.survival-hub .land-command-table thead { background:var(--surface-raised); }
+html[data-theme] body.network-shell.survival-hub .land-command-table th,
+html[data-theme] body.network-shell.survival-hub .land-command-table td { padding:14px 12px; border-bottom:1px solid var(--line); color:var(--quiet); font:400 13px/1.75 Inter,sans-serif; text-align:left; vertical-align:top; overflow-wrap:anywhere; }
+html[data-theme] body.network-shell.survival-hub .land-command-table thead th { color:var(--ink); font-weight:600; }
+html[data-theme] body.network-shell.survival-hub .land-command-table th:first-child { width:48%; }
+html[data-theme] body.network-shell.survival-hub .land-command-table tbody tr:hover { background:var(--surface-raised); }
+html[data-theme] body.network-shell.survival-hub .land-command-table .command { display:flex; align-items:flex-start; justify-content:space-between; gap:8px; padding:0; border:0; }
+html[data-theme] body.network-shell.survival-hub .land-command-table .command code { min-width:0; padding:5px 0; background:transparent; color:var(--accent); font:400 12px/1.75 monospace; white-space:normal; overflow-wrap:anywhere; }
+html[data-theme] body.network-shell.survival-hub .land-command-table .command-copy { width:30px; height:30px; min-width:30px; padding:0; flex-shrink:0; }
+html[data-theme] body.network-shell.survival-hub .land-world-command { margin:0 0 24px; }
+@media(max-width:1000px) {
+  html[data-theme] body.network-shell.survival-hub .land-command-tables { grid-template-columns:minmax(0,1fr); gap:28px; }
+}
+@media(max-width:600px) {
+  html[data-theme] body.network-shell.survival-hub .land-command-table th,
+  html[data-theme] body.network-shell.survival-hub .land-command-table td { padding:12px 8px; }
+  html[data-theme] body.network-shell.survival-hub .land-command-table th:first-child { width:52%; }
+}

@@ -15,7 +15,7 @@ test('every split Survival page shares the game toolbar, menu and footer',()=>{
     const toolbar=html.match(/<nav class="game-guide-toolbar survival-topic-toolbar"[\s\S]*?<\/details><\/nav>/)[0];
     assert.equal((toolbar.match(/<a /g)||[]).length,10,file);
     assert.equal((toolbar.match(/aria-current="page"/g)||[]).length,1,file);
-    assert.ok(toolbar.includes('<h1>Survival</h1>'),file);
+    assert.ok(toolbar.includes('<strong>Survival</strong>'),file);
     assert.ok(html.includes('Bütün konular</a>'),file);
   }
 });

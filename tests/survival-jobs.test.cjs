@@ -7,7 +7,7 @@ test('jobs subsections are separate pages with shared compact navigation',()=>{
   const pages=['survival-jobs.html','survival-jobs-progress.html','survival-jobs-commands.html'];
   for(const file of pages) {
     const html=read(file);
-    assert.match(html,/<h1>Survival<\/h1>/);
+    assert.match(html,/<strong>Survival<\/strong>/);
     assert.match(html,/<nav class="game-guide-next" aria-label="Rehber gezinmesi">/);
     assert.ok(html.includes('Bütün konular</a>'));
     assert.ok(html.includes('href="survival.html#gorevler">Görevler ve beceriler'));

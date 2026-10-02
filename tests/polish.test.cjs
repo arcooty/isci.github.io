@@ -11,6 +11,7 @@ test('every full page loads one shared finish after the page-specific styles',()
     const html = read(page+'.html');
     const styles = [...html.matchAll(/<link[^>]+rel="stylesheet"[^>]+href="([^"]+)"/g)].map(match=>match[1]);
     const game = ['survival','skyblock','village','store'].includes(page);
+    if (['survival','skyblock','village'].includes(page)) assert.equal(styles.pop(),'game-typography.css?v=20261003-1');
     if (page === 'skyblock') assert.equal(styles.pop(),'skyblock-content.css?v=20261002-2');
     if(page === 'servers') {
       assert.equal(styles.pop(),'navigation-layout.css?v=20261002-1');

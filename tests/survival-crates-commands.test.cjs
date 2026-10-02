@@ -9,7 +9,7 @@ const groups = [
 test('crate and command pages keep compact navigation with one selected topic', () => {
   for (const group of groups) for (const file of group) {
     const html = fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
-    assert.ok(html.includes('<h1>Survival</h1>'), file);
+    assert.ok(html.includes('<strong>Survival</strong>'), file);
     assert.ok(html.includes('class="game-guide-next"'), file);
     assert.ok(html.includes('Bütün konular</a>'), file);
     if (file.startsWith('survival-crates')) assert.ok(html.includes('href="survival-commands.html">Komutlar'), file);

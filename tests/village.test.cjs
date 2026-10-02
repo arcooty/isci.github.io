@@ -202,7 +202,7 @@ test('Village topic pages share the Skyblock toolbar and footer navigation', () 
     assert.match(page, /village-navigation\.css\?v=20261002-24/);
     if(name==='village') continue;
     assert.match(page, /class="game-guide-toolbar"/);
-    assert.match(page, /<h1>Rob's Village<\/h1>/);
+    assert.match(page, /<strong>Rob's Village<\/strong>/);
     assert.match(page, /class="game-guide-next"/);
     assert.match(page, /Bütün konular/);
     assert.doesNotMatch(page, /class="chunky-nav /);
@@ -220,7 +220,7 @@ test('guides share standard shell, themes, category menus and literal headings',
     assert.match(page,/<body class="network-shell game-guide-page[^"]*" data-game="village"/);
     assert.match(page,/theme\.js\?v=20261002-22/);
     for (const css of ['network','craft','theme','village']) assert.match(page,new RegExp(css+'\\.css\\?v='));
-    assert.match(page,/polish\.css\?v=20261002-27"[\s\S]*?game-guides\.css\?v=20261002-23"/);
+    assert.match(page,/polish\.css\?v=(?:20261002-27|20261003-1)"[\s\S]*?game-guides\.css\?v=20261002-23"/);
     for (const script of ['site-map','site-shell','game-guide']) assert.match(page,new RegExp(script+'\\.js\\?v='));
     assert.match(page,/game-guide\.js\?v=20261002-3/);
     assert.match(page,new RegExp('rel="canonical" href="https://robsarcade.online/'+name+'\\.html"'));
@@ -228,8 +228,7 @@ test('guides share standard shell, themes, category menus and literal headings',
     assert.doesNotMatch(page,/class="eyebrow"/);
     if (name === 'village') continue;
     assert.match(page,/class="game-guide-toolbar"[\s\S]*?href="village\.html"/);
-    if(['village-play','village-win','village-faq'].includes(name)) assert.doesNotMatch(page,/class="game-guide-heading"/);
-    else assert.match(page,/class="game-guide-heading"/);
+    assert.match(page,/class="game-guide-heading"/);
     assert.match(page,/class="game-guide-content"/);
     for (const guide of ['village-play','village-roles','village-win','village-lobby','village-faq']) assert.match(page,new RegExp('href="'+guide+'\\.html"'));
     assert.match(page,new RegExp('href="'+name+'\\.html" aria-current="page"'));

@@ -10,7 +10,8 @@ test('all guide footers use one final shared button stylesheet',()=>{
     if(!/class="(?:guide-pagination|game-guide-next)"/.test(html)) continue;
     count++;
     const styles=[...html.matchAll(/<link[^>]+rel="stylesheet"[^>]+href="([^"]+)"/g)].map(match=>match[1]);
-    assert.equal(styles.at(-1),'guide-navigation.css?v=20261002-24',file);
+    assert.equal(styles.at(-2),'guide-navigation.css?v=20261002-24',file);
+    assert.equal(styles.at(-1),'game-typography.css?v=20261003-1',file);
     assert.equal(styles.filter(style=>style.startsWith('guide-navigation.css')).length,1,file);
     const nav=html.match(/<nav class="(?:guide-pagination|game-guide-next)"[\s\S]*?<\/nav>/)[0];
     assert.ok(nav.includes('href="'),file);

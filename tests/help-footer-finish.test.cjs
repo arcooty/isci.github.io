@@ -13,3 +13,16 @@ test('help FAQ keeps native accessible disclosure and all four answers',()=>{
   assert.ok(css.includes('.footer-bottom>div { margin-left:0;'));
   assert.ok(css.includes('.site-footer-inner section:last-child { grid-column:1/-1; }'));
 });
+
+test('Village FAQ shares the help disclosure styling without the retired event section',()=>{
+  const html=fs.readFileSync(path.join(__dirname,'../village-faq.html'),'utf8');
+  const list=html.match(/<div class="faq-list">([\s\S]*?)<\/div>/)[1];
+  assert.equal((list.match(/<details>/g)||[]).length,6);
+  assert.equal((list.match(/<summary>/g)||[]).length,6);
+  assert.ok(!html.includes('Etkinlik saatleri'));
+  assert.ok(html.includes('polish.css?v=20261003-1'));
+  const css=fs.readFileSync(path.join(__dirname,'../polish.css'),'utf8');
+  const rules=css.split('\n').filter(line=>line.includes('.faq-list')&&line.includes('[data-page=help]'));
+  assert.equal(rules.length,9);
+  assert.ok(rules.every(rule=>rule.includes('[data-page=village-faq]')));
+});

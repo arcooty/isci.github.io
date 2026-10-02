@@ -1,0 +1,91 @@
+/* One type scale for game hubs, articles and topic cards. */
+html[data-theme] body.network-shell.game-guide-page {
+  --game-hub-size:52px;
+  --game-page-size:42px;
+  --game-section-size:26px;
+  --game-topics-size:30px;
+  --game-intro-size:15px;
+  --game-heading-gap:32px;
+}
+html[data-theme] body.network-shell.game-guide-page main[id] :is(.hub-masthead,.game-hub-heading,.village-masthead) h1 {
+  margin:0 0 12px;
+  font:700 var(--game-hub-size)/1.1 Rajdhani,sans-serif;
+  letter-spacing:0;
+}
+html[data-theme] body.network-shell.game-guide-page main[id] :is(.hub-masthead,.game-hub-heading,.village-masthead) p {
+  margin:0;
+  max-width:75ch;
+  font:400 var(--game-intro-size)/1.75 Inter,sans-serif;
+}
+html[data-theme] body.network-shell.game-guide-page main[id] :is(.hub-masthead,.game-hub-heading,.village-masthead) {
+  padding-bottom:0;
+  margin-bottom:24px;
+}
+html[data-theme] body.network-shell.game-guide-page main[id] :is(.survival-hub-section-heading,.sky-hub-section-heading) h2,
+html[data-theme] body.network-shell.game-guide-page main[id] > section > h2 {
+  margin:0;
+  font:700 var(--game-topics-size)/1.2 Rajdhani,sans-serif;
+}
+html[data-theme] body.network-shell.game-guide-page main[id] .topic-card strong {
+  font:700 18px/1.4 Inter,sans-serif;
+}
+html[data-theme] body.network-shell.game-guide-page main[id] .topic-card small {
+  margin-top:12px;
+  color:inherit;
+  font:400 12px/1.5 Inter,sans-serif;
+}
+html[data-theme] body.network-shell.game-guide-page main[id] .game-guide-toolbar {
+  margin-bottom:var(--game-heading-gap);
+}
+html[data-theme] body.network-shell.game-guide-page main[id] :is(.game-guide-heading,.guide-head,.hub-content-heading) {
+  margin:0 0 24px;
+  padding:0;
+  border:0;
+}
+html[data-theme] body.network-shell.game-guide-page main[id] :is(.game-guide-heading,.guide-head,.hub-content-heading) :is(h1,h2) {
+  margin:0 0 12px;
+  font:700 var(--game-page-size)/1.15 Rajdhani,sans-serif;
+  letter-spacing:0;
+}
+html[data-theme] body.network-shell.game-guide-page main[id] :is(.game-guide-heading,.guide-head,.hub-content-heading) p {
+  margin:0;
+  max-width:75ch;
+  font:400 var(--game-intro-size)/1.75 Inter,sans-serif;
+}
+html[data-theme] body.network-shell.game-guide-page main[id] :is(.game-guide-content,.guide-article) h2:not(.guide-head > h2) {
+  font:700 var(--game-section-size)/1.25 Rajdhani,sans-serif;
+}
+html[data-theme] body.network-shell.game-guide-page main[id] :is(.game-guide-content,.guide-article) h3 {
+  font:700 24px/1.3 Rajdhani,sans-serif;
+}
+html[data-theme] body.network-shell.game-guide-page main[id] .game-guide-content > .game-section:first-child {
+  margin-top:0;
+  padding-top:0;
+}
+/* Survival's secondary menus share one height before the article title. */
+html[data-theme] body.network-shell.game-guide-page main[id] > .chunky-nav {
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+  margin:0 0 24px;
+}
+html[data-theme] body.network-shell.game-guide-page main[id] > .chunky-nav > a {
+  height:60px;
+  min-height:60px;
+  padding:10px;
+  flex-direction:row;
+  gap:10px;
+  font:700 13px/1.5 Inter,sans-serif;
+}
+html[data-theme] body.network-shell.game-guide-page main[id] > .chunky-nav > a > i { font-size:16px; }
+@media(max-width:600px) {
+  html[data-theme] body.network-shell.game-guide-page {
+    --game-hub-size:40px;
+    --game-page-size:34px;
+    --game-topics-size:23px;
+    --game-intro-size:14px;
+    --game-heading-gap:24px;
+  }
+  html[data-theme] body.network-shell.game-guide-page main[id] .topic-card strong { font-size:17px; }
+  html[data-theme] body.network-shell.game-guide-page main[id] > .chunky-nav > a { padding:10px 6px; font-size:12px; }
+  html[data-theme] body.network-shell.game-guide-page main[id] > .chunky-nav > a > i { display:none; }
+}
