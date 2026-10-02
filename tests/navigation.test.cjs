@@ -77,12 +77,12 @@ test('deep link selects precisely one guide topic and leaves the map unloaded', 
   assert.equal(h.frame.src,'');
 });
 
-test('six guide tiles retain canonical topics without repeating the main guide button', () => {
+test('nine Survival tiles include each topic, map and rankings once', () => {
   const html=fs.readFileSync(path.join(root,'survival.html'),'utf8');
-  const tiles=[...html.matchAll(/<a class="topic-card" href="([^"]+)"><span><strong>([^<]+)<\/strong>/g)];
-  const topics=model.topics.filter(([id])=>id!=='baslangic');
-  assert.equal(tiles.length,topics.length);
-  assert.deepEqual(tiles.map(([,href,label])=>[href,label]),Array.from(topics,([id,label])=>[model.gameRoutes['survival.html'][id]?.split('#')[0] || '#'+id,label]));
+  const tiles=[...html.matchAll(/<a class="topic-card" href="([^"]+)"[^>]*><span><strong>([^<]+)<\/strong>/g)];
+  const topics=model.topics;
+  assert.equal(tiles.length,topics.length+2);
+  assert.deepEqual(tiles.slice(0,7).map(([,href,label])=>[href,label]),Array.from(topics,([id,label])=>[model.gameRoutes['survival.html'][id]?.split('#')[0] || '#'+id,id==='baslangic'?'Oyun rehberi':label]));
   assert.match(html,/href="#baslangic" data-hub-tab="rehber"/);
 });
 
@@ -121,12 +121,12 @@ test('topic selection and Back/Forward popstate restore the correct view', () =>
   h.location.hash='#meslekler'; h.events.popstate();
   assert.equal(h.ids['guide-current'].textContent,'Meslekler');
 });
-test('the map initializes only on map selection, and guide links remember their topic', () => {
+test('the map initializes only on map selection and has an active menu item', () => {
   const h=harness('#kasalar');
   assert.equal(h.frame.src,'');
   h.location.hash='#harita';h.events.popstate();
   assert.equal(h.frame.src,'https://map.robsarcade.online/');
-  assert.equal(h.tabs.find(t=>t.dataset.hubTab==='rehber').href,'#kasalar');
+  assert.equal(h.ids['guide-topics'].children.find(t=>t.dataset.topicLink==='harita').attrs['aria-current'],'page');
 });
 test('unknown or malformed hashes return safely to the overview', () => {
   const h=harness('#%broken');

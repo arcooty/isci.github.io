@@ -33,7 +33,7 @@ test('all store pages place a shared masthead above compact sections',()=>{
     assert.ok(html.includes('store-layout.css?v=20261002-20'));
     assert.ok(html.indexOf('<h1>VIP mağazası</h1>')<html.indexOf('class="chunky-nav '));
     assert.doesNotMatch(html, /<a class="text-link" href="servers.html">/);
-    if(['store.html','store-skyblock.html'].includes(file)) {
+    if(['store.html','store-skyblock.html','store-delivery.html'].includes(file)) {
       assert.doesNotMatch(html, /<header class="game-guide-heading">|hakları ve kullanım sınırları\.<\/p>/);
     } else assert.match(html, /<header class="game-guide-heading"><h2>/);
   }
@@ -67,13 +67,15 @@ test('old store and Village links preserve their anchors and package query',()=>
   assert.equal(model.resolveHref('village-play.html#kazanma'),'village-win.html#kazanma');
   assert.equal(model.resolveHref('village-lobby.html#sorular'),'village-faq.html#sorular');
 });
-test('Survival main navigation lives inside the overview and map/rankings retain returns',()=>{
+test('Survival uses hub tiles, a shared toolbar and matching map/ranking footers',()=>{
   const html=read('survival.html');
   assert.ok(!html.includes('class="hub-tabs"'));
-  assert.ok(html.indexOf('class="chunky-nav survival-sections"')<html.indexOf('data-hub-panel="genel"'));
-  for(const view of ['genel','rehber','harita','siralamalar']) assert.ok(html.includes('data-hub-tab="'+view+'"'));
+  assert.ok(html.includes('class="game-guide-toolbar survival-topic-toolbar"'));
+  assert.ok(!html.includes('class="chunky-nav survival-sections"'));
+  for(const view of ['rehber','harita','siralamalar']) assert.ok(html.includes('data-hub-tab="'+view+'"'));
   for(const id of ['harita','siralamalar']) {
     const panel=html.slice(html.indexOf('<section id="'+id+'"'));
-    assert.ok(panel.includes('class="craft-button section-return" href="#genel"'));
+    assert.ok(panel.includes('class="game-guide-next"'));
+    assert.ok(panel.includes('Bütün konular'));
   }
 });

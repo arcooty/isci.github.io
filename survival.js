@@ -10,6 +10,7 @@
   const locationLabel = document.getElementById('guide-current');
   const next = document.getElementById('guide-next');
   const categoryMenu = document.getElementById('guide-category-menu');
+  const toolbar = document.querySelector('.survival-topic-toolbar');
   categoryMenu?.addEventListener('keydown',event => {
     if (event.key !== 'Escape' || !categoryMenu.open) return;
     categoryMenu.open = false;
@@ -31,11 +32,18 @@
     link.append(mark,document.createTextNode(label)); topicNav.append(link);
     const option = document.createElement('option'); option.value = id; option.textContent = label; topicSelect.append(option);
   });
+  for (const [id,label,icon] of [['harita','Harita','map'],['siralamalar','Sıralamalar','trophy']]) {
+    const link=document.createElement('a'); link.href='#'+id; link.dataset.topicLink=id;
+    const mark=document.createElement('i'); mark.className='fa-solid fa-'+icon; mark.setAttribute('aria-hidden','true');
+    link.append(mark,document.createTextNode(label)); topicNav.append(link);
+  }
   function render(focus) {
     if (leaveSplitTopic()) return;
     const hash = location.hash.slice(1);
     const topic = topics.find(([id]) => id === (sectionOwners[hash] || hash));
     const view = topic ? 'rehber' : ['harita','siralamalar'].includes(hash) ? hash : 'genel';
+    if (toolbar) toolbar.hidden=view==='genel';
+    document.documentElement?.setAttribute?.('data-survival-view',view==='genel' ? 'home' : 'content');
     panels.forEach(panel => { panel.hidden = panel.dataset.hubPanel !== view; });
     tabs.forEach(tab => {
       if (tab.dataset.hubTab === view) tab.setAttribute('aria-current','page');
@@ -48,21 +56,21 @@
       const index = topics.indexOf(topic);
       const following = topics[index + 1];
       next.hidden = !following;
-      if (following) { next.href = topicHref(following[0]); next.replaceChildren(document.createTextNode('Sonraki konu: ' + following[1] + ' ')); const arrow = document.createElement('i'); arrow.className = 'fa-solid fa-arrow-right'; arrow.setAttribute('aria-hidden','true'); next.append(arrow); }
+      if (following) { next.href = topicHref(following[0]); next.replaceChildren(document.createTextNode(following[1] + ' ')); const arrow = document.createElement('i'); arrow.className = 'fa-solid fa-arrow-right'; arrow.setAttribute('aria-hidden','true'); next.append(arrow); }
     }
     document.querySelectorAll('[data-section-link]').forEach(link=>{
       if (link.dataset.sectionLink === hash) link.setAttribute('aria-current','location');
       else link.removeAttribute('aria-current');
     });
-    tabs.find(tab => tab.dataset.hubTab === 'rehber').href = '#' + lastTopic;
+    topicNav.querySelectorAll('a').forEach(link=>{ if(link.dataset.topicLink===(topic ? topic[0] : view)) link.setAttribute('aria-current','page'); else link.removeAttribute('aria-current'); });
     if (view === 'harita') { const frame = document.querySelector('iframe[data-src]'); if (!frame.src) frame.src = frame.dataset.src; }
     document.title = (topic ? topic[1] + ' · Survival' : view === 'harita' ? 'Harita · Survival' : view === 'siralamalar' ? 'Sıralamalar · Survival' : 'Survival') + ' | ArcaDe Craft';
     if (focus) {
       if (categoryMenu) categoryMenu.open = false;
       const target = topic ? document.getElementById(sectionOwners[hash] ? hash : topic[0]) : panels.find(panel => panel.dataset.hubPanel === view);
       target.tabIndex = -1; target.focus({preventScroll:true});
-      const masthead = document.querySelector('.hub-masthead');
-      const top = sectionOwners[hash] ? target.getBoundingClientRect().top + window.scrollY - 152 : masthead.getBoundingClientRect().bottom + window.scrollY - 88;
+      const heading = view==='genel' ? document.querySelector('.hub-masthead') : toolbar;
+      const top = sectionOwners[hash] ? target.getBoundingClientRect().top + window.scrollY - 152 : (heading || target).getBoundingClientRect().top + window.scrollY - 104;
       requestAnimationFrame(() => window.scrollTo({top,behavior:'instant'}));
     }
   }

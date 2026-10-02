@@ -11,10 +11,10 @@ test('crate and command pages keep compact navigation with one selected topic', 
     const html = fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
     assert.ok(html.includes('<h1>Survival</h1>'), file);
     assert.ok(html.includes('class="game-guide-next"'), file);
-    assert.ok(html.includes("Survival'a dön</a>"), file);
-    if (file.startsWith('survival-crates')) assert.ok(html.includes('href="survival-commands.html">Sonraki konu: Komutlar'), file);
+    assert.ok(html.includes('Bütün konular</a>'), file);
+    if (file.startsWith('survival-crates')) assert.ok(html.includes('href="survival-commands.html">Komutlar'), file);
     else assert.ok(!html.includes('Sonraki konu:'), file);
-    assert.equal((html.match(/aria-current="page"/g) || []).length, 1, file);
+    assert.equal((html.match(/aria-current="page"/g) || []).length, 2, file);
     for (const sibling of group) assert.ok(html.includes('href="'+sibling+'"'), file);
     assert.ok(html.includes('survival-jobs.css?v=20261002-16'), file);
     assert.ok(!html.includes('command-copy'), file+' must let the shell create working copy buttons');

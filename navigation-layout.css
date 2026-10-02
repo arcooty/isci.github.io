@@ -1,0 +1,31 @@
+/* Reserve the same text rows before each section menu within a page group. */
+html[data-theme] body.network-shell[data-section-nav] .page-head {
+  display:grid; grid-template-rows:minmax(58px,auto) minmax(48px,auto); gap:8px;
+  margin-bottom:24px; padding:8px 0 0;
+}
+html[data-theme] body.network-shell[data-section-nav] .page-head h1 { margin:0; align-self:start; }
+html[data-theme] body.network-shell[data-section-nav] .page-head p { margin:0; font-size:14px; line-height:24px; align-self:start; }
+html[data-theme] body.network-shell[data-section-nav] :is(.section-navigation,.community-navigation)>a {
+  box-sizing:border-box; height:60px; min-height:60px; padding:10px; line-height:18px; overflow-wrap:anywhere; text-align:center;
+}
+html[data-theme] body.network-shell.store-guide .store-masthead { display:grid; grid-template-rows:minmax(58px,auto) minmax(48px,auto); gap:8px; padding-top:8px; }
+html[data-theme] body.network-shell.store-guide .store-masthead p { margin:0; font-size:14px; line-height:24px; }
+html[data-theme] body.network-shell.store-guide .comparison-section { padding-top:0; margin-top:0; border-top:0; }
+html[data-theme] body.network-shell.store-guide .comparison-caption { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+html[data-theme] body.network-shell.store-guide .comparison-notes { margin:20px 0 0; padding-left:18px; color:var(--quiet); font-size:13px; line-height:1.7; }
+html[data-theme] body.network-shell.store-guide .comparison-notes li+li { margin-top:8px; }
+html[data-theme] body.network-shell.store-guide .store-notes { margin-top:0; padding-top:0; border-top:0; }
+html[data-theme] body.network-shell:is(.store-guide,.survival-jobs-page) .chunky-nav:not(.mode-nav)>a { box-sizing:border-box; height:60px; min-height:60px; padding:10px; line-height:18px; }
+@media(max-width:1000px) {
+  html[data-theme] body.network-shell[data-section-nav] .page-head { grid-template-rows:minmax(49px,auto) minmax(48px,auto); }
+  html[data-theme] body.network-shell.store-guide .store-masthead { grid-template-rows:minmax(49px,auto) minmax(48px,auto); }
+}
+@media(max-width:600px) {
+  html[data-theme] body.network-shell[data-section-nav] .page-head { grid-template-rows:minmax(44px,auto) minmax(72px,auto); }
+  html[data-theme] body.network-shell[data-section-nav] .page-head h1 { font-size:36px; line-height:44px; }
+  html[data-theme] body.network-shell.store-guide .store-masthead { grid-template-rows:minmax(44px,auto) minmax(72px,auto); }
+}
+@media(max-width:400px) {
+  html[data-theme] body.network-shell[data-section-nav] .page-head { grid-template-rows:minmax(44px,auto) minmax(96px,auto); }
+  html[data-theme] body.network-shell.store-guide .store-masthead { grid-template-rows:minmax(44px,auto) minmax(96px,auto); }
+}

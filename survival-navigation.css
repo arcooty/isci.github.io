@@ -1,0 +1,14 @@
+html[data-theme] body.network-shell .survival-topic-toolbar { --guide-color:#83e6a3; --guide-ink:#15321e; }
+html[data-survival-view=content] body.survival-hub .hub-masthead { display:none; }
+html[data-theme] body.network-shell .survival-topic-toolbar[hidden] { display:none; }
+html[data-theme] body.network-shell.survival-hub .guide-layout { display:block; }
+html[data-theme] body.network-shell.survival-hub .guide-layout[hidden] { display:none; }
+html[data-theme] body.network-shell.survival-hub .guide-mobile-select[hidden] { display:none; }
+html[data-theme] body.network-shell[data-game=survival] { --guide-color:#83e6a3; --guide-ink:#15321e; }
+html[data-theme] body.network-shell .survival-topic-toolbar>strong { color:var(--guide-ink); }
+html[data-theme] body.network-shell[data-game=survival] .survival-topic-toolbar>h1 { margin:0; font:700 23px/1.2 Rajdhani,sans-serif; text-align:center; text-transform:uppercase; color:var(--guide-ink)!important; }
+html[data-theme] body.network-shell .survival-topic-toolbar #guide-topics a { min-height:0; border:0; background:transparent; }
+html[data-theme] body.network-shell .survival-topic-toolbar #guide-topics a:is(:hover,[aria-current=page]) { background:var(--surface-raised); color:var(--accent); }
+@media(max-width:1000px) {
+  html[data-theme] body.network-shell .survival-topic-toolbar>h1 { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+}

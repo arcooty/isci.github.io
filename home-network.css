@@ -3,6 +3,11 @@ html[data-theme] body.home-page .player-hub-band {
   border-block:1px solid var(--line);
   scroll-margin-top:90px;
 }
+html[data-theme] body.home-page .community-section { align-items:start; }
+html[data-theme] body.home-page .community-section :is(.community-invitation,.community-editorial) { display:grid; grid-template-rows:auto auto auto; row-gap:22px; }
+html[data-theme] body.home-page .community-section :is(h2,h3) { margin:0; font:700 34px/1.2 Rajdhani,sans-serif; }
+html[data-theme] body.home-page .community-section p { margin:0; font:400 14px/1.7 Inter,sans-serif; }
+html[data-theme] body.home-page .community-section .craft-button { justify-self:start; }
 html[data-theme] body.home-page .player-hub h2 {
   margin:0 0 28px;
   font-size:30px;
