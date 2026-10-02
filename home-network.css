@@ -11,6 +11,7 @@ html[data-theme] body.home-page .community-section :is(.community-invitation,.co
 html[data-theme] body.home-page .community-section :is(h2,h3) { margin:0; font:700 34px/1.2 Rajdhani,sans-serif; }
 html[data-theme] body.home-page .community-section p { margin:0; font:400 14px/1.7 Inter,sans-serif; }
 html[data-theme] body.home-page .community-section .craft-button { justify-self:start; }
+html[data-theme] body.home-page .community-section .community-editorial { justify-items:end; text-align:right; }
 html[data-theme] body.home-page .player-hub h2 {
   margin:0 0 28px;
   font-size:30px;
