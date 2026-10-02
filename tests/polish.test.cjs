@@ -18,7 +18,7 @@ test('every full page loads one shared finish after the page-specific styles',()
     assert.equal(styles.at(-1),page === 'survival' ? 'guide-navigation.css?v=20261002-24' : page === 'index' ? 'home-status.css?v=20261002-6' : ['help','rules','status','punishments','appeal','application'].includes(page) ? 'help-navigation.css?v=20261002-9' : ['news','staff','players'].includes(page) ? 'community-layout.css?v=20261002-19' : game ? 'game-guides.css?v=20261002-23' : 'polish.css?v=20261002-23',page);
     assert.equal(styles.filter(style=>style.startsWith('polish.css')).length,1,page);
     assert.ok(html.includes('craft.css?v=20261002-22'),page+' layout cache');
-    assert.ok(html.includes('site-shell.js?v=20261002-26'),page+' navigation cache');
+    assert.ok(html.includes('site-shell.js?v=20261002-27'),page+' navigation cache');
   }
 });
 
