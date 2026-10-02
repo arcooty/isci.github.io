@@ -12,3 +12,9 @@ test('updates align to the right and footer legal links have visible current sta
     assert.ok(footer.includes('href="'+page+'.html" aria-current="page"'),page);
   }
 });
+test('mobile community blocks center and footer tracks can shrink',()=>{
+  assert.ok(read('home-network.css').includes(':is(.community-invitation,.community-editorial) { justify-items:center; text-align:center; }'));
+  assert.ok(read('home-network.css').includes('.craft-button { justify-self:center; }'));
+  assert.ok(read('polish.css').includes('grid-template-columns:minmax(0,1fr); padding:32px 22px 24px;'));
+  assert.ok(read('polish.css').includes('.footer-bottom>*) { min-width:0; max-width:100%; overflow-wrap:anywhere; }'));
+});

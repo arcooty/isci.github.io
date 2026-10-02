@@ -12,6 +12,10 @@ html[data-theme] body.home-page .community-section :is(h2,h3) { margin:0; font:7
 html[data-theme] body.home-page .community-section p { margin:0; font:400 14px/1.7 Inter,sans-serif; }
 html[data-theme] body.home-page .community-section .craft-button { justify-self:start; }
 html[data-theme] body.home-page .community-section .community-editorial { justify-items:end; text-align:right; }
+@media(max-width:600px) {
+  html[data-theme] body.home-page .community-section :is(.community-invitation,.community-editorial) { justify-items:center; text-align:center; }
+  html[data-theme] body.home-page .community-section .craft-button { justify-self:center; }
+}
 html[data-theme] body.home-page .player-hub h2 {
   margin:0 0 28px;
   font-size:30px;
