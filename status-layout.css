@@ -17,6 +17,10 @@ html[data-theme] body.network-shell[data-page=status] .status-connection dl { di
 html[data-theme] body.network-shell[data-page=status] .status-connection dl>div { display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px; font-size:14px; }
 html[data-theme] body.network-shell[data-page=status] .status-connection dt { color:var(--quiet); }
 html[data-theme] body.network-shell[data-page=status] .status-connection dd { margin:0; font-weight:700; }
+html[data-theme] body.network-shell[data-page=status] .status-connection .status-endpoints>div { display:block; }
+html[data-theme] body.network-shell[data-page=status] .status-endpoints dt { margin-bottom:8px; font-size:12px; }
+html[data-theme] body.network-shell[data-page=status] .status-endpoints code { font-size:13px; overflow-wrap:anywhere; }
+html[data-theme] body.network-shell[data-page=status] .status-endpoints dd>span { display:block; margin-top:6px; font-size:12px; font-weight:400; color:var(--quiet); }
 html[data-theme] body.network-shell[data-page=status] .status-check { display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px 24px; padding-top:16px; border-top:1px solid var(--line); color:var(--quiet); }
 html[data-theme] body.network-shell[data-page=status] .status-check p { margin:0; font-size:12px; line-height:1.6; }
 @media(max-width:800px) {

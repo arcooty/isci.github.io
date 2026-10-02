@@ -75,7 +75,7 @@
     content.id = 'main-content'; content.tabIndex = -1;
     skip.addEventListener('click',event=>{ event.preventDefault(); content.focus({preventScroll:true}); content.scrollIntoView({block:'start',behavior:'instant'}); });
     content.querySelector('h1')?.classList.add('craft-page-title');
-    if (path !== 'index.html' && path !== 'survival.html' && !content.querySelector('.game-guide-toolbar,.game-hub-heading,.village-masthead,.chunky-nav')) {
+    if (!['index.html','survival.html','join.html','servers.html'].includes(path) && !content.querySelector('.game-guide-toolbar,.game-hub-heading,.village-masthead,.chunky-nav')) {
       const parent = path === 'players.html' ? ['survival.html#siralamalar',"Survival'a dön"] : path === 'join.html' ? ['servers.html','Oyunlara dön'] : path === 'order.html' ? ['store.html','Mağazaya dön'] : section && path !== section.href ? [section.href,section.name + ' bölümüne dön'] : ['index.html','Ana sayfaya dön'];
       const trail = document.createElement('nav'); trail.className = 'page-trail'; trail.setAttribute('aria-label','Geri dönüş ve sayfa konumu');
       trail.innerHTML = '<a class="parent-return" href="' + parent[0] + '">' + icon('arrow-left') + ' ' + parent[1] + '</a><span class="trail-divider" aria-hidden="true">/</span><span aria-current="page">' + (labels[path] || 'Sayfa') + '</span>';
