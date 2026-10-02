@@ -222,7 +222,7 @@ test('guides share standard shell, themes, category menus and literal headings',
     assert.doesNotMatch(page,/class="eyebrow"/);
     if (name === 'village') continue;
     assert.match(page,/class="chunky-nav "[\s\S]*?href="village\.html"/);
-    if(['village-win','village-faq'].includes(name)) assert.doesNotMatch(page,/class="game-guide-heading"/);
+    if(['village-play','village-win','village-faq'].includes(name)) assert.doesNotMatch(page,/class="game-guide-heading"/);
     else assert.match(page,/class="game-guide-heading"/);
     assert.match(page,/class="game-guide-content"/);
     for (const guide of ['village-play','village-roles','village-win','village-lobby','village-faq']) assert.match(page,new RegExp('href="'+guide+'\\.html"'));
@@ -231,6 +231,7 @@ test('guides share standard shell, themes, category menus and literal headings',
 });
 
 test('win conditions retain village, wolf, arsonist and special jester rules', () => {
+  assert.doesNotMatch(play,/class="game-guide-cover"/);
   assert.match(win,/Kurtlar ve bağımsız oyuncular elendiğinde köy takımı kazanır/);
   assert.match(win,/diğer bütün yaşayan oyuncuların toplamına eşit veya daha fazla/);
   assert.match(win,/Kundakçı herkes elendikten sonra tek başına kalırsa kazanır/);
