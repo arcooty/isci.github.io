@@ -1,3 +1,4 @@
+html[data-theme] body.network-shell[data-page=rules] .rules-list>section:first-child { border-top:0; }
 html[data-theme] body.network-shell:is([data-page=help],[data-page=rules],[data-page=status],[data-page=punishments],[data-page=appeal],[data-page=application]) .section-navigation {
   display:grid;
   grid-template-columns:repeat(6,minmax(0,1fr));

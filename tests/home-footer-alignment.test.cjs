@@ -3,6 +3,9 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const path=require('node:path');
 const read=file=>fs.readFileSync(path.join(__dirname,'..',file),'utf8');
+test('rules suppress only the first section divider',()=>{
+  assert.ok(read('help-navigation.css').includes('[data-page=rules] .rules-list>section:first-child { border-top:0; }'));
+});
 test('updates align to the right and footer legal links have visible current state',()=>{
   assert.ok(read('home-network.css').includes('.community-editorial { justify-items:end; text-align:right; }'));
   assert.ok(read('polish.css').includes('.footer-bottom a[aria-current=page] { color:var(--accent);'));
