@@ -3,7 +3,10 @@ html[data-theme] body.home-page .player-hub-band {
   border-block:1px solid var(--line);
   scroll-margin-top:90px;
 }
-html[data-theme] body.home-page .community-section { align-items:start; }
+html[data-theme] body.home-page .community-section { grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px; align-items:start; }
+@media(max-width:600px) {
+  html[data-theme] body.home-page .community-section { grid-template-columns:1fr; gap:30px; }
+}
 html[data-theme] body.home-page .community-section :is(.community-invitation,.community-editorial) { display:grid; grid-template-rows:auto auto auto; row-gap:22px; }
 html[data-theme] body.home-page .community-section :is(h2,h3) { margin:0; font:700 34px/1.2 Rajdhani,sans-serif; }
 html[data-theme] body.home-page .community-section p { margin:0; font:400 14px/1.7 Inter,sans-serif; }
