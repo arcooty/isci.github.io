@@ -6,13 +6,15 @@ const root=path.join(__dirname,'..');
 const read=file=>fs.readFileSync(path.join(root,file),'utf8');
 test('status presentation is scoped to the homepage and loads after shared styles',()=>{
   const html=read('index.html');
-  assert.ok(html.indexOf('home-status.css?v=20261002-4')>html.indexOf('polish.css?v=20261002-20'));
+  assert.ok(html.indexOf('home-status.css?v=20261002-5')>html.indexOf('polish.css?v=20261002-20'));
   assert.ok(html.includes('id="sunucu-durumu"'));
   const css=read('home-status.css');
   assert.ok(css.includes('body.home-page .home-status-band'));
   assert.ok(css.includes('color:var(--quiet)'));
   assert.ok(css.includes('grid-template-columns:repeat(2,minmax(0,1fr))'));
   assert.ok(css.includes('overflow-wrap:anywhere'));
+  assert.ok(css.includes(':is(.floating-status-head,.floating-status-players,.status-facts>div)'));
+  assert.ok(css.includes('grid-template-rows:minmax(24px,auto) minmax(30px,auto)'));
   assert.ok(!css.includes('vw'));
 });
 test('compact status retains the live renderer targets and connection data',()=>{

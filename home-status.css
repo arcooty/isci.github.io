@@ -6,21 +6,25 @@ html[data-theme] body.home-page .home-status-band .floating-status {
   align-items:center; column-gap:24px; row-gap:12px; padding:18px 28px;
 }
 html[data-theme] body.home-page .home-status-band .floating-status>* { min-width:0; }
+html[data-theme] body.home-page .home-status-band :is(.floating-status-head,.floating-status-players,.status-facts>div) {
+  display:grid; grid-template-rows:minmax(24px,auto) minmax(30px,auto); row-gap:3px;
+}
+html[data-theme] body.home-page .home-status-band :is(.floating-status-head,.floating-status-players,.status-facts>div)>* { margin:0; align-self:center; }
 html[data-theme] body.home-page .home-status-band .floating-status-head h2 {
   gap:8px; font:600 14px/1.5 Inter,sans-serif; white-space:normal; text-wrap:wrap;
 }
 html[data-theme] body.home-page .home-status-band .floating-status-head h2 i { display:inline-block; flex-shrink:0; font-size:16px; }
-html[data-theme] body.home-page .home-status-band .live-state { margin-top:5px; font-size:13px; line-height:1.5; white-space:normal; }
+html[data-theme] body.home-page .home-status-band .live-state { margin-top:0; font-size:13px; line-height:1.5; white-space:normal; }
 html[data-theme] body.home-page .home-status-band .live-state::before { flex-shrink:0; width:6px; height:6px; background:var(--quiet); }
 html[data-theme] body.home-page .home-status-band .live-state[data-state=online]::before { background:var(--accent); }
 html[data-theme] body.home-page .home-status-band .live-state[data-state=offline]::before { background:#df665a; }
 html[data-theme] body.home-page .home-status-band .floating-status-players>span { font-size:12px; line-height:1.5; color:var(--quiet); }
-html[data-theme] body.home-page .home-status-band .floating-status-players strong { margin-top:3px; font:700 24px/1.25 Rajdhani,sans-serif; white-space:nowrap; font-variant-numeric:tabular-nums; }
+html[data-theme] body.home-page .home-status-band .floating-status-players strong { margin-top:0; font:700 24px/1.25 Rajdhani,sans-serif; white-space:nowrap; font-variant-numeric:tabular-nums; }
 html[data-theme] body.home-page .home-status-band .floating-status-players small { font:400 13px/1.25 Inter,sans-serif; }
 html[data-theme] body.home-page .home-status-band .status-facts { grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
 html[data-theme] body.home-page .home-status-band .status-facts>div+div { border-color:var(--line); padding-left:16px; }
 html[data-theme] body.home-page .home-status-band .status-facts dt { color:var(--quiet); font-size:12px; line-height:1.5; }
-html[data-theme] body.home-page .home-status-band .status-facts dd { margin-top:3px; font:700 17px/1.4 Rajdhani,sans-serif; color:var(--ink); white-space:normal; overflow-wrap:anywhere; }
+html[data-theme] body.home-page .home-status-band .status-facts dd { margin-top:0; font:700 17px/1.4 Rajdhani,sans-serif; color:var(--ink); white-space:normal; overflow-wrap:anywhere; }
 html[data-theme] body.home-page .home-status-band .status-detail { justify-content:flex-start; gap:10px; min-height:44px; font-size:12px; line-height:1.5; }
 @media(max-width:1000px) {
   html[data-theme] body.home-page .home-status-band .floating-status { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px 20px; padding:14px 20px; }
