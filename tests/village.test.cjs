@@ -222,7 +222,8 @@ test('guides share standard shell, themes, category menus and literal headings',
     assert.doesNotMatch(page,/class="eyebrow"/);
     if (name === 'village') continue;
     assert.match(page,/class="chunky-nav "[\s\S]*?href="village\.html"/);
-    assert.match(page,/class="game-guide-heading"/);
+    if(['village-win','village-faq'].includes(name)) assert.doesNotMatch(page,/class="game-guide-heading"/);
+    else assert.match(page,/class="game-guide-heading"/);
     assert.match(page,/class="game-guide-content"/);
     for (const guide of ['village-play','village-roles','village-win','village-lobby','village-faq']) assert.match(page,new RegExp('href="'+guide+'\\.html"'));
     assert.match(page,new RegExp('href="'+name+'\\.html" aria-current="page"'));
