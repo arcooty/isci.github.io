@@ -32,7 +32,9 @@ test('all store pages place a shared masthead above compact sections',()=>{
     const html=read(file);
     assert.ok(html.includes('store-layout.css?v=20261002-7'));
     assert.ok(html.indexOf('<h1>VIP mağazası</h1>')<html.indexOf('class="chunky-nav '));
-    assert.match(html, /<header class="game-guide-heading"><h2>/);
+    if(['store.html','store-skyblock.html'].includes(file)) {
+      assert.doesNotMatch(html, /<header class="game-guide-heading">|hakları ve kullanım sınırları\.<\/p>/);
+    } else assert.match(html, /<header class="game-guide-heading"><h2>/);
   }
   const css=read('store-layout.css');
   assert.match(css, /min-height:54px/);
