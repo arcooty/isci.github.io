@@ -10,7 +10,7 @@ vm.runInNewContext(read('site-map.js'),{module:route,URL});
 const model=route.exports;
 const pages=['store.html','store-compare.html','store-kits.html','store-skyblock.html','store-skyblock-compare.html','store-skyblock-kits.html','store-delivery.html'];
 
-test('store topics are real pages with four large buttons and one active topic',()=>{
+test('store topics are real pages with four compact buttons and one active topic',()=>{
   for(const file of pages) {
     const html=read(file);
     const nav=html.match(/<nav class="chunky-nav "[^>]*>([\s\S]*?)<\/nav>/)[1];
@@ -25,6 +25,19 @@ test('store topics are real pages with four large buttons and one active topic',
   assert.ok(!read('store.html').includes('id="karsilastirma"'));
   assert.ok(!read('store.html').includes('id="kitler"'));
   assert.ok(!read('store.html').includes('id="teslimat"'));
+});
+
+test('all store pages place a shared masthead above compact sections',()=>{
+  for(const file of pages) {
+    const html=read(file);
+    assert.ok(html.includes('store-layout.css?v=20261002-7'));
+    assert.ok(html.indexOf('<h1>VIP mağazası</h1>')<html.indexOf('class="chunky-nav '));
+    assert.match(html, /<header class="game-guide-heading"><h2>/);
+  }
+  const css=read('store-layout.css');
+  assert.match(css, /min-height:54px/);
+  assert.match(css, /min-height:44px/);
+  assert.match(css, /flex-direction:row/);
 });
 test('Survival and Skyblock advantages stay separate without creating different checkout products',()=>{
   const survival=read('store.html'),sky=read('store-skyblock.html');
