@@ -213,3 +213,13 @@ html[data-theme] body.network-shell .footer-bottom { border-color:var(--line); c
   html[data-theme] body.network-shell .nav-tools { gap:5px; }
   html[data-theme] body.network-shell .nav-tools button { width:36px; }
 }
+
+/* The heading already separates the first content block from navigation. */
+html[data-theme] body.network-shell .game-guide-heading+:is(.about-band,.comparison-wrap,.skyblock-access),
+html[data-theme] body.network-shell .game-guide-heading+.about-section>.comparison-wrap:first-child,
+html[data-theme] body.network-shell .page-head+.page-index {
+  border-top:0;
+  margin-top:0;
+}
+html[data-theme] body.network-shell .game-guide-heading+.about-section { margin-top:0; }
+html[data-theme] body.network-shell .page-head+form[data-form-type] { border-top:0!important; }
