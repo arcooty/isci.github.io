@@ -24,7 +24,7 @@ test('guide and storefront describe one equal daily sell limit and its actual re
   assert.equal(facts.dailyCap, 25000);
   assert.equal(facts.resetZone, 'Europe/Istanbul');
   assert.equal(facts.categories.length, 8);
-  for (const file of ['survival.html', 'store.html', 'help.html']) {
+  for (const file of ['survival.html', 'store.html']) {
     const html = read(file);
     assert.ok(html.includes('25.000'), file);
     assert.ok(html.includes('Türkiye saati 00:00'), file);
