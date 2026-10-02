@@ -24,7 +24,7 @@ test('homepage replaces Survival-only features with shared player resources', ()
 
 test('shared resources have theme-aware responsive layout and keyboard focus', () => {
   const css = read('home-network.css');
-  assert.match(read('index.html'), /home-network\.css\?v=20261002-11/);
+  assert.match(read('index.html'), /home-network\.css\?v=20261002-12/);
   assert.match(css, /grid-template-columns:repeat\(3,minmax\(0,1fr\)\)/);
   assert.match(css, /@media\(max-width:700px\)/);
   assert.match(css, /grid-template-columns:1fr/);
