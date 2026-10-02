@@ -38,7 +38,7 @@ test('all game hubs have one shared Games button and Village has no generated du
   for(const file of ['survival.html','skyblock.html','village.html']) {
     const html=read(file);
     assert.equal((html.match(/class="craft-button primary game-hub-return"/g)||[]).length,1,file);
-    assert.ok(html.includes('game-hub-buttons.css?v=20261002-1'),file);
+    assert.ok(html.includes('game-hub-buttons.css?v=20261002-2'),file);
   }
   assert.ok(read('site-shell.js').includes('.game-guide-toolbar,.game-hub-heading,.village-masthead,.chunky-nav'));
 });

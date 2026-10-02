@@ -1,1 +1,12 @@
 html[data-theme] body.network-shell[data-page] .game-hub-return.craft-button[class] { display:inline-flex; width:fit-content; min-height:46px; padding:12px 16px; margin:0 0 18px; gap:10px; font-size:13px; color:#15321e; }
+@media(max-width:600px) {
+  html[data-theme] body.network-shell.survival-hub[data-page=survival] .hub-masthead { flex-direction:column; align-items:flex-start; gap:16px; }
+  html[data-theme] body.network-shell.survival-hub[data-page=survival] .hub-masthead > div { width:100%; min-width:0; }
+  html[data-theme] body.network-shell.survival-hub[data-page=survival] .hub-masthead p { max-width:none; }
+  html[data-theme] body.network-shell.survival-hub[data-page=survival] .hub-masthead > .craft-button { margin-top:0; }
+  html[data-theme] body.network-shell[data-game=village][data-page=village] .village-masthead { display:grid; grid-template-columns:minmax(0,1fr); }
+  html[data-theme] body.network-shell[data-game=village][data-page=village] .village-masthead-row { display:contents; }
+  html[data-theme] body.network-shell[data-game=village][data-page=village] .village-masthead-row > h1 { grid-row:2; }
+  html[data-theme] body.network-shell[data-game=village][data-page=village] .village-masthead > p { grid-row:3; }
+  html[data-theme] body.network-shell[data-game=village][data-page=village] .village-masthead-row > .craft-button { grid-row:4; justify-self:start; margin-top:16px; }
+}
