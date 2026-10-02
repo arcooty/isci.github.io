@@ -199,7 +199,7 @@ test('hub exposes six compact navigation buttons, gameplay imagery and legacy ro
 
 test('every Village page keeps its game heading above compact navigation', () => {
   for (const page of Object.values(pages)) {
-    assert.match(page, /village-navigation\.css\?v=20261002-6/);
+    assert.match(page, /village-navigation\.css\?v=20261002-21/);
     assert.match(page, /class="village-masthead"/);
     assert.ok(page.indexOf('<h1>Rob\'s Village</h1>') < page.indexOf('class="chunky-nav '));
     assert.match(page, /<span>Genel bakış<\/span>/);
@@ -207,6 +207,7 @@ test('every Village page keeps its game heading above compact navigation', () =>
   const css = fs.readFileSync(path.join(root,'village-navigation.css'),'utf8');
   assert.match(css, /min-height:54px/);
   assert.match(css, /flex-direction:row/);
+  assert.match(css, /\.game-guide-content \.journey \{ border-bottom:0; margin-bottom:0; padding-bottom:0;/);
 });
 
 test('guides share standard shell, themes, category menus and literal headings', () => {
