@@ -1,6 +1,6 @@
 /* Skyblock articles keep commands, limits and reading content separate. */
 html[data-theme] body.network-shell[data-game=skyblock] .sky-hub-section-heading { display:flex; align-items:center; justify-content:space-between; gap:16px; }
-html[data-theme] body.network-shell[data-game=skyblock] .sky-hub-section-heading h2 { margin:0; }
+html[data-theme] body.network-shell[data-game=skyblock] .sky-hub-section-heading h2 { margin:0; font:700 30px/1.2 Rajdhani,sans-serif; }
 html[data-theme] body.network-shell[data-game=skyblock] .sky-article-layout { display:grid; grid-template-columns:minmax(0,1fr) 280px; align-items:start; gap:40px; }
 html[data-theme] body.network-shell[data-game=skyblock] .sky-article-layout > * { min-width:0; }
 html[data-theme] body.network-shell[data-game=skyblock] .sky-sections { display:grid; gap:30px; }

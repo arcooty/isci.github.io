@@ -8,7 +8,7 @@ const read = name => fs.readFileSync(path.join(root,name),'utf8');
 test('Skyblock articles separate reading, commands and essential limits', () => {
   for (const file of fs.readdirSync(root).filter(file => /^skyblock(?:-[a-z-]+)?\.html$/.test(file))) {
     const html = read(file);
-    assert.ok(html.includes('skyblock-content.css?v=20261002-1'),file);
+    assert.ok(html.includes('skyblock-content.css?v=20261002-2'),file);
     assert.ok(html.includes('href="skyblock-leaderboard.html"'),file);
   }
   for (const file of ['start','island','orders','minion','trade','community','vip']) assert.ok(read('skyblock-'+file+'.html').includes('sky-command-panel'),file);
