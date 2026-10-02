@@ -20,8 +20,9 @@ test('all six help pages load scoped compact navigation after shared styles',()=
 test('support content does not repeat destinations already in the section menu',()=>{
   const html=read('help.html');
   const list=html.match(/<section class="support-actions"[\s\S]*?<\/section>/)[0];
-  assert.equal([...list.matchAll(/<a /g)].length,2);
-  assert.doesNotMatch(list,/href="(?:help|rules|status|punishments|appeal|application|join)\.html"/);
+  assert.equal([...list.matchAll(/<a /g)].length,3);
+  assert.doesNotMatch(list,/href="(?:help|rules|status|punishments|appeal|application)\.html"/);
+  assert.match(list,/href="join\.html"/);
   assert.match(list,/href="store-delivery\.html"/);
   assert.equal([...html.matchAll(/<details>/g)].length,4);
 });
