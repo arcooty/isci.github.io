@@ -23,6 +23,15 @@
     themeButton.setAttribute('aria-label',label);
     themeButton.title = label;
     themeButton.innerHTML = icon(dark ? 'sun' : 'moon');
+    const widget = document.querySelector('.discord-widget');
+    if (widget) {
+      const url = new URL(widget.src);
+      const theme = dark ? 'dark' : 'light';
+      if (url.searchParams.get('theme') !== theme) {
+        url.searchParams.set('theme',theme);
+        widget.src = url.href;
+      }
+    }
   };
   themeButton.addEventListener('click',() => window.ARCADE_THEME.toggle());
   window.addEventListener('arcade-theme-change',renderTheme);
@@ -45,7 +54,6 @@
   // Keep the primary section selected on its tools and support forms too.
   const primaryHref = section?.name === 'Topluluk' ? 'community.html' : section?.name === 'VIP mağazası' || path === 'order.html' ? 'store.html' : section?.name === 'Yardım' ? 'help.html' : null;
   if (primaryHref) nav.querySelector('.site-links > a[href="' + primaryHref + '"]')?.classList.add('is-current');
-  if (path === 'players.html') nav.querySelector('.nav-menu > button').classList.add('is-current');
   const skip = document.createElement('a'); skip.className = 'skip-link'; skip.href = '#main-content'; skip.textContent = 'İçeriğe geç'; nav.before(skip);
   const mobile = nav.querySelector('.mobile-nav-button');
   const links = nav.querySelector('#site-links');

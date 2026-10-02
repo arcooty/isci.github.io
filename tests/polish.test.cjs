@@ -11,10 +11,10 @@ test('every full page loads one shared finish after the page-specific styles',()
     const html = read(page+'.html');
     const styles = [...html.matchAll(/<link[^>]+rel="stylesheet"[^>]+href="([^"]+)"/g)].map(match=>match[1]);
     const game = ['survival','skyblock','village','store'].includes(page);
-    assert.equal(styles.at(-1),page === 'survival' ? 'guide-navigation.css?v=20261002-16' : page === 'index' ? 'home-status.css?v=20261002-4' : ['help','rules','status','punishments','appeal','application'].includes(page) ? 'help-navigation.css?v=20261002-9' : ['news','staff'].includes(page) ? 'community-layout.css?v=20261002-8' : game ? 'game-guides.css?v=20261002-3' : 'polish.css?v=20261002-14',page);
+    assert.equal(styles.at(-1),page === 'survival' ? 'guide-navigation.css?v=20261002-16' : page === 'index' ? 'home-status.css?v=20261002-4' : ['help','rules','status','punishments','appeal','application'].includes(page) ? 'help-navigation.css?v=20261002-9' : ['news','staff','players'].includes(page) ? 'community-layout.css?v=20261002-17' : game ? 'game-guides.css?v=20261002-3' : 'polish.css?v=20261002-14',page);
     assert.equal(styles.filter(style=>style.startsWith('polish.css')).length,1,page);
     assert.ok(html.includes('craft.css?v=20261002-1'),page+' layout cache');
-    assert.ok(html.includes('site-shell.js?v=20261002-12'),page+' navigation cache');
+    assert.ok(html.includes('site-shell.js?v=20261002-17'),page+' navigation cache');
   }
 });
 

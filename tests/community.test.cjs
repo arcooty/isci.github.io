@@ -8,16 +8,25 @@ const read = file => fs.readFileSync(path.join(root,file),'utf8');
 const route = {exports:{}};
 vm.runInNewContext(read('site-map.js'),{module:route,URL});
 
-test('three community pages have consistent compact navigation and unique selection',()=>{
-  for(const file of ['community.html','news.html','staff.html']) {
+test('four community pages have consistent compact navigation and unique selection',()=>{
+  for(const file of ['community.html','news.html','staff.html','players.html']) {
     const html=read(file);
     const nav=html.match(/<nav class="chunky-nav community-navigation"[\s\S]*?<\/nav>/)[0];
-    assert.equal([...nav.matchAll(/<a /g)].length,3);
+    assert.equal([...nav.matchAll(/<a /g)].length,4);
     assert.equal([...nav.matchAll(/aria-current="page"/g)].length,1);
     assert.ok(nav.includes('href="'+file+'" aria-current="page"'));
-    assert.ok(html.includes('community-layout.css?v=20261002-8'));
+    assert.ok(html.includes('community-layout.css?v=20261002-17'));
     assert.ok(read('sitemap.xml').includes('/'+file));
   }
+});
+
+test('community has the Discord widget without duplicate shortcuts or old promotional copy',()=>{
+  const html=read('community.html');
+  assert.doesNotMatch(html,/community-shortcuts|Duyurular ve destek|<h2>Oyunlar<\/h2>/);
+  assert.match(html,/discord.com\/widget\?id=1448892369146609867/);
+  assert.match(html,/title="ArcaDe Craft Discord sunucusu"/);
+  assert.doesNotMatch(read('index.html'),/editorial-shortcuts|Liderlik tabloları/);
+  assert.match(read('community-layout.css'),/repeat\(4,minmax\(0,1fr\)\)/);
 });
 test('community information and news have separate owners without losing old bookmarks',()=>{
   assert.match(read('community.html'), /id="hakkimizda"/);

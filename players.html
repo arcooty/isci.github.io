@@ -12,15 +12,17 @@
 <link rel="icon" href="assets/logo.png" type="image/png">
 <link rel="canonical" href="https://robsarcade.online/players.html">
 <link rel="stylesheet" href="polish.css?v=20261002-14">
+<link rel="stylesheet" href="community-layout.css?v=20261002-17">
 </head>
-<body class="network-shell">
+<body class="network-shell community-page">
 <nav></nav>
 <main class="page-wrap">
   <header class="page-head">
 
     <h1>Oyuncu profilleri</h1>
-    <p>Bir oyuncunun herkese açık rütbesini, oynama süresini, mesleklerini ve beceri seviyelerini görüntüle.</p>
+    <p>Survival oyuncularının herkese açık rütbe, oynama süresi, meslek ve beceri bilgileri.</p>
   </header>
+  <nav class="chunky-nav community-navigation" aria-label="Topluluk bölümleri"><a href="community.html"><i class="fa-solid fa-users" aria-hidden="true"></i><span>Topluluk</span></a><a href="news.html"><i class="fa-solid fa-newspaper" aria-hidden="true"></i><span>Haberler</span></a><a href="staff.html"><i class="fa-solid fa-user-shield" aria-hidden="true"></i><span>Ekibimiz</span></a><a href="players.html" aria-current="page"><i class="fa-solid fa-user" aria-hidden="true"></i><span>Profiller</span></a></nav>
   <form class="player-search" id="player-search">
     <label for="player-name">Minecraft kullanıcı adı</label>
     <div><input id="player-name" name="player" minlength="3" maxlength="16" pattern="[A-Za-z0-9_]{3,16}" autocomplete="off" required><button type="submit"><i class="fa-solid fa-magnifying-glass"></i><span>Ara</span></button></div>
@@ -31,6 +33,6 @@
 <footer class="site-footer"></footer>
 <script src="api-config.js"></script>
 <script src="players.js"></script>
-<script src="site-map.js?v=20261002-16"></script><script src="site-shell.js?v=20261002-12"></script>
+<script src="site-map.js?v=20261002-17"></script><script src="site-shell.js?v=20261002-17"></script>
 </body>
 </html>
