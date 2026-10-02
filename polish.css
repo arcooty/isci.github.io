@@ -258,7 +258,7 @@ html[data-theme] body.network-shell .footer-bottom { grid-column:1/-1; width:100
 html[data-theme] body.network-shell .footer-bottom>div { display:flex; flex-wrap:wrap; gap:18px; margin-left:auto; }
 html[data-theme] body.network-shell .footer-bottom a { margin:0; color:var(--quiet); }
 html[data-theme] body.network-shell .footer-bottom a:hover { color:var(--accent); }
-html[data-theme] body.network-shell .footer-bottom a[aria-current=page] { color:var(--accent); font-weight:700; text-decoration:underline; text-underline-offset:5px; text-decoration-thickness:2px; }
+html[data-theme] body.network-shell .footer-bottom a[aria-current=page] { color:var(--accent); font-weight:700; text-decoration:none; }
 html[data-theme] body.network-shell .footer-bottom>span:last-child { flex-basis:100%; font-size:11px; }
 @media(max-width:800px) {
   html[data-theme] body.network-shell .site-footer { grid-template-columns:1fr; padding:32px 22px 24px; gap:28px; }
