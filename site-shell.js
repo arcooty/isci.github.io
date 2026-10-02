@@ -2,6 +2,7 @@
   const {sections, resolveHref} = window.ARCADE_SITE;
   const discord = 'https://discord.gg/GerdDHzMWp';
   const path = location.pathname.split('/').pop() || 'index.html';
+  const gamePage = /^(?:servers|(?:survival|skyblock|village)(?:-[a-z-]+)?)\.html$/.test(path);
   const section = sections.find(group => group.pages.some(([href]) => href.split('#')[0] === path));
   const labels = Object.fromEntries(sections.flatMap(group => group.pages).map(([href,label]) => [href.split('#')[0],label]));
   Object.assign(labels, {'skyblock.html':'Skyblock','survival.html':'Survival','community.html':'Topluluk','news.html':'Haberler','store.html':'VIP mağazası','order.html':'Sipariş durumu','sitemap.html':'Site haritası'});
@@ -59,6 +60,9 @@
   const links = nav.querySelector('#site-links');
   const gameMenu = nav.querySelector('.nav-menu');
   const gameButton = gameMenu.querySelector('button');
+  gameButton.classList.toggle('is-current',gamePage);
+  if (gamePage) gameButton.setAttribute('aria-current','location');
+  else gameButton.removeAttribute('aria-current');
   const close = () => { gameMenu.classList.remove('is-open'); gameButton.setAttribute('aria-expanded','false'); links.classList.remove('open'); mobile.setAttribute('aria-expanded','false'); mobile.setAttribute('aria-label','Menüyü aç'); };
   mobile.addEventListener('click', () => { const open = links.classList.toggle('open'); mobile.setAttribute('aria-expanded',String(open)); mobile.setAttribute('aria-label',open ? 'Menüyü kapat' : 'Menüyü aç'); });
   gameButton.addEventListener('click', () => { const open = gameMenu.classList.toggle('is-open'); gameButton.setAttribute('aria-expanded',String(open)); });
