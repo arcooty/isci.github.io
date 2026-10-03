@@ -17,5 +17,5 @@ test('role team buttons share a compact equal-width layout at desktop and mobile
 test('Skyblock start no longer duplicates the connection guide disclosure',()=>{
   const html=read('skyblock-start.html');
   assert.ok(!html.includes('Sürüm ve bağlantı bilgileri'));
-  assert.ok(html.includes('Survival bakiyen bu dünyaya taşınmaz'));
+  assert.ok(!html.includes('Survival bakiyen bu dünyaya taşınmaz'));
 });
