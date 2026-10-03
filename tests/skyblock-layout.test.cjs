@@ -5,18 +5,21 @@ const path = require('node:path');
 const vm = require('node:vm');
 const root = path.join(__dirname,'..');
 const read = name => fs.readFileSync(path.join(root,name),'utf8');
-test('Skyblock articles separate reading, commands and essential limits', () => {
+test('Skyblock articles keep commands with their relevant sections and preserve essential limits', () => {
   for (const file of fs.readdirSync(root).filter(file => /^skyblock(?:-[a-z-]+)?\.html$/.test(file))) {
     const html = read(file);
     assert.ok(html.includes('skyblock-content.css?v=20261002-2'),file);
     assert.ok(html.includes('href="skyblock-leaderboard.html"'),file);
   }
-  for (const file of ['start','island','orders','minion','trade','community','vip']) assert.ok(read('skyblock-'+file+'.html').includes('sky-command-panel'),file);
-  assert.ok(read('skyblock-progress.html').includes('sky-topic-panels'));
+  for (const file of ['start','island','orders','minion','trade','community','vip','progress']) {
+    const html=read('skyblock-'+file+'.html');
+    assert.ok(html.includes('class="command"'),file);
+    assert.ok(!html.includes('sky-command-panel'),file);
+  }
   assert.ok(!read('skyblock-orders.html').includes('class="vip-comparison"'));
   assert.ok(read('skyblock-orders.html').includes('Teslim edilen eşyalar tüketilir'));
   assert.ok(read('skyblock-vip.html').includes('Tüm oyuncularda aynı kalanlar'));
-  assert.ok(read('skyblock-content.css').includes('grid-template-columns:minmax(0,1fr);'));
+  assert.ok(read('guide-content.css').includes('.pg-explained'));
 });
 test('Skyblock rankings use their own API and are discoverable', () => {
   assert.ok(read('skyblock-leaderboard.js').includes("'/skyblock/leaderboards'"));

@@ -10,7 +10,7 @@ const survival = read('survival.html');
 
 test('published reward names, quantities and chances match the installed crate configuration', () => {
   for (const [rank, expected] of Object.entries(facts.crates)) {
-    const block = survival.match(new RegExp(`<article class="crate-odds tier-${rank}">([\\s\\S]*?)</article>`))[1];
+    const block = read('survival-crates-rewards.html').match(new RegExp(`<article class="crate-odds tier-${rank}">([\\s\\S]*?)</article>`))[1];
     const rows = [...block.matchAll(/<div><span>(.*?)<\/span><strong>(.*?)<\/strong><\/div>/g)]
       .map(([,label,chance]) => ({label,chance}));
     assert.deepEqual(rows, expected, rank);
@@ -54,7 +54,7 @@ test('store does not promise unavailable shops or cosmetic-only rewards', () => 
   assert.ok(!store.includes('<th scope="row">Pazar dükkânı'));
   assert.ok(store.includes('Kasalar yalnızca kozmetik değildir'));
   assert.ok(!survival.includes('Java’da sağ tıkla'));
-  assert.ok(survival.includes('1 fiziksel anahtar'));
+  assert.ok(read('survival-crates-keys.html').includes('1 fiziksel anahtar'));
 });
 
 test('world resource policy matches installed borders without promising automatic resets', () => {
@@ -62,8 +62,9 @@ test('world resource policy matches installed borders without promising automati
   assert.equal(facts.worldPolicy['nether-radius'], 10000);
   assert.equal(facts.worldPolicy['end-radius'], 20000);
   assert.ok(survival.includes('/dunyakurallari'));
-  assert.ok(survival.includes('Nether sınırı merkezden 10.000, End sınırı 20.000'));
-  assert.ok(survival.includes('otomatik dünya sıfırlama yoktur'));
+  assert.match(survival, /<th scope="row">Nether<\/th><td>Yok · PvP açık<\/td><td>Merkezden 10\.000 blok<\/td>/);
+  assert.match(survival, /<th scope="row">End<\/th><td>Yok · PvP açık<\/td><td>Merkezden 20\.000 blok<\/td>/);
+  assert.match(survival, /otomatik dünya sıfırlama yoktur/i);
   assert.ok(survival.includes('en az 14 gün önce'));
 });
 

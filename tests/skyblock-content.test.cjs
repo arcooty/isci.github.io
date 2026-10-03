@@ -27,7 +27,7 @@ test('Skyblock guide reports limited test access and remaining checks honestly',
 });
 test('separate economies, feature limitations and actual commands are documented', () => {
   const page=model.gameGuides.skyblock.map(([file])=>read(file)).join('');
-  for(const text of ['500 oyun içi TL','32 blokla','4 kişiyle','20 tek seferlik','16 kişisel','3 günlük ve 4 haftalık','5.000 TL','5</td><td>10</td><td>15</td><td>20','/skytakas','/shop','/satislimiti','/tarimminyon kaldır']) assert.ok(page.includes(text),text);
+  for(const text of ['500 oyun içi TL','32 blok','4 kişi','20 tek seferlik','16 kişisel','3 günlük ve 4 haftalık','5.000 TL','5</td><td>10</td><td>15</td><td>20','/skytakas','/shop','/satislimiti','/tarimminyon kaldır']) assert.ok(page.includes(text),text);
   for(const text of ['Alan yüklü değilken üretim yapmaz','otomatik bina yerleştirmez','ayrı haftalık VIP kiti tanımlı değildir','Survival bakiyen bu dünyaya taşınmaz']) assert.ok(page.includes(text),text);
   assert.ok(read('store.html').includes('href="store-skyblock.html"'));
   assert.ok(read('survival.html').includes('/takasoyuncu'));
@@ -38,7 +38,7 @@ test('the live minion behavior and unavailable shared storage are not misreprese
   assert.ok(minion.includes('Ada sahibinin çevrimiçi olması zorunlu değildir'));
   assert.ok(minion.includes('hasat düşüşlerinden bir tohum veya ürün ayırır'));
   assert.ok(!minion.includes('Ada sahibi çevrimiçiyken'));
-  assert.ok(read('skyblock-island.html').includes('başlangıç sayfa sayısı 0'));
+  assert.ok(read('skyblock-island.html').includes('ortak ada deposu yeni adalarda şu an kullanılamıyor'));
   assert.ok(read('skyblock-orders.html').includes('/siparis haftalik'));
   assert.ok(read('skyblock-community.html').includes('/skyshowcase vote 1'));
   assert.ok(read('skyblock-start.html').includes('dokuz hizmet NPC’si'));
