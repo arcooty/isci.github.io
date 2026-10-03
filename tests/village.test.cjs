@@ -12,6 +12,15 @@ const lobby = pages['village-lobby'];
 const faq = pages['village-faq'];
 const source = fs.readFileSync(path.join(root,'village.js'),'utf8');
 
+test('lobby omits event hours and uses only the section divider below fair play', () => {
+  assert.ok(!lobby.includes('Etkinlik saatleri'));
+  assert.ok(lobby.includes('Bilgiyi oyunun içinde tut'));
+  assert.ok(lobby.includes('id="komutlar"'));
+  const css = fs.readFileSync(path.join(root,'village-navigation.css'),'utf8');
+  assert.ok(css.includes('body.network-shell[data-page=village-lobby] .village-fair-play { border-bottom:0; }'));
+  assert.ok(lobby.includes('village-navigation.css?v=20261003-2'));
+});
+
 test('every individual role hash opens its role and selects its owning team', () => {
   for (const [index,role] of verifiedRoleDescriptions.entries()) {
     const page = harness('#'+role.id);
@@ -199,7 +208,7 @@ test('Village hub exposes five Skyblock-style topics, gameplay imagery and legac
 
 test('Village topic pages share the Skyblock toolbar and footer navigation', () => {
   for (const [name,page] of Object.entries(pages)) {
-    assert.match(page, /village-navigation\.css\?v=20261003-1/);
+    assert.match(page, /village-navigation\.css\?v=20261003-[12]/);
     if(name==='village') continue;
     assert.match(page, /class="game-guide-toolbar"/);
     assert.match(page, /<strong>Rob's Village<\/strong>/);
