@@ -20,8 +20,8 @@
 <link rel="stylesheet" href="polish.css?v=20261002-27">
 <link rel="stylesheet" href="game-hub-buttons.css?v=20261002-2"><link rel="stylesheet" href="game-guides.css?v=20261002-23">
 <link rel="stylesheet" href="survival-navigation.css?v=20261002-2">
-<link rel="stylesheet" href="survival-land.css?v=20261003-1"><link rel="stylesheet" href="guide-content.css?v=20261003-2"><link rel="stylesheet" href="guide-navigation.css?v=20261002-24"><link rel="stylesheet" href="game-typography.css?v=20261003-1"></head>
-<body class="network-shell survival-hub game-guide-page guide-reading" data-game="survival" data-route-hub="survival" data-page="survival">
+<link rel="stylesheet" href="survival-land.css?v=20261003-1"><link rel="stylesheet" href="guide-navigation.css?v=20261002-24"><link rel="stylesheet" href="game-typography.css?v=20261003-1"></head>
+<body class="network-shell survival-hub game-guide-page" data-route-hub="survival" data-page="survival">
   <nav class="site-nav" aria-label="Ana menü"><div class="site-nav-inner"><a class="site-brand" href="index.html" aria-label="ArcaDe Craft ana sayfa"><img src="assets/logo.png" alt="" width="42" height="42"><span>ArcaDe <strong>Craft</strong></span></a><div class="site-links" id="site-links"><a href="index.html">Ana sayfa</a><a href="servers.html" class="is-current" aria-current="location">Oyunlar</a><a href="community.html">Topluluk</a><a href="store.html">VIP mağazası</a><a href="help.html">Yardım</a><a class="nav-play" href="join.html"><i class="fa-solid fa-play" aria-hidden="true"></i> Oyuna katıl</a></div><div class="nav-tools"><button class="site-search-button" type="button" aria-label="Sitede ara" title="Sitede ara" aria-haspopup="dialog" aria-controls="site-search"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></button><button class="theme-toggle" type="button" aria-label="Açık temaya geç" title="Açık temaya geç"><i class="fa-solid fa-sun" aria-hidden="true"></i></button><button class="mobile-nav-button" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="site-links"><i class="fa-solid fa-bars" aria-hidden="true"></i></button></div></div></nav>
   <main class="page-wrap" id="main-content">
     <div class="hub-masthead">
@@ -53,20 +53,202 @@
       <div class="guide-mobile-select" hidden><label for="guide-topic-select">Rehber konusu</label><select id="guide-topic-select"></select></div>
       <div class="guide-article">
         <span id="guide-current" hidden>İlk adımlar</span>
-        <article id="baslangic" class="pg-body" data-guide-topic="baslangic" tabindex="-1"><header class="guide-head"><h2>Başlangıç</h2><p>Başlangıç kitini al, evini kaydet ve kendine bir meslek seç.</p></header><ol class="pg-steps"><li><h2>Dünyaya açıl</h2><p>Lobide pusuladan Survival’ı seç. <code>/menu</code> içindeki Ödüller → Kitler bölümünden tek seferlik başlangıç kitini al; rastgele bir başlangıç bölgesi bul.</p><div class="command"><code>/rtp</code><span>Rastgele güvenli konuma git.</span></div></li><li><h2>Evini kaydet ve koru</h2><p>Ev noktanı kaydet, altın kürekle arazinin iki köşesini seçerek yapını koru.</p><div class="command"><code>/evler</code><span>Evlerini panelden yönet.</span></div><a class="pg-link" href="#arazi">Arazi ve evler <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></li><li><h2>İlk mesleğini seç</h2><p>12 meslekten oynayışına uyan en fazla ikisini seç.</p><div class="command"><code>/jobs browse</code><span>Meslekleri incele.</span></div><a class="pg-link" href="survival-jobs.html">Meslekler <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></li><li><h2>Ürettiklerini değerlendir</h2><p>Temel ihtiyaçlar için sunucu marketini, nadir eşyalar için oyuncu ilanlarını kullan. Günlük meslek görevleri ve beceriler yeni hedefler sunar.</p><a class="pg-link" href="#ekonomi">Ekonomi ve ticaret <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></li></ol><section class="pg-section "><h2>Standart oyuncu hakları</h2><p>3 ev noktası, 1 sanal depo ve 2 açık artırma ilanı. Arazi koruma, meslekler, günlük meslek görevleri ve ticaret bütün oyunculara açıktır.</p></section><section class="pg-section "><h2>Spawn hizmetleri</h2><div class="pg-explained"><div><p>Evler, arazi koruma, meslekler, günlük görevler, beceriler, oyuncu pazarı, ödüller ve VIP için hizmet NPC’leri var. Tüccar, ışınlanma, ana menü ve yatak NPC’lerini de kullanabilirsin; NPC’ye tıklamak ilgili menüyü açar.</p><p class="pg-small">Ana menü: Dünya ve Evler / Ticaret / Meslek ve Görev / Ödüller / Oyuncu Ayarları.</p></div><div class="pg-context"><div class="command"><code>/menu</code><span>Ana menüyü aç.</span></div></div></div></section></article>
-        <article id="arazi" class="pg-body" data-guide-topic="arazi" tabindex="-1"><header class="guide-head"><h2>Arazi ve evler</h2><p>Evini kaydet, arazini koru. İkisi farklı işler: ev noktası geri dönmeni sağlar; claim yapına kimin dokunabileceğini belirler.</p></header>
-<section class="pg-land-intro" aria-labelledby="claim-title"><div><h2 id="claim-title">İlk claimini oluştur</h2><ol class="pg-steps"><li><strong>Altın küreğini eline al.</strong><span>Ana dünyada korumak istediğin alanın bir köşesine sağ tıkla.</span></li><li><strong>Karşı köşeyi seç.</strong><span>İkinci sağ tıkla dikdörtgen alanı tamamla.</span></li><li><strong>Korumanı kontrol et.</strong><span>Çubukla mevcut claimi incele. Tam yetkiyi yalnızca güvendiğin kişilere ver.</span></li></ol></div><figure class="pg-claim-diagram" aria-label="Claim alanının şeması: karşılıklı iki köşe arasındaki dikdörtgen korunur"><div class="pg-plot"><span class="pg-corner first">1</span><span class="pg-plot-label">Korunan alan</span><span class="pg-corner last">2</span></div><figcaption>Altın kürek · Karşılıklı iki köşe</figcaption></figure></section>
-<div class="pg-two-tables">
-<section class="pg-command-section"><h2>Ev komutları</h2><table class="pg-table pg-command-table"><caption>Ev komutları</caption><thead><tr><th scope="col">Komut</th><th scope="col">Ne yapar?</th></tr></thead><tbody><tr><th scope="row"><div class="command"><code>/evler</code></div></th><td>Evlerini yönet; konum kaydet, ışınlan veya onaylayarak sil.</td></tr><tr><th scope="row"><div class="command"><code>/sethome ev</code></div></th><td>Bulunduğun konumu “ev” adıyla kaydet.</td></tr><tr><th scope="row"><div class="command"><code>/home ev</code></div></th><td>Kaydettiğin eve dön.</td></tr><tr><th scope="row"><div class="command"><code>/delhome ev</code></div></th><td>“ev” adlı kaydı sil.</td></tr></tbody></table></section>
-<section class="pg-command-section"><h2>Claim komutları</h2><table class="pg-table pg-command-table"><caption>Claim komutları</caption><thead><tr><th scope="col">Komut</th><th scope="col">Ne yapar?</th></tr></thead><tbody><tr><th scope="row"><div class="command"><code>/claimslist</code></div></th><td>Koruduğun arazileri listele.</td></tr><tr><th scope="row"><div class="command"><code>/trust oyuncu</code></div></th><td>İnşa ve kırma izni ver.</td></tr><tr><th scope="row"><div class="command"><code>/containertrust oyuncu</code></div></th><td>Sandık ve hayvan erişimi ver.</td></tr><tr><th scope="row"><div class="command"><code>/accesstrust oyuncu</code></div></th><td>Kapı ve düğme erişimi ver.</td></tr><tr><th scope="row"><div class="command"><code>/untrust oyuncu</code></div></th><td>Verdiğin izni geri al.</td></tr><tr><th scope="row"><div class="command"><code>/abandonclaim</code></div></th><td>İçinde bulunduğun claimi kaldır.</td></tr></tbody></table></section>
+        <article id="baslangic" data-guide-topic="baslangic" tabindex="-1">
+          <header class="guide-head"><h2>Başlangıç</h2><p>Başlangıç kitini al, ev konumunu kaydet ve arazini koru.</p></header>
+          <ol class="start-steps"><li><h3>Dünyaya açıl</h3><p>Lobide pusuladan Survival'ı seç. <code>/menu</code> içindeki Ödüller → Kitler bölümünden tek seferlik başlangıç kitini al; <code>/rtp</code> ile yeni bir başlangıç bölgesi bul.</p></li><li><h3>Evini kaydet ve koru</h3><p><code>/evler</code> panelinden konumunu kaydet ve evlerini yönet. Altın kürekle arazinin karşılıklı iki köşesine sağ tıklayarak yapını koru.</p><a href="#arazi">Arazi ve evler <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></li><li><h3>İlk mesleğini seç</h3><p><code>/jobs browse</code> ile 12 mesleği incele. Aynı anda en fazla iki meslek seçebilirsin.</p><a href="survival-jobs.html">Meslekler <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></li><li><h3>Ürettiklerini değerlendir</h3><p>Temel ihtiyaçlar için sunucu marketini, nadir eşyalar için oyuncu ilanlarını kullan. Günlük meslek görevleri ve beceriler yeni hedefler sunar.</p><a href="#ekonomi">Ekonomi ve ticaret <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></li></ol>
+          <div class="guide-note"><strong>Standart oyuncu hakları</strong><p>3 ev noktası, 1 sanal depo ve 2 açık artırma ilanı. Arazi koruma, meslekler, günlük meslek görevleri ve ticaret bütün oyunculara açıktır. Ana menü: Dünya ve Evler / Ticaret / Meslek ve Görev / Ödüller / Oyuncu Ayarları.</p></div>
+          <section class="about-section"><h2>Spawn hizmetleri</h2><p>Spawn’da evler, arazi koruma, meslekler, günlük görevler, beceriler, oyuncu pazarı, ödüller ve VIP için ayrı NPC’ler var. Tüccar, ışınlanma, ana menü ve yatak NPC’leri de kullanılabilir. Türkçe başlıklar her hizmeti gösterir; NPC’ye tıklamak ilgili menüyü açar.</p></section>
+        </article>
+        <article id="arazi" data-guide-topic="arazi" tabindex="-1">
+          <header class="guide-head"><h2>Evler ve arazi koruma</h2><p>Ev noktası seni geri getirir; claim ise yapını korur. Ana dünyada altın kürekle karşılıklı iki köşeye sağ tıkla; çubukla mevcut korumayı incele. Tanımadığın oyunculara tam yetki verme.</p></header>
+          <div class="land-command-tables">
+            <section><table class="land-command-table"><caption><i class="fa-solid fa-house" aria-hidden="true"></i>Ev komutları</caption><thead><tr><th scope="col">Komut</th><th scope="col">Kullanım</th></tr></thead><tbody>
+              <tr><th scope="row"><div class="command"><code>/evler</code></div></th><td>Evlerini listele, konum kaydet, ışınlan veya onaylayarak sil</td></tr>
+              <tr><th scope="row"><div class="command"><code>/sethome ev</code></div></th><td>Bulunduğun yeri ev noktası olarak kaydet</td></tr>
+              <tr><th scope="row"><div class="command"><code>/home ev</code></div></th><td>Kaydettiğin ev noktasına dön</td></tr>
+              <tr><th scope="row"><div class="command"><code>/delhome ev</code></div></th><td>Adını belirttiğin ev kaydını siler</td></tr>
+            </tbody></table></section>
+            <section><table class="land-command-table claim-commands"><caption><i class="fa-solid fa-shield-halved" aria-hidden="true"></i>Claim komutları</caption><thead><tr><th scope="col">Komut</th><th scope="col">Kullanım</th></tr></thead><tbody>
+              <tr><th scope="row"><div class="command"><code>/claimslist</code></div></th><td>Claimlerini listeler</td></tr>
+              <tr><th scope="row"><div class="command"><code>/trust oyuncu</code></div></th><td>İnşa ve kırma izni</td></tr>
+              <tr><th scope="row"><div class="command"><code>/containertrust oyuncu</code></div></th><td>Sandık ve hayvan erişimi</td></tr>
+              <tr><th scope="row"><div class="command"><code>/accesstrust oyuncu</code></div></th><td>Kapı ve düğme erişimi</td></tr>
+              <tr><th scope="row"><div class="command"><code>/untrust oyuncu</code></div></th><td>Oyuncunun iznini kaldırır</td></tr>
+              <tr><th scope="row"><div class="command"><code>/abandonclaim</code></div></th><td>Bulunduğun claimi siler</td></tr>
+            </tbody></table></section>
+          </div>
+          <div class="command land-world-command"><code>/dunyakurallari</code><span>Nether ve End sınırlarını, koruma ve kaynak kurallarını gösterir</span></div>
+          <div class="guide-note"><strong>Ev noktası koruma sağlamaz.</strong><p>Claim yalnızca ana dünyada kullanılabilir; Nether ve End'de claim koruması yoktur ve PvP açıktır. Standart oyuncu 3, VIP 5, MVIP 8, UVIP 12 ev kaydedebilir. Yatak noktası Dünya ve Evler menüsünde ayrıdır. Savaş süren bitmeden komut veya menüyle ışınlanamazsın.</p><p>Nether sınırı merkezden 10.000, End sınırı 20.000 bloktur. Mevcut yapılar korunmuştur; otomatik dünya sıfırlama yoktur. Olası sıfırlama en az 14 gün önce duyurulur. Kalıcı evini ana dünyada kur; sıfırlama duyurusu olursa eşyalarını oraya taşı.</p></div>
+        </article>
+        <article id="meslekler" data-guide-topic="meslekler" tabindex="-1">
+    <header class="guide-head">
+
+      <h2>Meslekler</h2>
+      <p>Oynayış tarzına uyan en fazla iki mesleği seç; çalıştıkça para, meslek puanı ve tecrübe kazan. Ödemeler Survival ekonomisiyle birlikte dengelenir.</p>
+    </header>
+    <nav class="guide-outline" aria-label="Meslekler konusunun bölümleri"><a href="survival-jobs.html#jobs-meslekler" data-section-link="jobs-meslekler">Meslekler</a><a href="survival-jobs-progress.html#jobs-sistem" data-section-link="jobs-sistem">İlerleme</a><a href="survival-jobs-commands.html#jobs-komutlar" data-section-link="jobs-komutlar">Meslek komutları</a></nav>
+    <section id="jobs-meslekler" class="about-section jobs-first-section">
+      <div class="section-title"><h2>Meslekler</h2></div>
+      <div class="info-grid">
+        <article class="info-card"><h3>⛏️ Madenci</h3><p>Kömürden elmasa kadar doğal maden bloklarını çıkararak para ve tecrübe kazan.</p><span class="tag">/jobs join Madenci</span></article>
+        <article class="info-card"><h3>🪓 Oduncu</h3><p>Ağaç kes, yaprakları temizle ve fidan dikerek sürdürülebilir biçimde ilerle.</p><span class="tag">/jobs join Oduncu</span></article>
+        <article class="info-card"><h3>🌾 Çiftçi</h3><p>Ekin yetiştir, hasat yap ve hayvancılıkla düzenli fakat kontrollü gelir oluştur.</p><span class="tag">/jobs join Ciftci</span></article>
+        <article class="info-card"><h3>🏹 Avcı</h3><p>Düşman yaratıkları avlayarak savaş odaklı meslek tecrübesi ve ödeme kazan.</p><span class="tag">/jobs join Avci</span></article>
+        <article class="info-card"><h3>🎣 Balıkçı</h3><p>Balık ve nadir avlar yakala; sakin bir oyun döngüsüyle istikrarlı ilerle.</p><span class="tag">/jobs join Balikci</span></article>
+        <article class="info-card"><h3>🏗️ İnşaatçı</h3><p>Onaylı yapı bloklarını yerleştirerek büyük projelerini meslek ilerlemesine dönüştür.</p><span class="tag">/jobs join Insaatci</span></article>
+        <article class="info-card"><h3>🔨 Zanaatkar</h3><p>Geçerli tariflerle eşya üret; tekrar ve dönüşüm suistimallerine karşı sınırlı kazanç elde et.</p><span class="tag">/jobs join Zanaatkar</span></article>
+        <article class="info-card"><h3>✨ Efsuncu</h3><p>Eşyalara büyü uygulayarak ve büyü sistemini kullanarak uzmanlaş.</p><span class="tag">/jobs join Efsuncu</span></article>
+        <article class="info-card"><h3>⚔️ Silahşör</h3><p>Silah, zırh ve savaş ekipmanı üretimini meslek tecrübesine dönüştür.</p><span class="tag">/jobs join Silahsor</span></article>
+        <article class="info-card"><h3>🪏 Kazıcı</h3><p>Toprak, kum ve çakıl gibi yüzey bloklarını kazarak arazi projelerinde ilerle.</p><span class="tag">/jobs join Kazici</span></article>
+        <article class="info-card"><h3>🧪 İksirci</h3><p>Demleme standında geçerli iksirler hazırlayarak üretim odaklı tecrübe kazan.</p><span class="tag">/jobs join Iksirci</span></article>
+        <article class="info-card"><h3>🗺️ Kaşif</h3><p>Yeni bölgeleri ve biyomları keşfederek macera odaklı ilerleme sağla.</p><span class="tag">/jobs join Kasif</span></article>
+      </div>
+    </section>
+
+    <section id="jobs-sistem" class="about-section">
+      <div class="section-title"><h2>Nasıl ilerlersin?</h2></div>
+      <div class="about-band">
+        <div><h2>İki Aktif Meslek</h2><p>Bir oyuncu aynı anda en fazla iki meslekte ilerleyebilir. Meslek değiştirirken mevcut seviyenin etkisini oyun içindeki uyarıdan kontrol et.</p></div>
+        <div><h2>Dengeli Ödemeler</h2><p>Meslek kazançları market satışından bağımsızdır. Tekrarlı yerleştir-kır, craft geri dönüşümü ve otomasyon kaynaklı açıklar ödeme kurallarıyla sınırlandırılır.</p></div>
+      </div>
+    </section>
+
+    <section id="jobs-komutlar" class="about-section">
+      <div class="section-title"><h2>Meslek komutları</h2></div>
+      <div class="command-list">
+        <div class="command"><code>/jobs browse</code><span>Tüm meslekleri ve ayrıntılarını açar.</span></div>
+        <div class="command"><code>/jobs join [meslek]</code><span>Seçtiğin mesleğe katılmanı sağlar.</span></div>
+        <div class="command"><code>/jobs stats</code><span>Meslek seviyelerini ve ilerlemeni gösterir.</span></div>
+        <div class="command"><code>/jobs leave [meslek]</code><span>Seçili meslekten ayrılmanı sağlar.</span></div>
+        <div class="command"><code>/jobs quests</code><span>Günlük meslek görevlerini görüntüler.</span></div>
+        <div class="command"><code>/genelmeslek</code><span>Mesleklerin ilk üç oyuncusunu gösterir.</span></div>
+      </div>
+    </section>
+  </article>
+        <article id="gorevler" data-guide-topic="gorevler" tabindex="-1"><header class="guide-head"><h2>Görevler ve beceriler</h2><p>Seçtiğin mesleklerin günlük hedefleriyle ilerle. Becerilerin de madencilik, savaş, tarım ve diğer oyun içi etkinliklerle gelişir.</p></header><section class="info-grid"><article class="info-card"><h2>📅 Günlük Görevler</h2><p><code>/menu</code> → Meslek ve Görev → Günlük Görevler yolunu kullan. Ek günlük ödül, en fazla 2 görev ve toplam 600 oyun içi TL ile sınırlıdır.</p></article><article class="info-card"><h2>💼 Meslek Görevleri</h2><p><code>/jobs quests</code> aynı günlük meslek hedeflerini gösterir. Ayrı bir hikâye görev sistemi şu anda sunulmuyor.</p></article><article class="info-card"><h2>✨ Yetenekler</h2><p><code>/skills</code> karakter becerilerini ve gelişim yolunu açar.</p></article></section></article>
+        <article id="ekonomi" data-guide-topic="ekonomi" tabindex="-1"><header class="guide-head"><h2>Ekonomi ve ticaret</h2><p>Temel ihtiyaçlarını marketten karşıla; nadir eşyalar için keşfe çık veya oyuncularla ticaret yap. Buradaki TL, oyun içi paradır.</p></header><section class="info-grid"><article class="info-card"><h2>🏪 Sunucu Marketi</h2><p><code>/market</code> içindeki 8 kategori temel yapı, gıda, maden, alet ve dekorasyon ürünlerini toplar. Elmas, netherite, elytra, totem, shulker, spawner ve doğurma yumurtaları sunucu marketinde satılmaz. Güncel fiyat ve satılabilirlik oyun içindeki menüde görünür.</p></article><article class="info-card"><h2>🔨 Oyuncu İlanları</h2><p><code>/nah</code> ile oyuncuların açık artırma ilanlarını aç. Nadir eşyalar ve kendi üretimin için oyuncular arası ticareti kullan; fiziksel dükkân kiralama şu anda sunulmuyor.</p></article><article class="info-card"><h2>🤝 Güvenli Takas</h2><p><code>/menu</code> → Ticaret → Oyuncuyla Takas, aynı dünyada 8 blok yakınındaki oyuncuyu seçme ekranını açar. Doğrudan <code>/takasoyuncu</code> da kullanabilirsin. <code>/gt oyuncu</code> ile isme takas isteği gönder. İki taraflı onay ekranını kullan. Eşya ve para miktarlarını kontrol et. Sistem dışı gerçek para ticareti yasaktır.</p></article></section><div class="guide-note"><strong>Günlük sunucuya satış limiti: 25.000 TL</strong><p><code>/satislimiti</code> kalan hakkını gösterir. Limit bütün rütbeler için aynıdır; Türkiye saati 00:00'da yenilenir ve yeniden bağlanınca sıfırlanmaz. Meslek kazançları ve oyuncular arası ilan/takas gelirleri bu limitten ayrıdır. İsim etiketi sunucuya satılamaz; marketten 25 TL'ye alınabilir.</p><p><code>/sellgui</code> ekranına yalnızca satmak istediğin normal eşyaları koy: ekranı kapatınca uygun ürünler satılır. Shulker kutusu içeriği, özel ad verilmiş ve açıklama eklenmiş eşyalar bu satış yolunda kabul edilmez.</p></div></article>
+        <article id="kasalar" data-guide-topic="kasalar" tabindex="-1">
+  <header class="guide-head">
+
+    <h2>Ödül kasaları</h2>
+    <p>Haftalık rütbe kitinden anahtarını al, ödül havuzunu incele ve kasanı menüden aç. Java ve Bedrock oyuncuları aynı ödül sistemini kullanır.</p>
+  </header>
+  <nav class="guide-outline" aria-label="Kasalar konusunun bölümleri"><a href="survival-crates.html#crate-havuzlar" data-section-link="crate-havuzlar">Kasalar</a><a href="survival-crates-rewards.html#crate-odds" data-section-link="crate-odds">Ödüller ve oranlar</a><a href="survival-crates-keys.html#crate-kullanim" data-section-link="crate-kullanim">Anahtar ve kullanım</a></nav>
+  <section class="about-section" id="crate-havuzlar">
+    <div class="section-title"><h2>Üç farklı ödül havuzu</h2></div>
+    <div class="info-grid">
+      <article class="info-card"><span class="tag">VIP</span><h2>VIP Kasası</h2><p>Yiyecek ve meşale paketi, büyüsüz demir kazma, altın elma, 8 XP şişesi veya oyun içi para.</p><div class="info-card-meta"><span class="tag">VIP kitinde 1 anahtar</span><span class="tag">VIP ve üzeri</span></div></article>
+      <article class="info-card"><span class="tag">MVIP</span><h2>MVIP Kasası</h2><p>Yiyecek ve yapı paketi, büyüsüz demir araçlar, altın elma, 12 XP şişesi, oyun içi para veya demir zırh seti.</p><div class="info-card-meta"><span class="tag">MVIP kitinde 1 anahtar</span><span class="tag">MVIP ve üzeri</span></div></article>
+      <article class="info-card"><span class="tag">UVIP</span><h2>UVIP Kasası</h2><p>Yiyecek ve roket paketi, büyüsüz demir araçlar, altın elma, 16 XP şişesi, oyun içi para veya demir zırh seti.</p><div class="info-card-meta"><span class="tag">UVIP kitinde 1 anahtar</span><span class="tag">UVIP</span></div></article>
+    </div>
+  </section>
+  <section class="about-section" id="crate-odds">
+    <div class="section-title"><h2>Kasa ödülleri ve oranları</h2></div>
+    <div class="crate-odds-grid">
+      <article class="crate-odds tier-vip"><h3>VIP Kasası</h3><div><span>16 ekmek, 8 pişmiş biftek, 32 meşale</span><strong>%40</strong></div><div><span>Büyüsüz demir kazma</span><strong>%25</strong></div><div><span>2 altın elma</span><strong>%20</strong></div><div><span>200 oyun içi TL</span><strong>%10</strong></div><div><span>8 XP şişesi</span><strong>%4</strong></div><div><span>500 oyun içi TL</span><strong>%1</strong></div></article>
+      <article class="crate-odds tier-mvip"><h3>MVIP Kasası</h3><div><span>32 pişmiş biftek, 32 meşale, 32 meşe kütüğü</span><strong>%35</strong></div><div><span>Büyüsüz demir kazma</span><strong>%20</strong></div><div><span>Büyüsüz demir kılıç</span><strong>%15</strong></div><div><span>2 altın elma</span><strong>%15</strong></div><div><span>400 oyun içi TL</span><strong>%10</strong></div><div><span>12 XP şişesi</span><strong>%4</strong></div><div><span>400 oyun içi TL</span><strong>%0,8</strong></div><div><span>Büyüsüz demir zırh seti</span><strong>%0,2</strong></div></article>
+      <article class="crate-odds tier-uvip"><h3>UVIP Kasası</h3><div><span>32 pişmiş biftek, 32 meşale, 16 havai fişek roketi</span><strong>%30</strong></div><div><span>Büyüsüz demir kazma</span><strong>%22</strong></div><div><span>Büyüsüz demir balta</span><strong>%16</strong></div><div><span>2 altın elma</span><strong>%12</strong></div><div><span>600 oyun içi TL</span><strong>%10</strong></div><div><span>16 XP şişesi</span><strong>%7</strong></div><div><span>1.000 oyun içi TL</span><strong>%2,5</strong></div><div><span>Büyüsüz demir zırh seti</span><strong>%0,5</strong></div></article>
+    </div>
+    <p class="section-note">Her kasanın oranları kendi içinde %100'dür. Her açılış bir ödül kaydı seçer; paket ödülleri birden fazla eşya içerir. MVIP'teki iki 400 TL kaydı aynı tutarı verir, toplam olasılıkları %10,8'dir. Kasalar yalnızca kozmetik değildir; eşya, XP ve oyun içi para içerir. Büyük ödül garantisi yoktur.</p>
+  </section>
+  <section class="about-section" id="crate-kullanim">
+    <div class="section-title"><h2>Anahtarını al, kasanı aç</h2></div>
+    <div class="about-band">
+      <div><h2>1. Anahtarını Al</h2><p>Yetkin olan haftalık kiti <code>/kit vip</code>, <code>/kit mvip</code> veya <code>/kit uvip</code> ile al. Her kit kendi kasasına ait 1 fiziksel anahtar verir; aynı kit 7 gün sonra tekrar alınabilir. Üst rütbeler alt rütbelerin kit haklarını da devralır.</p></div>
+      <div><h2>2. Kasanı Aç</h2><p><code>/menu</code> → Ödüller → Kasalar yolunu kullan. Java ve Bedrock'ta önizleme ile “Kasayı Aç” ayrı seçeneklerdir. Her açılış ilgili kasanın 1 anahtarını kullanır; envanterinde yer bırak.</p></div>
+    </div>
+    <p class="section-note">Anahtarlar yalnız ait oldukları kasada kullanılır. Kasa açmak için ilgili rütbenin aktif olması gerekir.</p>
+  </section>
+</article>
+        <article id="komutlar" data-guide-topic="komutlar" tabindex="-1">
+<header class="guide-head">
+
+<h2>Günlük oyun komutları</h2>
+<p>Günlük oynayışta ihtiyaç duyacağın komutların kısa listesi.</p>
+</header>
+<nav class="guide-outline" aria-label="Komutlar konusunun bölümleri"><a href="survival-commands.html#commands-travel" data-section-link="commands-travel">Ulaşım ve ev</a><a href="survival-commands-progress.html#commands-progress" data-section-link="commands-progress">İlerleme</a><a href="survival-commands-vip.html#commands-vip" data-section-link="commands-vip">VIP komutları</a></nav>
+<section class="about-section" id="commands-travel"><div class="section-title"><h2>Ulaşım ve ev</h2></div>
+<section class="command-list">
+<div class="command">
+<code>/menu</code>
+<span>Ana menü</span>
 </div>
-<section class="pg-section"><div class="pg-section-title"><h2>Kaç ev kaydedebilirim?</h2><span>Ev noktası koruma sağlamaz.</span></div><dl class="pg-ranks"><div><dt>Oyuncu</dt><dd>3 ev</dd></div><div><dt>VIP</dt><dd>5 ev</dd></div><div><dt>MVIP</dt><dd>8 ev</dd></div><div><dt>UVIP</dt><dd>12 ev</dd></div></dl><p class="pg-small">Yatak noktan Dünya ve Evler menüsünde ayrıca gösterilir. Savaş süren bitmeden komutla veya menüden ışınlanamazsın.</p></section>
-<section class="pg-section"><h2>Dünyalar ve koruma kuralları</h2><p>Claim yalnızca ana dünyada kullanılabilir; kalıcı evini burada kur. Nether ve End'de claim koruması yoktur ve PvP açıktır.</p><table class="pg-table"><caption>Dünya kuralları</caption><thead><tr><th scope="col">Dünya</th><th scope="col">Claim</th><th scope="col">Sınır</th></tr></thead><tbody><tr><th scope="row">Nether</th><td>Yok · PvP açık</td><td>Merkezden 10.000 blok</td></tr><tr><th scope="row">End</th><td>Yok · PvP açık</td><td>Merkezden 20.000 blok</td></tr></tbody></table><p class="pg-small">Mevcut yapılar korunmuştur. Otomatik dünya sıfırlama yoktur; olası sıfırlama en az 14 gün önce duyurulur. Duyuru yapılırsa değerli eşyalarını ana dünyaya taşı.</p><div class="command"><code>/dunyakurallari</code><span>Dünya sınırlarını ve kaynak kurallarını oyun içinde aç.</span></div></section></article>
-
-        <article id="gorevler" class="pg-body" data-guide-topic="gorevler" tabindex="-1"><header class="guide-head"><h2>Görevler ve beceriler</h2><p>Günlük meslek hedeflerini tamamla; oynadıkça karakter becerilerini geliştir.</p></header><section class="pg-section "><h2>Günlük meslek görevleri</h2><div class="pg-explained"><div><p>Seçtiğin mesleklerin günlük hedeflerini tamamla. Menü yolu: <strong>Meslek ve Görev → Günlük Görevler</strong>. Aşağıdaki komut da aynı hedefleri açar.</p><p class="pg-callout">Ek günlük ödül, en fazla 2 görev ve toplam 600 oyun içi TL ile sınırlıdır. Ayrı bir hikâye görev sistemi şu anda sunulmuyor.</p></div><div class="pg-context"><div class="command"><code>/jobs quests</code><span>Günlük meslek hedeflerini aç.</span></div></div></div></section><section class="pg-section "><h2>Karakter becerileri</h2><div class="pg-explained"><div><p>Madencilik, savaş, tarım ve diğer oyun içi etkinliklerle becerilerin gelişir. Beceriler, meslek seviyelerinden ayrı ilerler; karakter ekranından gelişim yolunu incele.</p></div><div class="pg-context"><div class="command"><code>/skills</code><span>Becerilerini ve gelişim yolunu aç.</span></div></div></div></section><section class="pg-section "><h2>Sıradaki hedefin</h2><p>Meslek seviyelerini takip edebilir veya oyuncular arasındaki yerini görebilirsin.</p><a class="pg-link" href="survival-jobs-progress.html">Meslek ilerlemesi <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a> <a class="pg-link" href="#siralamalar">Sıralamalar <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></section></article>
-        <article id="ekonomi" class="pg-body" data-guide-topic="ekonomi" tabindex="-1"><header class="guide-head"><h2>Ekonomi ve ticaret</h2><p>Temel ihtiyaçlarını marketten karşıla, ürettiklerini oyunculara sat. Buradaki TL oyun içi paradır.</p></header><section class="pg-section "><h2>Sunucu marketi</h2><div class="pg-explained"><div><p>Marketin 8 kategorisinden yapı, gıda, maden, alet ve dekorasyon ürünlerine ulaş. Güncel fiyat ve satılabilirlik oyun içindeki menüde görünür.</p><p class="pg-small">Elmas, netherite, elytra, totem, shulker, spawner ve doğurma yumurtaları sunucu marketinde satılmaz; nadir eşyalar için oyuncu ticaretini kullan.</p></div><div class="pg-context"><div class="command"><code>/market</code><span>Sunucu marketini aç.</span></div></div></div></section><section class="pg-section "><h2>Oyuncu ilanları</h2><div class="pg-explained"><div><p>Ürettiklerini açık artırmada listele veya diğer oyunculardan satın al. Fiziksel dükkân kiralama şu anda sunulmuyor.</p></div><div class="pg-context"><div class="command"><code>/nah</code><span>Oyuncu ilanlarını aç.</span></div></div></div></section><section class="pg-section "><h2>Güvenli takas</h2><div class="pg-explained"><div><p><code>/menu</code> → Ticaret → Oyuncuyla Takas yolundan aynı dünyada 8 blok yakınındaki oyuncuyu seç. Eşya ve para miktarlarını kontrol et; iki taraflı onay ekranını kullan.</p><p class="pg-small">Sistem dışı gerçek para ticareti yasaktır.</p></div><div class="pg-context"><div class="command"><code>/takasoyuncu</code><span>Yakındaki oyuncuyu seç.</span></div><div class="command"><code>/gt oyuncu</code><span>İsme takas isteği gönder.</span></div></div></div></section><section class="pg-section "><h2>Sunucuya ürün sat</h2><div class="pg-explained"><div><p>Günlük sunucuya satış limiti <strong>25.000 TL</strong>. Bütün rütbeler için aynıdır; Türkiye saati 00:00’da yenilenir ve yeniden bağlanınca sıfırlanmaz.</p><p class="pg-small">Meslek kazançları ve oyuncular arası ilan/takas gelirleri bu limitten ayrıdır.</p></div><div class="pg-context"><div class="command"><code>/satislimiti</code><span>Kalan satış hakkını göster.</span></div><div class="command"><code>/sellgui</code><span>Satış ekranını aç.</span></div></div></div></section><details class="pg-detail"><summary>Satış ekranına hangi eşyaları koymalıyım? <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></summary><div><p>Yalnızca satmak istediğin normal eşyaları koy: ekranı kapatınca uygun ürünler satılır. Shulker kutusu içeriği, özel ad verilmiş ve açıklama eklenmiş eşyalar bu satış yolunda kabul edilmez.</p><p>İsim etiketi sunucuya satılamaz; marketten 25 TL’ye alınabilir.</p></div></details><a class="pg-link" href="#siralamalar">Ekonomi sıralaması <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></article>
-
-
+<div class="command">
+<code>/spawn</code>
+<span>Başlangıç alanı</span>
+</div>
+<div class="command">
+<code>/rtp</code>
+<span>Rastgele güvenli konum</span>
+</div>
+<div class="command">
+<code>/evler</code>
+<span>Evlerini panelden yönet</span>
+</div>
+<div class="command">
+<code>/sethome ad</code>
+<span>Ev kaydet</span>
+</div>
+<div class="command">
+<code>/home ad</code>
+<span>Eve ışınlan</span>
+</div>
+<div class="command">
+<code>/tpa oyuncu</code>
+<span>Işınlanma isteği</span>
+</div>
+</section></section>
+<section class="about-section" id="commands-progress"><div class="section-title"><h2>İlerleme ve topluluk</h2></div>
+<section class="command-list">
+<div class="command">
+<code>/balance</code>
+<span>Bakiyeni göster</span>
+</div>
+<div class="command">
+<code>/discord</code>
+<span>Hesap bağlantısı</span>
+</div>
+<div class="command">
+<code>/jobs browse</code>
+<span>Meslek seçimi</span>
+</div>
+<div class="command">
+<code>/skills</code>
+<span>Yetenekler</span>
+</div>
+<div class="command">
+<code>/jobs quests</code>
+<span>Günlük meslek görevleri</span>
+</div>
+<div class="command">
+<code>/satislimiti</code>
+<span>Kalan günlük sunucuya satış hakkı</span>
+</div>
+<div class="command">
+<code>/kasalar</code>
+<span>Kasa ödüllerini incele veya anahtarla aç</span>
+</div>
+</section></section>
+<section class="about-section" id="commands-vip"><div class="section-title"><h2>VIP kolaylıkları</h2></div>
+<section class="command-list">
+<div class="command">
+<code>/vip</code>
+<span>VIP paketlerini karşılaştır</span>
+</div>
+<div class="command">
+<code>/vipkitler</code>
+<span>Rütbe kitleri</span>
+</div>
+<div class="command">
+<code>/vipkolaylik</code>
+<span>VIP komut ve kolaylıkları</span>
+</div>
+<div class="command">
+<code>/vipekstra</code>
+<span>Depo, ev ve ilan hakları</span>
+</div>
+</section></section>
+</article>
         <nav class="guide-pagination" aria-label="Rehber gezinmesi"><a href="#genel" class="guide-return"><i class="fa-solid fa-table-cells-large" aria-hidden="true"></i> Bütün konular</a><a id="guide-next" href="#arazi">Arazi ve evler <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></nav>
       </div>
     </section>

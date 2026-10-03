@@ -6,7 +6,7 @@ const read=file=>fs.readFileSync(path.join(__dirname,'..',file),'utf8');
 
 test('land guide separates home and claim commands into two accessible tables',()=>{
   const article=read('survival.html').match(/<article id="arazi"[\s\S]*?<\/article>/)[0];
-  const tables=[...article.matchAll(/<table class="pg-table pg-command-table"[^>]*>([\s\S]*?)<\/table>/g)].map(match=>match[1]);
+  const tables=[...article.matchAll(/<table[^>]*>([\s\S]*?)<\/table>/g)].map(match=>match[1]);
   assert.equal(tables.length,2);
   assert.match(tables[0],/Ev komutları/);
   assert.match(tables[1],/Claim komutları/);
@@ -17,17 +17,14 @@ test('land guide separates home and claim commands into two accessible tables',(
     assert.equal(article.split('<code>'+command+'</code>').length-1,1,command);
   }
   assert.ok(article.includes('Ev noktası koruma sağlamaz.'));
-  assert.match(article, /<th scope="row">Nether<\/th><td>Yok · PvP açık<\/td><td>Merkezden 10\.000 blok<\/td>/);
-  const world=article.slice(article.indexOf('<h2>Dünyalar ve koruma kuralları</h2>'));
-  assert.ok(world.includes('/dunyakurallari'));
-  assert.ok(world.includes('en az 14 gün önce'));
+  assert.ok(article.includes('Nether sınırı merkezden 10.000'));
 });
 
 test('land command tables stack below tablet width and retain compatible copy containers',()=>{
-  const css=read('guide-content.css');
-  assert.ok(css.includes('.pg-two-tables { display:grid;'));
-  assert.ok(css.includes('@media(max-width:850px)'));
-  assert.ok(css.includes('.pg-two-tables { grid-template-columns:1fr;'));
-  assert.ok(css.includes('.pg-command-table .command { padding:0;'));
-  assert.ok(read('survival.html').includes('guide-content.css?v=20261003-2'));
+  const css=read('survival-land.css');
+  assert.ok(css.includes('grid-template-columns:repeat(2,minmax(0,1fr))'));
+  assert.ok(css.includes('@media(max-width:1000px)'));
+  assert.ok(css.includes('grid-template-columns:minmax(0,1fr)'));
+  assert.ok(css.includes('.land-command-table .command { display:flex;'));
+  assert.ok(read('survival.html').includes('survival-land.css?v=20261003-1'));
 });

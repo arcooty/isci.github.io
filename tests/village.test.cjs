@@ -229,7 +229,7 @@ test('guides share standard shell, themes, category menus and literal headings',
     if (name === 'village') continue;
     assert.match(page,/class="game-guide-toolbar"[\s\S]*?href="village\.html"/);
     assert.match(page,/class="game-guide-heading"/);
-    assert.match(page,/class="game-guide-content(?: [^"]*)?"/);
+    assert.match(page,/class="game-guide-content"/);
     for (const guide of ['village-play','village-roles','village-win','village-lobby','village-faq']) assert.match(page,new RegExp('href="'+guide+'\\.html"'));
     assert.match(page,new RegExp('href="'+name+'\\.html" aria-current="page"'));
   }
@@ -245,9 +245,9 @@ test('win conditions retain village, wolf, arsonist and special jester rules', (
 
 test('lobby preserves countdown, map voting, reconnect, fair play and command semantics', () => {
   assert.match(lobby,/En az 6 oyuncu olduğunda geri sayım başlar/);
-  assert.match(lobby,/6[’']nın altına düşerse başlangıç iptal edilir/);
+  assert.match(lobby,/6'nın altına düşerse başlangıç iptal edilir/);
   for (const [players,seconds] of [['6–7',60],['8–9',45],['10–11',30],['12+',20]]) {
-    assert.ok(lobby.includes('<th scope="row">'+players+' oyuncu</th><td>'+seconds+' saniye</td>'));
+    assert.ok(lobby.includes('<dt>'+players+' oyuncu</dt><dd>'+seconds+' saniye</dd>'));
   }
   assert.match(lobby,/10 saniyelik harita oylaması/);
   assert.match(lobby,/Oy verilmezse hazır haritalardan biri rastgele seçilir/);
