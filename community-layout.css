@@ -42,3 +42,5 @@ html[data-theme-variant] body.network-shell #main-content .news-journal article>
  html[data-theme-variant] body.network-shell #main-content .news-journal time { flex-direction:row; align-items:baseline; gap:8px; }
  html[data-theme-variant] body.network-shell #main-content .news-date-day { font-size:28px; }
 }
+
+html[data-theme-variant] body.network-shell #main-content .news-journal { width:100%; max-width:none; min-width:0; }
