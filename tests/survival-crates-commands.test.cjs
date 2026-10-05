@@ -22,7 +22,7 @@ test('crate and command pages keep compact navigation with one selected topic', 
   }
 });
 test('command sections retain their complete original command counts', () => {
-  for (const [file, count] of [['survival-commands.html',7], ['survival-commands-progress.html',7], ['survival-commands-vip.html',4]]) {
+  for (const [file, count] of [['survival-commands.html',7], ['survival-commands-progress.html',11], ['survival-commands-vip.html',4]]) {
     const html = fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
     assert.equal((html.match(/class="command"/g) || []).length, count, file);
   }

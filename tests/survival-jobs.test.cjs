@@ -10,7 +10,7 @@ test('jobs subsections are separate pages with shared compact navigation',()=>{
     assert.match(html,/<strong>Survival<\/strong>/);
     assert.match(html,/<nav class="game-guide-next" aria-label="Rehber gezinmesi">/);
     assert.ok(html.includes('Bütün konular</a>'));
-    assert.ok(html.includes('href="survival.html#gorevler">Görevler ve beceriler'));
+    assert.ok(html.includes('href="survival-quests.html#gorevler">Görevler ve beceriler'));
     assert.ok(html.includes('game-guide-toolbar survival-topic-toolbar'));
     assert.match(html,/survival-jobs\.css\?v=20261002-16/);
     const nav=html.match(/<nav class="chunky-nav "[\s\S]*?<\/nav>/)[0];

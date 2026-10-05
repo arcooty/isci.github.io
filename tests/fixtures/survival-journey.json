@@ -1,0 +1,191 @@
+{
+  "source": "Installed ArcadeSurvivalJourney 1.0.0 / 2026-10-05",
+  "chapters": [
+    {
+      "chapter": 1,
+      "name": "Kaybolan Atlas",
+      "money": 100,
+      "job": 0,
+      "skill": 0,
+      "biomes": 0,
+      "objectives": [
+        "Arazi rehberine yaklaş",
+        "Meslek ustasına yaklaş",
+        "Beceri rehberine yaklaş"
+      ]
+    },
+    {
+      "chapter": 2,
+      "name": "İlk İzler",
+      "money": 150,
+      "job": 0,
+      "skill": 0,
+      "biomes": 0,
+      "objectives": [
+        "Doğada 1 taş kazma üret",
+        "Doğada 16 ekmek üret"
+      ]
+    },
+    {
+      "chapter": 3,
+      "name": "Taşın Hafızası",
+      "money": 150,
+      "job": 3,
+      "skill": 3,
+      "biomes": 0,
+      "objectives": [
+        "16 kömür cevheri ve 12 demir cevheri kaz"
+      ]
+    },
+    {
+      "chapter": 4,
+      "name": "Toprağın Sözü",
+      "money": 200,
+      "job": 3,
+      "skill": 3,
+      "biomes": 0,
+      "objectives": [
+        "64 olgun buğday hasat et",
+        "İnekleri 2 kez çiftleştir"
+      ]
+    },
+    {
+      "chapter": 5,
+      "name": "Yol Arkadaşları",
+      "money": 200,
+      "job": 5,
+      "skill": 4,
+      "biomes": 0,
+      "objectives": [
+        "Oltayla 6 morina yakala",
+        "Bir hayvan evcilleştir"
+      ]
+    },
+    {
+      "chapter": 6,
+      "name": "Gece Nöbeti",
+      "money": 250,
+      "job": 8,
+      "skill": 5,
+      "biomes": 0,
+      "objectives": [
+        "12 zombi yen",
+        "8 iskelet yen"
+      ]
+    },
+    {
+      "chapter": 7,
+      "name": "Seyyahın Rotası",
+      "money": 250,
+      "job": 10,
+      "skill": 7,
+      "biomes": 0,
+      "objectives": [
+        "1 pusula üret",
+        "1 meşe tekne üret"
+      ]
+    },
+    {
+      "chapter": 8,
+      "name": "Kızıl Sayfa",
+      "money": 300,
+      "job": 12,
+      "skill": 8,
+      "biomes": 3,
+      "objectives": [
+        "Nether’da 24 kuvars cevheri ve 32 bazalt kaz"
+      ]
+    },
+    {
+      "chapter": 9,
+      "name": "Ustalığın Bedeli",
+      "money": 300,
+      "job": 15,
+      "skill": 10,
+      "biomes": 3,
+      "objectives": [
+        "1 örs üret",
+        "Büyü masasında 3 kitap büyüle"
+      ]
+    },
+    {
+      "chapter": 10,
+      "name": "Yitik Geçit",
+      "money": 350,
+      "job": 20,
+      "skill": 12,
+      "biomes": 4,
+      "objectives": [
+        "8 enderman yen",
+        "2 Ender gözü üret"
+      ]
+    },
+    {
+      "chapter": 11,
+      "name": "Son Hazırlık",
+      "money": 350,
+      "job": 25,
+      "skill": 15,
+      "biomes": 4,
+      "objectives": [
+        "1 Ender sandığı üret",
+        "2 altın elma üret"
+      ]
+    },
+    {
+      "chapter": 12,
+      "name": "Atlasın Koruyucusu",
+      "money": 400,
+      "job": 25,
+      "skill": 15,
+      "biomes": 5,
+      "objectives": [
+        "End boyutunda 12 enderman yen"
+      ]
+    }
+  ],
+  "milestones": [
+    {
+      "name": "Yolcu",
+      "chapters": 3,
+      "job": 3,
+      "skill": 3,
+      "biomes": 0
+    },
+    {
+      "name": "Yerleşimci",
+      "chapters": 6,
+      "job": 8,
+      "skill": 5,
+      "biomes": 0
+    },
+    {
+      "name": "Usta",
+      "chapters": 9,
+      "job": 15,
+      "skill": 10,
+      "biomes": 3
+    },
+    {
+      "name": "Öncü",
+      "chapters": 12,
+      "job": 25,
+      "skill": 15,
+      "biomes": 5
+    },
+    {
+      "name": "Atlas Ustası",
+      "chapters": 12,
+      "job": 50,
+      "skill": 25,
+      "biomes": 8
+    },
+    {
+      "name": "Atlas Efsanesi",
+      "chapters": 12,
+      "job": 100,
+      "skill": 50,
+      "biomes": 12
+    }
+  ]
+}

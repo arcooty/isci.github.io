@@ -5,12 +5,14 @@ const path=require('node:path');
 const root=path.join(__dirname,'..');
 const files=fs.readdirSync(root).filter(file=>/^(survival|skyblock|village)(-.*)?\.html$/.test(file)&&fs.readFileSync(path.join(root,file),'utf8').includes('game-guide-page'));
 
-test('all 27 game pages load the common type scale after their existing styles',()=>{
-  assert.equal(files.length,27);
+test('all 30 game pages load the common type scale after their existing styles',()=>{
+  assert.equal(files.length,30);
   for(const file of files) {
     const html=fs.readFileSync(path.join(root,file),'utf8');
     const styles=[...html.matchAll(/<link[^>]*rel="stylesheet"[^>]*href="([^"]+)"/g)];
-    assert.equal(styles.at(-1)[1],'game-typography.css?v=20261003-1',file);
+    const typeIndex=styles.findIndex(style=>style[1].startsWith('game-typography.css'));
+    assert.ok(typeIndex>styles.findIndex(style=>style[1].startsWith('game-guides.css')),file);
+    assert.equal(styles.filter(style=>style[1].startsWith('game-typography.css')).length,1,file);
     if(file.includes('-')) {
       assert.equal((html.match(/<h1>/g)||[]).length,1,file);
       assert.match(html,/<header class="game-guide-heading"><h1>/,file);

@@ -9,6 +9,7 @@
     ['komutlar', 'Komutlar', 'terminal']
   ];
   const topicSections = {
+    gorevler: [['gorevler','Kaybolan Atlas'],['atlas-hedefler','Uzun vadeli hedefler'],['atlas-gunluk','Günlük görevler ve beceriler']],
     meslekler: [['jobs-meslekler','Meslekler'],['jobs-sistem','İlerleme'],['jobs-komutlar','Meslek komutları']],
     kasalar: [['crate-havuzlar','Kasalar'],['crate-odds','Ödüller ve oranlar'],['crate-kullanim','Anahtar ve kullanım']],
     komutlar: [['commands-travel','Ulaşım ve ev'],['commands-progress','İlerleme'],['commands-vip','VIP komutları']]
@@ -19,7 +20,7 @@
     'survival-systems.html': 'survival.html#baslangic',
     'claims.html': 'survival.html#arazi',
     'jobs.html': 'survival-jobs.html#jobs-meslekler',
-    'quests.html': 'survival.html#gorevler',
+    'quests.html': 'survival-quests.html#gorevler',
     'economy.html': 'survival.html#ekonomi',
     'commands.html': 'survival-commands.html#komutlar',
     'crates.html': 'survival-crates.html#kasalar',
@@ -38,7 +39,7 @@
     village: [['village-play.html','Oynanış','moon'],['village-roles.html','Roller','users'],['village-win.html','Kazanma','trophy'],['village-lobby.html','Lobi ve komutlar','compass'],['village-faq.html','Sorular','circle-question']]
   };
   const gameRoutes = {
-    'survival.html': {meslekler:'survival-jobs.html#jobs-meslekler', 'jobs-meslekler':'survival-jobs.html#jobs-meslekler', 'jobs-sistem':'survival-jobs-progress.html#jobs-sistem', 'jobs-komutlar':'survival-jobs-commands.html#jobs-komutlar', kasalar:'survival-crates.html#kasalar', 'crate-havuzlar':'survival-crates.html#crate-havuzlar', 'crate-odds':'survival-crates-rewards.html#crate-odds', 'crate-kullanim':'survival-crates-keys.html#crate-kullanim', komutlar:'survival-commands.html#komutlar', 'commands-travel':'survival-commands.html#commands-travel', 'commands-progress':'survival-commands-progress.html#commands-progress', 'commands-vip':'survival-commands-vip.html#commands-vip'},
+    'survival.html': {gorevler:'survival-quests.html#gorevler', 'atlas-chapters':'survival-quests.html#atlas-chapters', 'atlas-hedefler':'survival-quests-goals.html#atlas-hedefler', 'atlas-kesif':'survival-quests-goals.html#atlas-kesif', 'atlas-gunluk':'survival-quests-daily.html#atlas-gunluk', meslekler:'survival-jobs.html#jobs-meslekler', 'jobs-meslekler':'survival-jobs.html#jobs-meslekler', 'jobs-sistem':'survival-jobs-progress.html#jobs-sistem', 'jobs-komutlar':'survival-jobs-commands.html#jobs-komutlar', kasalar:'survival-crates.html#kasalar', 'crate-havuzlar':'survival-crates.html#crate-havuzlar', 'crate-odds':'survival-crates-rewards.html#crate-odds', 'crate-kullanim':'survival-crates-keys.html#crate-kullanim', komutlar:'survival-commands.html#komutlar', 'commands-travel':'survival-commands.html#commands-travel', 'commands-progress':'survival-commands-progress.html#commands-progress', 'commands-vip':'survival-commands-vip.html#commands-vip'},
     'news.html': {hakkimizda:'community.html#hakkimizda'},
     'skyblock.html': {baslangic:'skyblock-start.html#start',ada:'skyblock-island.html#island',gelisim:'skyblock-progress.html#progress',ticaret:'skyblock-trade.html#trade',topluluk:'skyblock-community.html#community',vip:'skyblock-vip.html#vip',test:'skyblock-access.html#access',siralamalar:'skyblock-leaderboard.html#rankings'},
     'village.html': {'nasil-oynanir':'village-play.html#nasil-oynanir',roller:'village-roles.html#roller',kazanma:'village-win.html#kazanma',lobi:'village-lobby.html#lobi',sorular:'village-faq.html#sorular'},
@@ -52,7 +53,7 @@
     {name:'Oyunlar', href:'servers.html', pages:[['servers.html','Oyunlarımız'],['survival.html','Survival'],['skyblock.html','Skyblock'],['village.html',"Rob's Village"]]},
     {name:'Skyblock', href:'skyblock.html', pages:gameGuides.skyblock.map(([href,label])=>[href,label])},
     {name:"Rob's Village", href:'village.html', pages:gameGuides.village.map(([href,label])=>[href,label])},
-    {name:'Survival', href:'survival.html', pages:[['survival.html#baslangic','Oyun rehberi'],['survival.html#harita','Dünya haritası'],['survival.html#siralamalar','Sıralamalar']]},
+    {name:'Survival', href:'survival.html', pages:[['survival.html#baslangic','Oyun rehberi'],['survival-quests.html','Kaybolan Atlas'],['survival-quests-goals.html','Uzun vadeli hedefler'],['survival-quests-daily.html','Günlük görevler ve beceriler'],['survival.html#harita','Dünya haritası'],['survival.html#siralamalar','Sıralamalar']]},
     {name:'Topluluk', href:'community.html', pages:[['community.html','Topluluk'],['news.html','Haberler'],['staff.html','Ekibimiz'],['players.html','Profiller']]},
     {name:'VIP mağazası', href:'store.html', pages:[['store.html','Survival VIP paketleri'],['store-compare.html','Survival karşılaştırma'],['store-kits.html','Survival kitleri ve kasaları'],['store-skyblock.html','Skyblock VIP paketleri'],['store-skyblock-compare.html','Skyblock karşılaştırma'],['store-skyblock-kits.html','Skyblock kit durumu'],['store-delivery.html','Teslimat']]},
     {name:'Yardım', href:'help.html', pages:[['help.html','Destek merkezi'],['join.html','Oyuna katıl'],['rules.html','Kurallar'],['status.html','Sunucu durumu'],['punishments.html','Ceza sorgulama'],['appeal.html','Ceza itirazı'],['application.html','Yetkili başvurusu']]},
@@ -89,7 +90,10 @@
     ['survival.html#arazi','Arazi ve evler','Survival','house','claim koruma altın kürek sethome home evler evlerim delhome trust ev kaydet nether end'],
     ['survival.html#meslekler','Meslekler','Survival','hammer','jobs madenci oduncu çiftçi avcı balıkçı inşaatçı zanaatkar efsuncu silahşör kazıcı iksirci kaşif para kazanmak'],
     ['survival.html#jobs-komutlar','Meslek komutları','Survival','terminal','jobs browse join leave stats quests meslek komut'],
-    ['survival.html#gorevler','Görevler ve beceriler','Survival','star','quest günlük görev yetenek skills auraskills seviye'],
+    ['survival.html#gorevler','Görevler ve beceriler','Survival','star','quest görev hikâye hikaye kaybolan atlas yolculuk yetenek skills auraskills seviye'],
+    ['survival-quests-goals.html#atlas-hedefler','Uzun vadeli hedefler','Survival','flag','atlas hedef hedefler mühür muhur yolcu yerleşimci usta öncü efsane uzun vadeli keşif biyom'],
+    ['survival-quests-daily.html#atlas-gunluk','Günlük görevler ve beceriler','Survival','star','gunluk günlük jobs quests görev beceri skills 600 ödül'],
+    ['survival-quests.html#atlas-chapters','Kaybolan Atlas bölümleri','Survival','book-open','kaybolan atlas bölüm bolum hikaye yolculuk bolum'],
     ['survival.html#ekonomi','Ekonomi ve ticaret','Survival','store','market pazar açık artırma auction takas trade gt para bakiye balance nah ilan satislimiti satış limiti sell sellgui 25000 dükkân'],
     ['survival.html#crate-odds','Kasa ödülleri ve oranları','Survival','box-open','kasalar olasılık anahtar vip mvip uvip şans ödül'],
     ['survival.html#komutlar','Oyun komutları','Survival','terminal','komut komutlar bütün liste'],
