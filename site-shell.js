@@ -1,4 +1,6 @@
 (() => {
+  const initialize = ({window,document,history,fetch,setTimeout,clearTimeout,setInterval,clearInterval,requestAnimationFrame}) => {
+(() => {
   const {sections, resolveHref} = window.ARCADE_SITE;
   const discord = 'https://discord.gg/GerdDHzMWp';
   const path = location.pathname.split('/').pop() || 'index.html';
@@ -18,23 +20,102 @@
     link('servers.html','Oyunlar') +
     link('community.html','Topluluk') + link('store.html','VIP mağazası') + link('help.html','Yardım') + '<a class="nav-play" href="join.html">' + icon('play') + ' Oyuna katıl</a></div><div class="nav-tools"><button class="site-search-button" type="button" aria-label="Sitede ara" title="Sitede ara" aria-haspopup="dialog" aria-controls="site-search">' + icon('magnifying-glass') + '</button><button class="theme-toggle" type="button" aria-label="Açık temaya geç" title="Açık temaya geç">' + icon('sun') + '</button><button class="mobile-nav-button" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="site-links">' + icon('bars') + '</button></div></div>';
   const themeButton = nav.querySelector('.theme-toggle');
+  let themePicker = themeButton.parentElement;
+  if (!themePicker.classList.contains('theme-picker')) {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'theme-picker';
+    themeButton.before(wrapper);
+    wrapper.append(themeButton);
+    themePicker = wrapper;
+  }
+  const themeOptions = [
+    {id:'pop', label:'Pop', note:'Tam ekran · Altın'},
+    {id:'abyss', label:'Abyss', note:'Buz mavisi · Ferah'},
+    {id:'cobalt', label:'Cobalt', note:'Gece vitrini · Mavi'},
+    {id:'moss', label:'Moss', note:'Orman · Yeşil'},
+    {id:'valley', label:'Valley', note:'Sinematik · Kehribar'}
+  ];
+  themeButton.setAttribute('aria-haspopup','true');
+  themeButton.setAttribute('aria-expanded','false');
+  themeButton.setAttribute('aria-controls','theme-picker-menu');
+  themeButton.setAttribute('aria-label','Tema seç');
+  themeButton.title = 'Tema seç';
+  const themeMenu = document.createElement('div');
+  themeMenu.className = 'theme-menu';
+  themeMenu.id = 'theme-picker-menu';
+  themeMenu.setAttribute('role','group');
+  themeMenu.setAttribute('aria-label','Yerel site temaları');
+  themeMenu.hidden = true;
+  themeOptions.forEach(option => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'theme-choice';
+    button.dataset.themeChoice = option.id;
+    button.setAttribute('aria-pressed','false');
+    const swatch = document.createElement('span');
+    swatch.className = 'theme-swatch';
+    swatch.dataset.themeSwatch = option.id;
+    swatch.setAttribute('aria-hidden','true');
+    const copy = document.createElement('span');
+    copy.className = 'theme-choice-copy';
+    const label = document.createElement('strong');
+    label.textContent = option.label;
+    const note = document.createElement('small');
+    note.textContent = option.note;
+    copy.append(label,note);
+    const check = document.createElement('i');
+    check.className = 'fa-solid fa-check';
+    check.setAttribute('aria-hidden','true');
+    button.append(swatch,copy,check);
+    themeMenu.append(button);
+  });
+  themePicker.append(themeMenu);
+  const closeThemeMenu = () => {
+    themeMenu.hidden = true;
+    themeButton.setAttribute('aria-expanded','false');
+  };
+  themeButton.addEventListener('click',() => {
+    const open = themeMenu.hidden;
+    themeMenu.hidden = !open;
+    themeButton.setAttribute('aria-expanded',String(open));
+  });
+  themeMenu.addEventListener('click',event => {
+    const choice = event.target.closest?.('[data-theme-choice]');
+    if (!choice) return;
+    window.ARCADE_THEME.set(choice.dataset.themeChoice);
+    closeThemeMenu();
+    themeButton.focus();
+  });
+  themeMenu.addEventListener('keydown',event => {
+    if (event.key !== 'Escape') return;
+    event.stopPropagation();
+    closeThemeMenu();
+    themeButton.focus();
+  });
+  document.addEventListener('click',event => {
+    if (!themePicker.contains(event.target)) closeThemeMenu();
+  });
   const renderTheme = () => {
-    const dark = window.ARCADE_THEME.get() === 'dark';
-    const label = dark ? 'Açık temaya geç' : 'Koyu temaya geç';
-    themeButton.setAttribute('aria-label',label);
-    themeButton.title = label;
-    themeButton.innerHTML = icon(dark ? 'sun' : 'moon');
+    const selectedTheme = window.ARCADE_THEME.get();
+    const selectedOption = themeOptions.find(option => option.id === selectedTheme) || themeOptions[0];
+    const mode = window.ARCADE_THEME.getMode();
+    themeButton.setAttribute('aria-label',selectedOption.label + ' teması seçili. Tema seçeneklerini aç.');
+    themeButton.title = selectedOption.label + ' teması';
+    themeButton.innerHTML = '<span class="theme-icon" aria-hidden="true">◐</span>';
+    themeMenu.querySelectorAll('[data-theme-choice]').forEach(button => {
+      const selected = button.dataset.themeChoice === selectedTheme;
+      button.setAttribute('aria-pressed',String(selected));
+      button.classList.toggle('is-selected',selected);
+    });
     const widget = document.querySelector('.discord-widget');
     if (widget) {
       const url = new URL(widget.src);
-      const theme = dark ? 'dark' : 'light';
-      if (url.searchParams.get('theme') !== theme) {
-        url.searchParams.set('theme',theme);
+      if (url.searchParams.get('theme') !== mode) {
+        url.searchParams.set('theme',mode);
         widget.src = url.href;
       }
     }
   };
-  themeButton.addEventListener('click',() => window.ARCADE_THEME.toggle());
   window.addEventListener('arcade-theme-change',renderTheme);
   renderTheme();
   const compatibility = window.ARCADECRAFT?.compatibility;
@@ -169,4 +250,9 @@
     });
   });
   document.documentElement.classList.add('site-ready');
+})();
+
+  };
+  if (window.ARCADE_NAVIGATION) window.ARCADE_NAVIGATION.register('site-shell.js',initialize);
+  else initialize({window,document,history:typeof history!=='undefined'?history:undefined,fetch:typeof fetch==='function'?fetch:undefined,setTimeout:typeof setTimeout==='function'?setTimeout:undefined,clearTimeout:typeof clearTimeout==='function'?clearTimeout:undefined,setInterval:typeof setInterval==='function'?setInterval:undefined,clearInterval:typeof clearInterval==='function'?clearInterval:undefined,requestAnimationFrame:typeof requestAnimationFrame==='function'?requestAnimationFrame:undefined});
 })();

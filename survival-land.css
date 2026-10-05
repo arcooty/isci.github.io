@@ -13,7 +13,7 @@ html[data-theme] body.network-shell.survival-hub .land-command-table tbody tr:ho
 html[data-theme] body.network-shell.survival-hub .land-command-table .command { display:flex; align-items:flex-start; justify-content:space-between; gap:8px; padding:0; border:0; }
 html[data-theme] body.network-shell.survival-hub .land-command-table .command code { min-width:0; padding:5px 0; background:transparent; color:var(--accent); font:400 12px/1.75 monospace; white-space:normal; overflow-wrap:anywhere; }
 html[data-theme] body.network-shell.survival-hub .land-command-table .command-copy { width:30px; height:30px; min-width:30px; padding:0; flex-shrink:0; }
-html[data-theme] body.network-shell.survival-hub .land-world-command { margin:0 0 24px; }
+html[data-theme] body.network-shell.survival-hub .land-world-table { margin-top:28px; }
 @media(max-width:1000px) {
   html[data-theme] body.network-shell.survival-hub .land-command-tables { grid-template-columns:minmax(0,1fr); gap:28px; }
 }

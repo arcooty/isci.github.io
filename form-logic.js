@@ -1,3 +1,5 @@
+(() => {
+  const initialize = ({window,document,history,fetch,setTimeout,clearTimeout,setInterval,clearInterval,requestAnimationFrame}) => {
 const FORM_API = window.ARCADE_API?.base || 'https://api.robsarcade.online/api/v1';
 const DISCORD_URL = 'https://discord.gg/GerdDHzMWp';
 
@@ -88,3 +90,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     fallback();
   }
 });
+
+  };
+  if (window.ARCADE_NAVIGATION) window.ARCADE_NAVIGATION.register('form-logic.js',initialize);
+  else initialize({window,document,history:typeof history!=='undefined'?history:undefined,fetch:typeof fetch==='function'?fetch:undefined,setTimeout:typeof setTimeout==='function'?setTimeout:undefined,clearTimeout:typeof clearTimeout==='function'?clearTimeout:undefined,setInterval:typeof setInterval==='function'?setInterval:undefined,clearInterval:typeof clearInterval==='function'?clearInterval:undefined,requestAnimationFrame:typeof requestAnimationFrame==='function'?requestAnimationFrame:undefined});
+})();

@@ -1,4 +1,6 @@
 (() => {
+  const initialize = ({window,document,history,fetch,setTimeout,clearTimeout,setInterval,clearInterval,requestAnimationFrame}) => {
+(() => {
   const tabs = [...document.querySelectorAll('.platform-select [role="tab"]')];
   const select = tab => tabs.forEach(item => {
     const active = item === tab;
@@ -17,4 +19,9 @@
     });
   });
   window.addEventListener('popstate',restore); window.addEventListener('hashchange',restore); restore();
+})();
+
+  };
+  if (window.ARCADE_NAVIGATION) window.ARCADE_NAVIGATION.register('join.js',initialize);
+  else initialize({window,document,history:typeof history!=='undefined'?history:undefined,fetch:typeof fetch==='function'?fetch:undefined,setTimeout:typeof setTimeout==='function'?setTimeout:undefined,clearTimeout:typeof clearTimeout==='function'?clearTimeout:undefined,setInterval:typeof setInterval==='function'?setInterval:undefined,clearInterval:typeof clearInterval==='function'?clearInterval:undefined,requestAnimationFrame:typeof requestAnimationFrame==='function'?requestAnimationFrame:undefined});
 })();

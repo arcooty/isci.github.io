@@ -1,4 +1,6 @@
 (() => {
+  const initialize = ({window,document,history,fetch,setTimeout,clearTimeout,setInterval,clearInterval,requestAnimationFrame}) => {
+(() => {
   const tabs = [...document.querySelectorAll('[data-board-category]')];
   const filter = document.getElementById('board-job-filter');
   const job = document.getElementById('board-job');
@@ -50,4 +52,9 @@
     .then(response => { if (!response.ok) throw new Error('Leaderboard unavailable'); return response.json(); })
     .then(data => { if (!data.boards || typeof data.boards !== 'object') throw new Error('Invalid boards'); boards = data.boards; render(); })
     .catch(() => { failed = true; render(); });
+})();
+
+  };
+  if (window.ARCADE_NAVIGATION) window.ARCADE_NAVIGATION.register('leaderboard.js',initialize);
+  else initialize({window,document,history:typeof history!=='undefined'?history:undefined,fetch:typeof fetch==='function'?fetch:undefined,setTimeout:typeof setTimeout==='function'?setTimeout:undefined,clearTimeout:typeof clearTimeout==='function'?clearTimeout:undefined,setInterval:typeof setInterval==='function'?setInterval:undefined,clearInterval:typeof clearInterval==='function'?clearInterval:undefined,requestAnimationFrame:typeof requestAnimationFrame==='function'?requestAnimationFrame:undefined});
 })();

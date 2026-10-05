@@ -7,19 +7,20 @@ html[data-theme] body.home-page .community-section { grid-template-columns:repea
 @media(max-width:600px) {
   html[data-theme] body.home-page .community-section { grid-template-columns:1fr; gap:30px; }
 }
-html[data-theme] body.home-page .community-section :is(.community-invitation,.community-editorial) { display:grid; grid-template-rows:auto auto auto; row-gap:22px; }
+html[data-theme] body.home-page .community-section :is(.community-invitation,.community-vip,.community-editorial) { display:grid; grid-template-rows:auto 1fr auto; row-gap:22px; min-width:0; justify-items:start; text-align:left; }
 html[data-theme] body.home-page .community-section :is(h2,h3) { margin:0; font:700 34px/1.2 Rajdhani,sans-serif; }
 html[data-theme] body.home-page .community-section p { margin:0; font:400 14px/1.7 Inter,sans-serif; }
 html[data-theme] body.home-page .community-section .craft-button { justify-self:start; }
-html[data-theme] body.home-page .community-section .community-editorial { justify-items:end; text-align:right; }
+html[data-theme] body.home-page .community-section .community-editorial { justify-items:start; text-align:left; }
+html[data-theme] body.home-page .community-section .community-vip small { display:block; margin-top:12px; color:var(--muted); font-size:12px; line-height:1.65; }
 @media(min-width:601px) and (max-width:900px) {
   html[data-theme] body.home-page .craft-hero { height:560px; min-height:500px; max-height:600px; padding:28px 22px; }
   html[data-theme] body.home-page .craft-hero h1.craft-page-title { font-size:56px; white-space:normal; }
   html[data-theme] body.home-page .hero-description { font-size:14px; }
 }
 @media(max-width:600px) {
-  html[data-theme] body.home-page .community-section :is(.community-invitation,.community-editorial) { justify-items:center; text-align:center; }
-  html[data-theme] body.home-page .community-section .craft-button { justify-self:center; }
+  html[data-theme] body.home-page .community-section :is(.community-invitation,.community-vip,.community-editorial) { justify-items:start; text-align:left; }
+  html[data-theme] body.home-page .community-section .craft-button { justify-self:start; }
   html[data-theme] body.home-page .games-section .section-heading { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:12px; }
   html[data-theme] body.home-page .games-section .section-heading h2 { margin:0; font-size:28px; }
   html[data-theme] body.home-page .games-section .section-heading>.craft-button { justify-self:end; }

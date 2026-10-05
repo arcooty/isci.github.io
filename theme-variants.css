@@ -1,0 +1,585 @@
+/* Five locally switchable theme designs, adapted from visible LeaderOS live previews. */
+:root[data-theme-variant="pop"] {
+  color-scheme:dark; --site-bg:#120f13; --surface:#211920; --surface-raised:#302132;
+  --paper:#fff7e8; --muted:#c7b6aa; --quiet:#d9c9b8; --line:#513b4a;
+  --accent:#f4c34d; --variant-accent:#f4c34d; --accent-2:#7860ff; --theme-link:#ffe29a; --variant-link:#ffe29a; --button-ink:#352209;
+  --variant-radius:3px; --variant-shadow:0 14px 38px #07050ab8; --nav-bg:#171217ed;
+}
+:root[data-theme-variant="abyss"] {
+  color-scheme:light; --site-bg:#e8f3fa; --surface:#fff; --surface-raised:#f4faff;
+  --paper:#20364b; --muted:#526c82; --quiet:#4d667a; --line:#d4e5f1;
+  --accent:#4ba5e5; --variant-accent:#4ba5e5; --accent-2:#90d7e9; --theme-link:#276b9b; --variant-link:#276b9b; --button-ink:#092e49;
+  --variant-radius:18px; --variant-shadow:0 14px 36px #23466518; --nav-bg:#ffffffee;
+}
+:root[data-theme-variant="valley"] {
+  color-scheme:dark; --site-bg:#110e15; --surface:#201922; --surface-raised:#2c202d;
+  --paper:#f9f0f5; --muted:#c0adb9; --quiet:#d2bfca; --line:#493746;
+  --accent:#f0ae5b; --variant-accent:#f0ae5b; --accent-2:#da68ae; --theme-link:#ffbf77; --variant-link:#ffbf77; --button-ink:#38210a;
+  --variant-radius:5px; --variant-shadow:0 15px 40px #060408b8; --nav-bg:#160f17ed;
+}
+:root[data-theme-variant="moss"] {
+  color-scheme:light; --site-bg:#edf4ef; --surface:#fff; --surface-raised:#e1f0e7;
+  --paper:#203e33; --muted:#526d5e; --quiet:#4e6b5d; --line:#cfe1d6;
+  --accent:#39b98d; --variant-accent:#39b98d; --accent-2:#a4e7cf; --theme-link:#176b51; --variant-link:#176b51; --button-ink:#062f23;
+  --variant-radius:15px; --variant-shadow:0 12px 32px #174f381a; --nav-bg:#17634ceF;
+}
+:root[data-theme-variant="cobalt"] {
+  color-scheme:dark; --site-bg:#091725; --surface:#102438; --surface-raised:#18334a;
+  --paper:#edf7ff; --muted:#9eb8ca; --quiet:#bdd0dd; --line:#28485e;
+  --accent:#62c8f4; --variant-accent:#62c8f4; --accent-2:#95e2ff; --theme-link:#8bddff; --variant-link:#8bddff; --button-ink:#092839;
+  --variant-radius:5px; --variant-shadow:0 14px 36px #020b12a8; --nav-bg:#091725db;
+}
+
+html[data-theme-variant] {
+  background:var(--site-bg)!important;
+  scrollbar-color:var(--line) var(--site-bg);
+}
+html[data-theme-variant="pop"],html[data-theme-variant="valley"],html[data-theme-variant="cobalt"] { color-scheme:dark; }
+html[data-theme-variant="abyss"],html[data-theme-variant="moss"] { color-scheme:light; }
+html[data-theme-variant] body.network-shell {
+  --ink:var(--paper); --panel:var(--surface); --theme-bg:var(--site-bg); --theme-hover:var(--surface-raised);
+  --accent:var(--variant-link); --theme-link:var(--variant-link);
+  background:var(--site-bg)!important; color:var(--paper)!important;
+  min-height:100vh;
+}
+html[data-theme-variant] .network-shell :focus-visible { outline:3px solid var(--variant-link)!important; outline-offset:3px; }
+html[data-theme-variant] .network-shell ::selection { background:var(--variant-accent); color:var(--button-ink); }
+html[data-theme-variant] .network-shell :is(.page-head h1,.page-head h2,.section-title h2,.hub-content-heading h2,.guide-head h2,.board-heading h2,.game-section>h2,.site-footer h2) {
+  color:var(--paper)!important;
+}
+html[data-theme-variant] .network-shell :is(.page-head p,.page-trail span,.page-trail i,.section-note,.guide-head p,.footer-bottom,.search-count,.search-empty) {
+  color:var(--muted)!important;
+}
+html[data-theme-variant] .network-shell :is(.page-trail a,.text-link,.eyebrow,.rank-kicker,.guide-return,.guide-outline a,.sitemap-grid a,.faq-list a,.start-steps a,.join-steps li::before,.news-journal article>div:first-child span) {
+  color:var(--theme-link)!important;
+}
+html[data-theme-variant] .network-shell :is(.page-wrap,.legacy-content-shell) { color:var(--paper); }
+html[data-theme-variant] .network-shell .site-nav {
+  background:var(--nav-bg)!important; border-color:var(--line)!important; box-shadow:0 8px 30px #00000012;
+}
+html[data-theme-variant] .network-shell .site-nav-inner { max-width:1320px; }
+html[data-theme-variant] .network-shell :is(.site-brand,.site-brand span,.site-links a,.nav-menu>button,.mobile-nav-button,.site-search-button,.theme-toggle) {
+  color:var(--paper)!important;
+}
+html[data-theme-variant] .network-shell .site-brand strong { color:var(--accent)!important; }
+html[data-theme-variant] .network-shell :is(.site-links a:hover,.site-links a[aria-current="page"],.site-links .is-current,.nav-menu>button:hover) {
+  color:var(--theme-link)!important; background:var(--surface-raised)!important;
+}
+html[data-theme-variant] .network-shell :is(.site-links a[aria-current="page"],.site-links .is-current) { box-shadow:inset 0 -2px var(--accent)!important; }
+html[data-theme-variant] .network-shell :is(.theme-toggle,.site-search-button,.mobile-nav-button,.search-close) {
+  background:var(--surface)!important; border:1px solid var(--line)!important; color:var(--paper)!important;
+  border-radius:var(--variant-radius)!important;
+}
+html[data-theme-variant] .network-shell :is(.theme-toggle,.site-search-button,.mobile-nav-button,.search-close):hover {
+  background:var(--surface-raised)!important; color:var(--theme-link)!important;
+}
+html[data-theme-variant] .network-shell .site-links .nav-play,
+html[data-theme-variant] .network-shell .site-links .nav-play:hover,
+html[data-theme-variant] .network-shell :is(.craft-button.primary,.about-actions a:first-child,form[data-form-type]>button,.player-search button,.status-detail) {
+  background:var(--variant-accent)!important; border-color:var(--variant-accent)!important; color:var(--button-ink)!important;
+  font-weight:800; box-shadow:0 3px 0 #00000020;
+}
+html[data-theme-variant] .network-shell :is(.craft-button,.about-actions a,.address-button,.related-nav a,.map-open-link) {
+  background:var(--surface)!important; border-color:var(--line)!important; color:var(--paper)!important;
+}
+html[data-theme-variant] .network-shell :is(.craft-button.primary:hover,.about-actions a:first-child:hover,.site-links .nav-play:hover,.player-search button:hover) {
+  filter:brightness(1.08); color:var(--button-ink)!important;
+}
+html[data-theme-variant] .network-shell .discord-button { background:#5865f2!important; border-color:#5865f2!important; color:white!important; }
+html[data-theme-variant] .network-shell .site-links .nav-play { border-radius:var(--variant-radius)!important; }
+html[data-theme-variant] .network-shell :is(.page-wrap,.page-head,.game-guide-heading,.legacy-page-hero) { scroll-margin-top:100px; }
+html[data-theme-variant] .network-shell .section-navigation,
+html[data-theme-variant] .network-shell .section-tabs,
+html[data-theme-variant] .network-shell .hub-tabs,
+html[data-theme-variant] .network-shell .page-index {
+  background:transparent!important; border-color:var(--line)!important;
+}
+html[data-theme-variant] .network-shell :is(.section-navigation a,.section-tabs a,.hub-tabs a,.page-index a,.chunky-nav a,.community-navigation a) {
+  color:var(--muted)!important; border-color:transparent; background:var(--surface)!important;
+}
+html[data-theme-variant] .network-shell :is(.section-navigation a[aria-current],.section-tabs a[aria-current="page"],.hub-tabs a[aria-current="page"],.page-index a[aria-current]) {
+  background:var(--variant-accent)!important; border-color:var(--variant-accent)!important; color:var(--button-ink)!important;
+}
+html[data-theme-variant] .network-shell :is(.section-navigation a:hover,.section-tabs a:hover,.hub-tabs a:hover,.page-index a:hover) {
+  color:var(--theme-link)!important; background:var(--surface-raised)!important;
+}
+html[data-theme-variant] .network-shell .chunky-nav>a[aria-current="page"] {
+  background:var(--variant-accent)!important; color:var(--button-ink)!important; box-shadow:inset 0 -3px #0003!important;
+}
+html[data-theme-variant] body.network-shell.store-guide .chunky-nav.mode-nav>a { background:var(--surface)!important; color:var(--muted)!important; }
+html[data-theme-variant] body.network-shell.store-guide .chunky-nav.mode-nav>a[aria-current="page"] { background:var(--variant-accent)!important; color:var(--button-ink)!important; }
+html[data-theme-variant] .network-shell :is(.info-card,.store-card,.crate-odds,.player-profile,.staff-card,.player-card,.profile-card,.punishment-entry,.order-status,.player-identity,.player-profile-grid>section,.punishment-summary>div,.guide-note,.guide-category-menu nav,.nav-dropdown,.site-search,.join-panel,.sitemap-group,.faq-list details,.floating-status,.game-mode-card,.game-poster) {
+  background:var(--surface)!important; border-color:var(--line)!important; color:var(--paper)!important;
+  border-radius:var(--variant-radius)!important; box-shadow:var(--variant-shadow);
+}
+html[data-theme-variant] .network-shell :is(.info-card h2,.info-card h3,.store-card h2,.help-list h2,.game-poster h3,.player-hub-link h3,.news-journal h2) { color:var(--paper)!important; }
+html[data-theme-variant] .network-shell :is(.info-card p,.info-card li,.store-status,.player-status,.player-stat-list>div,.guide-note,.help-list p,.game-poster p,.player-hub-link p) { color:var(--muted)!important; }
+html[data-theme-variant] .network-shell :is(.store-card,.staff-card,.player-profile,.order-status,.punishment-entry,.guide-note) { border:1px solid var(--line)!important; }
+html[data-theme-variant] .network-shell :is(.info-grid,.help-list,.game-mode-card,.game-poster,.store-card) { box-shadow:var(--variant-shadow); }
+html[data-theme-variant] .network-shell :is(.guide-toolbar,.guide-note,.skyblock-access,.discovery-band,.vip-band,.home-status-band,.player-hub-band,.site-footer) {
+  background:var(--surface)!important; border-color:var(--line)!important;
+}
+html[data-theme-variant] .network-shell .site-footer { color:var(--muted)!important; border-top:1px solid var(--line)!important; }
+html[data-theme-variant] .network-shell .site-footer section>a:not(.site-brand),
+html[data-theme-variant] .network-shell .footer-bottom a { color:var(--muted)!important; }
+html[data-theme-variant] .network-shell .site-footer section>a:hover,
+html[data-theme-variant] .network-shell .footer-bottom a:hover { color:var(--theme-link)!important; }
+html[data-theme-variant] .network-shell :is(.rank-feature-list li,.crate-odds>div,.player-stat-list>div,.discovery-links>a,.search-results a,.footer-bottom,.command) { border-color:var(--line)!important; }
+html[data-theme-variant] .network-shell :is(input,textarea,select,.leaderboard-filter select,.player-search input,.store-identity input,.guide-mobile-select select,.search-field input) {
+  background:var(--surface)!important; color:var(--paper)!important; border-color:var(--line)!important;
+}
+html[data-theme-variant] .network-shell :is(input,textarea,select)::placeholder { color:var(--muted)!important; opacity:1; }
+html[data-theme-variant] .network-shell .store-card button:not(:disabled) { background:var(--variant-accent)!important; border-color:var(--variant-accent)!important; color:var(--button-ink)!important; }
+html[data-theme-variant] .network-shell .topic-grid .topic-card,
+html[data-theme-variant] .network-shell .skyblock-topics>a {
+  border-radius:var(--variant-radius)!important; color:var(--tile-ink,#143429)!important;
+  box-shadow:inset 0 -3px #00000020,var(--variant-shadow);
+}
+html[data-theme-variant] .network-shell .topic-grid .topic-card :is(strong,small,i),
+html[data-theme-variant] .network-shell .skyblock-topics>a :is(strong,small,i) { color:inherit!important; }
+html[data-theme-variant] .network-shell .game-guide-cover,
+html[data-theme-variant] .network-shell .skyblock-scene,
+html[data-theme-variant] .network-shell .map-embed,
+html[data-theme-variant] .network-shell .poster-image { border-radius:var(--variant-radius)!important; }
+html[data-theme-variant] .network-shell .theme-menu {
+  background:var(--surface)!important; color:var(--paper)!important; border-color:var(--line)!important;
+  border-radius:var(--variant-radius)!important; box-shadow:0 18px 44px #0004;
+}
+html[data-theme-variant] .network-shell .theme-picker { position:relative; flex:0 0 auto; z-index:80; }
+html[data-theme-variant] .network-shell .theme-menu[hidden] { display:none!important; }
+html[data-theme-variant] .network-shell .theme-menu {
+  position:absolute; top:calc(100% + 10px); right:0; z-index:100;
+  width:min(276px,calc(100vw - 24px)); padding:7px;
+}
+html[data-theme-variant] .network-shell .theme-menu::before {
+  content:"Tema görünümü"; display:block; padding:10px 12px 8px; color:var(--muted)!important;
+  font:700 11px/1.2 Inter,sans-serif; letter-spacing:.06em!important; text-transform:uppercase;
+}
+html[data-theme-variant] .network-shell .theme-icon { display:block; font:700 19px/1 Inter,sans-serif; }
+html[data-theme-variant] .network-shell .theme-choice {
+  display:grid; grid-template-columns:18px minmax(0,1fr) 16px; align-items:center; gap:11px;
+  width:100%; min-height:49px; padding:7px 10px; border:0; border-radius:var(--variant-radius);
+  background:transparent; color:var(--paper)!important; text-align:left; cursor:pointer;
+}
+html[data-theme-variant] .network-shell .theme-choice-copy { display:grid; gap:2px; }
+html[data-theme-variant] .network-shell .theme-choice-copy strong { color:var(--paper)!important; font:700 13px/1.2 Inter,sans-serif; }
+html[data-theme-variant] .network-shell .theme-choice-copy small { color:var(--muted)!important; font:400 11px/1.3 Inter,sans-serif; }
+html[data-theme-variant] .network-shell .theme-choice>i { color:var(--theme-link); font-size:12px; opacity:0; }
+html[data-theme-variant] .network-shell .theme-choice.is-selected>i { opacity:1; }
+html[data-theme-variant] .network-shell .theme-swatch { width:15px; height:15px; border:2px solid #ffffff45; border-radius:50%; box-shadow:0 0 0 1px #00000022; }
+html[data-theme-variant] .network-shell .theme-swatch[data-theme-swatch="pop"] { background:#f4c34d; }
+html[data-theme-variant] .network-shell .theme-swatch[data-theme-swatch="abyss"] { background:#4ba5e5; }
+html[data-theme-variant] .network-shell .theme-swatch[data-theme-swatch="cobalt"] { background:#62c8f4; }
+html[data-theme-variant] .network-shell .theme-swatch[data-theme-swatch="moss"] { background:#39b98d; }
+html[data-theme-variant] .network-shell .theme-swatch[data-theme-swatch="valley"] { background:#f0ae5b; }
+html[data-theme-variant] .network-shell .theme-choice:is(:hover,.is-selected,:focus-visible) { background:var(--surface-raised)!important; }
+html[data-theme-variant] .network-shell .theme-menu::before { color:var(--muted)!important; }
+html[data-theme-variant] body.network-shell .craft-hero { position:relative; isolation:isolate; }
+html[data-theme-variant] body.network-shell .craft-hero h1.craft-page-title { color:white!important; }
+html[data-theme-variant] body.network-shell .craft-hero h1 span { color:var(--variant-accent)!important; }
+html[data-theme-variant] body.network-shell .craft-hero .hero-actions .primary,
+html[data-theme-variant] body.network-shell .craft-hero .hero-actions .primary:hover { background:var(--variant-accent)!important; border-color:var(--variant-accent)!important; color:var(--button-ink)!important; }
+html[data-theme-variant] body.network-shell .craft-hero .address-button { background:#08131caa!important; border-color:#ffffff60!important; color:#fff!important; }
+html[data-theme-variant] body.network-shell .floating-status {
+  background:var(--surface)!important; border-color:var(--line)!important; color:var(--paper)!important;
+  border-radius:var(--variant-radius)!important; box-shadow:var(--variant-shadow);
+}
+html[data-theme-variant] body.network-shell .floating-status :is(h2,dt,dd,strong) { color:var(--paper)!important; }
+html[data-theme-variant] body.network-shell .floating-status :is(.section-note,dt) { color:var(--muted)!important; }
+html[data-theme-variant] body.network-shell .floating-status .capacity-track { background:var(--surface-raised)!important; }
+
+/* POP — edge-to-edge game-art stage, gold play actions, and bold flat panels. */
+html[data-theme-variant="pop"] body.network-shell { font-family:Inter,"Segoe UI",sans-serif; }
+html[data-theme-variant="pop"] body.network-shell .site-nav { background:linear-gradient(#160f17f0,#160f17a8)!important; border:0!important; box-shadow:none; }
+html[data-theme-variant="pop"] body.network-shell .site-brand img { border:2px solid var(--accent); box-shadow:0 0 0 3px #0008; }
+html[data-theme-variant="pop"] body.network-shell .craft-hero {
+  min-height:690px; height:calc(100svh - 14px); max-height:920px; padding:108px 24px 70px;
+}
+html[data-theme-variant="pop"] body.network-shell .craft-hero-shade {
+  background:linear-gradient(180deg,#180e1880 0%,#24132440 42%,#1e1027b8 78%,#11100f 100%)!important;
+}
+html[data-theme-variant="pop"] body.network-shell .craft-hero-inner { max-width:1050px; display:block; text-align:center; }
+html[data-theme-variant="pop"] body.network-shell .craft-hero-copy { max-width:860px; margin:auto; }
+html[data-theme-variant="pop"] body.network-shell .craft-hero h1.craft-page-title { font-size:clamp(66px,9vw,124px); text-transform:uppercase; letter-spacing:.025em!important; text-shadow:0 5px 0 #302024,0 14px 36px #000b; }
+html[data-theme-variant="pop"] body.network-shell .craft-hero .hero-description { margin-inline:auto; font-size:17px; }
+html[data-theme-variant="pop"] body.network-shell .craft-hero .hero-actions { justify-content:center; }
+html[data-theme-variant="pop"] body.network-shell .craft-hero .primary { min-height:58px; padding:16px 26px; border:3px solid #604516!important; box-shadow:0 6px 0 #402c10!important; text-transform:uppercase; }
+html[data-theme-variant="pop"] body.network-shell .craft-hero .address-button { border:2px solid #ffffff65!important; }
+html[data-theme-variant="pop"] body.network-shell .games-section,.theme-variant-pop .games-section { background:var(--site-bg); }
+html[data-theme-variant="pop"] body.network-shell .game-trio .game-poster { border:2px solid #694831!important; }
+html[data-theme-variant="pop"] body.network-shell .game-trio .poster-copy h3 { font-size:32px; text-transform:uppercase; }
+html[data-theme-variant="pop"] body.network-shell .player-hub-link { border-block:1px solid var(--line); }
+html[data-theme-variant="pop"] body.network-shell .vip-band { border:2px solid #67482e!important; }
+
+/* ABYSS — airy ice-blue canvas, floating white navigation, soft rounded content. */
+html[data-theme-variant="abyss"] body.network-shell .site-nav { box-shadow:0 8px 28px #3d69831a; }
+html[data-theme-variant="abyss"] body.network-shell .site-nav-inner { min-height:82px; }
+html[data-theme-variant="abyss"] body.network-shell .site-brand img { border-radius:50%; background:#eef8ff; padding:5px; }
+html[data-theme-variant="abyss"] body.network-shell .page-wrap { padding-top:126px; }
+html[data-theme-variant="abyss"] body.network-shell .page-head { max-width:900px; margin:0 0 36px; }
+html[data-theme-variant="abyss"] body.network-shell .page-head h1 { color:#203e56!important; font-size:clamp(44px,6vw,70px); letter-spacing:-.02em!important; }
+html[data-theme-variant="abyss"] body.network-shell :is(.info-card,.store-card,.help-list>a,.game-mode-card,.game-poster,.floating-status,.join-panel,.faq-list details) { border:1px solid #d8e9f5!important; }
+html[data-theme-variant="abyss"] body.network-shell :is(.game-guide-cover,.village-cover) { box-shadow:0 18px 38px #21496520; }
+html[data-theme-variant="abyss"] body.network-shell .home-status-band { background:#dceefa!important; }
+html[data-theme-variant="abyss"] body.network-shell .floating-status { border-radius:22px!important; }
+html[data-theme-variant="abyss"] body.network-shell .craft-hero {
+  width:min(1160px,calc(100% - 48px)); min-height:480px; height:560px; max-height:660px;
+  margin:116px auto 34px; padding:54px; border-radius:24px;
+}
+html[data-theme-variant="abyss"] body.home-page .craft-hero { margin-top:112px; }
+html[data-theme-variant="abyss"] body.network-shell .craft-hero-shade { background:linear-gradient(90deg,#102b40dd,#102b4080 58%,#102b4025)!important; }
+html[data-theme-variant="abyss"] body.network-shell .craft-hero-inner { max-width:none; display:block; }
+html[data-theme-variant="abyss"] body.network-shell .craft-hero-copy { max-width:590px; text-align:left; }
+html[data-theme-variant="abyss"] body.network-shell .craft-hero h1.craft-page-title { font-size:clamp(56px,7vw,88px); }
+html[data-theme-variant="abyss"] body.network-shell .craft-hero .hero-description { max-width:560px; }
+html[data-theme-variant="abyss"] body.network-shell .craft-hero .hero-actions { justify-content:flex-start; }
+html[data-theme-variant="abyss"] body.network-shell .craft-hero .primary { background:var(--variant-accent)!important; border-color:var(--variant-accent)!important; color:var(--button-ink)!important; border-radius:12px!important; }
+html[data-theme-variant="abyss"] body.network-shell .games-section { max-width:1280px; margin:auto; }
+html[data-theme-variant="abyss"] body.network-shell .game-poster { overflow:hidden; }
+html[data-theme-variant="abyss"] body.network-shell .poster-copy { background:#fff; }
+html[data-theme-variant="abyss"] body.network-shell .poster-copy h3 { color:#203e56!important; }
+html[data-theme-variant="abyss"] body.network-shell .player-hub-band { background:#f5fbff!important; }
+
+/* VALLEY — cinematic violet night, full-width image hero and editorial rhythm. */
+html[data-theme-variant="valley"] body.network-shell .site-nav { background:linear-gradient(#160f17f3,#160f17b0)!important; border:0!important; }
+html[data-theme-variant="valley"] body.network-shell .site-brand img { border:0; filter:drop-shadow(0 2px 12px #efb8ff55); }
+html[data-theme-variant="valley"] body.network-shell .craft-hero {
+  min-height:620px; height:78svh; max-height:860px; padding:112px 30px 88px; border-bottom:4px solid var(--accent-2);
+}
+html[data-theme-variant="valley"] body.network-shell .craft-hero-shade {
+  background:linear-gradient(180deg,#17101865 0%,#1a101540 42%,#100d14f2 100%)!important;
+}
+html[data-theme-variant="valley"] body.network-shell .craft-hero-inner { max-width:1240px; display:block; text-align:center; }
+html[data-theme-variant="valley"] body.network-shell .craft-hero-copy { max-width:900px; margin:0 auto; }
+html[data-theme-variant="valley"] body.network-shell .craft-hero h1.craft-page-title { font-size:clamp(62px,9vw,112px); text-transform:uppercase; }
+html[data-theme-variant="valley"] body.network-shell .craft-hero .hero-description { margin-inline:auto; }
+html[data-theme-variant="valley"] body.network-shell .craft-hero .hero-actions { justify-content:center; }
+html[data-theme-variant="valley"] body.network-shell .games-section { background:linear-gradient(180deg,#151018,var(--site-bg)); }
+html[data-theme-variant="valley"] body.network-shell .game-poster { border:1px solid #594053!important; }
+html[data-theme-variant="valley"] body.network-shell .poster-image::after { content:""; position:absolute; inset:35% 0 0; background:linear-gradient(transparent,#130d16c9); pointer-events:none; }
+html[data-theme-variant="valley"] body.network-shell .poster-copy { background:#211822; }
+html[data-theme-variant="valley"] body.network-shell .site-footer { border-top:3px solid var(--accent-2)!important; }
+
+/* MOSS — deep green community masthead, bright botanical canvas, rounded modules. */
+html[data-theme-variant="moss"] body.network-shell .site-nav { color:#f3fff9!important; box-shadow:none; border:0!important; }
+html[data-theme-variant="moss"] body.network-shell :is(.site-brand,.site-brand span,.site-links a,.theme-toggle,.site-search-button,.mobile-nav-button) { color:#f3fff9!important; }
+html[data-theme-variant="moss"] body.network-shell :is(.theme-toggle,.site-search-button,.mobile-nav-button) { background:#ffffff1c!important; border-color:#ffffff4d!important; }
+html[data-theme-variant="moss"] body.network-shell .site-links a:hover,
+html[data-theme-variant="moss"] body.network-shell .site-links a[aria-current="page"] { background:#ffffff20!important; color:white!important; }
+html[data-theme-variant="moss"] body.network-shell .site-brand img { border:0; border-radius:50%; background:#ffffff22; padding:4px; }
+html[data-theme-variant="moss"] body.network-shell .page-wrap { padding-top:126px; }
+html[data-theme-variant="moss"] body.network-shell .page-head h1 { color:#1b5944!important; }
+html[data-theme-variant="moss"] body.network-shell :is(.info-card,.store-card,.help-list>a,.game-mode-card,.game-poster,.floating-status,.join-panel,.faq-list details) {
+  border:1px solid #d3e8dc!important; background:var(--surface)!important;
+}
+html[data-theme-variant="moss"] body.network-shell .craft-hero {
+  min-height:450px; height:500px; max-height:620px; padding:100px 28px 52px;
+}
+html[data-theme-variant="moss"] body.network-shell .craft-hero-shade { background:linear-gradient(180deg,#0b503dc0,#08745bc0 70%,#0b503ddd)!important; }
+html[data-theme-variant="moss"] body.network-shell .craft-hero-inner { display:block; max-width:1120px; text-align:center; }
+html[data-theme-variant="moss"] body.network-shell .craft-hero h1.craft-page-title { font-size:clamp(58px,8vw,100px); }
+html[data-theme-variant="moss"] body.network-shell .craft-hero .hero-description { margin-inline:auto; }
+html[data-theme-variant="moss"] body.network-shell .craft-hero .hero-actions { justify-content:center; }
+html[data-theme-variant="moss"] body.network-shell .craft-hero .address-button { border-color:#ffffff72!important; }
+html[data-theme-variant="moss"] body.network-shell .home-status-band { background:#14674f!important; border:0!important; }
+html[data-theme-variant="moss"] body.network-shell .floating-status { background:#fff!important; color:#203e33!important; }
+html[data-theme-variant="moss"] body.network-shell .floating-status :is(h2,dt,dd,strong) { color:#203e33!important; }
+html[data-theme-variant="moss"] body.network-shell .games-section { padding-top:64px; }
+html[data-theme-variant="moss"] body.network-shell .player-hub-band { background:#e3f1e8!important; }
+html[data-theme-variant="moss"] body.network-shell .site-footer { background:#124b3b!important; color:#e8fff3!important; }
+html[data-theme-variant="moss"] body.network-shell .site-footer :is(h2,.site-brand,.site-brand span) { color:#e8fff3!important; }
+
+/* COBALT — midnight-blue server portal with a centered nav capsule and cyan controls. */
+html[data-theme-variant="cobalt"] body.network-shell .site-nav { background:transparent!important; border:0!important; box-shadow:none; }
+html[data-theme-variant="cobalt"] body.network-shell .site-nav-inner {
+  max-width:1160px; min-height:64px; margin:10px auto 0; padding:0 18px;
+  border:1px solid #6dbfe744; border-radius:999px; background:#091725d9; backdrop-filter:blur(16px);
+}
+html[data-theme-variant="cobalt"] body.network-shell .site-brand img { border:1px solid #68c9f488; border-radius:50%; }
+html[data-theme-variant="cobalt"] body.network-shell .site-links a { font-size:13px; }
+html[data-theme-variant="cobalt"] body.network-shell .page-wrap { padding-top:112px; }
+html[data-theme-variant="cobalt"] body.network-shell .page-head h1 { color:#f0f8ff!important; }
+html[data-theme-variant="cobalt"] body.network-shell :is(.info-card,.store-card,.help-list>a,.game-mode-card,.game-poster,.floating-status,.join-panel,.faq-list details) {
+  border:1px solid #31536a!important; background:linear-gradient(145deg,#132b40,#0e2133)!important;
+}
+html[data-theme-variant="cobalt"] body.network-shell .craft-hero {
+  min-height:570px; height:76svh; max-height:800px; padding:124px 28px 58px;
+}
+html[data-theme-variant="cobalt"] body.network-shell .craft-hero-shade { background:linear-gradient(90deg,#061522ea,#061522a0 48%,#0615229a),linear-gradient(0deg,#07131eac,transparent 70%)!important; }
+html[data-theme-variant="cobalt"] body.network-shell .craft-hero-inner { max-width:1150px; display:block; text-align:center; }
+html[data-theme-variant="cobalt"] body.network-shell .craft-hero-copy { max-width:850px; margin:auto; }
+html[data-theme-variant="cobalt"] body.network-shell .craft-hero h1.craft-page-title { font-size:clamp(58px,8vw,100px); }
+html[data-theme-variant="cobalt"] body.network-shell .craft-hero .hero-description { margin-inline:auto; }
+html[data-theme-variant="cobalt"] body.network-shell .craft-hero .hero-actions { justify-content:center; }
+html[data-theme-variant="cobalt"] body.network-shell .game-poster { border:1px solid #3c6c88!important; }
+html[data-theme-variant="cobalt"] body.network-shell .site-footer { background:#07131f!important; }
+
+/* Keep content fluid on phones and turn the preview's nav treatments into usable menus. */
+@media(max-width:900px) {
+  html[data-theme-variant="pop"] body.network-shell .site-links,
+  html[data-theme-variant="valley"] body.network-shell .site-links,
+  html[data-theme-variant="cobalt"] body.network-shell .site-links { background:var(--surface)!important; border-color:var(--line)!important; }
+  html[data-theme-variant="moss"] body.network-shell .site-links { background:#145a45!important; border-color:#ffffff30!important; }
+}
+@media(max-width:760px) {
+  html[data-theme-variant="abyss"] body.network-shell .craft-hero { width:calc(100% - 28px); min-height:510px; height:auto; margin:96px 14px 24px; padding:88px 22px 44px; border-radius:18px; }
+  html[data-theme-variant="moss"] body.network-shell .craft-hero { min-height:430px; height:auto; padding:96px 20px 44px; }
+  html[data-theme-variant="pop"] body.network-shell .craft-hero { min-height:640px; height:calc(100svh - 4px); padding:112px 18px 48px; }
+  html[data-theme-variant="valley"] body.network-shell .craft-hero,
+  html[data-theme-variant="cobalt"] body.network-shell .craft-hero { min-height:560px; height:72svh; padding:112px 20px 48px; }
+  html[data-theme-variant] body.network-shell .site-footer { padding:34px 20px 24px; }
+}
+@media(max-width:520px) {
+  html[data-theme-variant] body.network-shell .site-nav-inner { gap:8px; padding-inline:12px; }
+  html[data-theme-variant="cobalt"] body.network-shell .site-nav-inner { margin:6px 8px 0; padding-inline:10px; }
+  html[data-theme-variant="cobalt"] body.network-shell .site-brand { font-size:20px; }
+  html[data-theme-variant] body.network-shell .craft-hero .hero-actions { align-items:center; }
+  html[data-theme-variant] body.network-shell .craft-hero .hero-actions>* { max-width:340px; }
+  html[data-theme-variant] .network-shell .theme-menu { top:calc(100% + 8px); }
+  html[data-theme-variant="abyss"] body.network-shell .page-wrap,
+  html[data-theme-variant="moss"] body.network-shell .page-wrap { padding-left:18px; padding-right:18px; }
+}
+
+/* Theme accents paint actions; readable semantic accents identify each game. */
+html[data-theme-variant][data-theme="light"] body.network-shell:is([data-game="survival"],[data-page="survival"]) { --accent:#176641; }
+html[data-theme-variant][data-theme="light"] body.network-shell:is([data-game="skyblock"],[data-page="skyblock"]) { --accent:#14758a; }
+html[data-theme-variant][data-theme="light"] body.network-shell:is([data-game="village"],[data-page="village"]) { --accent:#a63569; }
+html[data-theme-variant][data-theme="light"] body.network-shell:is(.store-guide,[data-page="order"]) { --accent:#855900; }
+html[data-theme-variant][data-theme="dark"] body.network-shell:is([data-game="survival"],[data-page="survival"]) { --accent:#83e6a3; }
+html[data-theme-variant][data-theme="dark"] body.network-shell:is([data-game="skyblock"],[data-page="skyblock"]) { --accent:#77ddf2; }
+html[data-theme-variant][data-theme="dark"] body.network-shell:is([data-game="village"],[data-page="village"]) { --accent:#f3a1cc; }
+html[data-theme-variant][data-theme="dark"] body.network-shell:is(.store-guide,[data-page="order"]) { --accent:#ffd36b; }
+
+/* Consistent control states also override older page-specific ink rules. */
+html[data-theme-variant] body.network-shell[data-page] :is(.craft-button,.address-button,.rank-buy,.command-copy,.footer-address,.sky-board-refresh) {
+  color:var(--paper)!important; background:var(--surface)!important; border:1px solid var(--line)!important;
+  border-radius:var(--variant-radius)!important; box-shadow:0 2px 0 #0000000c;
+  transition:background-color .16s ease,border-color .16s ease,box-shadow .16s ease;
+}
+html[data-theme-variant] body.network-shell[data-page] :is(.craft-button,.address-button,.rank-buy,.command-copy,.footer-address,.sky-board-refresh):hover {
+  color:var(--theme-link)!important; background:var(--surface-raised)!important; border-color:var(--theme-link)!important;
+}
+html[data-theme-variant] body.network-shell[data-page] :is(.craft-button.primary,.sky-action,.support-form>button,.player-search button,.store-card button:not(:disabled)) {
+  color:var(--button-ink)!important; background:var(--variant-accent)!important; border-color:var(--variant-accent)!important;
+  border-radius:var(--variant-radius)!important; box-shadow:inset 0 -2px #00000018;
+}
+html[data-theme-variant] body.network-shell[data-page] :is(.craft-button.primary,.sky-action,.support-form>button,.player-search button,.store-card button:not(:disabled)):hover {
+  color:var(--button-ink)!important; background:var(--variant-accent)!important; border-color:var(--variant-accent)!important; filter:brightness(1.04);
+}
+html[data-theme-variant] body.network-shell[data-page] .site-nav .site-links>a.nav-play {
+  background:var(--variant-accent)!important; color:var(--button-ink)!important; border-color:var(--variant-accent)!important;
+}
+html[data-theme-variant] body.network-shell[data-page] :is(.craft-button,.sky-action,.rank-buy,.nav-play) :is(i,span,strong) { color:inherit!important; }
+html[data-theme-variant] body.network-shell[data-page] .craft-button.discord-button,
+html[data-theme-variant] body.network-shell[data-page] .craft-button.discord-button:hover { background:#4f5bd5!important; border-color:#4f5bd5!important; color:#fff!important; }
+html[data-theme-variant] body.network-shell[data-page] :is(.store-card button,.support-form>button,.sky-board-refresh,.player-search button):disabled {
+  background:var(--surface-raised)!important; color:var(--muted)!important; border:1px solid var(--line)!important; opacity:1; filter:none; cursor:wait;
+}
+html[data-theme-variant] body.network-shell[data-page] :is(.chunky-nav a,.community-navigation a,.section-navigation a,.section-tabs a,.hub-tabs a,.page-index a) {
+  border-radius:var(--variant-radius)!important; border:1px solid var(--line)!important; box-shadow:none!important;
+}
+html[data-theme-variant] body.network-shell[data-page] :is(.chunky-nav a,.community-navigation a,.section-navigation a,.section-tabs a,.hub-tabs a,.page-index a):is([aria-current="page"],[aria-current="location"]) {
+  background:var(--variant-accent)!important; color:var(--button-ink)!important; border-color:var(--variant-accent)!important; box-shadow:inset 0 -2px #00000018!important;
+}
+html[data-theme-variant] body.network-shell[data-page] :is(.chunky-nav a,.community-navigation a,.section-navigation a,.section-tabs a,.hub-tabs a,.page-index a):hover {
+  border-color:var(--theme-link)!important;
+}
+html[data-theme-variant] body.network-shell[data-page="join"] .platform-select>button,
+html[data-theme-variant] body.network-shell[data-page="join"] .platform-select>button[aria-selected="true"] { color:#17321f!important; border-radius:var(--variant-radius)!important; }
+html[data-theme-variant] body.network-shell[data-page="join"] .platform-select>button+button { color:#14353e!important; }
+html[data-theme-variant] body.network-shell .site-nav .nav-dropdown a { color:var(--paper)!important; }
+html[data-theme-variant] body.network-shell .site-nav .nav-dropdown a:is(:hover,[aria-current="page"]) { color:var(--theme-link)!important; }
+html[data-theme-variant="moss"] body.network-shell .site-nav .site-brand strong { color:#a4e7cf!important; }
+html[data-theme-variant="moss"] body.network-shell .site-nav .site-links>a:not(.nav-play):is(:hover,[aria-current]) { color:#fff!important; background:#ffffff20!important; }
+
+/* Spacious home cards show the game first, with a clear reading surface below. */
+html[data-theme-variant] body.home-page .games-section { padding-top:64px; padding-bottom:64px; }
+html[data-theme-variant] body.home-page .section-heading { align-items:center; margin-bottom:28px; }
+html[data-theme-variant] body.home-page .tile-games { gap:24px; }
+html[data-theme-variant] body.home-page .tile-games .game-poster {
+  display:flex; flex-direction:column; border:1px solid var(--line)!important;
+  border-bottom:3px solid var(--tile)!important; overflow:hidden;
+}
+html[data-theme-variant] body.home-page .tile-games .poster-image { height:auto; min-height:0; max-height:none; width:100%; aspect-ratio:16/10; border-radius:0!important; }
+html[data-theme-variant] body.home-page .tile-games .poster-image img { height:100%; width:100%; object-fit:cover; }
+html[data-theme-variant] body.home-page .tile-games .poster-copy { flex:1; padding:26px; background:var(--surface)!important; }
+html[data-theme-variant] body.home-page .tile-games .poster-copy h3 { color:var(--paper)!important; font-size:32px; margin:0 0 12px; }
+html[data-theme-variant] body.home-page .tile-games .poster-copy p { flex:1; color:var(--muted)!important; font-size:13px; line-height:1.75; margin:0 0 24px; }
+html[data-theme-variant] body.home-page .tile-games .poster-link { color:var(--theme-link)!important; font:700 12px/1.5 Inter,sans-serif; }
+html[data-theme-variant] body.home-page .player-hub-link { padding:24px 20px; border:1px solid var(--line); border-radius:var(--variant-radius); background:var(--surface); }
+html[data-theme-variant] body.home-page .community-section { grid-template-columns:repeat(3,minmax(0,1fr)); align-items:stretch; padding-block:64px; gap:24px; }
+html[data-theme-variant] body.home-page .community-section :is(.community-invitation,.community-vip,.community-editorial) { padding:28px; border:1px solid var(--line); border-radius:var(--variant-radius); background:var(--surface); }
+@media(max-width:900px) {
+  html[data-theme-variant] body.home-page .community-section { grid-template-columns:1fr; }
+}
+html[data-theme-variant] body.home-page .hero-platforms { display:block; width:max-content; margin:16px auto 0; padding:5px 11px; border:1px solid #ffffff38; border-radius:99px; background:#08131c99; color:#fff; font-size:11px; }
+html[data-theme-variant="abyss"] body.home-page .craft-hero-copy { align-items:flex-start; }
+html[data-theme-variant="abyss"] body.home-page .hero-platforms { margin-left:0; }
+html[data-theme-variant] body.home-page .craft-hero .hero-actions .address-button { background:#08131cee!important; color:#fff!important; border-color:#ffffff70!important; }
+html[data-theme-variant] body.home-page .craft-hero .hero-actions .address-button:hover { background:#162d40!important; color:#fff!important; }
+html[data-theme-variant] body.home-page .hero-platform-toggle { background:#08131cee!important; color:white!important; border-color:#ffffff70!important; border-radius:var(--variant-radius)!important; }
+html[data-theme-variant] body.home-page .craft-hero :focus-visible { outline-color:#fff!important; }
+html[data-theme-variant] body.home-page .home-status-band .status-detail { display:inline-flex; align-items:center; gap:10px; padding:12px 16px; min-height:46px; font:700 12px/1.5 Inter,sans-serif; }
+html[data-theme-variant] body.home-page .floating-status { box-shadow:none; }
+
+/* Article and support pages use the same scale and readable code surfaces. */
+html[data-theme-variant] body.network-shell .page-wrap { max-width:1240px; }
+html[data-theme-variant] body.network-shell[data-page] :is(.page-head,.hub-masthead,.game-hub-heading,.village-masthead,.store-masthead) {
+  padding-bottom:28px!important; margin-bottom:32px!important; border-bottom:1px solid var(--line)!important;
+}
+html[data-theme-variant] body.network-shell[data-page] :is(.game-guide-heading,.guide-head,.hub-content-heading) { margin-bottom:28px; }
+html[data-theme-variant] body.network-shell[data-page] :is(.info-card,.store-card,.help-list>a,.join-panel,.sky-topic-panel,.sky-command-panel,.village-role) {
+  border-radius:var(--variant-radius)!important;
+}
+html[data-theme-variant] body.network-shell[data-page] :is(.guide-article .info-card,.info-grid>.info-card) { padding:24px; }
+html[data-theme-variant] body.network-shell[data-page] .info-grid { box-shadow:none; gap:20px; }
+html[data-theme-variant] body.network-shell[data-page] :is(.help-list,.topic-grid,.sky-topic-panels,.store-grid) { gap:20px; }
+html[data-theme-variant] body.network-shell .topic-grid .topic-card,
+html[data-theme-variant] body.network-shell .skyblock-topics>a { box-shadow:inset 0 -3px #00000018; }
+html[data-theme-variant] body.network-shell .topic-grid .topic-card:hover,
+html[data-theme-variant] body.network-shell .skyblock-topics>a:hover { color:var(--tile-ink,#143429)!important; box-shadow:inset 0 -3px #00000030,0 0 0 2px var(--tile); }
+html[data-theme-variant] body.network-shell[data-page] :is(.game-guide-toolbar,.survival-topic-toolbar,.guide-toolbar) { border-radius:var(--variant-radius)!important; }
+html[data-theme-variant] body.network-shell[data-page] :is(.game-guide-toolbar,.survival-topic-toolbar) { background:var(--guide-color,#83e6a3)!important; color:var(--guide-ink,#15321e)!important; }
+html[data-theme-variant] body.network-shell[data-page] :is(.game-guide-toolbar,.survival-topic-toolbar)>a,
+html[data-theme-variant] body.network-shell[data-page] :is(.game-guide-toolbar,.survival-topic-toolbar) summary { color:inherit!important; }
+html[data-theme-variant] body.network-shell[data-page] :is(.game-guide-toolbar,.survival-topic-toolbar) details nav { background:var(--surface)!important; border-color:var(--line)!important; border-radius:var(--variant-radius)!important; }
+html[data-theme-variant] body.network-shell[data-page] :is(.game-guide-toolbar,.survival-topic-toolbar) details nav a { color:var(--paper)!important; }
+html[data-theme-variant] body.network-shell[data-page] :is(.game-guide-toolbar,.survival-topic-toolbar) details nav a:is(:hover,[aria-current="page"]) { background:var(--surface-raised)!important; color:var(--theme-link)!important; }
+html[data-theme-variant] body.network-shell[data-page] :is(.game-guide-content,.guide-article) .command code { background:var(--surface-raised); color:var(--accent)!important; }
+html[data-theme-variant] body.network-shell .tag { color:var(--paper)!important; background:var(--surface-raised)!important; border-color:var(--line)!important; box-shadow:none; }
+html[data-theme-variant] body.network-shell :is(.search-results a,.search-results strong,.search-heading h2) { color:var(--paper)!important; }
+html[data-theme-variant] body.network-shell :is(.search-results small,.search-field>i,.player-search label,.store-consent,.rank-feature-list li,.footer-intro p,.rules-list ul) { color:var(--muted)!important; }
+html[data-theme-variant] body.network-shell .search-results a:is(:hover,:focus-visible) { background:var(--surface-raised)!important; }
+html[data-theme-variant] body.network-shell :is(.store-consent a,.search-results a>i:first-child,.search-empty a) { color:var(--theme-link)!important; }
+html[data-theme-variant] body.network-shell .skip-link { background:var(--surface)!important; color:var(--theme-link)!important; border-color:var(--line)!important; }
+html[data-theme-variant] body.network-shell :is(.faq-list details,.village-role) { box-shadow:none; }
+html[data-theme-variant] body.network-shell .faq-list details { margin-bottom:10px; padding:0 20px!important; border:1px solid var(--line)!important; }
+html[data-theme-variant] body.network-shell .faq-list details[open] { border-color:var(--theme-link)!important; }
+html[data-theme-variant] body.network-shell .faq-list { border-bottom:0!important; }
+html[data-theme-variant] body.network-shell[data-page="join"] .join-panel[role="tabpanel"] { padding:32px; border:1px solid var(--line); }
+html[data-theme-variant] body.network-shell[data-page="join"] .join-panel .connection-details { padding:24px; gap:24px; background:var(--surface-raised); border:1px solid var(--line); border-radius:var(--variant-radius); }
+html[data-theme-variant] body.network-shell[data-page="join"] .join-panel .join-steps { gap:20px; margin:28px 0 0; }
+html[data-theme-variant] body.network-shell[data-page="join"] .join-panel .join-steps>li { padding:22px; border:1px solid var(--line); border-radius:var(--variant-radius); background:var(--surface-raised); }
+@media(max-width:900px) {
+  html[data-theme-variant] body.network-shell[data-page="join"] .join-panel .join-steps { grid-template-columns:1fr; }
+}
+html[data-theme-variant] body.network-shell .store-card { border-top:4px solid var(--tier)!important; box-shadow:none; }
+html[data-theme-variant] body.network-shell .store-card.is-selected { outline:2px solid var(--theme-link); outline-offset:3px; }
+html[data-theme-variant="moss"] body.network-shell .site-footer {
+  --paper:#e8fff3; --ink:#e8fff3; --muted:#d0e8db; --quiet:#d0e8db; --theme-link:#a4e7cf; --line:#ffffff38;
+  --surface:#124b3b; --surface-raised:#1b624d;
+}
+html[data-theme-variant="moss"] body.network-shell .site-footer .site-brand strong { color:#a4e7cf!important; }
+html[data-theme-variant="moss"] body.home-page .craft-hero h1 span { color:#c7ffe9!important; }
+html[data-theme-variant] body.network-shell .skyblock-access>a { color:var(--theme-link)!important; }
+
+@media(min-width:1001px) {
+  html[data-theme-variant] body.home-page .tile-games { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  html[data-theme-variant] body.network-shell .sky-command-panel { position:sticky; top:100px; }
+}
+@media(min-width:601px) and (max-width:1000px) {
+  html[data-theme-variant] body.home-page .tile-games .game-poster { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.2fr); }
+  html[data-theme-variant] body.home-page .tile-games .poster-image { height:100%; aspect-ratio:auto; min-height:220px; grid-column:1; }
+  html[data-theme-variant] body.home-page .tile-games .poster-copy { grid-column:2; }
+}
+@media(max-width:700px) {
+  html[data-theme-variant] body.home-page .player-hub-links { gap:12px; }
+  html[data-theme-variant] body.home-page .player-hub-link { border:1px solid var(--line); }
+}
+@media(max-width:600px) {
+  html[data-theme-variant] body.home-page :is(.games-section,.community-section) { padding-block:40px; }
+  html[data-theme-variant] body.home-page .tile-games .poster-copy { padding:22px; }
+  html[data-theme-variant] body.home-page .community-section :is(.community-invitation,.community-vip,.community-editorial) { padding:24px; }
+  html[data-theme-variant] body.network-shell[data-page] :is(.page-head,.hub-masthead,.game-hub-heading,.village-masthead,.store-masthead) { padding-bottom:22px!important; margin-bottom:24px!important; }
+  html[data-theme-variant] body.network-shell[data-page="join"] .join-panel[role="tabpanel"] { padding:20px; }
+  html[data-theme-variant] body.network-shell[data-page="join"] .join-panel :is(.connection-details,.join-steps>li) { padding:18px; }
+  html[data-theme-variant] body.network-shell[data-page="join"] .join-panel .connection-details { flex-direction:column; align-items:stretch; gap:18px; }
+  html[data-theme-variant] body.network-shell[data-page="join"] .join-panel .connection-details .address-button { justify-content:center; width:100%; }
+  html[data-theme-variant] body.network-shell .faq-list details { padding-inline:16px!important; }
+  html[data-theme-variant] body.network-shell[data-page] :is(.info-grid,.store-grid,.topic-grid,.sky-topic-panels) { gap:14px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  html[data-theme-variant] body.network-shell :is(a,button) { transition:none!important; }
+}
+
+/* Filled guide controls keep their own ink, including hidden topic states. */
+html[data-theme-variant] body.network-shell[data-page] :is(.guide-pagination,.game-guide-next)>a[href],
+html[data-theme-variant] body.network-shell[data-page] :is(.guide-pagination,.game-guide-next)>a[href]:is(:hover,:focus-visible,:active) {
+  background:#83e6a3!important; color:#15321e!important; border-color:#15321e30!important;
+}
+html[data-theme-variant] body.network-shell[data-page] :is(.guide-pagination,.game-guide-next)>a[href]+a[href],
+html[data-theme-variant] body.network-shell[data-page] :is(.guide-pagination,.game-guide-next)>a[href]+a[href]:is(:hover,:focus-visible,:active) {
+  background:#77ddf2!important; color:#14353e!important; border-color:#14353e30!important;
+}
+html[data-theme-variant] body.network-shell[data-page] :is(.guide-pagination,.game-guide-next)>a[href] :is(i,span,strong) { color:inherit!important; }
+html[data-theme-variant] body.network-shell[data-page] .land-command-table caption>i { color:var(--theme-link)!important; }
+
+/* Resource cards have room for both the icon and the direction affordance. */
+html[data-theme-variant] body.home-page .player-hub-links { gap:24px; align-items:stretch; }
+html[data-theme-variant] body.home-page .player-hub-links .player-hub-link {
+  grid-template-columns:44px minmax(0,1fr) 28px; align-items:start; gap:16px;
+  padding:28px; min-height:160px; border:1px solid var(--line); border-radius:var(--variant-radius);
+  background:var(--surface); transition:background-color .16s,border-color .16s;
+}
+html[data-theme-variant] body.home-page .player-hub-links .player-hub-link>i:first-child {
+  display:grid; place-items:center; width:44px; height:44px; font-size:22px; line-height:1;
+  background:var(--surface-raised); border:1px solid var(--line); border-radius:12px;
+}
+html[data-theme-variant] body.home-page .player-hub-links .player-hub-link>i:last-child {
+  display:grid; place-items:center; align-self:center; width:28px; height:28px; line-height:1; font-size:13px;
+}
+html[data-theme-variant] body.home-page .player-hub-links .player-hub-link>div { min-width:0; }
+html[data-theme-variant] body.home-page .player-hub-links .player-hub-link h3 { margin:0 0 10px; font-size:23px; line-height:1.25; }
+html[data-theme-variant] body.home-page .player-hub-links .player-hub-link p { line-height:1.75; }
+html[data-theme-variant] body.home-page .player-hub-links .player-hub-link:hover { background:var(--surface-raised); border-color:var(--hub-accent); }
+html[data-theme-variant] body.network-shell[data-page] :is(.help-list,.discovery-links)>a { padding:26px; gap:20px; }
+@media(min-width:701px) and (max-width:1100px) {
+  html[data-theme-variant] body.home-page .player-hub-links { grid-template-columns:1fr; }
+}
+@media(max-width:700px) {
+  html[data-theme-variant] body.home-page .player-hub-links { grid-template-columns:1fr; gap:14px; }
+  html[data-theme-variant] body.home-page .player-hub-links .player-hub-link { padding:22px; gap:14px; min-height:132px; grid-template-columns:40px minmax(0,1fr) 20px; }
+  html[data-theme-variant] body.home-page .player-hub-links .player-hub-link>i:first-child { width:40px; height:40px; }
+  html[data-theme-variant] body.home-page .player-hub-links .player-hub-link>i:last-child { width:20px; height:24px; }
+  html[data-theme-variant] body.home-page .player-hub-links .player-hub-link h3 { font-size:21px; }
+  html[data-theme-variant] body.network-shell[data-page] :is(.help-list,.discovery-links)>a { padding:22px; gap:16px; }
+}
+/* Fill the hero stage so the connection controls sit near its lower edge. */
+html[data-theme-variant] body.home-page .craft-hero .craft-hero-inner {
+  display:flex; align-items:stretch; margin:0 auto;
+}
+html[data-theme-variant] body.home-page .craft-hero .craft-hero-copy {
+  flex:1; min-width:0; align-self:stretch; margin:0 auto;
+}
+html[data-theme-variant] body.home-page .craft-hero .hero-actions {
+  margin-top:auto; padding-top:24px; flex-shrink:0;
+}
+/* Content rhythm and disclosure stability across every local skin. */
+html[data-theme-variant] { scrollbar-gutter:stable; }
+html[data-theme-variant] body.network-shell main { overflow-anchor:none; }
+html[data-theme-variant] body.network-shell :is(.community-discord,.community-intro,.support-actions,.help-list,.news-journal) { gap:24px!important; }
+html[data-theme-variant] body.network-shell .community-intro { display:grid; }
+html[data-theme-variant] body.network-shell .community-invite { padding:24px; border:1px solid var(--line); background:var(--surface); border-radius:var(--variant-radius); }
+html[data-theme-variant] body.network-shell .community-invite h2 { margin:0 0 12px; }
+html[data-theme-variant] body.network-shell .community-invite p { margin:0; }
+html[data-theme-variant] body.network-shell .discord-widget { max-width:100%; border-radius:var(--variant-radius); }
+html[data-theme-variant] body.network-shell .news-journal { display:grid; }
+html[data-theme-variant] body.network-shell .news-journal article { display:grid; grid-template-columns:minmax(140px,190px) minmax(0,1fr); gap:24px; padding:24px!important; border:1px solid var(--line); border-radius:var(--variant-radius); background:var(--surface); }
+html[data-theme-variant] body.network-shell .news-journal article>div:first-child { display:flex; flex-direction:column; align-items:flex-start; gap:8px; color:var(--muted); font-size:13px; line-height:1.5; }
+html[data-theme-variant] body.network-shell .news-journal article>div:first-child span { border:1px solid var(--line); padding:4px 9px; border-radius:4px; }
+html[data-theme-variant] body.network-shell .news-journal h2 { margin:0 0 12px; }
+html[data-theme-variant] body.network-shell .news-journal p { margin:0 0 16px; line-height:1.75; }
+html[data-theme-variant] body.network-shell :is(.help-list,.topic-grid) a :is(strong,small) { display:block; }
+html[data-theme-variant] body.network-shell :is(.help-list,.topic-grid) a small { margin-top:8px; }
+html[data-theme-variant] body.network-shell :is(.support-action,.help-list>a) { gap:20px; }
+html[data-theme-variant] body.network-shell .faq-list details { overflow-anchor:none; scroll-margin-top:104px; }
+html[data-theme-variant] body.network-shell .faq-list summary { line-height:1.55; padding-block:18px; cursor:pointer; }
+html[data-theme-variant] body.network-shell .faq-list details> :not(summary) { line-height:1.75; margin:0 0 20px; }
+html[data-theme-variant] body.network-shell :is(a,button,summary):focus-visible { outline:3px solid var(--theme-link); outline-offset:4px; }
+html[data-theme-variant] body.network-shell main :is(a,button) { touch-action:manipulation; }
+@media(max-width:700px) {
+  html[data-theme-variant] body.network-shell .news-journal article { grid-template-columns:1fr; gap:16px; padding:20px!important; }
+  html[data-theme-variant] body.network-shell .news-journal article>div:first-child { flex-direction:row; flex-wrap:wrap; align-items:center; column-gap:14px; }
+  html[data-theme-variant] body.network-shell .community-discord { grid-template-columns:1fr!important; }
+  html[data-theme-variant] body.network-shell .community-invite { padding:20px; flex-direction:column; align-items:stretch; }
+}

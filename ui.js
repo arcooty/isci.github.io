@@ -1,4 +1,6 @@
 (() => {
+  const initialize = ({window,document,history,fetch,setTimeout,clearTimeout,setInterval,clearInterval,requestAnimationFrame}) => {
+(() => {
   const state = document.getElementById('home-state');
   if (!state) return;
   const count = document.getElementById('floating-player-count');
@@ -35,4 +37,9 @@
   };
   refresh();
   setInterval(() => { if (!document.hidden) refresh(); },60000);
+})();
+
+  };
+  if (window.ARCADE_NAVIGATION) window.ARCADE_NAVIGATION.register('ui.js',initialize);
+  else initialize({window,document,history:typeof history!=='undefined'?history:undefined,fetch:typeof fetch==='function'?fetch:undefined,setTimeout:typeof setTimeout==='function'?setTimeout:undefined,clearTimeout:typeof clearTimeout==='function'?clearTimeout:undefined,setInterval:typeof setInterval==='function'?setInterval:undefined,clearInterval:typeof clearInterval==='function'?clearInterval:undefined,requestAnimationFrame:typeof requestAnimationFrame==='function'?requestAnimationFrame:undefined});
 })();

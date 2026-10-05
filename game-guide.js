@@ -1,4 +1,6 @@
 (() => {
+  const initialize = ({window,document,history,fetch,setTimeout,clearTimeout,setInterval,clearInterval,requestAnimationFrame}) => {
+(() => {
   const model = window.ARCADE_SITE;
   if (document.body.dataset.gameHub || document.body.dataset.routeHub) {
     const redirect = () => {
@@ -18,4 +20,9 @@
       if (menu.open && !menu.contains(event.target)) menu.open = false;
     });
   });
+})();
+
+  };
+  if (window.ARCADE_NAVIGATION) window.ARCADE_NAVIGATION.register('game-guide.js',initialize);
+  else initialize({window,document,history:typeof history!=='undefined'?history:undefined,fetch:typeof fetch==='function'?fetch:undefined,setTimeout:typeof setTimeout==='function'?setTimeout:undefined,clearTimeout:typeof clearTimeout==='function'?clearTimeout:undefined,setInterval:typeof setInterval==='function'?setInterval:undefined,clearInterval:typeof clearInterval==='function'?clearInterval:undefined,requestAnimationFrame:typeof requestAnimationFrame==='function'?requestAnimationFrame:undefined});
 })();

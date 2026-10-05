@@ -1,4 +1,6 @@
 (() => {
+  const initialize = ({window,document,history,fetch,setTimeout,clearTimeout,setInterval,clearInterval,requestAnimationFrame}) => {
+(() => {
   const topics = window.ARCADE_SITE.topics;
   const sections = window.ARCADE_SITE.topicSections;
   const sectionOwners = Object.fromEntries(Object.entries(sections).flatMap(([topic,items])=>items.map(([id])=>[id,topic])));
@@ -98,4 +100,9 @@
     window.addEventListener('wheel',()=>interacted=true,{once:true,passive:true});
     document.fonts?.ready.then(()=>{ if(!interacted && location.hash === initialHash) render(true); });
   }
+})();
+
+  };
+  if (window.ARCADE_NAVIGATION) window.ARCADE_NAVIGATION.register('survival.js',initialize);
+  else initialize({window,document,history:typeof history!=='undefined'?history:undefined,fetch:typeof fetch==='function'?fetch:undefined,setTimeout:typeof setTimeout==='function'?setTimeout:undefined,clearTimeout:typeof clearTimeout==='function'?clearTimeout:undefined,setInterval:typeof setInterval==='function'?setInterval:undefined,clearInterval:typeof clearInterval==='function'?clearInterval:undefined,requestAnimationFrame:typeof requestAnimationFrame==='function'?requestAnimationFrame:undefined});
 })();

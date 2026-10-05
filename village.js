@@ -1,4 +1,6 @@
 (() => {
+  const initialize = ({window,document,history,fetch,setTimeout,clearTimeout,setInterval,clearInterval,requestAnimationFrame}) => {
+(() => {
   const tabs = [...document.querySelectorAll('.village-team-tabs a')];
   if (!tabs.length) return;
   const catalogue = document.getElementById('roller');
@@ -58,4 +60,9 @@
     ['wheel','touchstart','pointerdown','keydown'].forEach(type => window.addEventListener(type,() => { interacted = true; },{once:true,passive:true}));
     document.fonts?.ready.then(() => { if (!interacted && location.hash === initialHash) restore(true); });
   }
+})();
+
+  };
+  if (window.ARCADE_NAVIGATION) window.ARCADE_NAVIGATION.register('village.js',initialize);
+  else initialize({window,document,history:typeof history!=='undefined'?history:undefined,fetch:typeof fetch==='function'?fetch:undefined,setTimeout:typeof setTimeout==='function'?setTimeout:undefined,clearTimeout:typeof clearTimeout==='function'?clearTimeout:undefined,setInterval:typeof setInterval==='function'?setInterval:undefined,clearInterval:typeof clearInterval==='function'?clearInterval:undefined,requestAnimationFrame:typeof requestAnimationFrame==='function'?requestAnimationFrame:undefined});
 })();

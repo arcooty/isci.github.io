@@ -1,4 +1,6 @@
 (() => {
+  const initialize = ({window,document,history,fetch,setTimeout,clearTimeout,setInterval,clearInterval,requestAnimationFrame}) => {
+(() => {
   const state = document.getElementById('network-state');
   const players = document.getElementById('player-state');
   const time = document.getElementById('status-time');
@@ -33,4 +35,9 @@
       Object.values(serviceLabels).forEach(element => { element.textContent = 'Durum alınamadı.'; });
     })
     .finally(() => { time.textContent = `Son kontrol: ${new Date().toLocaleString('tr-TR', { timeZone: 'Europe/Istanbul' })} GMT+3`; });
+})();
+
+  };
+  if (window.ARCADE_NAVIGATION) window.ARCADE_NAVIGATION.register('status.js',initialize);
+  else initialize({window,document,history:typeof history!=='undefined'?history:undefined,fetch:typeof fetch==='function'?fetch:undefined,setTimeout:typeof setTimeout==='function'?setTimeout:undefined,clearTimeout:typeof clearTimeout==='function'?clearTimeout:undefined,setInterval:typeof setInterval==='function'?setInterval:undefined,clearInterval:typeof clearInterval==='function'?clearInterval:undefined,requestAnimationFrame:typeof requestAnimationFrame==='function'?requestAnimationFrame:undefined});
 })();

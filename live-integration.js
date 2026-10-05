@@ -1,4 +1,6 @@
 (() => {
+  const initialize = ({window,document,history,fetch,setTimeout,clearTimeout,setInterval,clearInterval,requestAnimationFrame}) => {
+(() => {
   const API = window.ARCADE_API?.base || 'https://api.robsarcade.online/api/v1';
   const setText = (selector, value) => document.querySelectorAll(selector).forEach(el => el.textContent = value);
   setText('#server-ip', window.ARCADECRAFT?.address || 'oyna.robsarcade.online');
@@ -14,4 +16,9 @@
         panel.innerHTML = '<div class="info-card"><h2>Canlı veri alınamadı</h2><p>Liderlik servisine şu anda ulaşılamıyor. Veriler yenilendiğinde bu bölüm otomatik olarak tekrar görüntülenecek.</p></div>';
       }));
   }
+})();
+
+  };
+  if (window.ARCADE_NAVIGATION) window.ARCADE_NAVIGATION.register('live-integration.js',initialize);
+  else initialize({window,document,history:typeof history!=='undefined'?history:undefined,fetch:typeof fetch==='function'?fetch:undefined,setTimeout:typeof setTimeout==='function'?setTimeout:undefined,clearTimeout:typeof clearTimeout==='function'?clearTimeout:undefined,setInterval:typeof setInterval==='function'?setInterval:undefined,clearInterval:typeof clearInterval==='function'?clearInterval:undefined,requestAnimationFrame:typeof requestAnimationFrame==='function'?requestAnimationFrame:undefined});
 })();
