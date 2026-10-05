@@ -14,7 +14,7 @@
 <link rel="icon" href="assets/logo.png" type="image/png">
 <link rel="canonical" href="https://robsarcade.online/application.html">
 <link rel="stylesheet" href="polish.css?v=20261002-27">
-<link rel="stylesheet" href="forms.css?v=20261002-18">
+<link rel="stylesheet" href="forms.css?v=20261005-1">
 <link rel="stylesheet" href="navigation-layout.css?v=20261002-1"><link rel="stylesheet" href="help-navigation.css?v=20261002-10">
 <link id="theme-variants" rel="stylesheet" href="theme-variants.css?v=20261005-4"></head>
 <body class="antialiased network-shell" data-page="application" data-section-nav="true">
@@ -76,10 +76,15 @@
                 </select>
             </div>
 
-            <div class="">
-                <label class=""><i class=""></i> Güvenlik Doğrulaması</label>
+            <section class="form-verification" aria-label="Güvenlik doğrulaması">
+                <h2><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Güvenlik doğrulaması</h2>
                 <div data-turnstile-widget></div>
-            </div>
+                <p data-verification-status role="status" aria-live="polite">Güvenlik doğrulaması yükleniyor...</p>
+                <div class="verification-actions">
+                    <button type="button" data-verification-retry hidden>Yeniden dene</button>
+                    <a data-verification-help href="https://discord.gg/GerdDHzMWp" target="_blank" rel="noopener" hidden>Discord üzerinden destek al</a>
+                </div>
+            </section>
 
             <button type="submit" class="">
                 <i class=""></i> Başvuruyu Gönder
@@ -104,7 +109,7 @@
     <!-- FOOTER UPDATE -->
     <footer class="site-footer"><div class="footer-intro"><a class="site-brand" href="index.html" aria-label="ArcaDe Craft ana sayfa"><img src="assets/logo.png" alt="" width="42" height="42"><span>ArcaDe <strong>Craft</strong></span></a></div><div class="site-footer-inner"><section><h2>Oyna</h2><a href="survival.html">Survival</a><a href="skyblock.html">Skyblock</a><a href="village.html">Rob's Village</a><a href="join.html">Oyuna katıl</a></section><section><h2>Topluluk</h2><a href="community.html">Topluluk</a><a href="news.html">Haberler</a><a href="staff.html">Ekibimiz</a><a href="https://discord.gg/GerdDHzMWp" target="_blank" rel="noopener"><i class="fa-brands fa-discord" aria-hidden="true"></i> Discord</a></section><section><h2>Yardım</h2><a href="help.html">Destek merkezi</a><a href="rules.html">Kurallar</a><a href="status.html">Sunucu durumu</a></section></div><div class="footer-bottom"><span>© 2026 ArcaDe Craft</span><div><a href="sitemap.html">Site haritası</a><a href="privacy.html">Gizlilik</a><a href="terms.html">Kullanım şartları</a></div><span>Mojang veya Microsoft ile bağlantılı değildir.</span></div></footer>
 
-<script src="form-logic.js?v=20261003-2"></script>
+<script src="form-logic.js?v=20261005-3"></script>
 
 
 
