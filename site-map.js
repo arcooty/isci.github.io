@@ -50,7 +50,7 @@
   for (const id of ['roles-title','tab-koy','tab-kurt','tab-bagimsiz','team-village-title','team-wolf-title','team-solo-title']) gameRoutes['village.html'][id] = 'village-roles.html#'+id;
   gameRoutes['village.html']['countdown-title'] = 'village-lobby.html#countdown-title';
   const sections = [
-    {name:'Oyunlar', href:'servers.html', pages:[['servers.html','Oyunlarımız'],['survival.html','Survival'],['skyblock.html','Skyblock'],['village.html',"Rob's Village"]]},
+    {name:'Oyunlar', href:'servers.html', pages:[['servers.html','Oyunlarımız'],['survival.html','Survival'],['skyblock.html','Skyblock'],['village.html',"Rob's Village"],['boxpvp.html','Box PvP'],['pillars.html','Pillars']]},
     {name:'Skyblock', href:'skyblock.html', pages:gameGuides.skyblock.map(([href,label])=>[href,label])},
     {name:"Rob's Village", href:'village.html', pages:gameGuides.village.map(([href,label])=>[href,label])},
     {name:'Survival', href:'survival.html', pages:[['survival.html#baslangic','Oyun rehberi'],['survival-quests.html','Kaybolan Atlas'],['survival-quests-goals.html','Uzun vadeli hedefler'],['survival-quests-daily.html','Günlük görevler ve beceriler'],['survival.html#harita','Dünya haritası'],['survival.html#siralamalar','Sıralamalar']]},
@@ -79,6 +79,14 @@
     return resolveHref(target.pathname.slice(1) + target.search + target.hash);
   }
   const searchEntries = [
+    ['boxpvp.html','Box PvP','Oyunlar','hammer','boxpvp box pvp cevher arena kehribar açık'],
+    ['boxpvp.html#baslangic','Box PvP başlangıç','Box PvP','compass','boxpvp giriş katıl npc güvenli spawn başlangıç'],
+    ['boxpvp.html#maden','Box PvP madenleri','Box PvP','hammer','boxpvp cevher yenilenen maden kömür demir altın elmas 180 210 240 270 30 yenilenme merdiven'],
+    ['boxpvp.html#komutlar','Box PvP komutları','Box PvP','terminal','boxpvp box komut komutlar kit takas onar depo spawn'],
+    ['boxpvp.html#arena','Kehribar Kalesi','Box PvP','map','boxpvp arena harita kehribar kale maden avlu'],
+    ['boxpvp.html#takas','Box PvP cevher takasları','Box PvP','right-left','boxpvp box takas ekonomi bedel fiyat demir elmas usta kazma kılıç zırh ekmek ok yay kalkan altın elma'],
+    ['boxpvp.html#hizmetler','Box PvP kit, onarım ve depo','Box PvP','box-open','boxpvp box kit onar onarım depo ender 27 600 10 dakika deri taş 16 kömür'],
+    ['boxpvp.html#kurallar','Box PvP savaş kuralları','Box PvP','shield-halved','boxpvp savaş combat 20 saniye çıkış bağlantı kick ölüm eşya kaybı'],
     ['skyblock.html','Skyblock','Oyunlar','cubes','skyblock ada adalar test beyaz liste'],
     ['skyblock.html#ada','Ada yönetimi','Skyblock','house','skyblock banka takım davet ziyaret ada yarıçap kapasite'],
     ['skyblock.html#gelisim','Ada gelişimi','Skyblock','seedling','skyblock görev koleksiyon sipariş minyon proje ticaret puanı'],
@@ -107,12 +115,16 @@
     ['join.html','Oyuna katıl','Oyunlar','gamepad','bağlan java bedrock mobil iphone android adres ip port kayıt giriş login register'],
     ['join.html#join-java','Java bağlantısı','Oyunlar','desktop','java edition bilgisayar pc adres ip katıl sunucu'],
     ['join.html#join-bedrock','Bedrock ve mobil bağlantısı','Oyunlar','mobile-screen','bedrock mobil iphone android telefon windows port katıl sunucu'],
-    ['servers.html','Oyunlarımız','Oyunlar','dice','oyun lobi sunucu survival village kurt köylü'],
+    ['servers.html','Oyunlarımız','Oyunlar','dice','oyun lobi sunucu survival skyblock village boxpvp pillars kurt köylü'],
     ['village.html','Rob’s Village','Oyunlar','moon','kurt köylü etkinlik rol oylama maç gece gündüz wolvesville'],
     ['village.html#rol-koy','Rob’s Village köy rolleri','Rob’s Village','house','doktor cadı bulaşıkçı gözcü çırağı kumarbaz aura gözcüsü medyum gardiyan silahşör cinci hoca köylü yetenek'],
     ['village.html#rol-kurt','Rob’s Village kurt rolleri','Rob’s Village','paw','düz kurt gölge kör şaman avlanma yetenek'],
     ['village.html#rol-bagimsiz','Rob’s Village bağımsız rolleri','Rob’s Village','fire','kundakçı soytarı solo benzin ateş idam yetenek'],
     ['village.html#lobi','Rob’s Village lobisi','Rob’s Village','compass','geri sayım harita oylaması kuyruk seyirci pusula rv'],
+    ['pillars.html','Pillars','Oyunlar','dice','pillars sütun rastgele eşya açık'],
+    ['pillars.html#istasyon','Pillars istasyonu ve haritalar','Pillars','map','pillars istasyon station harita ametist yörünge altın meridyen dairesel bedrock'],
+    ['pillars.html#tur','Pillars tur ve eşyalar','Pillars','dice','pillars oyuncu 2 8 eşya 5 saniye 300 10 geri sayım dakika tur seyirci beraberlik'],
+    ['pillars.html#komutlar','Pillars komutları ve kuyruk','Pillars','terminal','pillars komut komutlar kuyruk sonraki tur hub lobi dönüş katil katıl ayril ayrıl izle istatistik stats spectate menü ödül ekonomi'],
     ['survival.html#harita','Survival haritası','Survival','map','bluemap dynmap dünya yerleşim'],
     ['survival.html#siralamalar','Liderlik tabloları','Survival','trophy','sıralama leaderboard ekonomi jobs beceriler meslek en iyi oyuncu'],
     ['players.html','Oyuncu profilleri','Topluluk','user','oyuncu ara skin rütbe oynama süresi profil istatistik survival'],

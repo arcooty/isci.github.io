@@ -10,10 +10,19 @@
     event: document.getElementById('event-state'),
     map: document.getElementById('map-state')
   };
+  const extraServiceLabels = Object.fromEntries(['skyblock','boxpvp','pillars'].map(name => [name,document.getElementById(name + '-state')]));
+  const renderExtraServices = services => Object.entries(extraServiceLabels).forEach(([name,element]) => {
+    if (!element) return;
+    const service = services?.[name];
+    const testing = name === 'skyblock';
+    const label = testing ? 'Test servisi' : 'Oyun servisi';
+    element.textContent = service === true ? (testing ? 'Test servisi çalışıyor; genel erişim onayı değildir.' : 'Oyun servisi çalışıyor.') : service === false ? label + ' çevrimdışı.' : label + ' için durum alınamadı.';
+  });
   const API = window.ARCADE_API?.base || 'https://api.robsarcade.online/api/v1';
   fetch(`${API}/status`, { headers: { Accept: 'application/json' } })
     .then(response => response.ok ? response.json() : Promise.reject())
     .then(data => {
+      renderExtraServices(data.services);
       if (data.services?.velocity) {
         state.textContent = 'Çevrimiçi ve bağlantı kabul ediyor.';
         players.textContent = 'Lobi ve oyun sunucularının durumu canlı API üzerinden doğrulandı.';
@@ -30,6 +39,7 @@
       });
     })
     .catch(() => {
+      renderExtraServices();
       state.textContent = 'Durum servisine ulaşılamadı.';
       players.textContent = 'Servis doğrulaması alınamadı.';
       Object.values(serviceLabels).forEach(element => { element.textContent = 'Durum alınamadı.'; });

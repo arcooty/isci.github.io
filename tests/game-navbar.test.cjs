@@ -9,7 +9,7 @@ test('game hubs and every guide select the Games menu before scripts run',()=>{
     const html=fs.readFileSync(path.join(root,file),'utf8');
     const button=html.match(/<a href="servers.html"[^>]*>Oyunlar<\/a>/)?.[0];
     if(!button) continue;
-    const game=/^(?:servers|(?:survival|skyblock|village)(?:-[a-z-]+)?)\.html$/.test(file);
+    const game=/^(?:servers|boxpvp|pillars|(?:survival|skyblock|village)(?:-[a-z-]+)?)\.html$/.test(file);
     assert.equal(button.includes('class="is-current"'),game,file);
     assert.equal(button.includes('aria-current="'+(file==='servers.html'?'page':'location')+'"'),game,file);
     assert.ok(!html.includes('games-dropdown'),file);

@@ -1,0 +1,45 @@
+/* New games reuse the existing guide, table and poster layouts. */
+html[data-theme] body[data-game=boxpvp] { --guide-color:#ffd573; --guide-ink:#473612; }
+html[data-theme] body[data-game=pillars] { --guide-color:#83ddef; --guide-ink:#14353e; }
+html[data-theme] body.network-shell.arcade-game-guide .arcade-test-state { margin:0 0 24px; color:var(--quiet); font:400 13px/1.75 Inter,sans-serif; }
+html[data-theme] body.network-shell.arcade-game-guide .arcade-test-state i { margin-right:6px; }
+html[data-theme] body.network-shell.arcade-game-guide .game-guide-toolbar details nav a[aria-current=location] { color:var(--accent); background:var(--surface-raised); }
+html[data-theme] body.network-shell.arcade-game-guide .arcade-guide-media { height:auto; max-width:720px; }
+html[data-theme] body.network-shell.arcade-game-guide .arcade-guide-media img { display:block; width:100%; height:auto; aspect-ratio:1672/941; object-fit:contain; }
+html[data-theme] body.network-shell.arcade-game-guide .arcade-station-media img { aspect-ratio:7/5; }
+html[data-theme] body.network-shell.arcade-game-guide .arcade-map-media img { aspect-ratio:4/3; }
+html[data-theme] body.network-shell.arcade-game-guide .arcade-guide-media figcaption { position:static; padding:8px 0; background:none; color:var(--quiet); font-size:12px; }
+html[data-theme] body.network-shell.arcade-game-guide .arcade-steps { padding-left:22px; margin:0; }
+html[data-theme] body.network-shell.arcade-game-guide .arcade-steps li { padding:0 0 12px 6px; }
+html[data-theme] body.network-shell.arcade-game-guide .arcade-facts { margin:0; }
+html[data-theme] body.network-shell.arcade-game-guide .arcade-facts>div { display:grid; grid-template-columns:200px minmax(0,1fr); gap:20px; padding:16px 0; border-bottom:1px solid var(--line); }
+html[data-theme] body.network-shell.arcade-game-guide .arcade-facts>div:first-child { padding-top:0; }
+html[data-theme] body.network-shell.arcade-game-guide .arcade-facts>div:last-child { border-bottom:0; padding-bottom:0; }
+html[data-theme] body.network-shell.arcade-game-guide .arcade-facts dt { font:600 14px/1.85 Inter,sans-serif; }
+html[data-theme] body.network-shell.arcade-game-guide .arcade-facts dd { margin:0; color:var(--quiet); }
+html[data-theme] body.network-shell.arcade-game-guide .arcade-command-table { width:100%; border-collapse:collapse; table-layout:fixed; font:400 14px/1.75 Inter,sans-serif; }
+html[data-theme] body.network-shell.arcade-game-guide .arcade-command-table caption { text-align:left; color:var(--quiet); padding-bottom:12px; font-size:13px; }
+html[data-theme] body.network-shell.arcade-game-guide .arcade-command-table :is(th,td) { text-align:left; padding:14px 12px; border-bottom:1px solid var(--line); vertical-align:top; overflow-wrap:anywhere; }
+html[data-theme] body.network-shell.arcade-game-guide .arcade-command-table th:first-child { width:40%; }
+html[data-theme] body.network-shell.arcade-game-guide .arcade-command-table td.command { display:grid; grid-template-columns:minmax(0,1fr) 36px; align-items:center; gap:8px; }
+html[data-theme] body.network-shell.arcade-game-guide .arcade-data-table { width:100%; margin:0 0 20px; border-collapse:collapse; table-layout:fixed; font:400 14px/1.75 Inter,sans-serif; }
+html[data-theme] body.network-shell.arcade-game-guide .arcade-data-table caption { text-align:left; color:var(--quiet); padding-bottom:12px; font-size:13px; }
+html[data-theme] body.network-shell.arcade-game-guide .arcade-data-table :is(th,td) { text-align:left; padding:14px 12px; border-bottom:1px solid var(--line); vertical-align:top; overflow-wrap:anywhere; }
+html[data-theme] body.network-shell.arcade-game-guide .arcade-data-table th[scope=row] { font-weight:600; }
+html[data-theme] body.network-shell .tile-games .boxpvp-poster { --tile:#ffd573; color:#473612; }
+html[data-theme] body.network-shell .tile-games .pillars-poster { --tile:#83ddef; color:#14353e; }
+html[data-theme] body.network-shell .arcade-test-games { margin-top:18px; }
+@media(max-width:600px) {
+  html[data-theme] body.network-shell.arcade-game-guide .arcade-facts>div { grid-template-columns:minmax(0,1fr); gap:4px; }
+  html[data-theme] body.network-shell.arcade-game-guide .arcade-command-table :is(th,td) { padding:12px 6px; font-size:12px; }
+  html[data-theme] body.network-shell.arcade-game-guide .arcade-command-table th:first-child { width:46%; }
+  html[data-theme] body.network-shell.arcade-game-guide .arcade-data-table :is(th,td) { padding:12px 6px; font-size:12px; }
+  html[data-theme] body.network-shell[data-game=boxpvp] .arcade-command-table thead { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+  html[data-theme] body.network-shell[data-game=boxpvp] .arcade-command-table tbody tr { display:grid; grid-template-columns:minmax(0,1fr); border-bottom:1px solid var(--line); }
+  html[data-theme] body.network-shell[data-game=boxpvp] .arcade-command-table td { border-bottom:0; padding:8px 6px; }
+  html[data-theme] body.network-shell[data-game=boxpvp] .arcade-command-table td.command { padding-bottom:0; }
+  html[data-theme] body.network-shell[data-game=pillars] .arcade-command-table thead { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+  html[data-theme] body.network-shell[data-game=pillars] .arcade-command-table tbody tr { display:grid; grid-template-columns:minmax(0,1fr); border-bottom:1px solid var(--line); }
+  html[data-theme] body.network-shell[data-game=pillars] .arcade-command-table td { border-bottom:0; padding:8px 6px; }
+  html[data-theme] body.network-shell[data-game=pillars] .arcade-command-table td.command { padding-bottom:0; }
+}

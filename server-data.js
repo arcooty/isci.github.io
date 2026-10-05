@@ -9,6 +9,7 @@ window.ARCADECRAFT = Object.freeze({
   }),
   services: [
     {id:'velocity',name:'Ağ Girişi',state:'online'}, {id:'lobby',name:'Lobi',state:'online'},
-    {id:'survival',name:'Survival',state:'online'}, {id:'skyblock',name:'Skyblock',state:'testing'}, {id:'events',name:'Etkinlik',state:'online'}
+    {id:'survival',name:'Survival',state:'online'}, {id:'skyblock',name:'Skyblock',state:'testing'}, {id:'events',name:'Etkinlik',state:'online'},
+    {id:'boxpvp',name:'Box PvP',state:'available'}, {id:'pillars',name:'Pillars',state:'available'}
   ]
 });

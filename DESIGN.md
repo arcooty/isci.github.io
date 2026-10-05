@@ -3,7 +3,8 @@
 ## Direction
 
 Game imagery, a recognizable wordmark and clear, large category links lead the site.
-The home page has three game destinations. Its status tool sits below the hub scene,
+The home page has five game destinations; Box PvP and Pillars are available after parent QA acceptance.
+Its status tool sits below the hub scene,
 so the real NPCs remain visible and neither text nor tools obscure the central scene.
 No decorative capsule badges, cursor glows, fabricated activity, or technical stack promotion.
 Both themes use neutral reading surfaces: charcoal-green at night and cool white in light mode.
@@ -12,6 +13,9 @@ Repeated category tiles use these four bright colors, hard lower edges and small
 No marketing slogans, decorative orbs, floating rotations or fake player/price displays.
 Hub, Survival and Village images are actual server screenshots. The generated Skyblock
 island is explicitly labeled as illustrative wherever it appears.
+Box PvP and Pillars artwork is also explicitly representative, not actual map imagery.
+Original builder previews are labeled separately from client captures. Public access follows parent
+native QA and network-readiness confirmation; do not claim human client acceptance from that evidence.
 
 ## Reference Study
 
@@ -28,7 +32,9 @@ Reference artwork, logos and copy are not imported into this project.
 
 ## Page Ownership
 
-- Games: servers.html, survival.html, skyblock.html, village.html.
+- Games: servers.html, survival.html, skyblock.html, village.html, boxpvp.html, pillars.html.
+- Box PvP and Pillars: single guide pages with section anchors, command tables and rules.
+  Backend availability never implies public acceptance; absent service keys remain unknown.
 - Survival: ONE page, four persistent sections (overview, guide, map, rankings).
   Seven guide topics are views of survival.html, never separate page destinations.
   Guide contents remain static HTML. Hash URLs support deep links, reload and history.

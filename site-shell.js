@@ -4,7 +4,7 @@
   const {sections, resolveHref} = window.ARCADE_SITE;
   const discord = 'https://discord.gg/GerdDHzMWp';
   const path = location.pathname.split('/').pop() || 'index.html';
-  const gamePage = /^(?:servers|(?:survival|skyblock|village)(?:-[a-z-]+)?)\.html$/.test(path);
+  const gamePage = /^(?:servers|boxpvp|pillars|(?:survival|skyblock|village)(?:-[a-z-]+)?)\.html$/.test(path);
   const section = sections.find(group => group.pages.some(([href]) => href.split('#')[0] === path));
   const labels = Object.fromEntries(sections.flatMap(group => group.pages).map(([href,label]) => [href.split('#')[0],label]));
   Object.assign(labels, {'skyblock.html':'Skyblock','survival.html':'Survival','community.html':'Topluluk','news.html':'Haberler','store.html':'VIP mağazası','order.html':'Sipariş durumu','sitemap.html':'Site haritası'});
@@ -187,12 +187,19 @@
   if (!footer) { footer = document.createElement('footer'); document.body.append(footer); }
   footer.className = 'site-footer';
   const groups = [
-    ['Oyna',[['survival.html','Survival'],['skyblock.html','Skyblock'],['village.html',"Rob's Village"],['join.html','Oyuna katıl']]],
+    ['Oyna',[...sections.find(group => group.name === 'Oyunlar').pages.filter(([href]) => href !== 'servers.html'),['join.html','Oyuna katıl']]],
     ['Topluluk',[['community.html','Topluluk'],['news.html','Haberler'],['staff.html','Ekibimiz']]],
     ['Yardım',[['help.html','Destek merkezi'],['rules.html','Kurallar'],['status.html','Sunucu durumu']]]
   ];
   const footerDiscord = '<a href="' + discord + '" target="_blank" rel="noopener"><i class="fa-brands fa-discord" aria-hidden="true"></i> Discord</a>';
   if (!footer.querySelector('.site-footer-inner')) footer.innerHTML = '<div class="footer-intro">' + brand + '</div><div class="site-footer-inner">' + groups.map(([title,pages]) => '<section><h2>' + title + '</h2>' + pages.map(([href,text]) => link(href,text)).join('') + (title === 'Topluluk' ? footerDiscord : '') + '</section>').join('') + '</div><div class="footer-bottom"><span>© 2026 ArcaDe Craft</span><div>' + link('sitemap.html','Site haritası') + link('privacy.html','Gizlilik') + link('terms.html','Kullanım şartları') + '</div><span>Mojang veya Microsoft ile bağlantılı değildir.</span></div>';
+  const playSection = [...footer.querySelectorAll('.site-footer-inner > section')].find(group => group.querySelector('h2')?.textContent === 'Oyna');
+  groups[0][1].forEach(([href,label]) => {
+    if (!playSection || playSection.querySelector('a[href="' + href + '"]')) return;
+    const item = document.createElement('a'); item.href = href; item.textContent = label;
+    if (href === path) item.setAttribute('aria-current','page');
+    playSection.insertBefore(item,playSection.querySelector('a[href="join.html"]'));
+  });
   document.querySelectorAll('[data-copy-address]').forEach(button => button.addEventListener('click',async () => {
     const label = button.querySelector('span'); const original = label?.textContent;
     try { await navigator.clipboard.writeText(button.dataset.copyAddress || 'oyna.robsarcade.online'); if (label) { label.textContent = 'Adres kopyalandı'; setTimeout(() => { label.textContent = original; },1800); } }
