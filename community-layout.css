@@ -7,13 +7,13 @@ html[data-theme] body.network-shell.community-page .community-navigation>a:nth-c
 html[data-theme] body.network-shell.community-page .community-navigation>a:nth-child(4) { background:#eca3cd; color:#432337; }
 html[data-theme] body.network-shell.community-page .community-navigation>a[aria-current=page] { border-color:currentColor; box-shadow:inset 0 3px #00000020; }
 html[data-theme] body.network-shell.community-page .community-navigation>a:hover { border-color:currentColor; }
-html[data-theme] body.network-shell.community-page .community-discord { display:grid; grid-template-columns:minmax(0,1fr) minmax(280px,350px); gap:48px; align-items:start; padding:0 0 32px; }
+html[data-theme] body.network-shell.community-page .community-discord { display:grid; grid-template-columns:minmax(0,1fr) minmax(280px,350px); gap:48px; align-items:stretch; padding:0 0 32px; }
 html[data-theme] body.network-shell.community-page .community-intro { display:grid; gap:24px; }
 html[data-theme] body.network-shell.community-page .community-hub-image { display:block; width:100%; height:220px; object-fit:cover; object-position:center 45%; border-radius:6px; }
 html[data-theme] body.network-shell.community-page .community-invite { display:flex; align-items:center; justify-content:space-between; gap:24px; }
 html[data-theme] body.network-shell.community-page .community-invite .craft-button { flex-shrink:0; }
 html[data-theme] body.network-shell.community-page .community-invite p { margin-bottom:0; }
-html[data-theme] body.network-shell.community-page .discord-widget { display:block; width:100%; max-width:350px; height:460px; border:0; border-radius:6px; background:#202225; }
+html[data-theme] body.network-shell.community-page .discord-widget { display:block; width:100%; max-width:none; min-width:0; height:100%; min-height:460px; align-self:stretch; box-sizing:border-box; border:0; border-radius:6px; background:#202225; }
 html[data-theme] body.network-shell.community-page .community-discord h2 { margin:0 0 12px; font:700 30px Rajdhani,sans-serif; }
 html[data-theme] body.network-shell.community-page .community-discord p { margin:0 0 20px; font-size:14px; color:var(--quiet); line-height:1.7; }
 html[data-theme] body.network-shell.community-page .news-journal article:first-child { border-top:0; padding-top:0; }
@@ -26,3 +26,5 @@ html[data-theme] body.network-shell.community-page .news-journal article:first-c
   html[data-theme] body.network-shell.community-page .community-hub-image { height:auto; aspect-ratio:16/9; }
   html[data-theme] body.network-shell.community-page .community-invite { align-items:flex-start; flex-direction:column; gap:16px; }
 }
+
+@media(max-width:600px) { html[data-theme] body.network-shell.community-page .discord-widget { width:100%; max-width:none; height:460px; } }
