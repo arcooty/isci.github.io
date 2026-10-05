@@ -28,3 +28,17 @@ html[data-theme] body.network-shell.community-page .news-journal article:first-c
 }
 
 @media(max-width:600px) { html[data-theme] body.network-shell.community-page .discord-widget { width:100%; max-width:none; height:460px; } }
+
+/* Clear date hierarchy and a compact editorial metadata column. */
+html[data-theme-variant] body.network-shell #main-content .news-journal article { grid-template-columns:140px minmax(0,1fr); gap:28px; }
+html[data-theme-variant] body.network-shell #main-content .news-journal article>div:first-child { justify-content:flex-start; gap:18px; padding-right:20px; border-right:1px solid var(--line); }
+html[data-theme-variant] body.network-shell #main-content .news-journal time { display:flex; flex-direction:column; gap:4px; }
+html[data-theme-variant] body.network-shell #main-content .news-date-day { font:700 42px/1 Rajdhani,sans-serif; color:var(--paper); font-variant-numeric:tabular-nums; }
+html[data-theme-variant] body.network-shell #main-content .news-date-month { font:500 13px/1.5 Inter,sans-serif; color:var(--muted); }
+html[data-theme-variant] body.network-shell #main-content .news-journal article>div:first-child>span { padding:6px 10px; background:var(--surface-raised); border-radius:8px; font-size:12px; line-height:1.5; }
+@media(max-width:600px) {
+ html[data-theme-variant] body.network-shell #main-content .news-journal article { grid-template-columns:1fr; gap:18px; }
+ html[data-theme-variant] body.network-shell #main-content .news-journal article>div:first-child { flex-direction:row; align-items:center; gap:12px 18px; padding:0 0 16px; border-right:0; border-bottom:1px solid var(--line); }
+ html[data-theme-variant] body.network-shell #main-content .news-journal time { flex-direction:row; align-items:baseline; gap:8px; }
+ html[data-theme-variant] body.network-shell #main-content .news-date-day { font-size:28px; }
+}
