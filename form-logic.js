@@ -10,7 +10,7 @@
       const timer = window.setTimeout(() => { script.remove(); reject(new Error('verification_unavailable')); }, 20000);
       script.onload = () => {
         window.clearTimeout(timer);
-        if (window.turnstile?.ready) window.turnstile.ready(() => resolve(window.turnstile));
+        if (window.turnstile?.render) resolve(window.turnstile);
         else reject(new Error('verification_unavailable'));
       };
       script.onerror = () => { window.clearTimeout(timer); script.remove(); reject(new Error('verification_unavailable')); };
