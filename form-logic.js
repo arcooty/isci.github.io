@@ -69,6 +69,10 @@
       async function startVerification() {
         if (loading || sending || !form.isConnected) return;
         loading = true;
+        if (widgetId !== undefined) {
+          try { window.turnstile.remove(widgetId); } catch {}
+          widgetId = undefined;
+        }
         submit.disabled = true;
         retry.disabled = true;
         submit.type = 'submit';
