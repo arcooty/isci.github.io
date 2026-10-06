@@ -4,7 +4,7 @@
   const {sections, resolveHref} = window.ARCADE_SITE;
   const discord = 'https://discord.gg/GerdDHzMWp';
   const path = location.pathname.split('/').pop() || 'index.html';
-  const gamePage = /^(?:servers|boxpvp|pillars|(?:survival|skyblock|village)(?:-[a-z-]+)?)\.html$/.test(path);
+  const gamePage = /^(?:servers|(?:survival|skyblock|village|boxpvp|pillars)(?:-[a-z-]+)?)\.html$/.test(path);
   const section = sections.find(group => group.pages.some(([href]) => href.split('#')[0] === path));
   const labels = Object.fromEntries(sections.flatMap(group => group.pages).map(([href,label]) => [href.split('#')[0],label]));
   Object.assign(labels, {'skyblock.html':'Skyblock','survival.html':'Survival','community.html':'Topluluk','news.html':'Haberler','store.html':'VIP mağazası','order.html':'Sipariş durumu','sitemap.html':'Site haritası'});
