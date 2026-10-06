@@ -1,0 +1,146 @@
+{
+  "version": "0.18",
+  "variants": [
+    {
+      "version": "1.20.1",
+      "minProtocol": 763,
+      "maxProtocol": 763,
+      "filename": "arcade-ui-java-1.20.1-v0.18-28f00d170496.zip",
+      "url": "https://robsarcade.online/resourcepacks/arcade-ui-java-1.20.1-v0.18-28f00d170496.zip",
+      "sha1": "28f00d17049604dd1635b10af8288fa0ddf89006",
+      "id": "e485f1f9-0241-561e-af90-2cf2db3beea7"
+    },
+    {
+      "version": "1.20.2",
+      "minProtocol": 764,
+      "maxProtocol": 764,
+      "filename": "arcade-ui-java-1.20.2-v0.18-5270643004dc.zip",
+      "url": "https://robsarcade.online/resourcepacks/arcade-ui-java-1.20.2-v0.18-5270643004dc.zip",
+      "sha1": "5270643004dc3062491aa529b9b4df60248f2b61",
+      "id": "93d506b0-3f9f-511a-9c6b-f8c138698c2a"
+    },
+    {
+      "version": "1.20.4",
+      "minProtocol": 765,
+      "maxProtocol": 765,
+      "filename": "arcade-ui-java-1.20.4-v0.18-63a854eebe98.zip",
+      "url": "https://robsarcade.online/resourcepacks/arcade-ui-java-1.20.4-v0.18-63a854eebe98.zip",
+      "sha1": "63a854eebe981d8711e50acdcec6bd931d65bd96",
+      "id": "082ab32d-163c-5182-b9ca-735827f71a19"
+    },
+    {
+      "version": "1.20.6",
+      "minProtocol": 766,
+      "maxProtocol": 766,
+      "filename": "arcade-ui-java-1.20.6-v0.18-aa1ae9a95acb.zip",
+      "url": "https://robsarcade.online/resourcepacks/arcade-ui-java-1.20.6-v0.18-aa1ae9a95acb.zip",
+      "sha1": "aa1ae9a95acb06f4e911d9ebab5a91b1da994f14",
+      "id": "b86c1cc1-e834-54aa-938d-33f9eadafb0d"
+    },
+    {
+      "version": "1.21.1",
+      "minProtocol": 767,
+      "maxProtocol": 767,
+      "filename": "arcade-ui-java-1.21.1-v0.18-a20426f4c7c4.zip",
+      "url": "https://robsarcade.online/resourcepacks/arcade-ui-java-1.21.1-v0.18-a20426f4c7c4.zip",
+      "sha1": "a20426f4c7c4554db3aadb0b5479f3b751712b0f",
+      "id": "3878f902-886e-5b68-9074-c2a591b87423"
+    },
+    {
+      "version": "1.21.3",
+      "minProtocol": 768,
+      "maxProtocol": 768,
+      "filename": "arcade-ui-java-1.21.3-v0.18-60df045ca103.zip",
+      "url": "https://robsarcade.online/resourcepacks/arcade-ui-java-1.21.3-v0.18-60df045ca103.zip",
+      "sha1": "60df045ca10347653233027fe13a1b3d261d2e1a",
+      "id": "b7007be5-b4b6-5de8-8500-bb8aaa28771b"
+    },
+    {
+      "version": "1.21.4",
+      "minProtocol": 769,
+      "maxProtocol": 769,
+      "filename": "arcade-ui-java-1.21.4-v0.18-f01a3649d915.zip",
+      "url": "https://robsarcade.online/resourcepacks/arcade-ui-java-1.21.4-v0.18-f01a3649d915.zip",
+      "sha1": "f01a3649d915adfd2045feccc001a3fd508578e0",
+      "id": "53970b29-4dcf-5160-a69b-71ccb23f2379"
+    },
+    {
+      "version": "1.21.5",
+      "minProtocol": 770,
+      "maxProtocol": 770,
+      "filename": "arcade-ui-java-1.21.5-v0.18-aa117da7565e.zip",
+      "url": "https://robsarcade.online/resourcepacks/arcade-ui-java-1.21.5-v0.18-aa117da7565e.zip",
+      "sha1": "aa117da7565e87918b5656bd4c5d82f136b61b6b",
+      "id": "852c41b1-0ecd-5f38-b3dd-dd871e6e332e"
+    },
+    {
+      "version": "1.21.6",
+      "minProtocol": 771,
+      "maxProtocol": 771,
+      "filename": "arcade-ui-java-1.21.6-v0.18-c71abbea7051.zip",
+      "url": "https://robsarcade.online/resourcepacks/arcade-ui-java-1.21.6-v0.18-c71abbea7051.zip",
+      "sha1": "c71abbea7051847394b0704b469e1fa9d319732a",
+      "id": "2aa4b778-eedd-519b-93b9-18bc17d0c073"
+    },
+    {
+      "version": "1.21.8",
+      "minProtocol": 772,
+      "maxProtocol": 772,
+      "filename": "arcade-ui-java-1.21.8-v0.18-71481db03234.zip",
+      "url": "https://robsarcade.online/resourcepacks/arcade-ui-java-1.21.8-v0.18-71481db03234.zip",
+      "sha1": "71481db03234b840b3e8f6e767c2b57065de56c0",
+      "id": "1f7737d7-b459-554c-a604-6200314a6e8a"
+    },
+    {
+      "version": "1.21.9",
+      "minProtocol": 773,
+      "maxProtocol": 773,
+      "filename": "arcade-ui-java-1.21.9-v0.18-97be627d3b57.zip",
+      "url": "https://robsarcade.online/resourcepacks/arcade-ui-java-1.21.9-v0.18-97be627d3b57.zip",
+      "sha1": "97be627d3b577d19f1853e47af8a6fceca47caf6",
+      "id": "086baa53-ba83-5832-8527-1c757bea8669"
+    },
+    {
+      "version": "1.21.11",
+      "minProtocol": 774,
+      "maxProtocol": 774,
+      "filename": "arcade-ui-java-1.21.11-v0.18-7d9eded8070c.zip",
+      "url": "https://robsarcade.online/resourcepacks/arcade-ui-java-1.21.11-v0.18-7d9eded8070c.zip",
+      "sha1": "7d9eded8070cd29c17f0145f04ce3de67376b0e2",
+      "id": "c4736d93-7464-5b33-9561-4a9617baddbe"
+    },
+    {
+      "version": "26.1.2",
+      "minProtocol": 775,
+      "maxProtocol": 775,
+      "filename": "arcade-ui-java-26.1.2-v0.18-df2c8c243c47.zip",
+      "url": "https://robsarcade.online/resourcepacks/arcade-ui-java-26.1.2-v0.18-df2c8c243c47.zip",
+      "sha1": "df2c8c243c47577181714062c289dab121a44b65",
+      "id": "89e0919d-e30e-5212-8523-e868e6f8f4b5"
+    },
+    {
+      "version": "26.2",
+      "minProtocol": 776,
+      "maxProtocol": 776,
+      "filename": "arcade-ui-java-26.2-v0.18-f42474357ff1.zip",
+      "url": "https://robsarcade.online/resourcepacks/arcade-ui-java-26.2-v0.18-f42474357ff1.zip",
+      "sha1": "f42474357ff1cdfc8d288bb289fa5b0483e520cc",
+      "id": "75028201-3b08-5570-8dac-67761011e399"
+    },
+    {
+      "version": "26.3",
+      "minProtocol": 777,
+      "maxProtocol": 777,
+      "filename": "arcade-ui-java-26.3-v0.18-39d21d7830d4.zip",
+      "url": "https://robsarcade.online/resourcepacks/arcade-ui-java-26.3-v0.18-39d21d7830d4.zip",
+      "sha1": "39d21d7830d4e6c173aa61a4bdbc3ea51287d028",
+      "id": "dcaf4e6d-29d3-5703-bc4f-d01aeab36bbb"
+    }
+  ],
+  "bedrock": {
+    "version": "0.4.4",
+    "filename": "ArcadeCraft-Bedrock-0.4.4.mcpack",
+    "sha1": "60517da694b696c98d7d3cc8d5c5b2cfc4f3a365",
+    "id": "4906f509-94e2-5444-9a6e-7b9fadb06d20"
+  }
+}
