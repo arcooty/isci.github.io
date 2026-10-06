@@ -1,4 +1,24 @@
 /* New games reuse the existing guide, table and poster layouts. */
+/* Keep hub imagery and navigation consistent across every topic and theme. */
+html[data-theme] body.network-shell.arcade-game-guide #main-content .arcade-guide-pagination { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; align-items:stretch; }
+html[data-theme] body.network-shell.arcade-game-guide #main-content .arcade-guide-pagination>a[data-step] { display:flex; min-height:66px; width:100%; padding:14px 18px; margin:0; box-sizing:border-box; border-color:var(--line); background:var(--variant-accent,var(--guide-color))!important; color:var(--button-ink,var(--guide-ink))!important; }
+html[data-theme] body.network-shell.arcade-game-guide #main-content .arcade-guide-pagination>a[data-step=previous] { grid-column:1; justify-content:flex-start; text-align:left; }
+html[data-theme] body.network-shell.arcade-game-guide #main-content .arcade-guide-pagination>a[data-step=next] { grid-column:3; justify-content:flex-end; text-align:right; }
+html[data-theme] body.network-shell.arcade-game-guide #main-content .arcade-guide-pagination>a[data-step=overview] { grid-column:2; justify-self:center; width:auto; min-width:170px; background:var(--surface-raised)!important; color:var(--paper,var(--ink))!important; box-shadow:none; }
+html[data-theme] body.network-shell.arcade-game-guide #main-content .arcade-guide-pagination[data-position=first]>a[data-step=overview] { grid-column:1; justify-self:start; }
+html[data-theme] body.network-shell.arcade-game-guide #main-content .arcade-guide-pagination[data-position=last]>a[data-step=overview] { grid-column:3; justify-self:end; }
+html[data-theme] body.network-shell.arcade-game-guide #main-content .arcade-nav-copy { display:grid; gap:4px; min-width:0; }
+html[data-theme] body.network-shell.arcade-game-guide #main-content .arcade-nav-copy small { font:500 11px/1.4 Inter,sans-serif; }
+html[data-theme] body.network-shell.arcade-game-guide #main-content .arcade-nav-copy strong { font:700 13px/1.5 Inter,sans-serif; overflow-wrap:anywhere; }
+@media(max-width:600px) {
+ html[data-theme] body.network-shell.arcade-game-guide #main-content .arcade-guide-pagination { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+ html[data-theme] body.network-shell.arcade-game-guide #main-content .arcade-guide-pagination>a[data-step] { min-height:68px; padding:12px; }
+ html[data-theme] body.network-shell.arcade-game-guide #main-content .arcade-guide-pagination>a[data-step=previous] { grid-column:1; grid-row:1; }
+ html[data-theme] body.network-shell.arcade-game-guide #main-content .arcade-guide-pagination>a[data-step=next] { grid-column:2; grid-row:1; }
+ html[data-theme] body.network-shell.arcade-game-guide #main-content .arcade-guide-pagination[data-position]>a[data-step=overview] { grid-column:1/-1; grid-row:2; justify-self:stretch; width:100%; min-height:48px; min-width:0; }
+ html[data-theme] body.network-shell.arcade-game-guide #main-content .arcade-guide-pagination[data-position=first]>a[data-step=next],
+ html[data-theme] body.network-shell.arcade-game-guide #main-content .arcade-guide-pagination[data-position=last]>a[data-step=previous] { grid-column:1/-1; }
+}
 html[data-theme] body[data-game=boxpvp] { --guide-color:#ffd573; --guide-ink:#473612; }
 html[data-theme] body[data-game=pillars] { --guide-color:#83ddef; --guide-ink:#14353e; }
 html[data-theme] body.network-shell.arcade-game-guide .arcade-test-state { margin:0 0 24px; color:var(--quiet); font:400 13px/1.75 Inter,sans-serif; }

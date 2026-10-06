@@ -85,6 +85,8 @@
     return resolveHref(target.pathname.slice(1) + target.search + target.hash);
   }
   const searchEntries = [
+    ['pillars-start.html','Pillars başlangıç','Pillars','compass','pillars başlangıç giriş katıl sütun ilk tur'],
+    ['pillars-rules.html','Pillars kuralları','Pillars','shield-halved','pillars kurallar adil oyun seyirci güvenlik'],
     ['boxpvp.html','Box PvP','Oyunlar','hammer','boxpvp box pvp cevher arena kehribar açık'],
     ['boxpvp.html#baslangic','Box PvP başlangıç','Box PvP','compass','boxpvp giriş katıl npc güvenli spawn başlangıç'],
     ['boxpvp.html#maden','Box PvP madenleri','Box PvP','hammer','boxpvp cevher yenilenen maden kömür demir altın elmas 180 210 240 270 30 yenilenme merdiven'],

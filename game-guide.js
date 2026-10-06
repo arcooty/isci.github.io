@@ -12,6 +12,13 @@
     window.addEventListener('hashchange',redirect);
   }
   document.querySelectorAll('.game-guide-toolbar details').forEach(menu => {
+    menu.querySelectorAll('a[href]').forEach(link => link.addEventListener('click',event => {
+      menu.open = false;
+      if (link.getAttribute('aria-current') === 'page') {
+        event.preventDefault();
+        menu.querySelector('summary').focus({preventScroll:true});
+      }
+    }));
     menu.addEventListener('keydown',event => {
       if (event.key !== 'Escape' || !menu.open) return;
       event.preventDefault(); menu.open = false; menu.querySelector('summary').focus();
