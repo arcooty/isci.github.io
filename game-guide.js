@@ -14,7 +14,8 @@
   document.querySelectorAll('.game-guide-toolbar details').forEach(menu => {
     menu.querySelectorAll('a[href]').forEach(link => link.addEventListener('click',event => {
       menu.open = false;
-      if (link.getAttribute('aria-current') === 'page') {
+      const plainClick = event.button === 0 && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey;
+      if (plainClick && link.getAttribute('aria-current') === 'page') {
         event.preventDefault();
         menu.querySelector('summary').focus({preventScroll:true});
       }
