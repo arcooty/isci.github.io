@@ -38,7 +38,7 @@
     ],
     village: [['village-play.html','Oynanış','moon'],['village-roles.html','Roller','users'],['village-win.html','Kazanma','trophy'],['village-lobby.html','Lobi ve komutlar','compass'],['village-faq.html','Sorular','circle-question']],
     pillars: [["pillars-start.html", "Başlangıç", "compass"], ["pillars-station.html", "İstasyon ve haritalar", "map"], ["pillars-round.html", "Tur ve eşyalar", "dice"], ["pillars-commands.html", "Komutlar ve kuyruk", "terminal"], ["pillars-rules.html", "Kurallar", "shield-halved"]],
-    boxpvp: [["boxpvp-start.html", "Başlangıç", "compass"], ["boxpvp-arena.html", "Kehribar Kalesi", "map"], ["boxpvp-mines.html", "Madenler", "hammer"], ["boxpvp-trade.html", "Cevher takasları", "right-left"], ["boxpvp-services.html", "Kit, onarım ve depo", "box-open"], ["boxpvp-commands.html", "Komutlar", "terminal"], ["boxpvp-rules.html", "Savaş kuralları", "shield-halved"]]
+    boxpvp: [["boxpvp-start.html", "Başlangıç", "compass"], ["boxpvp-arena.html", "Kehribar Kalesi", "map"], ["boxpvp-mines.html", "Madenler", "hammer"], ["boxpvp-trade.html", "Cevher takasları", "right-left"], ["boxpvp-services.html", "Kit, onarım ve depo", "box-open"], ["boxpvp-commands.html", "Komutlar", "terminal"], ["boxpvp-rules.html", "Savaş kuralları", "shield-halved"], ["boxpvp-progression.html", "Gelişim ve kişisel kazma", "chart-line"], ["boxpvp-contracts.html", "Sözleşmeler ve sıralamalar", "list-check"], ["boxpvp-events.html", "Etkinlikler ve düello", "flag"], ["boxpvp-social.html", "Klan, takas ve ihale", "users"]]
   };
   const gameRoutes = {
     'pillars.html': {"baslangic": "pillars-start.html#baslangic", "start-title": "pillars-start.html#start-title", "istasyon": "pillars-station.html#istasyon", "station-title": "pillars-station.html#station-title", "tur": "pillars-round.html#tur", "round-title": "pillars-round.html#round-title", "komutlar": "pillars-commands.html#komutlar", "commands-title": "pillars-commands.html#commands-title", "kurallar": "pillars-rules.html#kurallar", "rules-title": "pillars-rules.html#rules-title"},
@@ -87,6 +87,10 @@
   const searchEntries = [
     ['pillars-start.html','Pillars başlangıç','Pillars','compass','pillars başlangıç giriş katıl sütun ilk tur'],
     ['pillars-rules.html','Pillars kuralları','Pillars','shield-halved','pillars kurallar adil oyun seyirci güvenlik'],
+    ['boxpvp-progression.html','Gelişim ve kişisel kazma','Box PvP','chart-line','boxpvp progression seviye kazma sözleşme koth klan ihale prestij'],
+    ['boxpvp-contracts.html','Sözleşmeler ve sıralamalar','Box PvP','list-check','boxpvp contracts seviye kazma sözleşme koth klan ihale prestij'],
+    ['boxpvp-events.html','Etkinlikler ve düello','Box PvP','flag','boxpvp events seviye kazma sözleşme koth klan ihale prestij'],
+    ['boxpvp-social.html','Klan, takas ve ihale','Box PvP','users','boxpvp social seviye kazma sözleşme koth klan ihale prestij'],
     ['boxpvp.html','Box PvP','Oyunlar','hammer','boxpvp box pvp cevher arena kehribar açık'],
     ['boxpvp.html#baslangic','Box PvP başlangıç','Box PvP','compass','boxpvp giriş katıl npc güvenli spawn başlangıç'],
     ['boxpvp.html#maden','Box PvP madenleri','Box PvP','hammer','boxpvp cevher sekiz maden korumalı başlangıç kömür demir altın elmas zümrüt kadim enkaz antik kalıntı 180 210 240 270 300 360 30 yenilenme merdiven'],
