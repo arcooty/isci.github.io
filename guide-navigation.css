@@ -43,3 +43,6 @@ html[data-theme] body.network-shell :is(.guide-pagination,.game-guide-next)>a[hi
   html[data-theme] body.network-shell :is(.guide-pagination,.game-guide-next)>a+a { margin-left:0; }
   html[data-theme] body.network-shell :is(.guide-pagination,.game-guide-next)>a:only-child { grid-column:1/-1; justify-self:start; }
 }
+
+html[data-theme] body.network-shell.game-guide-page :is(.guide-pagination,.game-guide-next)>a[href] { display:flex; align-items:center; justify-content:center; gap:10px; min-height:56px; padding:14px 18px; border-radius:6px; box-shadow:inset 0 -3px #00000022; text-decoration:none; flex:1 1 240px; }
+@media(max-width:600px) { html[data-theme] body.network-shell.game-guide-page :is(.guide-pagination,.game-guide-next) { grid-template-columns:1fr; } }

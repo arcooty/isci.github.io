@@ -11,6 +11,8 @@
   const topicSelect = document.getElementById('guide-topic-select');
   const locationLabel = document.getElementById('guide-current');
   const next = document.getElementById('guide-next');
+  const previous = document.getElementById('guide-prev');
+  const readingOrder = [["survival.html#siralamalar", "Sıralamalar"], ["survival.html#baslangic", "İlk adımlar"], ["survival.html#arazi", "Arazi ve evler"], ["survival-jobs.html", "Meslekler"], ["survival-jobs-progress.html", "Meslek ilerlemesi"], ["survival-jobs-commands.html", "Meslek komutları"], ["survival-quests.html", "Kaybolan Atlas"], ["survival-quests-goals.html", "Uzun vadeli hedefler"], ["survival-quests-daily.html", "Günlük görevler ve beceriler"], ["survival.html#ekonomi", "Ekonomi ve ticaret"], ["survival-crates.html", "Kasalar"], ["survival-crates-rewards.html", "Ödüller ve oranlar"], ["survival-crates-keys.html", "Anahtar ve kullanım"], ["survival-commands.html", "Ulaşım ve ev komutları"], ["survival-commands-progress.html", "İlerleme komutları"], ["survival-commands-vip.html", "VIP komutları"], ["survival.html#harita", "Harita"]];
   const categoryMenu = document.getElementById('guide-category-menu');
   const toolbar = document.querySelector('.survival-topic-toolbar');
   categoryMenu?.addEventListener('keydown',event => {
@@ -53,10 +55,15 @@
       lastTopic = topic[0]; topicSelect.value = lastTopic; locationLabel.textContent = topic[1];
       articles.forEach(article => { article.hidden = article.dataset.guideTopic !== lastTopic; });
       topicNav.querySelectorAll('a').forEach(link => { if (link.dataset.topicLink === lastTopic) link.setAttribute('aria-current','page'); else link.removeAttribute('aria-current'); });
-      const index = topics.indexOf(topic);
-      const following = topics[index + 1];
-      next.hidden = !following;
-      if (following) { next.href = topicHref(following[0]); next.replaceChildren(document.createTextNode(following[1] + ' ')); const arrow = document.createElement('i'); arrow.className = 'fa-solid fa-arrow-right'; arrow.setAttribute('aria-hidden','true'); next.append(arrow); }
+      const current = topicHref(topic[0]);
+      const index = readingOrder.findIndex(([href]) => href === current);
+      const neighbors = [readingOrder[index - 1] || ['survival.html#genel','Bütün konular'],readingOrder[index + 1] || ['survival.html#genel','Bütün konular']];
+      [previous,next].forEach((link,i) => {
+        link.hidden = false; link.href = neighbors[i][0];
+        const text = document.createElement('span'); text.textContent = (i ? 'Sonraki: ' : 'Önceki: ') + neighbors[i][1];
+        const arrow = document.createElement('i'); arrow.className = 'fa-solid fa-arrow-' + (i ? 'right' : 'left'); arrow.setAttribute('aria-hidden','true');
+        link.replaceChildren(...(i ? [text,arrow] : [arrow,text]));
+      });
     }
     document.querySelectorAll('[data-section-link]').forEach(link=>{
       if (link.dataset.sectionLink === hash) link.setAttribute('aria-current','location');

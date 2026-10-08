@@ -1,6 +1,5 @@
 /* Shared topic and previous/next controls for the arcade guides. */
 html[data-theme] body.arcade-game-guide .trade-topic-nav { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin:20px 0 28px; }
 html[data-theme] body.arcade-game-guide .trade-topic-nav>a { display:flex; align-items:center; justify-content:center; gap:10px; min-height:64px; padding:14px 18px; text-align:center; text-decoration:none; }
-html[data-theme][data-theme-variant] body.network-shell.arcade-game-guide .game-guide-next>a[href] { display:flex; align-items:center; justify-content:center; gap:10px; min-height:56px; padding:14px 18px; border:1px solid #15321e25; border-radius:6px; box-shadow:inset 0 -3px #00000022; text-decoration:none; flex:1 1 240px; }
-@media(max-width:600px) { html[data-theme] body.arcade-game-guide .trade-topic-nav { grid-template-columns:1fr; } html[data-theme] body.arcade-game-guide .game-guide-next { grid-template-columns:1fr; } }
 
+@media(max-width:600px) { html[data-theme] body.arcade-game-guide .trade-topic-nav { grid-template-columns:1fr; } }
