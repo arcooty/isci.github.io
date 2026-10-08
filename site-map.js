@@ -41,6 +41,7 @@
     boxpvp: [["boxpvp-start.html", "Başlangıç", "compass"], ["boxpvp-arena.html", "Kehribar Kalesi", "map"], ["boxpvp-mines.html", "Madenler", "hammer"], ["boxpvp-trade.html", "Cevher takasları", "right-left"], ["boxpvp-services.html", "Kit, onarım ve depo", "box-open"], ["boxpvp-commands.html", "Komutlar", "terminal"], ["boxpvp-rules.html", "Savaş kuralları", "shield-halved"], ["boxpvp-progression.html", "Gelişim ve kişisel kazma", "chart-line"], ["boxpvp-contracts.html", "Sözleşmeler ve sıralamalar", "list-check"], ["boxpvp-events.html", "Etkinlikler ve düello", "flag"], ["boxpvp-social.html", "Klan, takas ve ihale", "users"]]
   };
   const gameRoutes = {
+    'boxpvp-trade.html': {"aletler": "boxpvp-trade-tools.html#aletler", "zirh": "boxpvp-trade-armor.html#zirh", "sarf": "boxpvp-trade-supplies.html#sarf", "destek": "boxpvp-trade-utility.html#destek"},
     'pillars.html': {"baslangic": "pillars-start.html#baslangic", "start-title": "pillars-start.html#start-title", "istasyon": "pillars-station.html#istasyon", "station-title": "pillars-station.html#station-title", "tur": "pillars-round.html#tur", "round-title": "pillars-round.html#round-title", "komutlar": "pillars-commands.html#komutlar", "commands-title": "pillars-commands.html#commands-title", "kurallar": "pillars-rules.html#kurallar", "rules-title": "pillars-rules.html#rules-title"},
     'boxpvp.html': {"baslangic": "boxpvp-start.html#baslangic", "start-title": "boxpvp-start.html#start-title", "arena": "boxpvp-arena.html#arena", "arena-title": "boxpvp-arena.html#arena-title", "maden": "boxpvp-mines.html#maden", "mine-title": "boxpvp-mines.html#mine-title", "takas": "boxpvp-trade.html#takas", "trade-title": "boxpvp-trade.html#trade-title", "hizmetler": "boxpvp-services.html#hizmetler", "services-title": "boxpvp-services.html#services-title", "komutlar": "boxpvp-commands.html#komutlar", "commands-title": "boxpvp-commands.html#commands-title", "kurallar": "boxpvp-rules.html#kurallar", "rules-title": "boxpvp-rules.html#rules-title"},
     'survival.html': {gorevler:'survival-quests.html#gorevler', 'atlas-chapters':'survival-quests.html#atlas-chapters', 'atlas-hedefler':'survival-quests-goals.html#atlas-hedefler', 'atlas-kesif':'survival-quests-goals.html#atlas-kesif', 'atlas-gunluk':'survival-quests-daily.html#atlas-gunluk', meslekler:'survival-jobs.html#jobs-meslekler', 'jobs-meslekler':'survival-jobs.html#jobs-meslekler', 'jobs-sistem':'survival-jobs-progress.html#jobs-sistem', 'jobs-komutlar':'survival-jobs-commands.html#jobs-komutlar', kasalar:'survival-crates.html#kasalar', 'crate-havuzlar':'survival-crates.html#crate-havuzlar', 'crate-odds':'survival-crates-rewards.html#crate-odds', 'crate-kullanim':'survival-crates-keys.html#crate-kullanim', komutlar:'survival-commands.html#komutlar', 'commands-travel':'survival-commands.html#commands-travel', 'commands-progress':'survival-commands-progress.html#commands-progress', 'commands-vip':'survival-commands-vip.html#commands-vip'},
@@ -55,7 +56,7 @@
   gameRoutes['village.html']['countdown-title'] = 'village-lobby.html#countdown-title';
   const sections = [
     {name:'Pillars', href:'pillars.html', pages:gameGuides.pillars.map(([href,label])=>[href,label])},
-    {name:'Box PvP', href:'boxpvp.html', pages:gameGuides.boxpvp.map(([href,label])=>[href,label])},
+    {name:'Box PvP', href:'boxpvp.html', pages:[...gameGuides.boxpvp.map(([href,label])=>[href,label]),["boxpvp-trade-tools.html", "Silahlar ve aletler"],["boxpvp-trade-armor.html", "Zırhlar"],["boxpvp-trade-supplies.html", "Sarf malzemeleri"],["boxpvp-trade-utility.html", "Destek eşyaları"]]},
     {name:'Oyunlar', href:'servers.html', pages:[['servers.html','Oyunlarımız'],['survival.html','Survival'],['skyblock.html','Skyblock'],['village.html',"Rob's Village"],['boxpvp.html','Box PvP'],['pillars.html','Pillars']]},
     {name:'Skyblock', href:'skyblock.html', pages:gameGuides.skyblock.map(([href,label])=>[href,label])},
     {name:"Rob's Village", href:'village.html', pages:gameGuides.village.map(([href,label])=>[href,label])},
@@ -85,6 +86,11 @@
     return resolveHref(target.pathname.slice(1) + target.search + target.hash);
   }
   const searchEntries = [
+    ["boxpvp-trade-tools.html", "Silahlar ve aletler", "Box PvP", "hammer", "boxpvp cevher takas fiyat Silahlar ve aletler"],
+    ["boxpvp-trade-armor.html", "Zırhlar", "Box PvP", "shield-halved", "boxpvp cevher takas fiyat Zırhlar"],
+    ["boxpvp-trade-supplies.html", "Sarf malzemeleri", "Box PvP", "apple-whole", "boxpvp cevher takas fiyat Sarf malzemeleri"],
+    ["boxpvp-trade-utility.html", "Destek eşyaları", "Box PvP", "box-open", "boxpvp cevher takas fiyat Destek eşyaları"],
+
     ['pillars-start.html','Pillars başlangıç','Pillars','compass','pillars başlangıç giriş katıl sütun ilk tur'],
     ['pillars-ranks.html','Pillars rütbeler ve kafesler','Pillars','medal','pillars rütbe rank rp bronz demir gümüş altın zümrüt elmas netherite kafes rozet'],
     ['pillars-rules.html','Pillars kuralları','Pillars','shield-halved','pillars kurallar adil oyun seyirci güvenlik'],
