@@ -37,7 +37,7 @@
       ['skyblock-community.html','Topluluk','users'],['skyblock-vip.html','VIP hakları','gem'],['skyblock-access.html','Test erişimi','flask'],['skyblock-leaderboard.html','Sıralamalar','trophy']
     ],
     village: [['village-play.html','Oynanış','moon'],['village-roles.html','Roller','users'],['village-win.html','Kazanma','trophy'],['village-lobby.html','Lobi ve komutlar','compass'],['village-faq.html','Sorular','circle-question']],
-    pillars: [["pillars-start.html", "Başlangıç", "compass"], ["pillars-station.html", "İstasyon ve haritalar", "map"], ["pillars-round.html", "Tur ve eşyalar", "dice"], ["pillars-commands.html", "Komutlar ve kuyruk", "terminal"], ["pillars-rules.html", "Kurallar", "shield-halved"]],
+    pillars: [["pillars-start.html", "Başlangıç", "compass"], ["pillars-station.html", "İstasyon ve haritalar", "map"], ["pillars-round.html", "Tur ve eşyalar", "dice"], ["pillars-commands.html", "Komutlar ve kuyruk", "terminal"], ["pillars-rules.html", "Kurallar", "shield-halved"], ["pillars-ranks.html", "Rütbeler ve kafesler", "medal"]],
     boxpvp: [["boxpvp-start.html", "Başlangıç", "compass"], ["boxpvp-arena.html", "Kehribar Kalesi", "map"], ["boxpvp-mines.html", "Madenler", "hammer"], ["boxpvp-trade.html", "Cevher takasları", "right-left"], ["boxpvp-services.html", "Kit, onarım ve depo", "box-open"], ["boxpvp-commands.html", "Komutlar", "terminal"], ["boxpvp-rules.html", "Savaş kuralları", "shield-halved"], ["boxpvp-progression.html", "Gelişim ve kişisel kazma", "chart-line"], ["boxpvp-contracts.html", "Sözleşmeler ve sıralamalar", "list-check"], ["boxpvp-events.html", "Etkinlikler ve düello", "flag"], ["boxpvp-social.html", "Klan, takas ve ihale", "users"]]
   };
   const gameRoutes = {
@@ -86,6 +86,7 @@
   }
   const searchEntries = [
     ['pillars-start.html','Pillars başlangıç','Pillars','compass','pillars başlangıç giriş katıl sütun ilk tur'],
+    ['pillars-ranks.html','Pillars rütbeler ve kafesler','Pillars','medal','pillars rütbe rank rp bronz demir gümüş altın zümrüt elmas netherite kafes rozet'],
     ['pillars-rules.html','Pillars kuralları','Pillars','shield-halved','pillars kurallar adil oyun seyirci güvenlik'],
     ['boxpvp-progression.html','Gelişim ve kişisel kazma','Box PvP','chart-line','boxpvp progression seviye kazma sözleşme koth klan ihale prestij'],
     ['boxpvp-contracts.html','Sözleşmeler ve sıralamalar','Box PvP','list-check','boxpvp contracts seviye kazma sözleşme koth klan ihale prestij'],
